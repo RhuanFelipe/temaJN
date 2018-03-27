@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 26-Mar-2018 às 21:39
+-- Generation Time: 27-Mar-2018 às 22:10
 -- Versão do servidor: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -97,7 +97,7 @@ CREATE TABLE IF NOT EXISTS `endereco` (
   `complemento_casa` varchar(50) NOT NULL,
   `cidade_id` int(11) NOT NULL,
   `bairro_id` int(11) NOT NULL,
-  `usuario_id` int(11) NOT NULL,
+  `pessoa_id` int(11) NOT NULL,
   PRIMARY KEY (`id_endereco`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
@@ -127,6 +127,9 @@ CREATE TABLE IF NOT EXISTS `pessoa` (
   `sexo_pessoa` char(1) NOT NULL,
   `nasc_pessoa` date NOT NULL,
   `email_pessoa` varchar(100) DEFAULT NULL,
+  `curso_id` int(11) NOT NULL,
+  `turno_id` int(11) NOT NULL,
+  `turma_id` int(11) NOT NULL,
   PRIMARY KEY (`id_pessoa`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
