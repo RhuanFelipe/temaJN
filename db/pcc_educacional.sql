@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 27-Mar-2018 às 22:10
+-- Generation Time: 29-Mar-2018 às 22:17
 -- Versão do servidor: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -190,13 +190,20 @@ CREATE TABLE IF NOT EXISTS `turno` (
 --
 
 CREATE TABLE IF NOT EXISTS `usuario` (
-  `id_usuario` int(11) NOT NULL AUTO_INCREMENT,
+  `id_usuario` int(11) NOT NULL,
   `matricula_usuario` int(11) NOT NULL,
-  `senha_usuario` int(11) NOT NULL,
-  `ativo_usuario` int(11) NOT NULL,
+  `senha_usuario` varchar(200) NOT NULL,
+  `ativo_usuario` char(1) NOT NULL,
   `nivel_id` int(11) NOT NULL,
   PRIMARY KEY (`id_usuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `usuario`
+--
+
+INSERT INTO `usuario` (`id_usuario`, `matricula_usuario`, `senha_usuario`, `ativo_usuario`, `nivel_id`) VALUES
+(1, 11032395, 'T1H4PK', '1', 1);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
