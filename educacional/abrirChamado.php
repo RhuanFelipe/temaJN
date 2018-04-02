@@ -19,65 +19,52 @@
 
   <body class="text-center">
 <div class="container">
+  <h3 style="margin-bottom: 20px;">Abertura de chamado</h3>
     <div class="form-group row">
       <label for="example-text-input" class="col-2 col-form-label">TIPO CURSO:</label>
       <div class="col-10">
-        <select class="form-control">
-          <option selected>Open this select menu</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
+        <select class="form-control" id="tipoCurso">
+          <option selected>Informe o tipo curso</option>
+         
         </select>
       </div>
     </div>
     <div class="form-group row">
       <label for="example-search-input" class="col-2 col-form-label">CURSO:</label>
-      <div class="col-10">
-        <select class="form-control">
-          <option selected>Open this select menu</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
+      <div class="col-10" >
+        <select class="form-control" id="curso">
+          <option selected>Informe o curso</option>
         </select>
       </div>
     </div>
     <div class="form-group row">
       <label for="example-email-input" class="col-2 col-form-label">UNIDADE:</label>
-      <div class="col-10">
-        <select class="form-control">
+      <div class="col-10" >
+        <select class="form-control" id="unidade">
           <option selected>Open this select menu</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
         </select>
       </div>
     </div>
     <div class="form-group row">
-      <label for="example-url-input" class="col-2 col-form-label">TIPO SOLICITAÇÃO:</label>
+      <label for="example-url-input" class="col-2 col-form-label">TIPO REQUERIMENTO:</label>
       <div class="col-10">
-        <select class="form-control">
+        <select class="form-control" id="tipo_requerimento">
           <option selected>Open this select menu</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
         </select>
       </div>
     </div>
     <div class="form-group row">
-      <label for="example-tel-input" class="col-2 col-form-label">TIPO REQUERIMENTO:</label>
+      <label for="example-tel-input" class="col-2 col-form-label">GRUPO:</label>
       <div class="col-10">
-        <select class="form-control">
+        <select class="form-control" id="grupo_requerimento">
           <option selected>Open this select menu</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
         </select>
       </div>
     </div>
     <div class="form-group row">
       <label for="example-password-input" class="col-2 col-form-label">REQUERIMENTO:</label>
       <div class="col-10">
-        <select class="form-control">
+        <select class="form-control" id="requerimento">
           <option selected>Open this select menu</option>
           <option value="1">One</option>
           <option value="2">Two</option>
@@ -93,10 +80,38 @@
         </div>
       </div>
     </div>
+    <div class="form-group" style="margin: auto">
+      <button class="btn btn-primary" style="margin-right: 15px">Abrir chamado</button>
+      <button class="btn btn-primary btn-voltar">Voltar</button>
+
+    </div>
   </div>
   </body>
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-  
+  <script type="text/javascript">
+    $(function(){
+      $("#tipoCurso").load("list/listarTipoCurso.php",function(){
+         $("#curso").load( "list/listarCurso.php?id="+this.value);
+      });
+      $("#unidade").load("list/listarUnidade.php");
+      $("#tipo_requerimento").load("list/listarTipoRequerimento.php",function(){
+        $("#grupo_requerimento").load( "list/listarGrupoRequerimento.php?id="+this.value,function(){
+           $("#requerimento").load( "list/listarRequerimento.php?id="+this.value);
+        });
+      });
+
+      $("#tipoCurso").change(function(){
+         $("#curso").load( "list/listarCurso.php?id="+this.value);
+      });
+
+      $("#tipo_requerimento").change(function(){
+         $("#grupo_requerimento").load( "list/listarGrupoRequerimento.php?id="+this.value);
+      });
+      $("#grupo_requerimento").change( "list/listarGrupoRequerimento.php?id="+this.value,function(){
+           $("#requerimento").load( "list/listarRequerimento.php?id="+this.value);
+        });     
+    });
+  </script>
 </html>
 
 

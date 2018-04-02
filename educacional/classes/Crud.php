@@ -5,17 +5,32 @@ require_once 'DB.php';
 abstract class Crud extends DB{
 
 	protected $table;
+	protected $id_coluna;
 
-	abstract public function insert();
-	abstract public function update($id);
+	public function insert(){}
+	public function update($id){}
 
-	public function find($id){
-		$sql  = "SELECT * FROM $this->table WHERE id = :id";
+	public function findOne($id){
+		$sql  = "SELECT * FROM $this->table WHERE $this->id_coluna = :id";
 		$stmt = DB::prepare($sql);
 		$stmt->bindParam(':id', $id, PDO::PARAM_INT);
 		$stmt->execute();
-		return $stmt->fetch();
+		if($stmt->fetch()){
+			return $stmt->fetch();
+		}else{
+			return 0;
+		}
 	}
+
+	public function findById($id){
+		$sql  = "SELECT * FROM $this->table WHERE $this->id_coluna = :id";
+		$stmt = DB::prepare($sql);
+		$stmt->bindParam(':id', $id, PDO::PARAM_INT);
+		$stmt->execute();
+
+		
+			return $stmt->fetchAll();		
+		}
 
 	public function findAll(){
 		$sql  = "SELECT * FROM $this->table";
@@ -25,7 +40,7 @@ abstract class Crud extends DB{
 	}
 
 	public function delete($id){
-		$sql  = "DELETE FROM $this->table WHERE id = :id";
+		$sql  = "DELETE FROM $this->table WHERE $this->id_coluna = :id";
 		$stmt = DB::prepare($sql);
 		$stmt->bindParam(':id', $id, PDO::PARAM_INT);
 		return $stmt->execute(); 

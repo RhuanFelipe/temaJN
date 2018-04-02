@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 02-Abr-2018 às 16:12
+-- Generation Time: 02-Abr-2018 às 22:04
 -- Versão do servidor: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -121,6 +121,35 @@ CREATE TABLE IF NOT EXISTS `endereco` (
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `grupo_requerimento`
+--
+
+CREATE TABLE IF NOT EXISTS `grupo_requerimento` (
+  `id_grupo` int(11) NOT NULL AUTO_INCREMENT,
+  `desc_grupo` varchar(150) NOT NULL,
+  `tipo_requerimento_id` int(11) NOT NULL,
+  PRIMARY KEY (`id_grupo`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+
+--
+-- Extraindo dados da tabela `grupo_requerimento`
+--
+
+INSERT INTO `grupo_requerimento` (`id_grupo`, `desc_grupo`, `tipo_requerimento_id`) VALUES
+(1, 'ACADÊMICO', 1),
+(2, 'ATENDIMENTO', 1),
+(3, 'CRA', 1),
+(4, 'BIBLIOTECA', 1),
+(5, 'TECNOLOGIA', 1),
+(6, 'ESTRUTURA FÍSICA', 1),
+(7, 'SEGURANÇA', 1),
+(8, 'OUVIDORIA', 1),
+(9, 'DIRIGENTES', 1),
+(10, 'COORDENAÇÃO', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `nivel`
 --
 
@@ -159,9 +188,22 @@ CREATE TABLE IF NOT EXISTS `pessoa` (
 CREATE TABLE IF NOT EXISTS `requerimento` (
   `id_requerimento` int(11) NOT NULL AUTO_INCREMENT,
   `desc_requerimento` varchar(150) NOT NULL,
-  `tipo_requerimento_id` int(11) NOT NULL,
+  `grupo_requerimento_id` int(11) NOT NULL,
   PRIMARY KEY (`id_requerimento`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+
+--
+-- Extraindo dados da tabela `requerimento`
+--
+
+INSERT INTO `requerimento` (`id_requerimento`, `desc_requerimento`, `grupo_requerimento_id`) VALUES
+(1, 'ATIVIDADE COMPLEMENTAR', 1),
+(2, 'BIOGRAFIA DA DISCIPLINA', 1),
+(3, 'COORDENAÇÃO DO CURSO', 1),
+(4, 'RENOVAÇÃO DA MATRICULA', 1),
+(5, 'DIPLOMA', 1),
+(6, 'LANÇAMENTO DE NOTAS', 1),
+(7, 'FALTA', 1);
 
 -- --------------------------------------------------------
 
@@ -222,38 +264,16 @@ INSERT INTO `tipo_curso` (`id_tipo_curso`, `tipo_curso`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `tipo_requerimento` (
-  `id_tipo` int(11) NOT NULL AUTO_INCREMENT,
-  `tipo_requerimento` varchar(150) NOT NULL,
-  PRIMARY KEY (`id_tipo`)
+  `id_requerimento` int(11) NOT NULL AUTO_INCREMENT,
+  `opt_requerimento` varchar(150) NOT NULL,
+  PRIMARY KEY (`id_requerimento`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Extraindo dados da tabela `tipo_requerimento`
 --
 
-INSERT INTO `tipo_requerimento` (`id_tipo`, `tipo_requerimento`) VALUES
-(1, 'ACADÊMICO'),
-(2, 'ESTRUTURA FISICA'),
-(3, 'FINANCEIRO'),
-(4, 'OUVIDORIA');
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `tipo_solicitacao`
---
-
-CREATE TABLE IF NOT EXISTS `tipo_solicitacao` (
-  `id_solicitacao` int(11) NOT NULL AUTO_INCREMENT,
-  `tipo_solicitacao` varchar(150) NOT NULL,
-  PRIMARY KEY (`id_solicitacao`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
-
---
--- Extraindo dados da tabela `tipo_solicitacao`
---
-
-INSERT INTO `tipo_solicitacao` (`id_solicitacao`, `tipo_solicitacao`) VALUES
+INSERT INTO `tipo_requerimento` (`id_requerimento`, `opt_requerimento`) VALUES
 (1, 'RECLAMAÇÃO'),
 (2, 'SOLICITAÇÃO'),
 (3, 'SUGESTÃO'),
@@ -301,7 +321,7 @@ CREATE TABLE IF NOT EXISTS `unidade` (
 
 INSERT INTO `unidade` (`id_unidade`, `desc_unidade`) VALUES
 (1, 'UNINABUCO - RECIFE'),
-(2, 'UNINASSAU - RECIFE');
+(2, 'UNINASSAU - PAULISTA');
 
 -- --------------------------------------------------------
 

@@ -48,7 +48,6 @@ class Usuarios extends Crud{
 		header("Location:login.php");
 	}
 	public function update($id){
-
 		$sql  = "UPDATE $this->table SET nome = :nome, email = :email WHERE id = :id";
 		$stmt = DB::prepare($sql);
 		$stmt->bindParam(':nome', $this->nome);
