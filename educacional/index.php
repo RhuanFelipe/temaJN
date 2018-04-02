@@ -1,160 +1,164 @@
-<?php
-	function __autoload($class_name){
-		require_once 'classes/' . $class_name . '.php';
-	}
+<?php 
+  session_start();
+  $matricula = $_SESSION["matricula"];
+  if(!isset($matricula))
+    header("Location:login.php");
 ?>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="https://getbootstrap.com/favicon.ico">
 
-<!DOCTYPE HTML>
-<html land="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-   <title>PHP OO</title>
-  <meta name="description" content="PHP OO" />
-  <meta name="robots" content="index, follow" />
-   <meta name="author" content="Andrew Esteves"/>
-   <link rel="stylesheet" href="css/bootstrap.css" />
-  <link rel="stylesheet" />
-  <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-   <![endif]-->
-</head>
-<body>
+    <title>Pricing example for Bootstrap</title>
 
-	<div class="container">
+    <!-- Bootstrap core CSS -->
+    <link href="https://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
 
-		<?php
-	
-		$usuario = new Usuarios();
+    <!-- Custom styles for this template -->
+    <link href="pricing.css" rel="stylesheet">
+  </head>
 
-		if(isset($_POST['cadastrar'])):
+  <body>
 
-			$nome  = $_POST['nome'];
-			$email = $_POST['email'];
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+      <h5 class="my-0 mr-md-auto font-weight-normal">Company name</h5>
+      <nav class="my-2 my-md-0 mr-md-3">
+        <a class="p-2 text-dark" href="abrirChamado.php">Abrir Chamado</a>
+      </nav>
+      <a class="btn btn-outline-primary btn-deslogar" href="#">Sair</a>
+    </div>
 
-			$usuario->setNome($nome);
-			$usuario->setEmail($email);
+    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+      <h1 class="display-4">Pricing</h1>
+      <p class="lead">Quickly build an effective pricing table for your potential customers with this Bootstrap example. It's built with default Bootstrap components and utilities with little customization.</p>
+    </div>
 
-			# Insert
-			if($usuario->insert()){
-				echo "Inserido com sucesso!";
-			}
+    <div class="container">
+      <div class="card-deck mb-3 text-center">
+        <div class="card mb-4 box-shadow">
+          <div class="card-header">
+            <h4 class="my-0 font-weight-normal">Free</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">$0 <small class="text-muted">/ mo</small></h1>
+            <ul class="list-unstyled mt-3 mb-4">
+              <li>10 users included</li>
+              <li>2 GB of storage</li>
+              <li>Email support</li>
+              <li>Help center access</li>
+            </ul>
+            <button type="button" class="btn btn-lg btn-block btn-outline-primary">Sign up for free</button>
+          </div>
+        </div>
+        <div class="card mb-4 box-shadow">
+          <div class="card-header">
+            <h4 class="my-0 font-weight-normal">Pro</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">$15 <small class="text-muted">/ mo</small></h1>
+            <ul class="list-unstyled mt-3 mb-4">
+              <li>20 users included</li>
+              <li>10 GB of storage</li>
+              <li>Priority email support</li>
+              <li>Help center access</li>
+            </ul>
+            <button type="button" class="btn btn-lg btn-block btn-primary">Get started</button>
+          </div>
+        </div>
+        <div class="card mb-4 box-shadow">
+          <div class="card-header">
+            <h4 class="my-0 font-weight-normal">Enterprise</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">$29 <small class="text-muted">/ mo</small></h1>
+            <ul class="list-unstyled mt-3 mb-4">
+              <li>30 users included</li>
+              <li>15 GB of storage</li>
+              <li>Phone and email support</li>
+              <li>Help center access</li>
+            </ul>
+            <button type="button" class="btn btn-lg btn-block btn-primary">Contact us</button>
+          </div>
+        </div>
+      </div>
 
-		endif;
-
-		?>
-		<header class="masthead">
-			<h1 class="muted">PHP OO</h1>
-			<nav class="navbar">
-				<div class="navbar-inner">
-					<div class="container">
-						<ul class="nav">
-							<li class="active"><a href="index.php">Página inicial</a></li>
-						</ul>
-					</div>
-				</div>
-			</nav>
-		</header>
-
-		<?php 
-		if(isset($_POST['atualizar'])):
-
-			$id = $_POST['id'];
-			$nome = $_POST['nome'];
-			$email = $_POST['email'];
-
-			$usuario->setNome($nome);
-			$usuario->setEmail($email);
-
-			if($usuario->update($id)){
-				echo "Atualizado com sucesso!";
-			}
-
-		endif;
-		?>
-
-		<?php
-		if(isset($_GET['acao']) && $_GET['acao'] == 'deletar'):
-
-			$id = (int)$_GET['id'];
-			if($usuario->delete($id)){
-				echo "Deletado com sucesso!";
-			}
-
-		endif;
-		?>
-
-		<?php
-		if(isset($_GET['acao']) && $_GET['acao'] == 'editar'){
-
-			$id = (int)$_GET['id'];
-			$resultado = $usuario->find($id);
-		?>
-
-		<form method="post" action="">
-			<div class="input-prepend">
-				<span class="add-on"><i class="icon-user"></i></span>
-				<input type="text" name="nome" value="<?php echo $resultado->nome; ?>" placeholder="Nome:" />
-			</div>
-			<div class="input-prepend">
-				<span class="add-on"><i class="icon-envelope"></i></span>
-				<input type="text" name="email" value="<?php echo $resultado->email; ?>" placeholder="E-mail:" />
-			</div>
-			<input type="hidden" name="id" value="<?php echo $resultado->id; ?>">
-			<br />
-			<input type="submit" name="atualizar" class="btn btn-primary" value="Atualizar dados">					
-		</form>
-
-		<?php }else{ ?>
+      <footer class="pt-4 my-md-5 pt-md-5 border-top">
+        <div class="row">
+          <div class="col-12 col-md">
+            <img class="mb-2" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="24" height="24">
+            <small class="d-block mb-3 text-muted">&copy; 2017-2018</small>
+          </div>
+          <div class="col-6 col-md">
+            <h5>Abrir Chamado</h5>
+            <ul class="list-unstyled text-small">
+              <li><a class="text-muted" href="#">Cool stuff</a></li>
+              <li><a class="text-muted" href="#">Random feature</a></li>
+              <li><a class="text-muted" href="#">Team feature</a></li>
+              <li><a class="text-muted" href="#">Stuff for developers</a></li>
+              <li><a class="text-muted" href="#">Another one</a></li>
+              <li><a class="text-muted" href="#">Last time</a></li>
+            </ul>
+          </div>
+          <div class="col-6 col-md">
+            <h5>Resources</h5>
+            <ul class="list-unstyled text-small">
+              <li><a class="text-muted" href="#">Resource</a></li>
+              <li><a class="text-muted" href="#">Resource name</a></li>
+              <li><a class="text-muted" href="#">Another resource</a></li>
+              <li><a class="text-muted" href="#">Final resource</a></li>
+            </ul>
+          </div>
+          <div class="col-6 col-md">
+            <h5>About</h5>
+            <ul class="list-unstyled text-small">
+              <li><a class="text-muted" href="#">Team</a></li>
+              <li><a class="text-muted" href="#">Locations</a></li>
+              <li><a class="text-muted" href="#">Privacy</a></li>
+              <li><a class="text-muted" href="#">Terms</a></li>
+            </ul>
+          </div>
+        </div>
+      </footer>
+    </div>
 
 
-		<form method="post" action="">
-			<div class="input-prepend">
-				<span class="add-on"><i class="icon-user"></i></span>
-				<input type="text" name="nome" placeholder="Nome:" />
-			</div>
-			<div class="input-prepend">
-				<span class="add-on"><i class="icon-envelope"></i></span>
-				<input type="text" name="email" placeholder="E-mail:" />
-			</div>
-			<br />
-			<input type="submit" name="cadastrar" class="btn btn-primary" value="Cadastrar dados">					
-		</form>
-
-		<?php } ?>
-
-		<table class="table table-hover">
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://getbootstrap.com/assets/js/vendor/popper.min.js"></script>
+    <script src="https://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+    <script src="https://getbootstrap.com/assets/js/vendor/holder.min.js"></script>
+    <script>
+    	//teste.php?
+    	
+      Holder.addTheme('thumb', {
+        bg: '#55595c',
+        fg: '#eceeef',
+        text: 'Thumbnail'
+      });
+      $(document).ready(function(){
+    		$('.btn-deslogar').click(function(){
+    			var result = confirm("Deseja sair do Sistema?");
+    			var matricula = <?php echo $matricula; ?>;
+    			var acao = 'deslogar';
+    			if(result == 1){
+	    			$.ajax({			
+						url:"teste.php",			
+						type:"post",				
+						data: "acao="+acao+"&matricula="+matricula,
+						success: function (result){	
+							location.href = "login.php";
+						}
+					});
+				}
+			});
 			
-			<thead>
-				<tr>
-					<th>#</th>
-					<th>Nome:</th>
-					<th>E-mail:</th>
-					<th>Ações:</th>
-				</tr>
-			</thead>
-			
-			<?php foreach($usuario->findAll() as $key => $value): ?>
-
-			<tbody>
-				<tr>
-					<td><?php echo $value->id; ?></td>
-					<td><?php echo $value->nome; ?></td>
-					<td><?php echo $value->email; ?></td>
-					<td>
-						<?php echo "<a href='index.php?acao=editar&id=" . $value->id . "'>Editar</a>"; ?>
-						<?php echo "<a href='index.php?acao=deletar&id=" . $value->id . "' onclick='return confirm(\"Deseja realmente deletar?\")'>Deletar</a>"; ?>
-					</td>
-				</tr>
-			</tbody>
-
-			<?php endforeach; ?>
-
-		</table>
-
-	</div>
-
-<script src="js/jQuery.js"></script>
-<script src="js/bootstrap.js"></script>
-</body>
+		});
+    </script>
+  </body>
 </html>
