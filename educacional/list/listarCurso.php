@@ -4,7 +4,8 @@
 	}
 	$id = $_REQUEST['id'];
 	$curso = new Curso();
-	$cursos = $curso->findById($id);
+	$cursos = $curso->findByIdFK($id);
+
 	if(count($cursos) > 0){
 		foreach ($cursos as $value) {
 		echo "<option value=".$value->id_curso.">".utf8_encode($value->nome_curso)."</option>";

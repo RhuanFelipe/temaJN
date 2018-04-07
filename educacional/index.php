@@ -1,8 +1,15 @@
 <?php 
   session_start();
   $matricula = $_SESSION["matricula"];
-  if(!isset($matricula))
+  if(!isset($matricula)){
     header("Location:login.php");
+  }else{
+    function __autoload($class_name){
+      require_once 'classes/' . $class_name . '.php';
+    }
+      $usuario = new Usuarios();
+      $usuario->findDados($matricula);
+  }
 ?>
 <!doctype html>
 <html lang="en">
@@ -25,106 +32,35 @@
   <body>
 
     <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
-      <h5 class="my-0 mr-md-auto font-weight-normal">Company name</h5>
+      <h5 class="my-0 mr-md-auto font-weight-normal">PCC Educacional</h5><p></p>
       <nav class="my-2 my-md-0 mr-md-3">
-        <a class="p-2 text-dark" href="abrirChamado.php">Abrir Chamado</a>
+        <a class="p-2 text-dark" href="#">Bem Vindo - <?php echo $usuario->getNome(); ?></a>
+        <?php if($usuario->getNivel() == 2) {?><a class="p-2 text-dark" href="abrirChamado.php">Abrir Chamado</a>
+        <?php } else {?><a class="p-2 text-dark" href="acompanharChamados.php">Chamados</a><?php } ?>
       </nav>
       <a class="btn btn-outline-primary btn-deslogar" href="#">Sair</a>
     </div>
 
-    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-      <h1 class="display-4">Pricing</h1>
-      <p class="lead">Quickly build an effective pricing table for your potential customers with this Bootstrap example. It's built with default Bootstrap components and utilities with little customization.</p>
-    </div>
 
     <div class="container">
-      <div class="card-deck mb-3 text-center">
-        <div class="card mb-4 box-shadow">
-          <div class="card-header">
-            <h4 class="my-0 font-weight-normal">Free</h4>
-          </div>
-          <div class="card-body">
-            <h1 class="card-title pricing-card-title">$0 <small class="text-muted">/ mo</small></h1>
-            <ul class="list-unstyled mt-3 mb-4">
-              <li>10 users included</li>
-              <li>2 GB of storage</li>
-              <li>Email support</li>
-              <li>Help center access</li>
-            </ul>
-            <button type="button" class="btn btn-lg btn-block btn-outline-primary">Sign up for free</button>
-          </div>
-        </div>
-        <div class="card mb-4 box-shadow">
-          <div class="card-header">
-            <h4 class="my-0 font-weight-normal">Pro</h4>
-          </div>
-          <div class="card-body">
-            <h1 class="card-title pricing-card-title">$15 <small class="text-muted">/ mo</small></h1>
-            <ul class="list-unstyled mt-3 mb-4">
-              <li>20 users included</li>
-              <li>10 GB of storage</li>
-              <li>Priority email support</li>
-              <li>Help center access</li>
-            </ul>
-            <button type="button" class="btn btn-lg btn-block btn-primary">Get started</button>
-          </div>
-        </div>
-        <div class="card mb-4 box-shadow">
-          <div class="card-header">
-            <h4 class="my-0 font-weight-normal">Enterprise</h4>
-          </div>
-          <div class="card-body">
-            <h1 class="card-title pricing-card-title">$29 <small class="text-muted">/ mo</small></h1>
-            <ul class="list-unstyled mt-3 mb-4">
-              <li>30 users included</li>
-              <li>15 GB of storage</li>
-              <li>Phone and email support</li>
-              <li>Help center access</li>
-            </ul>
-            <button type="button" class="btn btn-lg btn-block btn-primary">Contact us</button>
-          </div>
-        </div>
-      </div>
-
-      <footer class="pt-4 my-md-5 pt-md-5 border-top">
-        <div class="row">
-          <div class="col-12 col-md">
-            <img class="mb-2" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="24" height="24">
-            <small class="d-block mb-3 text-muted">&copy; 2017-2018</small>
-          </div>
-          <div class="col-6 col-md">
-            <h5>Abrir Chamado</h5>
-            <ul class="list-unstyled text-small">
-              <li><a class="text-muted" href="#">Cool stuff</a></li>
-              <li><a class="text-muted" href="#">Random feature</a></li>
-              <li><a class="text-muted" href="#">Team feature</a></li>
-              <li><a class="text-muted" href="#">Stuff for developers</a></li>
-              <li><a class="text-muted" href="#">Another one</a></li>
-              <li><a class="text-muted" href="#">Last time</a></li>
-            </ul>
-          </div>
-          <div class="col-6 col-md">
-            <h5>Resources</h5>
-            <ul class="list-unstyled text-small">
-              <li><a class="text-muted" href="#">Resource</a></li>
-              <li><a class="text-muted" href="#">Resource name</a></li>
-              <li><a class="text-muted" href="#">Another resource</a></li>
-              <li><a class="text-muted" href="#">Final resource</a></li>
-            </ul>
-          </div>
-          <div class="col-6 col-md">
-            <h5>About</h5>
-            <ul class="list-unstyled text-small">
-              <li><a class="text-muted" href="#">Team</a></li>
-              <li><a class="text-muted" href="#">Locations</a></li>
-              <li><a class="text-muted" href="#">Privacy</a></li>
-              <li><a class="text-muted" href="#">Terms</a></li>
-            </ul>
-          </div>
-        </div>
-      </footer>
+    <?php if($usuario->getNivel() == 2) {?>
+      <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+        <img src="img/faculdade.gif" alt="" style="text-align: center;">
+        <br>
+        <br>
+        <h1 class="display-4">Dificuldades em resolver seus problemas?</h1>
+        <h1 class="display-4">Iremos ajudar</h1>
     </div>
+    <?php }else{ 
+        $c = new Chamado();
+      ?>
+     <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+          <h1 class="display-4">CHAMADOS ABERTOS</h1>
+          <h3 class="display-3" style="color: red"><?php echo $c->qtdChamados(); ?></h3>
+        </div>
+    <?php } ?>
 
+    </div>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

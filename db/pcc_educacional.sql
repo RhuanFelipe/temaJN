@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 02-Abr-2018 às 22:04
+-- Generation Time: 07-Abr-2018 às 11:58
 -- Versão do servidor: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -52,13 +52,29 @@ CREATE TABLE IF NOT EXISTS `categoria` (
 --
 
 CREATE TABLE IF NOT EXISTS `chamado` (
-  `id_chamado` int(11) NOT NULL,
-  `protocolo_chamado` int(11) NOT NULL,
-  `assunto_protocolo` int(11) NOT NULL,
-  `data_abertura` int(11) NOT NULL,
-  `categoria_id` int(11) NOT NULL,
-  `usuario_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id_chamado` int(11) NOT NULL AUTO_INCREMENT,
+  `protocolo_chamado` int(11) DEFAULT NULL,
+  `assunto_chamado` varchar(200) NOT NULL,
+  `data_abertura` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `categoria_id` int(11) DEFAULT NULL,
+  `usuario_id` int(11) NOT NULL,
+  `tipo_curso_id` int(11) NOT NULL,
+  `curso_id` int(11) NOT NULL,
+  `unidade_id` int(11) NOT NULL,
+  `tipo_requerimento_id` int(11) NOT NULL,
+  `grupo_requerimento_id` int(11) NOT NULL,
+  `requerimento_id` int(11) NOT NULL,
+  PRIMARY KEY (`id_chamado`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Extraindo dados da tabela `chamado`
+--
+
+INSERT INTO `chamado` (`id_chamado`, `protocolo_chamado`, `assunto_chamado`, `data_abertura`, `categoria_id`, `usuario_id`, `tipo_curso_id`, `curso_id`, `unidade_id`, `tipo_requerimento_id`, `grupo_requerimento_id`, `requerimento_id`) VALUES
+(1, NULL, 'nÃ£o estou conseguindo logar no portal', '2018-04-07 04:59:45', NULL, 1, 1, 7, 1, 1, 1, 1),
+(2, NULL, 'nota nÃ£o lanÃ§ada', '2018-04-07 05:00:06', NULL, 1, 1, 7, 1, 1, 1, 6),
+(3, NULL, 'nÃ£o estou conseguindo renovar matricula', '2018-04-07 05:06:50', NULL, 3, 1, 1, 1, 1, 1, 4);
 
 -- --------------------------------------------------------
 
@@ -157,7 +173,15 @@ CREATE TABLE IF NOT EXISTS `nivel` (
   `id_nivel` int(11) NOT NULL AUTO_INCREMENT,
   `nome_nivel` varchar(100) NOT NULL,
   PRIMARY KEY (`id_nivel`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Extraindo dados da tabela `nivel`
+--
+
+INSERT INTO `nivel` (`id_nivel`, `nome_nivel`) VALUES
+(1, 'coordenador'),
+(2, 'aluno');
 
 -- --------------------------------------------------------
 
@@ -173,11 +197,20 @@ CREATE TABLE IF NOT EXISTS `pessoa` (
   `sexo_pessoa` char(1) NOT NULL,
   `nasc_pessoa` date NOT NULL,
   `email_pessoa` varchar(100) DEFAULT NULL,
-  `curso_id` int(11) NOT NULL,
-  `turno_id` int(11) NOT NULL,
-  `turma_id` int(11) NOT NULL,
+  `curso_id` int(11) NOT NULL DEFAULT '0',
+  `turno_id` int(11) NOT NULL DEFAULT '0',
+  `turma_id` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_pessoa`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Extraindo dados da tabela `pessoa`
+--
+
+INSERT INTO `pessoa` (`id_pessoa`, `nome_pessoa`, `cpf_pessoa`, `rg_pessoa`, `sexo_pessoa`, `nasc_pessoa`, `email_pessoa`, `curso_id`, `turno_id`, `turma_id`) VALUES
+(1, 'Rhuan Felipe da Silva', '11122233344', '333444555', 'm', '1991-05-18', 'rhuanfelsilva@gmail.com', 7, 3, 1),
+(2, 'Marcelo Diaz', '111111111', '1111111', 'm', '1975-04-09', 'teste@gmail.com', 0, 0, 0),
+(3, 'Marina Carla', '11223344556', '12345678', 'f', '1994-04-23', 'teste@hotmail.com', 2, 5001, 1);
 
 -- --------------------------------------------------------
 
@@ -289,7 +322,14 @@ CREATE TABLE IF NOT EXISTS `turma` (
   `id_turma` int(11) NOT NULL AUTO_INCREMENT,
   `sala_turma` varchar(50) NOT NULL,
   PRIMARY KEY (`id_turma`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Extraindo dados da tabela `turma`
+--
+
+INSERT INTO `turma` (`id_turma`, `sala_turma`) VALUES
+(1, '406');
 
 -- --------------------------------------------------------
 
@@ -301,7 +341,16 @@ CREATE TABLE IF NOT EXISTS `turno` (
   `id_turno` int(11) NOT NULL AUTO_INCREMENT,
   `nome_turno` varchar(50) NOT NULL,
   PRIMARY KEY (`id_turno`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Extraindo dados da tabela `turno`
+--
+
+INSERT INTO `turno` (`id_turno`, `nome_turno`) VALUES
+(1, 'manhã'),
+(2, 'tarde'),
+(3, 'noite');
 
 -- --------------------------------------------------------
 
@@ -343,7 +392,9 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 --
 
 INSERT INTO `usuario` (`id_usuario`, `matricula_usuario`, `senha_usuario`, `ativo_usuario`, `nivel_id`) VALUES
-(1, 11032395, '123', '1', 1);
+(1, 11032395, '123', '1', 2),
+(2, 11111111, '123', '1', 1),
+(3, 11223344, '123', '1', 2);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

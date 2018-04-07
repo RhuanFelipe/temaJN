@@ -4,7 +4,7 @@
 	}
 	$id = $_REQUEST['id'];
 	$grupoRequerimento = new GrupoRequerimento();
-	$gp = $grupoRequerimento->findById($id);
+	$gp = $grupoRequerimento->findByIdFK($id);
 
 	if(count($gp) > 0){
 		foreach ($gp as $value) {

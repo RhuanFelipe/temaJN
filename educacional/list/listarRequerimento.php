@@ -4,7 +4,7 @@
 	}
 	$id = $_REQUEST['id'];
 	$requerimento = new Requerimento();
-	$requerimentos = $requerimento->findById($id);
+	$requerimentos = $requerimento->findByIdFK($id);
 
 	if(count($requerimentos) > 0){
 		foreach ($requerimentos as $value) {
