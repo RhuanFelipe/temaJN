@@ -20,7 +20,7 @@
     <meta name="author" content="">
     <link rel="icon" href="https://getbootstrap.com/favicon.ico">
 
-    <title>Pricing example for Bootstrap</title>
+    <title>Home - PCC Educacional</title>
 
     <!-- Bootstrap core CSS -->
     <link href="https://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -70,31 +70,31 @@
     <script src="https://getbootstrap.com/dist/js/bootstrap.min.js"></script>
     <script src="https://getbootstrap.com/assets/js/vendor/holder.min.js"></script>
     <script>
-    	//teste.php?
-    	
-      Holder.addTheme('thumb', {
-        bg: '#55595c',
-        fg: '#eceeef',
-        text: 'Thumbnail'
-      });
-      $(document).ready(function(){
-    		$('.btn-deslogar').click(function(){
-    			var result = confirm("Deseja sair do Sistema?");
-    			var matricula = <?php echo $matricula; ?>;
-    			var acao = 'deslogar';
-    			if(result == 1){
-	    			$.ajax({			
-						url:"teste.php",			
-						type:"post",				
-						data: "acao="+acao+"&matricula="+matricula,
-						success: function (result){	
-							location.href = "login.php";
-						}
-					});
-				}
-			});
-			
-		});
+      	//teste.php?
+      	
+        Holder.addTheme('thumb', {
+          bg: '#55595c',
+          fg: '#eceeef',
+          text: 'Thumbnail'
+        });
+        $(document).ready(function(){
+      		$('.btn-deslogar').click(function(){
+      			var result = confirm("Deseja sair do Sistema?");
+      			var matricula = <?php echo $matricula; ?>;
+      			var acao = 'deslogar';
+      			if(result == 1){
+  	    			$.ajax({			
+  						url:"teste.php",			
+  						type:"post",				
+  						data: "acao="+acao+"&matricula="+matricula,
+  						success: function (result){	
+  							location.href = "login.php";
+  						}
+  					});
+    				}
+    			});
+    			
+    		});
     </script>
   </body>
 </html>

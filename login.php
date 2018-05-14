@@ -34,35 +34,24 @@
 
     <div class="container">
 
-      <form class="form-signin" action="index.html">
-        <h2 class="form-signin-heading">sign in now</h2>
+       <form class="form-signin" action="#" method="POST" id="formlogin">
+        <h2 class="form-signin-heading">PCC Educacional</h2>
         <div class="login-wrap">
             <div class="user-login-info">
-                <input type="text" class="form-control" placeholder="User ID" autofocus>
-                <input type="password" class="form-control" placeholder="Password">
-            </div>
-            <label class="checkbox">
-                <input type="checkbox" value="remember-me"> Remember me
-                <span class="pull-right">
-                    <a data-toggle="modal" href="#myModal"> Forgot Password?</a>
+                    <div class="alert alert-danger" role="alert"></div>
 
-                </span>
-            </label>
+                <input type="text" id="matricula" name="matricula" class="form-control" placeholder="Matricula" autofocus>
+                <input type="password" id="senha" name="senha" class="form-control" placeholder="Senha">
+            </div>
             <button class="btn btn-lg btn-login btn-block" type="submit">Sign in</button>
-
-            <div class="registration">
-                Don't have an account yet?
-                <a class="" href="registration.html">
-                    Create an account
-                </a>
-            </div>
-
         </div>
 
           <!-- Modal -->
           <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
               <div class="modal-dialog">
                   <div class="modal-content">
+                          <div class="alert alert-danger" role="alert"></div>
+
                       <div class="modal-header">
                           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                           <h4 class="modal-title">Forgot Password ?</h4>
@@ -92,6 +81,27 @@
     <!--Core js-->
     <script src="js/jquery.js"></script>
     <script src="bs3/js/bootstrap.min.js"></script>
-
+    <script type="text/javascript">
+      $(document).ready(function(){
+      $('.alert-danger').hide(); //Esconde o elemento com id errolog
+      $('#formlogin').submit(function(){  //Ao submeter formulário
+        var matricula = $('#matricula').val();  //Pega valor do campo email
+        var senha = $('#senha').val();  //Pega valor do campo senha
+        $.ajax({      //Função AJAX
+            url:"login/autenticar.php",      //Arquivo php
+            type:"post",        //Método de envio
+            data: "matricula="+matricula+"&senha="+senha, //Dados
+              success: function (result){     //Sucesso no AJAX
+                      if(result == 1)
+                        location.href='index.php'
+                      else
+                        $('.alert-danger').show().text('matricula ou senha inválida!');
+                  }
+          })
+          return false; //Evita que a página seja atualizada
+        })
+        
+      });
+    </script>
   </body>
 </html>
