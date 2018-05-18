@@ -1,6 +1,5 @@
  <?php 
  
-  
   $usuario = new Usuarios();
   $pessoa = new Pessoa();
   $c = new Chamado();
@@ -12,13 +11,13 @@
   $dados = $c->findAll();
   $usuario->findDados($matricula);
   
-
 ?>
+
  <!--main content start-->
     <section id="main-content">
         <section class="wrapper">
         <!-- page start-->
-
+ 
         <div class="row">
             <div class="col-sm-12">
                 <section class="panel">
@@ -31,7 +30,9 @@
                          </span>
                     </header>
                     <div class="panel-body">
-                        <table class="table">
+                            <p style="float: right;">Qtd. Chamados : <?php echo $c->qtdChamados(); ?></p>
+
+                        <table class="table table-striped table-hover table-bordered dataTable" id="editable-sample" aria-describedby="editable-sample_info">
                            <thead>
                               <tr>
                                 <th scope="col">Mat.</th>
@@ -61,7 +62,8 @@
                                 <td class="nome_pessoa_<?php echo $rows->id_chamado; ?>"><?php echo $ps[0]->nome_pessoa; ?></td>
                                 <td><?php echo utf8_encode($cs[0]->nome_curso); ?></td>
                                 <td class="req_<?php echo $rows->id_chamado; ?>"><?php echo utf8_encode($req[0]->desc_requerimento); ?></td>
-                                <td scope="row" ><a href="#" data-toggle="modal" data-target="#exampleModalCenter" class="ver">VER</a></td>
+                                <td scope="row" >
+                                  <button type="button" class="btn btn-info ver" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i> Ver </button><!--<a href="#" data-toggle="modal" data-target="#exampleModalCenter" class="ver">VER</a>--></td>
                               </tr>
                               <?php } ?>
                             </tbody>
@@ -70,7 +72,29 @@
                 </section>
             </div>
         </div>
+        <a href="abrirChamado.php" type="button" class="btn btn-success"><i class="fa fa-folder-open-o"></i> Abrir Chamado </a>
         <!-- page end-->
         </section>
     </section>
     <!--main content end-->
+
+      <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Chamado</h5>
+          </div>
+          <div class="modal-body">
+            <h5 class="label-nome"></h5><br>
+            <p><b>Tipo Requerimento:  </b><label class="label-tipo-requerimento"></label></p>
+            <p><b>Grupo Requerimento:  </b><label class="label-grupo-requerimento"></label></p>
+            <p><b>Requerimento:  </b><label class="label-requerimento"></label></p>
+            <p><b>Assunto:  </b><label class="label-assunto"></label></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+          </div>
+        </div>
+      </div>
+    </div>

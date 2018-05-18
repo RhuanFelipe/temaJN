@@ -24,6 +24,22 @@
 <script src="js/scripts.js"></script>
 <script type="text/javascript">
       $(document).ready(function(){
+        $(".ver").click(function(){
+            $(".modal-desc").click(function(){
+              var i = $(this).index() + 1;
+              var nome = $('.nome_pessoa_'+i).text();
+              var tp = $('.tp_'+i).val();
+              var gr = $('.gr_'+i).val();
+              var req = $('.req_'+i).text();
+              var assunto = $('.assunto_'+i).val();             
+
+              $('.label-nome').html(nome);
+              $('.label-tipo-requerimento').html(tp);
+              $('.label-grupo-requerimento').html(gr);
+              $('.label-requerimento').html(req);
+              $('.label-assunto').html(assunto);
+            });
+          });
             $('.btn-deslogar').click(function(){
                 var result = confirm("Deseja sair do Sistema?");
                 var matricula = <?php echo $matricula; ?>;
