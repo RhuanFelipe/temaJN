@@ -1,8 +1,18 @@
+ <?php 
+    if(isset($_GET['sucess'])){
+      $style = 'display:block';
+    }else{
+      $style = 'display:none';
+    }
+  ?>
 <section id="main-content">
+  <form method="post" action="chamado.php">
     <section class="wrapper">
     <!-- page start-->
     	<div class="col-md-12">
     		<h3>Abrir Chamado</h3> 
+            <input type="hidden" name="usuario" value="<?php echo $_SESSION['usuario_id']; ?>">
+            <div class="alert alert-success" role="alert" style="<?php echo $style; ?>">CHAMADO REALIZADO!</div>
     		<div class="form-group">
                 <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Tipo Curso: </label>
                 <div class="col-lg-6">
@@ -66,12 +76,11 @@
     		<div class="col-md-12">
 	        	<label class="col-sm-2 control-label col-lg-2">Assunto:</label>
 	        	<div class="col-sm-6 col-lg-6">
-	            	<textarea class="form-control" rows="7"></textarea>
+                <textarea class="form-control" id="assunto" name="assunto" rows="6"></textarea>
 	        	</div>
 	    	</div>
 	    </div>
 	    <br>
-
 	    <div class="form-group" >
     		<div class="col-md-12" style="margin: 20px 0 0 20px">
 	        	 <button class="btn btn-primary" style="margin: 0 10px 0 200px;">Abrir chamado</button>
@@ -80,5 +89,6 @@
 	    </div>
  	<!-- page end-->
     </section>
+   </form>
 </section>
 <!--main content end-->

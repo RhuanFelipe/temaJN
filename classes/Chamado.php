@@ -71,21 +71,28 @@ class Chamado extends Crud{
 	}
 	
 	public function insert(){
-		$sql  = "INSERT INTO $this->table (tipo_curso_id,curso_id,unidade_id,tipo_requerimento_id,grupo_requerimento_id,requerimento_id,assunto_chamado,usuario_id) 
-					VALUES (:tipoCurso, :curso,:unidade,:tipoRequerimento,:grupoRequerimento,:requerimento,:assunto,:usuario)";
-		$stmt = DB::prepare($sql);
-		$stmt->bindParam(':tipoCurso', $this->tipoCurso, PDO::PARAM_INT);
-		$stmt->bindParam(':curso', $this->curso, PDO::PARAM_INT);
-		$stmt->bindParam(':unidade', $this->unidade, PDO::PARAM_INT);
-		$stmt->bindParam(':tipoRequerimento', $this->tipoRequerimento, PDO::PARAM_INT);
-		$stmt->bindParam(':grupoRequerimento', $this->grupoRequerimento, PDO::PARAM_INT);
-		$stmt->bindParam(':requerimento', $this->requerimento, PDO::PARAM_INT);
-		$stmt->bindParam(':assunto', $this->assunto, PDO::PARAM_STR);
-		$stmt->bindParam(':usuario', $this->usuario, PDO::PARAM_INT);
+		try {
+			$sql  = "INSERT INTO $this->table (tipo_curso_id,curso_id,unidade_id,tipo_requerimento_id,grupo_requerimento_id,requerimento_id,assunto_chamado,usuario_id) 
+						VALUES (:tipoCurso, :curso,:unidade,:tipoRequerimento,:grupoRequerimento,:requerimento,:assunto,:usuario)";
+			$stmt = DB::prepare($sql);
 
-		if($stmt->execute()){
-			header('Location: abrirChamado.php?sucess=1');
+			$stmt->bindParam(':tipoCurso', $this->tipoCurso, PDO::PARAM_INT);
+			$stmt->bindParam(':curso', $this->curso, PDO::PARAM_INT);
+			$stmt->bindParam(':unidade', $this->unidade, PDO::PARAM_INT);
+			$stmt->bindParam(':tipoRequerimento', $this->tipoRequerimento, PDO::PARAM_INT);
+			$stmt->bindParam(':grupoRequerimento', $this->grupoRequerimento, PDO::PARAM_INT);
+			$stmt->bindParam(':requerimento', $this->requerimento, PDO::PARAM_INT);
+			$stmt->bindParam(':assunto', $this->assunto, PDO::PARAM_STR);
+			$stmt->bindParam(':usuario', $this->usuario, PDO::PARAM_INT);
+
+			if($stmt->execute()){
+				header('Location: index.php?p=abrirChamado&sucess=1');
+			}
+		
+		} catch (PDOException $e) {
+		    print $e->getMessage ();
 		}
+
 		
 	}
 }
