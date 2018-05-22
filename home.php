@@ -72,7 +72,7 @@
                 </section>
             </div>
         </div>
-        <a href="abrirChamado.php" type="button" class="btn btn-success"><i class="fa fa-folder-open-o"></i> Abrir Chamado </a>
+        <a href="?p=abrirChamado" type="button" class="btn btn-success"><i class="fa fa-folder-open-o"></i> Abrir Chamado </a>
         <!-- page end-->
         </section>
     </section>
