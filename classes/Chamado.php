@@ -95,4 +95,42 @@ class Chamado extends Crud{
 
 		
 	}
+	public function concluirChamado($id){
+		try {
+			$sql  = "UPDATE chamado
+						SET status = '1'
+					WHERE id_chamado = :id_chamado;";
+
+			$stmt = DB::prepare($sql);
+			$stmt->bindParam(':id_chamado', $id, PDO::PARAM_INT);
+			
+
+			if($stmt->execute()){
+				//header('Location: ?p=home');
+			}
+		
+		} catch (PDOException $e) {
+		    print $e->getMessage ();
+		}
+	}
+		public function fecharChamado($id){
+		try {
+			$sql  = "UPDATE chamado
+						SET status = '0'
+					WHERE id_chamado = :id_chamado;";
+
+			$stmt = DB::prepare($sql);
+			$stmt->bindParam(':id_chamado', $id, PDO::PARAM_INT);
+			
+
+			if($stmt->execute()){
+				//header('Location: ?p=home');
+			}
+		
+		} catch (PDOException $e) {
+		    print $e->getMessage ();
+		}
+
+		
+	}
 }

@@ -10,7 +10,6 @@
 
   $dados = $c->findAll();
   $usuario->findDados($matricula);
-  
 ?>
 
  <!--main content start-->
@@ -32,7 +31,7 @@
                     <div class="panel-body">
                             <p style="float: right;">Qtd. Chamados : <?php echo $c->qtdChamados(); ?></p>
 
-                        <table class="table table-striped table-hover table-bordered dataTable" id="editable-sample" aria-describedby="editable-sample_info">
+                        <table class="table table-striped table-hover table-bordered dataTable listarChamados" id="editable-sample" aria-describedby="editable-sample_info">
                            <thead>
                               <tr>
                                 <th scope="col">Mat.</th>
@@ -46,6 +45,7 @@
                              <tbody>
                               <?php 
                                 foreach ($dados as $rows) {
+
                                   $users = $usuario->findDadosId($rows->usuario_id);
                                   $ps = $pessoa->findById($rows->usuario_id);
                                   $cs = $curso->findById($rows->curso_id);
@@ -62,8 +62,11 @@
                                 <td class="nome_pessoa_<?php echo $rows->id_chamado; ?>"><?php echo $ps[0]->nome_pessoa; ?></td>
                                 <td><?php echo utf8_encode($cs[0]->nome_curso); ?></td>
                                 <td class="req_<?php echo $rows->id_chamado; ?>"><?php echo utf8_encode($req[0]->desc_requerimento); ?></td>
-                                <td scope="row" >
-                                  <button type="button" class="btn btn-info ver" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i> Ver </button><!--<a href="#" data-toggle="modal" data-target="#exampleModalCenter" class="ver">VER</a>--></td>
+                                <td scope="row" align="center">
+                                  <button type="button" class="btn btn-info ver" data-toggle="modal" data-target="#exampleModalCenter" title="vizualizar chamado"><i class="fa fa-eye"></i></button>
+                                  <a href="#" class="btn btn-success concluir" id="<?php echo $rows->id_chamado; ?>"><i class="fa fa-check" title="Finalizar Chamado"></i> </a>
+                                   <a href="#" class="btn btn btn-danger cancelar" title="Cancelar Chamado" id="<?php echo $rows->id_chamado; ?>"><i class="fa fa-ban"></i></a>
+                                   </td>
                               </tr>
                               <?php } ?>
                             </tbody>
@@ -73,6 +76,7 @@
             </div>
         </div>
         <a href="?p=abrirChamado" type="button" class="btn btn-success"><i class="fa fa-folder-open-o"></i> Abrir Chamado </a>
+        <input type="hidden" name="id_chamado" id="id_chamado" value="0">
         <!-- page end-->
         </section>
     </section>

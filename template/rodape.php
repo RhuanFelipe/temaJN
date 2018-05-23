@@ -44,15 +44,15 @@ $(document).ready(function(){
         var result = confirm("Deseja sair do Sistema?");
         var matricula = <?php echo $matricula; ?>;
         var acao = 'deslogar';
-        if(result == 1){
-            $.ajax({            
-                url:"teste.php",            
-                type:"post",                
-                data: "acao="+acao+"&matricula="+matricula,
-                success: function (result){ 
-                    location.href = "login.php";
-                }
-            });
+          if(result == 1){
+              $.ajax({            
+                  url:"teste.php",            
+                  type:"post",                
+                  data: "acao="+acao+"&matricula="+matricula,
+                  success: function (result){ 
+                      location.href = "login.php";
+                  }
+              });
             }
         });
       $("#tipoCurso").load("biblioteca/list/listarTipoCurso.php",function(){
@@ -75,9 +75,36 @@ $(document).ready(function(){
       $("#grupo_requerimento").change( "biblioteca/list/listarGrupoRequerimento.php?id="+this.value,function(){
            $("#requerimento").load( "biblioteca/list/listarRequerimento.php?id="+this.value);
         });   
-     
-          
+    $('.concluir , .cancelar').mouseover(function(){
+      $("#id_chamado").val(this.id);
+    });
+
+
+    $('.concluir').click(function(){
+      var id = parseInt($("#id_chamado").val());
+      $.ajax({            
+          url:"acao.php",            
+          type:"GET",                
+          data: "p=executar&acao=concluir&id="+id,
+          success: function (result){ 
+              location.href = "index.php";
+          }
       });
+    });
+      $('.cancelar').click(function(){
+      var id = parseInt($("#id_chamado").val());
+      $.ajax({            
+          url:"acao.php",            
+          type:"GET",                
+          data: "p=executar&acao=cancelar&id="+id,
+          success: function (result){ 
+              location.href = "index.php";
+          }
+      });
+        //$('.listarChamados').load('?p=executar&acao=concluir&id=<?php echo $rows->id_chamado; ?>');
+    });   
+
+});
 </script>
 </body>
 </html>
