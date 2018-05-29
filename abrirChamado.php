@@ -31,7 +31,17 @@
                     </select>
                 </div>
             </div>            
-    	</div>  
+    	</div> 
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Aluno: </label>
+                <div class="col-lg-6">
+                    <select class="form-control m-bot15" id="aluno" name="aluno">
+                        <option selected>Informe o aluno</option>
+                    </select>
+                </div>
+            </div>            
+        </div>  
     	<div class="col-md-12">
     		<div class="form-group">
                 <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Unidade: </label>

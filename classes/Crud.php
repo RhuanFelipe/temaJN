@@ -3,9 +3,10 @@
 require_once 'DB.php';
 
 abstract class Crud extends DB{
-
 	protected $table;
 	protected $id_coluna;
+	protected $orderBy;
+	protected $ordem;
 
 	public function insert(){}
 	public function update($id){}
@@ -21,7 +22,6 @@ abstract class Crud extends DB{
 		}else{
 			return 0;
 		}
-				echo "oi";
 
 	}
 
@@ -33,9 +33,14 @@ abstract class Crud extends DB{
 		
 		return $stmt->fetchAll();		
 	}
-
 	public function findAll(){
 		$sql  = "SELECT * FROM $this->table";
+		$stmt = DB::prepare($sql);
+		$stmt->execute();
+		return $stmt->fetchAll();
+	}
+	public function findAllOrder(){
+		$sql  = "SELECT * FROM $this->table order By $this->orderBy $this->ordem";
 		$stmt = DB::prepare($sql);
 		$stmt->execute();
 		return $stmt->fetchAll();

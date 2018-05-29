@@ -73,7 +73,9 @@ class Usuarios extends Crud{
 			$id_usuario  = $stmt->fetch();	
 
 			$_SESSION['usuario_id'] = $id_usuario->id_usuario;
+			$_SESSION['nivel_id'] = $id_usuario->nivel_id;
 			$_SESSION['matricula'] = $matricula_usuario;
+			//$_SESSION['matricula'] = $matricula_usuario;
 		}else{
 			echo 0;
 		}

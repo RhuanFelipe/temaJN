@@ -11,6 +11,7 @@
 	@$requerimento = $_POST["requerimento"];
 	@$assunto = $_POST["assunto"];
 	@$usuario = $_POST["usuario"];
+	@$aluno = $_POST["aluno"];
 	$c = new Chamado();
 	$c->setUsuario($usuario);
 	$c->setAssunto($assunto);
@@ -18,6 +19,8 @@
 	$c->setTipoCurso($tipoCurso);
 	$c->setCurso($curso);
 	$c->setUnidade($unidade);
+	$c->setPessoa($aluno);
+
 	$c->setTipoRequerimento($tipoRequerimento);
 	$c->setGrupoRequerimento($grupoRequerimento);
 

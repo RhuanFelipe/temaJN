@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 07-Abr-2018 às 11:58
+-- Generation Time: 29-Maio-2018 às 03:37
 -- Versão do servidor: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -64,17 +64,21 @@ CREATE TABLE IF NOT EXISTS `chamado` (
   `tipo_requerimento_id` int(11) NOT NULL,
   `grupo_requerimento_id` int(11) NOT NULL,
   `requerimento_id` int(11) NOT NULL,
+  `status` char(1) DEFAULT NULL,
+  `pessoa_id` int(11) NOT NULL,
   PRIMARY KEY (`id_chamado`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Extraindo dados da tabela `chamado`
 --
 
-INSERT INTO `chamado` (`id_chamado`, `protocolo_chamado`, `assunto_chamado`, `data_abertura`, `categoria_id`, `usuario_id`, `tipo_curso_id`, `curso_id`, `unidade_id`, `tipo_requerimento_id`, `grupo_requerimento_id`, `requerimento_id`) VALUES
-(1, NULL, 'nÃ£o estou conseguindo logar no portal', '2018-04-07 04:59:45', NULL, 1, 1, 7, 1, 1, 1, 1),
-(2, NULL, 'nota nÃ£o lanÃ§ada', '2018-04-07 05:00:06', NULL, 1, 1, 7, 1, 1, 1, 6),
-(3, NULL, 'nÃ£o estou conseguindo renovar matricula', '2018-04-07 05:06:50', NULL, 3, 1, 1, 1, 1, 1, 4);
+INSERT INTO `chamado` (`id_chamado`, `protocolo_chamado`, `assunto_chamado`, `data_abertura`, `categoria_id`, `usuario_id`, `tipo_curso_id`, `curso_id`, `unidade_id`, `tipo_requerimento_id`, `grupo_requerimento_id`, `requerimento_id`, `status`, `pessoa_id`) VALUES
+(1, NULL, 'teste', '2018-05-26 01:14:09', NULL, 4, 1, 7, 1, 1, 1, 1, NULL, 1),
+(2, NULL, 'teste de chamados', '2018-05-26 01:15:52', NULL, 4, 1, 2, 1, 1, 1, 1, NULL, 3),
+(3, NULL, 'teste de chamado', '2018-05-26 01:16:08', NULL, 4, 1, 2, 1, 1, 1, 1, NULL, 3),
+(4, NULL, 'teste', '2018-05-26 01:18:56', NULL, 4, 1, 2, 1, 1, 1, 1, NULL, 3),
+(5, NULL, 'problema ao logar', '2018-05-26 01:22:33', NULL, 4, 1, 7, 1, 1, 1, 1, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -173,7 +177,7 @@ CREATE TABLE IF NOT EXISTS `nivel` (
   `id_nivel` int(11) NOT NULL AUTO_INCREMENT,
   `nome_nivel` varchar(100) NOT NULL,
   PRIMARY KEY (`id_nivel`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Extraindo dados da tabela `nivel`
@@ -181,7 +185,8 @@ CREATE TABLE IF NOT EXISTS `nivel` (
 
 INSERT INTO `nivel` (`id_nivel`, `nome_nivel`) VALUES
 (1, 'coordenador'),
-(2, 'aluno');
+(2, 'atendente'),
+(3, 'aluno');
 
 -- --------------------------------------------------------
 
@@ -201,7 +206,7 @@ CREATE TABLE IF NOT EXISTS `pessoa` (
   `turno_id` int(11) NOT NULL DEFAULT '0',
   `turma_id` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_pessoa`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Extraindo dados da tabela `pessoa`
@@ -210,7 +215,8 @@ CREATE TABLE IF NOT EXISTS `pessoa` (
 INSERT INTO `pessoa` (`id_pessoa`, `nome_pessoa`, `cpf_pessoa`, `rg_pessoa`, `sexo_pessoa`, `nasc_pessoa`, `email_pessoa`, `curso_id`, `turno_id`, `turma_id`) VALUES
 (1, 'Rhuan Felipe da Silva', '11122233344', '333444555', 'm', '1991-05-18', 'rhuanfelsilva@gmail.com', 7, 3, 1),
 (2, 'Marcelo Diaz', '111111111', '1111111', 'm', '1975-04-09', 'teste@gmail.com', 0, 0, 0),
-(3, 'Marina Carla', '11223344556', '12345678', 'f', '1994-04-23', 'teste@hotmail.com', 2, 5001, 1);
+(3, 'Marina Carla', '11223344556', '12345678', 'f', '1994-04-23', 'teste@hotmail.com', 2, 2, 1),
+(4, 'patricia carla', '11122233344', '1111111', 'f', '1992-05-25', 'teste@gmail.com', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -379,22 +385,23 @@ INSERT INTO `unidade` (`id_unidade`, `desc_unidade`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `usuario` (
-  `id_usuario` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL AUTO_INCREMENT,
   `matricula_usuario` int(11) NOT NULL,
   `senha_usuario` varchar(200) NOT NULL,
   `ativo_usuario` char(1) NOT NULL,
   `nivel_id` int(11) NOT NULL,
   PRIMARY KEY (`id_usuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Extraindo dados da tabela `usuario`
 --
 
 INSERT INTO `usuario` (`id_usuario`, `matricula_usuario`, `senha_usuario`, `ativo_usuario`, `nivel_id`) VALUES
-(1, 11032395, '123', '1', 2),
+(1, 11032395, '123', '1', 3),
 (2, 11111111, '123', '1', 1),
-(3, 11223344, '123', '1', 2);
+(3, 12345678, '123', '1', 3),
+(4, 87654321, '123', '1', 2);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

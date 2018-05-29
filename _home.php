@@ -1,5 +1,5 @@
  <?php 
-
+ 
   $usuario = new Usuarios();
   $pessoa = new Pessoa();
   $c = new Chamado();
@@ -8,7 +8,7 @@
   $tipoRequerimento = new TipoRequerimento();
   $grupoRequerimento = new GrupoRequerimento();
 
-  $dados = $c->findAllOrder();
+  $dados = $c->findAll();
   $usuario->findDados($matricula);
 ?>
 
@@ -30,8 +30,9 @@
                     </header>
                     <div class="panel-body">
                             <p style="float: right;">Qtd. Chamados : <?php echo $c->qtdChamados(); ?></p>
-				<table id="example" class="table table-striped table-hover table-bordered  display" style="width:100%">
-			         <thead>
+
+                        <table class="table table-striped table-hover table-bordered dataTable listarChamados" id="editable-sample" aria-describedby="editable-sample_info">
+                           <thead>
                               <tr>
                                 <th scope="col">Mat.</th>
                                 <th scope="col">Data</th>
@@ -46,7 +47,7 @@
                                 foreach ($dados as $rows) {
 
                                   $users = $usuario->findDadosId($rows->usuario_id);
-                                  $ps = $pessoa->findById($rows->pessoa_id);
+                                  $ps = $pessoa->findById($rows->usuario_id);
                                   $cs = $curso->findById($rows->curso_id);
                                   $req = $requerimento->findById($rows->requerimento_id);
                                   $tr = $tipoRequerimento->findById($rows->tipo_requerimento_id);
@@ -62,57 +63,26 @@
                                 <td><?php echo utf8_encode($cs[0]->nome_curso); ?></td>
                                 <td class="req_<?php echo $rows->id_chamado; ?>"><?php echo utf8_encode($req[0]->desc_requerimento); ?></td>
                                 <td scope="row" align="center">
-
-                                  <button type="button" class="btn btn-info ver" data-toggle="modal" data-target="#exampleModalCenter" title="vizualizar chamado">
-                                  		<i class="fa fa-eye"></i>
-                                  </button>
-                                  <?php 
-	                                  if($_SESSION['nivel_id'] == 2){
-
-	                                  	if($rows->status == 0 && $rows->status != '') 
-	                                  		echo "Cancelado";
-	                                  	else if($rows->status == 1) 
-	                                  		echo "Finalizado";
-	                                  	else
-	                                  		echo "Aberto";
-	                                  }
-                                   ?>
-									<?php if($_SESSION['nivel_id'] == 1) {
-										
-										 if($rows->status == NULL || $rows->status == "") {?>
-		                                  <a href="#" class="btn btn-success concluir" id="<?php echo $rows->id_chamado; ?>">
-		                                  	<i class="fa fa-check" title="Finalizar Chamado"></i>
-		                                  </a>
- 
-		                                  <a href="#" class="btn btn btn-danger cancelar" title="Cancelar Chamado" id="<?php echo $rows->id_chamado; ?>">
-	                                   			<i class="fa fa-ban"></i>
-		                                  </a>
-
-		                                  <?php }else if($rows->status == 1){ 
-		                                  		echo "finalizado!";
-		                                  	}else{
-		                                  		echo "Cancelado!";
-		                                  	}
-		                                   } ?>
+                                  <button type="button" class="btn btn-info ver" data-toggle="modal" data-target="#exampleModalCenter" title="vizualizar chamado"><i class="fa fa-eye"></i></button>
+                                  <a href="#" class="btn btn-success concluir" id="<?php echo $rows->id_chamado; ?>"><i class="fa fa-check" title="Finalizar Chamado"></i> </a>
+                                   <a href="#" class="btn btn btn-danger cancelar" title="Cancelar Chamado" id="<?php echo $rows->id_chamado; ?>"><i class="fa fa-ban"></i></a>
                                    </td>
                               </tr>
                               <?php } ?>
                             </tbody>
-			    </table>
-       				</div>
-            </section>
+                        </table>
+                    </div>
+                </section>
+            </div>
         </div>
-    </div>
+        <a href="?p=abrirChamado" type="button" class="btn btn-success"><i class="fa fa-folder-open-o"></i> Abrir Chamado </a>
         <input type="hidden" name="id_chamado" id="id_chamado" value="0">
-
-    <?php if($_SESSION['nivel_id'] == 2){ ?>
-    <a href="?p=abrirChamado" type="button" class="btn btn-success"><i class="fa fa-folder-open-o"></i> Abrir Chamado </a>
-    <?php } ?>
-    <!-- page end-->
+        <!-- page end-->
+        </section>
     </section>
-</section>
-<!--main content end-->
- <!-- Modal -->
+    <!--main content end-->
+
+      <!-- Modal -->
     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">

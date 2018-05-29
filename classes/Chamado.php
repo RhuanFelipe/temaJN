@@ -4,6 +4,8 @@ require_once 'Crud.php';
 class Chamado extends Crud{
 	protected $table = 'chamado';
 	protected $id_coluna = 'id_chamado';
+	protected $orderBy = 'data_abertura';
+	protected $ordem = 'DESC';
 	private $tipoCurso;
 	private $curso;
 	private $unidade;
@@ -12,13 +14,19 @@ class Chamado extends Crud{
 	private $requerimento;
 	private $assunto;
 	private $usuario;
-
+	private $pessoa;
 
 	public function setUsuario($usuario){
 		$this->usuario = $usuario;
 	}
 	public function getUsuario(){
 		return $this->usuario;
+	}
+	public function setPessoa($pessoa){
+		$this->pessoa = $pessoa;
+	}
+	public function getPessoa(){
+		return $this->pessoa;
 	}
 	public function setAssunto($assunto){
 		$this->assunto = $assunto;
@@ -72,8 +80,8 @@ class Chamado extends Crud{
 	
 	public function insert(){
 		try {
-			$sql  = "INSERT INTO $this->table (tipo_curso_id,curso_id,unidade_id,tipo_requerimento_id,grupo_requerimento_id,requerimento_id,assunto_chamado,usuario_id) 
-						VALUES (:tipoCurso, :curso,:unidade,:tipoRequerimento,:grupoRequerimento,:requerimento,:assunto,:usuario)";
+			$sql  = "INSERT INTO $this->table (tipo_curso_id,curso_id,unidade_id,tipo_requerimento_id,grupo_requerimento_id,requerimento_id,assunto_chamado,usuario_id,pessoa_id) 
+						VALUES (:tipoCurso, :curso,:unidade,:tipoRequerimento,:grupoRequerimento,:requerimento,:assunto,:usuario,:pessoa)";
 			$stmt = DB::prepare($sql);
 
 			$stmt->bindParam(':tipoCurso', $this->tipoCurso, PDO::PARAM_INT);
@@ -84,6 +92,7 @@ class Chamado extends Crud{
 			$stmt->bindParam(':requerimento', $this->requerimento, PDO::PARAM_INT);
 			$stmt->bindParam(':assunto', $this->assunto, PDO::PARAM_STR);
 			$stmt->bindParam(':usuario', $this->usuario, PDO::PARAM_INT);
+			$stmt->bindParam(':pessoa', $this->pessoa, PDO::PARAM_INT);
 
 			if($stmt->execute()){
 				header('Location: index.php?p=abrirChamado&sucess=1');
@@ -92,7 +101,6 @@ class Chamado extends Crud{
 		} catch (PDOException $e) {
 		    print $e->getMessage ();
 		}
-
 		
 	}
 	public function concluirChamado($id){
@@ -100,7 +108,7 @@ class Chamado extends Crud{
 			$sql  = "UPDATE chamado
 						SET status = '1'
 					WHERE id_chamado = :id_chamado;";
-
+			
 			$stmt = DB::prepare($sql);
 			$stmt->bindParam(':id_chamado', $id, PDO::PARAM_INT);
 			

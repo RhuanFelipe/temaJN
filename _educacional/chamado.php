@@ -23,5 +23,4 @@
 	$c->setGrupoRequerimento($grupoRequerimento);
 	$c->insert();
 
-
 ?>
