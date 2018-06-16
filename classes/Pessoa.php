@@ -15,4 +15,5 @@ class Pessoa extends Crud{
 		
 		return $stmt->fetchAll();		
 	}
+
 }

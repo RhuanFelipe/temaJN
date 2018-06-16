@@ -3,7 +3,7 @@
 <!--logo start-->
 <div class="brand">
 
-    <a href="index.html" class="logo">
+    <a href="index.php" class="logo">
         <img src="images/logo.png" alt="">
     </a>
     <div class="sidebar-toggle-box">

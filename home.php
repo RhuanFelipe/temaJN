@@ -1,5 +1,4 @@
  <?php 
-
   $usuario = new Usuarios();
   $pessoa = new Pessoa();
   $c = new Chamado();
@@ -7,8 +6,14 @@
   $requerimento = new Requerimento();
   $tipoRequerimento = new TipoRequerimento();
   $grupoRequerimento = new GrupoRequerimento();
-
-  $dados = $c->findAllOrder();
+    if($_SESSION['nivel_id'] == 1){
+      $dadosAcesso = $pessoa->findById($_SESSION['usuario_id']);
+      $dados = $c->findAllChamados($dadosAcesso[0]->curso_id);
+      $qtdChamados = $c->qtdChamadosCurso($dadosAcesso[0]->curso_id);
+    }else{
+      $dados = $c->findAllOrder();
+      $qtdChamados = $c->qtdChamados();
+    }
   $usuario->findDados($matricula);
 ?>
 
@@ -29,7 +34,7 @@
                          </span>
                     </header>
                     <div class="panel-body">
-                            <p style="float: right;">Qtd. Chamados : <?php echo $c->qtdChamados(); ?></p>
+                            <p style="float: right;">Qtd. Chamados : <?php echo $qtdChamados; ?></p>
 				<table id="example" class="table table-striped table-hover table-bordered  display" style="width:100%">
 			         <thead>
                               <tr>
@@ -58,7 +63,7 @@
                                 <input class="assunto_<?php echo $rows->id_chamado; ?>" type="hidden" name="" value="<?php echo $rows->assunto_chamado; ?>">
                                 <th scope="row"><?php echo $users->matricula_usuario; ?></th>
                                 <td><?php echo $rows->data_abertura; ?></td>
-                                <td class="nome_pessoa_<?php echo $rows->id_chamado; ?>"><?php echo $ps[0]->nome_pessoa; ?></td>
+                                <td class="nome_pessoa_<?php echo $rows->id_chamado; ?>"><?php echo utf8_encode($ps[0]->nome_pessoa); ?></td>
                                 <td><?php echo utf8_encode($cs[0]->nome_curso); ?></td>
                                 <td class="req_<?php echo $rows->id_chamado; ?>"><?php echo utf8_encode($req[0]->desc_requerimento); ?></td>
                                 <td scope="row" align="center">

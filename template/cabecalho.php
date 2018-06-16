@@ -9,7 +9,6 @@
     }
       $usuario = new Usuarios();
       $usuario->findDados($matricula);
-
   }
 ?>
 <!DOCTYPE html>
@@ -22,7 +21,7 @@
     <meta name="author" content="ThemeBucket">
     <link rel="shortcut icon" href="images/favicon.png">
 
-    <title>Blank page</title>
+    <title>Educacional</title>
 
     <!--Core CSS -->
     <link href="bs3/css/bootstrap.min.css" rel="stylesheet">

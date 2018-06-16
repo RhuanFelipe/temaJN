@@ -77,6 +77,27 @@ class Chamado extends Crud{
 		$result = $stmt->rowCount();
 		return $result;
 	}
+	public function qtdChamadosFinalizado(){
+		$sql  = "SELECT * FROM $this->table where status = 1";
+		$stmt = DB::prepare($sql);
+		$stmt->execute();
+		$result = $stmt->rowCount();
+		return $result;
+	}
+	public function qtdChamadosCancelados(){
+		$sql  = "SELECT * FROM $this->table where status = 1";
+		$stmt = DB::prepare($sql);
+		$stmt->execute();
+		$result = $stmt->rowCount();
+		return $result;
+	}
+	public function qtdChamadosCurso($id){
+		$sql  = "SELECT * FROM $this->table where curso_id = '".$id."'";
+		$stmt = DB::prepare($sql);
+		$stmt->execute();
+		$result = $stmt->rowCount();
+		return $result;
+	}
 	
 	public function insert(){
 		try {
@@ -139,6 +160,13 @@ class Chamado extends Crud{
 		    print $e->getMessage ();
 		}
 
-		
+	}
+	public function findAllChamados($id_curso){
+		$sql  = "SELECT * FROM $this->table where curso_id = :id_curso order By $this->orderBy $this->ordem";
+		$stmt = DB::prepare($sql);
+		$stmt->bindParam(':id_curso', $id_curso, PDO::PARAM_INT);
+
+		$stmt->execute();
+		return $stmt->fetchAll();
 	}
 }
