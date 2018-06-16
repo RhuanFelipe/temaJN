@@ -4,7 +4,6 @@
   $cancelado = $c->qtdChamadosCancelados();
   $total = $c->qtdChamados();
   $aberto = $total - ($finalizado + $cancelado);
-  print($aberto);
  ?>
  <!--main content start-->
  <section id="main-content">

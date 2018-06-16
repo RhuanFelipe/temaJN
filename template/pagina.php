@@ -10,4 +10,7 @@ $pagina = (isset($_GET['p'])) ? $_GET['p'] : "home";
 		include_once "graficosChamados.php";
 	else if($pagina == 'graficosArea')
 		include_once "graficoArea.php";
+	else if($pagina == 'graficosRequerimento')
+		include_once "graficoTipoRequerimento.php";
+	
 ?>

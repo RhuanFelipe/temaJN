@@ -98,6 +98,20 @@ class Chamado extends Crud{
 		$result = $stmt->rowCount();
 		return $result;
 	}
+	public function qtdChamadosReclamacao(){
+		$sql  = "SELECT * FROM $this->table where tipo_requerimento_id = 1";
+		$stmt = DB::prepare($sql);
+		$stmt->execute();
+		$result = $stmt->rowCount();
+		return $result;
+	}
+	public function qtdChamadosSolicitacao(){
+		$sql  = "SELECT * FROM $this->table where tipo_requerimento_id = 2";
+		$stmt = DB::prepare($sql);
+		$stmt->execute();
+		$result = $stmt->rowCount();
+		return $result;
+	}
 	
 	public function insert(){
 		try {

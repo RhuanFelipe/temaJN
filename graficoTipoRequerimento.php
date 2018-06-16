@@ -1,9 +1,8 @@
  <?php 
-   $c = new Chamado();
-  $finalizado = $c->qtdChamadosFinalizado();
-  $cancelado = $c->qtdChamadosCancelados();
-  $total = $c->qtdChamados();
-  $aberto = $total - ($finalizado + $cancelado);
+  $c = new Chamado();
+  $reclamacao = $c->qtdChamadosReclamacao();
+  $solicitacao =  $c->qtdChamadosSolicitacao();
+ 
  ?>
  <!--main content start-->
  <section id="main-content">
@@ -21,18 +20,18 @@
 	    type: 'pie',
 	// The data for our dataset
     data: {
-        labels: ["Finalizados", "Abertos","Cancelado"],
+        labels: ["Reclamação","Solicitação"],
         datasets: [{
             label: "My First dataset",
-            backgroundColor: ['rgb(97, 239, 203)','rgb(152, 90, 196)','rgb(239, 234, 98)'],
-            data: [<?php echo $finalizado;?>, <?php echo $aberto; ?>, <?php echo $cancelado;?>],
+            backgroundColor: ['rgb(97, 239, 203)','rgb(152, 90, 196)'],
+            data: [<?php echo $reclamacao;?>, <?php echo $solicitacao; ?>],
         }]
     },
     options:{
     	title:{
     		display:true,
     		fontSize:20,
-    		text: 'GRÁFICO DE QUANTIDADE DE CHAMADOS'
+    		text: 'GRÁFICO POR TIPO DE REQUERIMENTO'
     	}
     }
     

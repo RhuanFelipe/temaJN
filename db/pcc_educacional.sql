@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 16-Jun-2018 às 14:25
+-- Generation Time: 16-Jun-2018 às 17:35
 -- Versão do servidor: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `chamado` (
   `status` char(1) DEFAULT NULL,
   `pessoa_id` int(11) NOT NULL,
   PRIMARY KEY (`id_chamado`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Extraindo dados da tabela `chamado`
@@ -78,7 +78,8 @@ INSERT INTO `chamado` (`id_chamado`, `protocolo_chamado`, `assunto_chamado`, `da
 (2, NULL, 'TESTE', '2018-06-16 04:30:12', NULL, 4, 1, 1, 1, 1, 1, 1, '0', 17),
 (3, NULL, 'TESTE', '2018-06-16 04:30:21', NULL, 4, 1, 3, 1, 1, 1, 1, '1', 26),
 (4, NULL, 'sem nota ', '2018-06-16 04:56:54', NULL, 4, 1, 1, 1, 1, 1, 1, NULL, 19),
-(5, NULL, '', '2018-06-16 04:57:05', NULL, 4, 1, 1, 1, 1, 1, 1, NULL, 5);
+(5, NULL, '', '2018-06-16 04:57:05', NULL, 4, 1, 1, 1, 1, 1, 1, NULL, 5),
+(6, NULL, 'problema ao acesso', '2018-06-16 10:34:02', NULL, 4, 1, 5, 1, 2, 6, 20, NULL, 36);
 
 -- --------------------------------------------------------
 
@@ -199,12 +200,12 @@ CREATE TABLE IF NOT EXISTS `pessoa` (
   `rg_pessoa` varchar(30) NOT NULL,
   `sexo_pessoa` char(1) NOT NULL,
   `nasc_pessoa` date NOT NULL,
-  `email_pessoa` varchar(100) DEFAULT NULL,
+  `email_pessoa` varchar(100) DEFAULT 'teste@hotmail.com',
   `curso_id` int(11) NOT NULL DEFAULT '0',
   `turno_id` int(11) NOT NULL DEFAULT '0',
   `turma_id` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_pessoa`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=66 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=75 ;
 
 --
 -- Extraindo dados da tabela `pessoa`
@@ -265,7 +266,16 @@ INSERT INTO `pessoa` (`id_pessoa`, `nome_pessoa`, `cpf_pessoa`, `rg_pessoa`, `se
 (62, 'Ana Maria', '34997378106', '01232154', 'f', '1964-05-25', 'Ana@gmail.com', 10, 3, 1),
 (63, 'Fatima Bernardes', '12576414612', '52602164', 'f', '1985-11-14', 'Fatima@gmail.com', 10, 3, 1),
 (64, 'Maria Julia', '02307678153', '47403987', 'f', '1996-12-24', 'Julia95@gmail.com', 10, 2, 1),
-(65, 'Ronalda Mariana', '01688189490', '47933456', 'f', '1992-10-21', 'Ronalda@gmail.com', 10, 1, 1);
+(65, 'Ronalda Mariana', '01688189490', '47933456', 'f', '1992-10-21', 'Ronalda@gmail.com', 10, 1, 1),
+(66, 'Monica Mattos', '11122233344', '1111111', 'f', '1991-06-05', 'teste@hotmail.com', 1, 0, 0),
+(67, 'João Muniz', '11111111111', '11111111', 'm', '1990-06-19', 'teste@hotmail.com', 2, 0, 0),
+(68, 'Jean da Silva', '11122233344', '1111111', 'm', '1988-06-28', 'teste@hotmail.com', 3, 0, 0),
+(69, 'Rafael Carvalho', '11111111111', '11111111', 'm', '1992-05-01', 'teste@hotmail.com', 4, 0, 0),
+(70, 'Marta Soarez', '11122233344', '1111111', 'f', '1992-05-25', 'teste@hotmail.com', 5, 0, 0),
+(71, 'Carlos Eduardo', '11122233344', '1111111', 'm', '1992-05-25', 'teste@hotmail.com', 6, 0, 0),
+(72, 'Jessica Cabral', '11122233344', '1111111', 'f', '1991-03-06', 'teste@hotmail.com', 8, 0, 0),
+(73, 'Marilia Pera', '11111111111', '11111111', 'f', '2018-02-06', 'teste@hotmail.com', 9, 0, 0),
+(74, 'Romero Britto', '11122233344', '1111111', 'm', '2018-04-02', 'teste@hotmail.com', 10, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -456,7 +466,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `ativo_usuario` char(1) NOT NULL,
   `nivel_id` int(11) NOT NULL,
   PRIMARY KEY (`id_usuario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=647 ;
 
 --
 -- Extraindo dados da tabela `usuario`
@@ -466,7 +476,16 @@ INSERT INTO `usuario` (`id_usuario`, `matricula_usuario`, `senha_usuario`, `ativ
 (1, 11032395, '123', '1', 3),
 (2, 11111111, '123', '1', 1),
 (3, 12345678, '123', '1', 3),
-(4, 87654321, '123', '1', 2);
+(4, 87654321, '123', '1', 2),
+(66, 12341234, '123', '1', 1),
+(67, 43214321, '123', '1', 1),
+(68, 11110000, '123', '1', 1),
+(69, 11223344, '123', '1', 1),
+(70, 44332211, '123', '1', 1),
+(71, 11224433, '123', '1', 1),
+(72, 11110001, '123', '1', 1),
+(73, 99999999, '123', '1', 1),
+(74, 22223333, '123', '1', 1);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
