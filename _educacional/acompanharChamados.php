@@ -96,9 +96,9 @@
               $gr = $grupoRequerimento->findById($rows->grupo_requerimento_id);
            ?>
           <tr class="modal-desc">
-            <input class="tp_<?php echo $rows->id_chamado; ?>" type="hidden" name="" value="<?php echo utf8_encode($tr[0]->opt_requerimento); ?>">
-            <input class="gr_<?php echo $rows->id_chamado; ?>" type="hidden" name="" value="<?php echo utf8_encode($gr[0]->desc_grupo); ?>">
-            <input class="assunto_<?php echo $rows->id_chamado; ?>" type="hidden" name="" value="<?php echo $rows->assunto_chamado; ?>">
+            <input class="tp_<?php echo $rows->id_chamado; ?>" type="text" name="" value="<?php echo utf8_encode($tr[0]->opt_requerimento); ?>">
+            <input class="gr_<?php echo $rows->id_chamado; ?>" type="text" name="" value="<?php echo utf8_encode($gr[0]->desc_grupo); ?>">
+            <input class="assunto_<?php echo $rows->id_chamado; ?>" type="text" name="" value="<?php echo $rows->assunto_chamado; ?>">
             <th scope="row"><?php echo $users->matricula_usuario; ?></th>
             <td><?php echo $rows->data_abertura; ?></td>
             <td class="nome_pessoa_<?php echo $rows->id_chamado; ?>"><?php echo $ps[0]->nome_pessoa; ?></td>
@@ -136,7 +136,6 @@
               var gr = $('.gr_'+i).val();
               var req = $('.req_'+i).text();
               var assunto = $('.assunto_'+i).val();
-
               $('.label-nome').html(nome);
               $('.label-tipo-requerimento').html(tp);
               $('.label-grupo-requerimento').html(gr);

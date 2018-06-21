@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 16-Jun-2018 às 17:35
+-- Generation Time: 21-Jun-2018 às 16:17
 -- Versão do servidor: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -64,22 +64,48 @@ CREATE TABLE IF NOT EXISTS `chamado` (
   `tipo_requerimento_id` int(11) NOT NULL,
   `grupo_requerimento_id` int(11) NOT NULL,
   `requerimento_id` int(11) NOT NULL,
-  `status` char(1) DEFAULT NULL,
+  `status` char(1) DEFAULT '9',
   `pessoa_id` int(11) NOT NULL,
   PRIMARY KEY (`id_chamado`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=33 ;
 
 --
 -- Extraindo dados da tabela `chamado`
 --
 
 INSERT INTO `chamado` (`id_chamado`, `protocolo_chamado`, `assunto_chamado`, `data_abertura`, `categoria_id`, `usuario_id`, `tipo_curso_id`, `curso_id`, `unidade_id`, `tipo_requerimento_id`, `grupo_requerimento_id`, `requerimento_id`, `status`, `pessoa_id`) VALUES
-(1, NULL, 'NÃƒO SAIU NOTA', '2018-06-16 04:28:24', NULL, 4, 1, 1, 1, 1, 1, 4, NULL, 5),
-(2, NULL, 'TESTE', '2018-06-16 04:30:12', NULL, 4, 1, 1, 1, 1, 1, 1, '0', 17),
-(3, NULL, 'TESTE', '2018-06-16 04:30:21', NULL, 4, 1, 3, 1, 1, 1, 1, '1', 26),
-(4, NULL, 'sem nota ', '2018-06-16 04:56:54', NULL, 4, 1, 1, 1, 1, 1, 1, NULL, 19),
-(5, NULL, '', '2018-06-16 04:57:05', NULL, 4, 1, 1, 1, 1, 1, 1, NULL, 5),
-(6, NULL, 'problema ao acesso', '2018-06-16 10:34:02', NULL, 4, 1, 5, 1, 2, 6, 20, NULL, 36);
+(1, NULL, 'problema com a impressÃ£o do diploma', '2018-06-16 13:07:35', NULL, 4, 1, 1, 1, 1, 1, 2, '9', 16),
+(2, NULL, 'prova com nota errada', '2018-06-16 13:08:29', NULL, 4, 1, 1, 1, 2, 7, 24, '0', 5),
+(3, NULL, 'quero um material especifico da biblioteca', '2018-06-16 13:09:17', NULL, 4, 1, 1, 1, 2, 6, 7, '0', 20),
+(4, NULL, 'nÃ£o consigo imprimir o boleto no portal', '2018-06-16 13:10:18', NULL, 4, 1, 1, 1, 1, 3, 9, '1', 66),
+(5, NULL, 'mÃ¡ estalaÃ§Ãµes', '2018-06-16 13:39:53', NULL, 4, 1, 2, 1, 1, 4, 13, '9', 22),
+(6, NULL, 'nÃ£o consigo pagar o boleto', '2018-06-16 13:40:57', NULL, 4, 1, 2, 1, 1, 3, 9, '9', 25),
+(7, NULL, 'nota errada lanÃ§ada', '2018-06-16 13:42:13', NULL, 4, 1, 2, 1, 2, 7, 24, '9', 21),
+(8, NULL, 'meu diploma ainda nÃ£o chegou', '2018-06-16 13:45:12', NULL, 4, 1, 3, 1, 1, 1, 2, '9', 27),
+(9, NULL, 'problemas financeiros\r\n', '2018-06-16 13:46:54', NULL, 4, 1, 3, 1, 2, 8, 29, '9', 29),
+(10, NULL, 'reclamaÃ§Ã£o referente a professor fulano', '2018-06-16 13:50:56', NULL, 4, 1, 3, 1, 1, 1, 5, '9', 30),
+(11, NULL, 'problema na inscriÃ§Ã£o do evento\r\n', '2018-06-16 13:52:23', NULL, 4, 1, 4, 1, 1, 5, 18, '9', 31),
+(12, NULL, 'problema no cartÃ£o de acesso', '2018-06-16 13:55:08', NULL, 4, 1, 4, 1, 2, 6, 23, '9', 35),
+(13, NULL, 'nÃ£o estou conseguindo ver a nota complementar minha', '2018-06-16 13:59:29', NULL, 4, 1, 4, 1, 1, 1, 3, '9', 33),
+(14, NULL, 'nÃ£o tenho acesso ao portal', '2018-06-16 14:01:19', NULL, 4, 1, 5, 1, 2, 6, 19, '9', 39),
+(15, NULL, 'acesso ao livro digital com falha', '2018-06-16 14:04:10', NULL, 4, 1, 5, 2, 1, 2, 6, '9', 40),
+(16, NULL, 'nÃ£o impressÃ£o do diploma', '2018-06-16 14:06:06', NULL, 4, 1, 5, 2, 1, 1, 2, '9', 37),
+(17, NULL, 'mudanÃ§a de turnos por questÃµes pessoais', '2018-06-16 14:08:21', NULL, 4, 1, 6, 1, 2, 7, 25, '9', 43),
+(18, NULL, 'problema na nota', '2018-06-16 14:10:14', NULL, 4, 1, 6, 1, 1, 1, 4, '9', 41),
+(19, NULL, 'meus dados estÃ£o inconsistentes no portal', '2018-06-16 14:10:44', NULL, 4, 1, 6, 1, 2, 7, 28, '9', 41),
+(20, NULL, 'problema estrutural da faculdade', '2018-06-16 14:12:02', NULL, 4, 1, 7, 1, 1, 4, 13, '9', 1),
+(21, NULL, 'revisar desconto academico', '2018-06-16 14:12:44', NULL, 4, 1, 7, 1, 2, 8, 29, '9', 47),
+(22, NULL, 'assuntos pessoais', '2018-06-16 14:13:09', NULL, 4, 1, 7, 1, 1, 1, 1, '9', 2),
+(23, NULL, 'atestado mÃ©dico', '2018-06-16 14:13:37', NULL, 4, 1, 7, 1, 1, 1, 1, '9', 1),
+(24, NULL, 'pedido de ajuste na matricula', '2018-06-16 14:14:26', NULL, 4, 1, 8, 1, 2, 8, 29, '9', 51),
+(25, NULL, 'nota nÃ£o lanÃ§ada', '2018-06-16 14:14:48', NULL, 4, 1, 8, 1, 2, 7, 24, '9', 55),
+(26, NULL, 'renegociar mensalidades', '2018-06-16 14:15:31', NULL, 4, 1, 8, 1, 1, 3, 12, '9', 5),
+(27, NULL, 'problema no lanÃ§amento de nota', '2018-06-16 14:17:47', NULL, 4, 1, 9, 1, 1, 1, 4, '9', 56),
+(28, NULL, 'boleto errado', '2018-06-16 14:18:34', NULL, 4, 1, 9, 1, 1, 3, 9, '9', 58),
+(29, NULL, 'troca de curso', '2018-06-16 14:19:02', NULL, 4, 1, 9, 1, 2, 7, 25, '9', 60),
+(30, NULL, 'problema na nota', '2018-06-16 14:19:18', NULL, 4, 1, 10, 1, 1, 1, 4, '9', 61),
+(31, NULL, 'financiamento errado', '2018-06-16 14:19:35', NULL, 4, 1, 10, 1, 1, 3, 10, '9', 62),
+(32, NULL, 'diploma errada', '2018-06-16 14:19:49', NULL, 4, 1, 10, 1, 2, 6, 2, '9', 61);
 
 -- --------------------------------------------------------
 
@@ -383,7 +409,7 @@ CREATE TABLE IF NOT EXISTS `tipo_requerimento` (
   `id_requerimento` int(11) NOT NULL AUTO_INCREMENT,
   `opt_requerimento` varchar(150) NOT NULL,
   PRIMARY KEY (`id_requerimento`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Extraindo dados da tabela `tipo_requerimento`
@@ -466,7 +492,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `ativo_usuario` char(1) NOT NULL,
   `nivel_id` int(11) NOT NULL,
   PRIMARY KEY (`id_usuario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=647 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=75 ;
 
 --
 -- Extraindo dados da tabela `usuario`

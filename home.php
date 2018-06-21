@@ -82,9 +82,9 @@
 	                                  		echo "Aberto";
 	                                  }
                                    ?>
-									<?php if($_SESSION['nivel_id'] == 1) {
-										
-										 if($rows->status == NULL || $rows->status == "") {?>
+          									<?php if($_SESSION['nivel_id'] == 1) {
+          										
+          										 if($rows->status == 9) {?>
 		                                  <a href="#" class="btn btn-success concluir" id="<?php echo $rows->id_chamado; ?>">
 		                                  	<i class="fa fa-check" title="Finalizar Chamado"></i>
 		                                  </a>
@@ -95,7 +95,7 @@
 
 		                                  <?php }else if($rows->status == 1){ 
 		                                  		echo "finalizado!";
-		                                  	}else{
+		                                  	}else {
 		                                  		echo "Cancelado!";
 		                                  	}
 		                                   } ?>

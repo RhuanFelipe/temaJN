@@ -85,7 +85,7 @@ class Chamado extends Crud{
 		return $result;
 	}
 	public function qtdChamadosCancelados(){
-		$sql  = "SELECT * FROM $this->table where status = 1";
+		$sql  = "SELECT * FROM $this->table where status = 0";
 		$stmt = DB::prepare($sql);
 		$stmt->execute();
 		$result = $stmt->rowCount();
