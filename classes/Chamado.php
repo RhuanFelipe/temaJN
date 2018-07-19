@@ -91,13 +91,7 @@ class Chamado extends Crud{
 		$result = $stmt->rowCount();
 		return $result;
 	}
-	public function qtdChamadosCurso($id){
-		$sql  = "SELECT * FROM $this->table where curso_id = '".$id."'";
-		$stmt = DB::prepare($sql);
-		$stmt->execute();
-		$result = $stmt->rowCount();
-		return $result;
-	}
+	
 	public function qtdChamadosReclamacao(){
 		$sql  = "SELECT * FROM $this->table where tipo_requerimento_id = 1";
 		$stmt = DB::prepare($sql);
@@ -175,8 +169,38 @@ class Chamado extends Crud{
 		}
 
 	}
+	public function qtdChamadosCurso($id){
+		$sql  = "SELECT * FROM $this->table where curso_id = '".$id."'";
+		$stmt = DB::prepare($sql);
+		$stmt->execute();
+		$result = $stmt->rowCount();
+		return $result;
+	}
+	public function qtdChamadosCursoAbertos($id){
+		$sql  = "SELECT * FROM $this->table where curso_id = '".$id."' and status = 9";
+		$stmt = DB::prepare($sql);
+		$stmt->execute();
+		$result = $stmt->rowCount();
+		return $result;
+	}
 	public function findAllChamados($id_curso){
 		$sql  = "SELECT * FROM $this->table where curso_id = :id_curso order By $this->orderBy $this->ordem";
+		$stmt = DB::prepare($sql);
+		$stmt->bindParam(':id_curso', $id_curso, PDO::PARAM_INT);
+
+		$stmt->execute();
+		return $stmt->fetchAll();
+	}
+	public function findAllChamadosFinalizados($id_curso){
+		$sql  = "SELECT * FROM $this->table where curso_id = :id_curso and status IN(0,1) order By $this->orderBy $this->ordem";
+		$stmt = DB::prepare($sql);
+		$stmt->bindParam(':id_curso', $id_curso, PDO::PARAM_INT);
+
+		$stmt->execute();
+		return $stmt->fetchAll();
+	}
+		public function findAllChamadosAbertos($id_curso){
+		$sql  = "SELECT * FROM $this->table where curso_id = :id_curso and status = 9 order By $this->orderBy $this->ordem";
 		$stmt = DB::prepare($sql);
 		$stmt->bindParam(':id_curso', $id_curso, PDO::PARAM_INT);
 

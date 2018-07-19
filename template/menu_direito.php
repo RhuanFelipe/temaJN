@@ -8,6 +8,10 @@
                     <i class="fa fa-dashboard"></i>
                     <span>Dashboard</span>
                 </a>
+                 <a href="?p=chamadosFinalizados">
+                    <i class="fa fa-dashboard"></i>
+                    <span>Chamados Finalizados</span>
+                </a>
                 <?php  if($_SESSION['nivel_id'] == 1){ ?>
                  <a href="index.php?p=graficosChamados">
                     <i class="fa fa-bar-chart-o"></i>

@@ -12,5 +12,8 @@ $pagina = (isset($_GET['p'])) ? $_GET['p'] : "home";
 		include_once "graficoArea.php";
 	else if($pagina == 'graficosRequerimento')
 		include_once "graficoTipoRequerimento.php";
+	else if($pagina == 'chamadosFinalizados')
+		include_once "chamadosFinalizados.php";
+	
 	
 ?>

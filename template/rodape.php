@@ -35,12 +35,13 @@
     $(".ver").click(function(){
       $(".modal-desc").click(function(){
         var i = $(this).index() + 1;
-        var nome = $('.nome_pessoa_'+i).text();
+        var nome = $('.nome_pessoa_'+i).val();
         var tp = $('.tp_'+i).val();
         var gr = $('.gr_'+i).val();
-        var req = $('.req_'+i).text();
-        var assunto = $('.assunto_'+i).val();             
-
+        var req = $('.req_'+i).val();
+        var assunto = $('.assunto_'+i).val();  
+     
+        console.log("Id : "+i+", nome: "+nome+ ", tp: "+ tp + ", gr : "+gr+", req : "+req+ ", assunto: "+assunto);
         $('.label-nome').html(nome);
         $('.label-tipo-requerimento').html(tp);
         $('.label-grupo-requerimento').html(gr);

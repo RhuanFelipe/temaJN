@@ -6,11 +6,10 @@
   $requerimento = new Requerimento();
   $tipoRequerimento = new TipoRequerimento();
   $grupoRequerimento = new GrupoRequerimento();
-  
     if($_SESSION['nivel_id'] == 1){
       $dadosAcesso = $pessoa->findById($_SESSION['usuario_id']);
-      $dados = $c->findAllChamadosAbertos($dadosAcesso[0]->curso_id);
-      $qtdChamados = $c->qtdChamadosCursoAbertos($dadosAcesso[0]->curso_id);
+      $dados = $c->findAllChamadosFinalizados($dadosAcesso[0]->curso_id);
+      $qtdChamados = $c->qtdChamadosCurso($dadosAcesso[0]->curso_id);
     }else{
       $dados = $c->findAllOrder();
       $qtdChamados = $c->qtdChamados();
@@ -22,6 +21,7 @@
     <section id="main-content">
         <section class="wrapper">
         <!-- page start-->
+ 
         <div class="row">
             <div class="col-sm-12">
                 <section class="panel">
@@ -34,9 +34,9 @@
                          </span>
                     </header>
                     <div class="panel-body">
-                      <p style="float: right;">Qtd. Chamados : <?php echo $qtdChamados; ?></p>
-				         <table id="example" class="table table-striped table-hover table-bordered  display" style="width:100%">
-			                   <thead>
+                            <p style="float: right;">Qtd. Chamados : <?php echo $qtdChamados; ?></p>
+				<table id="example" class="table table-striped table-hover table-bordered  display" style="width:100%">
+			         <thead>
                               <tr>
                                 <th scope="col">Mat.</th>
                                 <th scope="col">Data</th>
@@ -58,22 +58,14 @@
                                   $gr = $grupoRequerimento->findById($rows->grupo_requerimento_id);
                                ?>
                               <tr class="modal-desc">
-                                
-
-                                 <input class="req_<?php echo $rows->id_chamado; ?>" type="text" style="display: none" 
-                                 value="<?php echo utf8_encode($req[0]->desc_requerimento); ?>">
-
-                                <input class="tp_<?php echo $rows->id_chamado; ?>" type="text" style="display: none" value="<?php echo utf8_encode($tr[0]->opt_requerimento); ?>">
-                                
-                                <input class="gr_<?php echo $rows->id_chamado; ?>" type="text" style="display: none" value="<?php echo utf8_encode($gr[0]->desc_grupo); ?>">
-                                
-                                <input class="assunto_<?php echo $rows->id_chamado; ?>" type="text" style="display: none" value="<?php echo utf8_encode($rows->assunto_chamado); ?>">
-                                
+                                <input class="tp_<?php echo $rows->id_chamado; ?>" type="hidden" name="" value="<?php echo utf8_encode($tr[0]->opt_requerimento); ?>">
+                                <input class="gr_<?php echo $rows->id_chamado; ?>" type="hidden" name="" value="<?php echo utf8_encode($gr[0]->desc_grupo); ?>">
+                                <input class="assunto_<?php echo $rows->id_chamado; ?>" type="hidden" name="" value="<?php echo $rows->assunto_chamado; ?>">
                                 <th scope="row"><?php echo $users->matricula_usuario; ?></th>
                                 <td><?php echo $rows->data_abertura; ?></td>
-                                <td class=""><?php echo utf8_encode($ps[0]->nome_pessoa); ?></td>
+                                <td class="nome_pessoa_<?php echo $rows->id_chamado; ?>"><?php echo utf8_encode($ps[0]->nome_pessoa); ?></td>
                                 <td><?php echo utf8_encode($cs[0]->nome_curso); ?></td>
-                                <td ><?php echo utf8_encode($req[0]->desc_requerimento); ?></td>
+                                <td class="req_<?php echo $rows->id_chamado; ?>"><?php echo utf8_encode($req[0]->desc_requerimento); ?></td>
                                 <td scope="row" align="center">
 
                                   <button type="button" class="btn btn-info ver" data-toggle="modal" data-target="#exampleModalCenter" title="vizualizar chamado">
@@ -110,8 +102,8 @@
                                    </td>
                               </tr>
                               <?php } ?>
-                          </tbody>
-			           </table>
+                            </tbody>
+			         </table>
        				</div>
             </section>
         </div>
@@ -132,16 +124,16 @@
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLongTitle">Chamado</h5>
           </div>
-            <div class="modal-body">
-              <h5 class="label-nome"></h5><br>
-              <p><b>Tipo Requerimento:  </b><label class="label-tipo-requerimento"></label></p>
-              <p><b>Grupo Requerimento:  </b><label class="label-grupo-requerimento"></label></p>
-              <p><b>Requerimento:  </b><label class="label-requerimento"></label></p>
-              <p><b>Assunto:  </b><label class="label-assunto"></label></p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-            </div>
+          <div class="modal-body">
+            <h5 class="label-nome"></h5><br>
+            <p><b>Tipo Requerimento:  </b><label class="label-tipo-requerimento"></label></p>
+            <p><b>Grupo Requerimento:  </b><label class="label-grupo-requerimento"></label></p>
+            <p><b>Requerimento:  </b><label class="label-requerimento"></label></p>
+            <p><b>Assunto:  </b><label class="label-assunto"></label></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+          </div>
         </div>
       </div>
     </div>
