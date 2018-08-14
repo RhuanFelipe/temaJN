@@ -2,7 +2,7 @@
   session_start();
   $matricula = $_SESSION["matricula"];
   if(!isset($matricula)){
-    header("Location:login.php");
+    header("Location:login/login.php");
   }else{
     function __autoload($class_name){
       require_once 'classes/' . $class_name . '.php';

@@ -1,12 +1,34 @@
  <?php 
-    if(isset($_GET['sucess'])){
+    @$idChamado = $_GET['id'];
+    @$edit = $_GET['edit'];
+    $botao = 'Abrir chamado';
+
+    if(isset($_GET['success'])){
       $style = 'display:block';
     }else{
       $style = 'display:none';
     }
-  ?>
+?>
 <section id="main-content">
-  <form method="post" action="chamado.php">
+  <form method="post" action="chamado/chamado.php">
+    <?php 
+     if($idChamado != "" && $edit == 1){
+        $c = new Chamado();
+        $chamado = $c->findById($idChamado);
+        $botao = 'Alterar chamado';
+
+         ?>       
+            <input type="hidden" name="id_chamado" class="id_chamado" value="<?php echo $chamado[0]->id_chamado;?>">
+            <input type="hidden" name="tipo_curso_id" class="tipo_curso_id" value="<?php echo $chamado[0]->tipo_curso_id;?>">
+            <input type="hidden" name="curso_id" class="curso_id" value="<?php echo $chamado[0]->curso_id;?>">
+            <input type="hidden" name="pessoa_id" class="pessoa_id" value="<?php echo $chamado[0]->pessoa_id;?>">
+            <input type="hidden" name="unidade_id" class="unidade_id" value="<?php echo $chamado[0]->unidade_id;?>">
+            <input type="hidden" name="tipo_requerimento_id" class="tipo_requerimento_id" value="<?php echo $chamado[0]->tipo_requerimento_id;?>">
+            <input type="hidden" name="grupo_requerimento_id" class="grupo_requerimento_id" value="<?php echo $chamado[0]->grupo_requerimento_id;?>">
+            <input type="hidden" name="requerimento_id" class="requerimento_id" value="<?php echo $chamado[0]->requerimento_id;?>"> 
+        <?php
+        }
+     ?>
     <section class="wrapper">
     <!-- page start-->
     	<div class="col-md-12">
@@ -86,14 +108,14 @@
     		<div class="col-md-12">
 	        	<label class="col-sm-2 control-label col-lg-2">Assunto:</label>
 	        	<div class="col-sm-6 col-lg-6">
-                <textarea class="form-control" id="assunto" name="assunto" rows="6"></textarea>
+                    <textarea class="form-control" id="assunto" name="assunto" rows="6"><?php echo @$chamado[0]->assunto_chamado;?></textarea>
 	        	</div>
 	    	</div>
 	    </div>
 	    <br>
 	    <div class="form-group" >
     		<div class="col-md-12" style="margin: 20px 0 0 20px">
-	        	 <button class="btn btn-primary" style="margin: 0 10px 0 200px;">Abrir chamado</button>
+	        	 <button class="btn btn-primary" style="margin: 0 10px 0 200px;"><?php echo $botao;?></button>
       			<a class="btn btn-primary btn-voltar" href="index.php">Voltar</a>
 	    	</div>
 	    </div>
@@ -102,3 +124,4 @@
    </form>
 </section>
 <!--main content end-->
+

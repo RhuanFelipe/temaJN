@@ -30,9 +30,9 @@ abstract class Crud extends DB{
 		$stmt = DB::prepare($sql);
 		$stmt->bindParam(':id', $id, PDO::PARAM_INT);
 		$stmt->execute();
-		
 		return $stmt->fetchAll();		
 	}
+	
 	public function findAll(){
 		$sql  = "SELECT * FROM $this->table";
 		$stmt = DB::prepare($sql);

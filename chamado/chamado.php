@@ -1,6 +1,6 @@
 <?php
 	function __autoload($class_name){
-		require_once 'classes/' . $class_name . '.php';
+		require_once '../classes/' . $class_name . '.php';
 	}
 
 	@$tipoCurso = $_POST["tipoCurso"];
@@ -12,6 +12,8 @@
 	@$assunto = $_POST["assunto"];
 	@$usuario = $_POST["usuario"];
 	@$aluno = $_POST["aluno"];
+	@$id_chamado = $_POST["id_chamado"];
+
 	$c = new Chamado();
 	$c->setUsuario($usuario);
 	$c->setAssunto($assunto);
@@ -24,7 +26,9 @@
 	$c->setTipoRequerimento($tipoRequerimento);
 	$c->setGrupoRequerimento($grupoRequerimento);
 
-	$c->insert();
-
-
+	if($id_chamado != ""){
+		$c->update($id_chamado);
+	}else{	
+		$c->insert();
+	}
 ?>

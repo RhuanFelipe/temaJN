@@ -2,14 +2,21 @@
 	function __autoload($class_name){
 		require_once '../../classes/' . $class_name . '.php';
 	}
-	$id = $_REQUEST['id'];
+	@$id = $_REQUEST['id'];
+	$pessoa_id = $_REQUEST['pessoa_id'];
 
 	$aluno = new Pessoa();
 
 	$alunos = $aluno->findAluno($id);
 	if(count($alunos) > 0){
 		foreach ($alunos as $value) {
-		echo "<option value=".$value->id_pessoa.">".utf8_encode($value->nome_pessoa)."</option>";
+			if($value->id_pessoa == $pessoa_id){
+				$checked = "selected='selected'";
+			}else{
+				$checked = "";
+
+			}
+			echo "<option value=".$value->id_pessoa." ".$checked." >".utf8_encode($value->nome_pessoa)."</option>";
 		}
 	}else{
 		echo "<option>Informe o aluno</option>";

@@ -70,6 +70,8 @@ class Chamado extends Crud{
 	public function getGrupoRequerimento(){
 		return $this->grupoRequerimento;
 	}
+
+	//conta a quantidade de chamados 
 	public function qtdChamados(){
 		$sql  = "SELECT * FROM $this->table";
 		$stmt = DB::prepare($sql);
@@ -77,6 +79,8 @@ class Chamado extends Crud{
 		$result = $stmt->rowCount();
 		return $result;
 	}
+	//conta a quantidade de chamados finalizados 
+
 	public function qtdChamadosFinalizado(){
 		$sql  = "SELECT * FROM $this->table where status = 1";
 		$stmt = DB::prepare($sql);
@@ -124,11 +128,39 @@ class Chamado extends Crud{
 			$stmt->bindParam(':pessoa', $this->pessoa, PDO::PARAM_INT);
 
 			if($stmt->execute()){
-				header('Location: index.php?p=abrirChamado&sucess=1');
+				header('Location: ../index.php?p=abrirChamado&success=1');
 			}
 		
 		} catch (PDOException $e) {
-		    print $e->getMessage ();
+		    print $e->getMessage();
+		}
+		
+	}
+
+	public function update($id){
+		try {
+			$sql  = " UPDATE $this->table SET tipo_curso_id = :tipoCurso, curso_id = :curso, unidade_id = :unidade,
+						tipo_requerimento_id = :tipoRequerimento, grupo_requerimento_id = :grupoRequerimento,
+						requerimento_id = :requerimento, assunto_chamado = :assunto, usuario_id = :usuario, pessoa_id = :pessoa
+							WHERE id_chamado = :id";
+			$stmt = DB::prepare($sql);
+
+			$stmt->bindParam(':tipoCurso', $this->tipoCurso, PDO::PARAM_INT);
+			$stmt->bindParam(':curso', $this->curso, PDO::PARAM_INT);
+			$stmt->bindParam(':unidade', $this->unidade, PDO::PARAM_INT);
+			$stmt->bindParam(':tipoRequerimento', $this->tipoRequerimento, PDO::PARAM_INT);
+			$stmt->bindParam(':grupoRequerimento', $this->grupoRequerimento, PDO::PARAM_INT);
+			$stmt->bindParam(':requerimento', $this->requerimento, PDO::PARAM_INT);
+			$stmt->bindParam(':assunto', $this->assunto, PDO::PARAM_STR);
+			$stmt->bindParam(':usuario', $this->usuario, PDO::PARAM_INT);
+			$stmt->bindParam(':pessoa', $this->pessoa, PDO::PARAM_INT);
+			$stmt->bindParam(':id', $id, PDO::PARAM_INT);
+			if($stmt->execute()){
+				header('Location: ../index.php');
+			}
+		
+		} catch (PDOException $e) {
+		    print $e->getMessage();
 		}
 		
 	}
@@ -147,7 +179,7 @@ class Chamado extends Crud{
 			}
 		
 		} catch (PDOException $e) {
-		    print $e->getMessage ();
+		    print $e->getMessage();
 		}
 	}
 		public function fecharChamado($id){
@@ -165,7 +197,7 @@ class Chamado extends Crud{
 			}
 		
 		} catch (PDOException $e) {
-		    print $e->getMessage ();
+		    print $e->getMessage();
 		}
 
 	}
@@ -199,7 +231,7 @@ class Chamado extends Crud{
 		$stmt->execute();
 		return $stmt->fetchAll();
 	}
-		public function findAllChamadosAbertos($id_curso){
+	public function findAllChamadosAbertos($id_curso){
 		$sql  = "SELECT * FROM $this->table where curso_id = :id_curso and status = 9 order By $this->orderBy $this->ordem";
 		$stmt = DB::prepare($sql);
 		$stmt->bindParam(':id_curso', $id_curso, PDO::PARAM_INT);

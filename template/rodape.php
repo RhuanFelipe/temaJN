@@ -28,14 +28,32 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
+<script type="text/javascript" src="js/libs/lists.js"></script>
 <!--common script init for all pages-->
 <script src="js/scripts.js"></script>
 <script type="text/javascript">
   $(document).ready(function(){
+    var ver_click = $('.ver');
+    
+    ver_click.click(function(){
+      $('.chamado_click').val($(this).data('id-chamado'))
+    });
+
     $(".ver").click(function(){
       $(".modal-desc").click(function(){
-        var i = $(this).index() + 1;
-        var nome = $('.nome_pessoa_'+i).val();
+        var id_chamado = $('.chamado_click').val();
+        
+        $.ajax({
+          type: "POST",
+          url: "biblioteca/list/listarDadosModal.php",
+          data: {id : id_chamado},
+          success: function(data){
+            console.log("Data: " + data + "\nStatus: " + status)
+          }
+        });
+         
+        /*var nome = $('.nome_pessoa_'+i).val();
         var tp = $('.tp_'+i).val();
         var gr = $('.gr_'+i).val();
         var req = $('.req_'+i).val();
@@ -46,63 +64,72 @@
         $('.label-tipo-requerimento').html(tp);
         $('.label-grupo-requerimento').html(gr);
         $('.label-requerimento').html(req);
-        $('.label-assunto').html(assunto);
+        $('.label-assunto').html(assunto);*/
       });
     });
     $('.btn-deslogar').click(function(){
-      var result = confirm("Deseja sair do Sistema?");
-      var matricula = <?php echo $matricula; ?>;
-      var acao = 'deslogar';
-      if(result == 1){
-        $.ajax({            
-          url:"teste.php",            
-          type:"post",                
-          data: "acao="+acao+"&matricula="+matricula,
-          success: function (result){ 
-            location.href = "login.php";
-          }
-        });
-      }
-    });
-    $("#tipoCurso").load("biblioteca/list/listarTipoCurso.php",function(){
-      $("#curso").load( "biblioteca/list/listarCurso.php?id="+this.value,function(){
-        $("#aluno").load( "biblioteca/list/listarAluno.php?id="+this.value);
-      });
-    });
-    $("#unidade").load("biblioteca/list/listarUnidade.php");
-    $("#tipo_requerimento").load("biblioteca/list/listarTipoRequerimento.php",function(){
-      $("#grupo_requerimento").load( "biblioteca/list/listarGrupoRequerimento.php?id="+this.value,function(){
-       $("#requerimento").load( "biblioteca/list/listarRequerimento.php?id="+this.value);
-     });
-    });
-    $("#curso").change(function(){
-        $("#aluno").load( "biblioteca/list/listarAluno.php?id="+this.value);
-      });
-    $("#tipoCurso").change(function(){
-     $("#curso").load( "biblioteca/list/listarCurso.php?id="+this.value);
-   });
 
-    $("#tipo_requerimento").change(function(){
-     $("#grupo_requerimento").load( "biblioteca/list/listarGrupoRequerimento.php?id="+this.value);
-   });
-    $("#grupo_requerimento").change( "biblioteca/list/listarGrupoRequerimento.php?id="+this.value,function(){
-     $("#requerimento").load( "biblioteca/list/listarRequerimento.php?id="+this.value);
-   });   
+         var result = bootbox.confirm({
+            message: "Deseja Sair do Sistema?",
+            buttons: {
+                confirm: {
+                    label: 'Sim',
+                    className: 'btn-info'
+                },
+                cancel: {
+                    label: 'Não'
+                }
+            },
+            callback: function (result) {
+                if(result != false){
+                 var matricula = <?php echo $matricula; ?>;
+                  var acao = 'deslogar';
+                    $.ajax({            
+                      url:"teste.php",            
+                      type:"post",                
+                      data: "acao="+acao+"&matricula="+matricula,
+                      success: function (result){ 
+                        location.href = "login.php";
+                      }
+                    });
+              } 
+            }
+        });
+      
+    });
+      
     $('.concluir , .cancelar').mouseover(function(){
       $("#id_chamado").val(this.id);
     });
 
 
     $('.concluir').click(function(){
-      var id = parseInt($("#id_chamado").val());
-      $.ajax({            
-        url:"acao.php",            
-        type:"GET",                
-        data: "p=executar&acao=concluir&id="+id,
-        success: function (result){ 
-          location.href = "index.php";
-        }
+         var result = bootbox.confirm({
+            message: "Deseja Concluir o Chamado?",
+            buttons: {
+                confirm: {
+                    label: 'Sim',
+                    className: 'btn-info'
+                },
+                cancel: {
+                    label: 'Não'
+                }
+            },
+            callback: function (result) {
+                if(result != false){
+                  var id = parseInt($("#id_chamado").val());
+                  $.ajax({            
+                    url:"acao.php",            
+                    type:"GET",                
+                    data: "p=executar&acao=concluir&id="+id,
+                    success: function (result){ 
+                      location.href = "index.php";
+                    }
+                  });
+              } 
+            }
       });
+   
     });
     $(document).ready(function() {
       var tabela = $('#example').DataTable({
@@ -120,18 +147,37 @@
       });
     } );
 
+
     $('.cancelar').click(function(){
-      var id = parseInt($("#id_chamado").val());
-      $.ajax({            
-        url:"acao.php",            
-        type:"GET",                
-        data: "p=executar&acao=cancelar&id="+id,
-        success: function (result){ 
-          location.href = "index.php";
-        }
+              var result = bootbox.confirm({
+            message: "Deseja Cancelar o Chamado?",
+            buttons: {
+                confirm: {
+                    label: 'Sim',
+                    className: 'btn-info'
+                },
+                cancel: {
+                    label: 'Não'
+                }
+            },
+            callback: function (result) {
+                if(result != false){
+                  var id = parseInt($("#id_chamado").val());
+                  $.ajax({            
+                    url:"acao.php",            
+                    type:"GET",                
+                    data: "p=executar&acao=cancelar&id="+id,
+                    success: function (result){ 
+                      location.href = "index.php";
+                    }
+                  });
+              } 
+            }
       });
+     
     });   
 
+ 
   });
 </script>
 <style type="text/css">

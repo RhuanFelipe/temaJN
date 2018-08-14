@@ -42,7 +42,8 @@ class Usuarios extends Crud{
 		$result = $query->fetch();
 
 		$this->setNivel($dados->nivel_id);
-		$this->setNome($result->nome_pessoa);
+		if($_SESSION['nivel_id'] != 4)
+			$this->setNome($result->nome_pessoa);
 	}
 	public function findDadosId($id){
 		$sql  = "SELECT * FROM $this->table WHERE id_usuario = :id";
