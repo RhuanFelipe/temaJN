@@ -35,7 +35,7 @@
                               <td scope="col" ><?php echo $rows->nome_curso; ?></td>
                               <td scope="col" ><?php echo $tipoCurso[0]->tipo_curso; ?></td>
 	                            <td scope="col" > 
-                                  <a href="?p=formTipoCurso&edit=1&id=<?php echo $rows->id_curso; ?>" class="btn btn-success edit"  title="Editar">
+                                  <a href="?p=formCurso&edit=1&id=<?php echo $rows->id_curso; ?>&tipoId=<?php echo $rows->tipo_curso_id; ?>" class="btn btn-success edit"  title="Editar">
                                       <i class="fa fa-pencil"></i>
                                   </a>
                                   <a href="cadastramento/acaoCurso.php?acao=delete&id=<?php echo $rows->id_curso; ?>" class="btn btn-danger edit"  title="Excluir">

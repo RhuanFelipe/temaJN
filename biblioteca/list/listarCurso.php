@@ -19,7 +19,7 @@
 				$checked = "";
 			}
 
-			echo "<option value=".$value->id_curso."  ".$checked." >".utf8_encode($value->nome_curso)."</option>";
+			echo "<option value=".$value->id_curso."  ".$checked." >".$value->nome_curso."</option>";
 		}
 	}else{
 		echo "<option>Informe o curso</option>";

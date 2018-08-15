@@ -64,7 +64,7 @@
                                 <th scope="row"><?php echo $users->matricula_usuario; ?></th>
                                 <td><?php echo date('d/m/Y - H:i', strtotime($rows->data_abertura)); ?></td>
                                 <td class=""><?php echo utf8_encode($ps[0]->nome_pessoa); ?></td>
-                                <td><?php echo utf8_encode($cs[0]->nome_curso); ?></td>
+                                <td><?php echo $cs[0]->nome_curso; ?></td>
                                 <td ><?php echo utf8_encode($req[0]->desc_requerimento); ?></td>
                                 <td scope="row" align="center">
 

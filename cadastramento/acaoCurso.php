@@ -8,8 +8,11 @@ $cs = new Curso();
 
 if($acao == 'insert'){
 	$tipoCurso = $_REQUEST['tipoCurso'];
-	$tp->setTipoCurso($tipoCurso);
-	$tp->insert();
+	$curso = $_REQUEST['curso'];
+	$cs->setTipoCursoId($tipoCurso);
+	$cs->setNomeCurso($curso);
+
+	$cs->insert();
 }else if($acao == 'delete'){
 	$id = $_REQUEST['id'];
 	$cs->delete($id);
@@ -17,8 +20,11 @@ if($acao == 'insert'){
 }else if($acao == 'update'){
 	$id = $_REQUEST['id'];
 	$tipoCurso = $_REQUEST['tipoCurso'];
-	$tp->setTipoCurso($tipoCurso);
-	$tp->update($id);
+	$curso = $_REQUEST['curso'];
+
+	$cs->setTipoCursoId($tipoCurso);
+	$cs->setNomeCurso($curso);
+	$cs->update($id);
 }
 
 ?>

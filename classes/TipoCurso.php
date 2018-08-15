@@ -32,7 +32,7 @@ class TipoCurso extends Crud{
 			$sql = "UPDATE $this->table set tipo_curso = :tipoCurso where id_tipo_curso = :id";
 			$stmt = DB::prepare($sql);
 			$stmt->bindParam(':tipoCurso', $this->tipoCurso, PDO::PARAM_STR);
-			$stmt->bindParam(':id', $id, PDO::PARAM_STR);
+			$stmt->bindParam(':id', $id, PDO::PARAM_INT);
 
 			if($stmt->execute()){
 				header('Location: ../index.php?p=formTipoCurso&edit=1&id='.$id.'&success=1');

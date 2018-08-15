@@ -11,9 +11,9 @@
     }
 ?><section id="main-content">
 <?php if($edit == ""){ ?>
-  <form method="post" action="cadastramento/acaoTipoCurso.php?acao=insert">
+  <form method="post" action="cadastramento/acaoCurso.php?acao=insert">
 <?php }else{ ?>
-  <form method="post" action="cadastramento/acaoTipoCurso.php?acao=update">
+  <form method="post" action="cadastramento/acaoCurso.php?acao=update">
    <input type="text" name="id" class="id" value="<?php echo $id;?>">
 
 <?php } ?>
@@ -23,11 +23,14 @@
     	<div class="col-md-12">
     		<?php if($edit == ""){ ?>
     		  <h3>Cadastrar Curso</h3> 
-            <?php }else{ ?>
-              <h3>Alterar Tipo Curso</h3> 
+            <?php }else{ 
+                    $botao = "Editar Curso";
+            	?>
+             <input type="hidden" name="tipo_curso_id" class="tipo_curso_id" value="<?php echo $_GET['tipoId'];?>">
+              <h3>Alterar Curso</h3> 
             <?php } ?>
             <input type="hidden" name="usuario" value="<?php echo $_SESSION['usuario_id']; ?>">
-            <div class="alert alert-success" role="alert" style="<?php echo $style; ?>">CHAMADO REALIZADO!</div>
+            <div class="alert alert-success" role="alert" style="<?php echo $style; ?>">EDITADO COM SUCESSO!</div>
     		<div class="form-group">
                 <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Tipo Curso: </label>
                 <div class="col-lg-6">
@@ -39,12 +42,14 @@
     	</div>    
     	<div class="col-md-12"> 
             <input type="hidden" name="usuario" value="<?php echo $_SESSION['usuario_id']; ?>">
-            <div class="alert alert-success" role="alert" style="<?php echo $style; ?>">EDITADO COM SUCESSO!</div>
     		<div class="form-group">
                 <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Curso: </label>
-                <div class="col-lg-6">
-                  
-                    <input type="text" name="curso" class="form-control" value="">
+                <div class="col-lg-6">  
+                 	<?php
+                        $cs = new Curso(); 
+                        $curso = $cs->findById($id);
+                    ?>               
+                    <input type="text" name="curso" class="form-control" value="<?php echo @$curso[0]->nome_curso;?>">
                 </div>
             </div>           
     	</div>
