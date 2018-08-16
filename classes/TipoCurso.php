@@ -41,5 +41,4 @@ class TipoCurso extends Crud{
 			print $e->getMessage();
 		}
 	}
-
 }

@@ -39,8 +39,8 @@
                     <ul class="sub" style="display: none;">
                         <li><a href="index.php?p=cadTipoCurso">Tipo Curso</a></li>
                         <li><a href="index.php?p=cadCurso">Curso</a></li>
-                        <li><a href="form_wizard.html">Form Wizard</a></li>
-                        <li><a href="form_validation.html">Form Validation</a></li>
+                        <li><a href="index.php?p=cadUnidade">Unidade</a></li>
+                        <li><a href="index.php?p=cadTipoRequerimento">Tipo Requerimento</a></li>
                         <li><a href="file_upload.html">Muliple File Upload</a></li>
 
                         <li><a href="dropzone.html">Dropzone</a></li>

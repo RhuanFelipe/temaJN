@@ -15,7 +15,7 @@
 		}else{
 			$checked = "";
 		}
-		echo "<option value=".$value->id_unidade." ".$checked." >".utf8_encode($value->desc_unidade)."</option>";
+		echo "<option value=".$value->id_unidade." ".$checked." >".$value->desc_unidade."</option>";
 	}
 
 ?>

@@ -1,4 +1,7 @@
 <?php 
+/*
+* essa tela é realizado toda a administração dos links de acessos do site
+*/
 
 if($_SESSION['nivel_id'] != 4)
 	$pagina = (isset($_GET['p'])) ? $_GET['p'] : "home";
@@ -27,6 +30,14 @@ else
 		include_once "cadastramento/curso.php";
 	else if($pagina == 'formCurso')
 		include_once "cadastramento/formCurso.php";
-	
-	
+	else if($pagina == 'cadUnidade')
+		include_once "cadastramento/unidade.php";
+	else if($pagina == 'formUnidade')
+		include_once "cadastramento/formUnidade.php";
+	else if($pagina == 'cadTipoRequerimento')
+		include_once "cadastramento/tipoRequerimento.php";
+	else if($pagina == 'acaoTipoRequerimento')
+		include_once "cadastramento/acaoTipoRequerimento.php";
+	else if($pagina == 'formTipoRequerimento')
+		include_once "cadastramento/formTipoRequerimento.php";
 ?>

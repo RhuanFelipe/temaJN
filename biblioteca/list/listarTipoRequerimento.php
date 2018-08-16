@@ -16,7 +16,7 @@
 		}else{
 			$checked = "";
 		}
-		echo "<option value=".$value->id_requerimento." ".$checked.">".utf8_encode($value->opt_requerimento)."</option>";
+		echo "<option value=".$value->id_requerimento." ".$checked.">".$value->opt_requerimento."</option>";
 	}
 
 ?>
