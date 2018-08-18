@@ -43,7 +43,7 @@
                 <input type="text" id="matricula" name="matricula" class="form-control" placeholder="Matricula" autofocus>
                 <input type="password" id="senha" name="senha" class="form-control" placeholder="Senha">
             </div>
-            <button class="btn btn-lg btn-login btn-block" type="submit">Sign in</button>
+            <button class="btn btn-lg btn-login btn-block" type="submit">Logar</button>
         </div>
 
           <!-- Modal -->

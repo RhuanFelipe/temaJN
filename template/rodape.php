@@ -53,7 +53,7 @@
           }
         });
          
-        /*var nome = $('.nome_pessoa_'+i).val();
+        var nome = $('.nome_pessoa_'+i).val();
         var tp = $('.tp_'+i).val();
         var gr = $('.gr_'+i).val();
         var req = $('.req_'+i).val();
@@ -64,7 +64,7 @@
         $('.label-tipo-requerimento').html(tp);
         $('.label-grupo-requerimento').html(gr);
         $('.label-requerimento').html(req);
-        $('.label-assunto').html(assunto);*/
+        $('.label-assunto').html(assunto);
       });
     });
     $('.btn-deslogar').click(function(){
@@ -119,7 +119,7 @@
                 if(result != false){
                   var id = parseInt($("#id_chamado").val());
                   $.ajax({            
-                    url:"acao.php",            
+                    url:"chamado/acao.php",            
                     type:"GET",                
                     data: "p=executar&acao=concluir&id="+id,
                     success: function (result){ 
@@ -164,7 +164,7 @@
                 if(result != false){
                   var id = parseInt($("#id_chamado").val());
                   $.ajax({            
-                    url:"acao.php",            
+                    url:"chamado/acao.php",            
                     type:"GET",                
                     data: "p=executar&acao=cancelar&id="+id,
                     success: function (result){ 

@@ -41,11 +41,7 @@
                         <li><a href="index.php?p=cadCurso">Curso</a></li>
                         <li><a href="index.php?p=cadUnidade">Unidade</a></li>
                         <li><a href="index.php?p=cadTipoRequerimento">Tipo Requerimento</a></li>
-                        <li><a href="file_upload.html">Muliple File Upload</a></li>
-
-                        <li><a href="dropzone.html">Dropzone</a></li>
-                        <li><a href="inline_editor.html">Inline Editor</a></li>
-
+                        <li><a href="index.php?p=cadGrupoRequerimento">Grupo Requerimento</a></li>
                     </ul>
                 </li>
             <?php } ?>

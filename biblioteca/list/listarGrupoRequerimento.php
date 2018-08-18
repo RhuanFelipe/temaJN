@@ -16,7 +16,7 @@
 			$checked = "";
 		}
 
-		echo "<option value=".$value->id_grupo." ".$checked." >".utf8_encode($value->desc_grupo)."</option>";
+		echo "<option value=".$value->id_grupo." ".$checked." >".$value->desc_grupo."</option>";
 		}
 	}else{
 		echo "<option>Informe o grupo de requerimento</option>";

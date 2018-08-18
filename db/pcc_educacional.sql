@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 21-Jun-2018 às 16:17
+-- Generation Time: 18-Ago-2018 às 07:51
 -- Versão do servidor: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `chamado` (
   `status` char(1) DEFAULT '9',
   `pessoa_id` int(11) NOT NULL,
   PRIMARY KEY (`id_chamado`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=33 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=39 ;
 
 --
 -- Extraindo dados da tabela `chamado`
@@ -93,10 +93,10 @@ INSERT INTO `chamado` (`id_chamado`, `protocolo_chamado`, `assunto_chamado`, `da
 (17, NULL, 'mudanÃ§a de turnos por questÃµes pessoais', '2018-06-16 14:08:21', NULL, 4, 1, 6, 1, 2, 7, 25, '9', 43),
 (18, NULL, 'problema na nota', '2018-06-16 14:10:14', NULL, 4, 1, 6, 1, 1, 1, 4, '9', 41),
 (19, NULL, 'meus dados estÃ£o inconsistentes no portal', '2018-06-16 14:10:44', NULL, 4, 1, 6, 1, 2, 7, 28, '9', 41),
-(20, NULL, 'problema estrutural da faculdade', '2018-06-16 14:12:02', NULL, 4, 1, 7, 1, 1, 4, 13, '9', 1),
-(21, NULL, 'revisar desconto academico', '2018-06-16 14:12:44', NULL, 4, 1, 7, 1, 2, 8, 29, '9', 47),
+(20, NULL, 'problema estrutural da faculdade', '2018-06-16 14:12:02', NULL, 4, 1, 7, 1, 1, 4, 13, '1', 1),
+(21, NULL, 'revisar desconto academico', '2018-06-16 14:12:44', NULL, 4, 1, 7, 1, 2, 8, 29, '0', 47),
 (22, NULL, 'assuntos pessoais', '2018-06-16 14:13:09', NULL, 4, 1, 7, 1, 1, 1, 1, '9', 2),
-(23, NULL, 'atestado mÃ©dico', '2018-06-16 14:13:37', NULL, 4, 1, 7, 1, 1, 1, 1, '9', 1),
+(23, NULL, 'atestado mÃ©dico', '2018-06-16 14:13:37', NULL, 4, 1, 7, 1, 1, 1, 1, '0', 1),
 (24, NULL, 'pedido de ajuste na matricula', '2018-06-16 14:14:26', NULL, 4, 1, 8, 1, 2, 8, 29, '9', 51),
 (25, NULL, 'nota nÃ£o lanÃ§ada', '2018-06-16 14:14:48', NULL, 4, 1, 8, 1, 2, 7, 24, '9', 55),
 (26, NULL, 'renegociar mensalidades', '2018-06-16 14:15:31', NULL, 4, 1, 8, 1, 1, 3, 12, '9', 5),
@@ -105,7 +105,13 @@ INSERT INTO `chamado` (`id_chamado`, `protocolo_chamado`, `assunto_chamado`, `da
 (29, NULL, 'troca de curso', '2018-06-16 14:19:02', NULL, 4, 1, 9, 1, 2, 7, 25, '9', 60),
 (30, NULL, 'problema na nota', '2018-06-16 14:19:18', NULL, 4, 1, 10, 1, 1, 1, 4, '9', 61),
 (31, NULL, 'financiamento errado', '2018-06-16 14:19:35', NULL, 4, 1, 10, 1, 1, 3, 10, '9', 62),
-(32, NULL, 'diploma errada', '2018-06-16 14:19:49', NULL, 4, 1, 10, 1, 2, 6, 2, '9', 61);
+(32, NULL, 'diploma errada', '2018-06-16 14:19:49', NULL, 4, 1, 10, 1, 2, 6, 2, '9', 61),
+(33, NULL, 'erro ao lanÃ§ar a nota', '2018-06-21 19:28:58', NULL, 4, 1, 5, 1, 1, 1, 4, '1', 38),
+(34, NULL, 'Meu nome nÃ£o estÃ¡ na Chamada!', '2018-06-21 19:52:22', NULL, 4, 1, 1, 1, 1, 1, 1, '9', 66),
+(35, NULL, 'reabertura de chamado', '2018-06-21 20:00:00', NULL, 4, 1, 5, 1, 1, 1, 2, '9', 36),
+(36, NULL, 'nÃ£o foi lanÃ§ada a minha nota', '2018-06-21 20:28:54', NULL, 4, 1, 7, 1, 1, 1, 4, '1', 1),
+(37, NULL, 'teste 2', '2018-08-08 21:16:19', NULL, 4, 1, 1, 1, 1, 1, 1, '9', 5),
+(38, NULL, 'problema estrutural', '2018-08-09 00:13:39', NULL, 4, 1, 2, 1, 1, 4, 14, '9', 23);
 
 -- --------------------------------------------------------
 
@@ -130,23 +136,24 @@ CREATE TABLE IF NOT EXISTS `curso` (
   `nome_curso` varchar(100) NOT NULL,
   `tipo_curso_id` int(11) NOT NULL,
   PRIMARY KEY (`id_curso`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
 --
 -- Extraindo dados da tabela `curso`
 --
 
 INSERT INTO `curso` (`id_curso`, `nome_curso`, `tipo_curso_id`) VALUES
-(1, 'ADMINISTRAÇÃO - BACHARELADO', 1),
+(1, 'ADMINISTRAÃ‡ÃƒO - BACHARELADO', 1),
 (2, 'BIOMEDICINA - BACHARELADO', 1),
-(3, 'ENGENHARIA DA COMPUTAÇÃO - BACHARELADO', 1),
-(4, 'FARMÁCIA - BACHARELADO', 1),
+(3, 'ENGENHARIA DA COMPUTAÃ‡ÃƒO - BACHARELADO', 1),
+(4, 'FARMÃCIA - BACHARELADO', 1),
 (5, 'PEDAGOGIA - LICENCIATURA', 1),
-(6, 'CIÊNCIA DA COMPUTAÇÃO - BACHARELADO', 1),
-(7, 'SISTEMAS DE INFORMAÇÃO - BACHARELADO', 1),
+(6, 'CIÃŠNCIA DA COMPUTAÃ‡ÃƒO - BACHARELADO', 1),
+(7, 'SISTEMAS DE INFORMAÃ‡ÃƒO - BACHARELADO', 1),
 (8, 'TURISMO - BACHARELADO', 1),
 (9, 'JORNALISMO - BACHARELADO', 1),
-(10, 'FILOSOFIA - LICENCIATURA', 1);
+(10, 'FILOSOFIA - LICENCIATURA', 1),
+(11, 'CONSTRUÃ‡ÃƒO CIVIL', 2);
 
 -- --------------------------------------------------------
 
@@ -183,14 +190,14 @@ CREATE TABLE IF NOT EXISTS `grupo_requerimento` (
 --
 
 INSERT INTO `grupo_requerimento` (`id_grupo`, `desc_grupo`, `tipo_requerimento_id`) VALUES
-(1, 'ACADÊMICO', 1),
+(1, 'ACADÃŠMICO', 1),
 (2, 'BIBLIOTECA', 1),
 (3, 'FINANCEIRO', 1),
-(4, 'ESTRUTURA FÍSICA', 1),
+(4, 'ESTRUTURA FÃSICA', 1),
 (5, 'EVENTOS / CONGRESSOS', 1),
-(6, 'EMISSÃO DE DOCUMENTOS', 2),
-(7, 'SOLICITAÇÃO ACADÊMICA', 2),
-(8, 'SOLICITAÇÃO FINACEIRA', 2);
+(6, 'EMISSÃƒO DE DOCUMENTOS', 2),
+(7, 'SOLICITAÃ‡ÃƒO ACADÃŠMICA', 2),
+(8, 'SOLICITAÃ‡ÃƒO FINACEIRA', 2);
 
 -- --------------------------------------------------------
 
@@ -202,7 +209,7 @@ CREATE TABLE IF NOT EXISTS `nivel` (
   `id_nivel` int(11) NOT NULL AUTO_INCREMENT,
   `nome_nivel` varchar(100) NOT NULL,
   PRIMARY KEY (`id_nivel`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Extraindo dados da tabela `nivel`
@@ -211,7 +218,8 @@ CREATE TABLE IF NOT EXISTS `nivel` (
 INSERT INTO `nivel` (`id_nivel`, `nome_nivel`) VALUES
 (1, 'coordenador'),
 (2, 'atendente'),
-(3, 'aluno');
+(3, 'aluno'),
+(4, 'admin');
 
 -- --------------------------------------------------------
 
@@ -242,7 +250,7 @@ INSERT INTO `pessoa` (`id_pessoa`, `nome_pessoa`, `cpf_pessoa`, `rg_pessoa`, `se
 (2, 'Marcelo Diaz', '111111111', '1111111', 'm', '1975-04-09', 'teste@gmail.com', 7, 0, 0),
 (3, 'Marina Carla', '11223344556', '12345678', 'f', '1994-04-23', 'teste@hotmail.com', 2, 2, 1),
 (4, 'patricia carla', '11122233344', '1111111', 'f', '1992-05-25', 'teste@gmail.com', 0, 0, 0),
-(5, 'João Pedro', '11111111111', '11111111', 'm', '2018-05-01', 'teste@gmail.com', 1, 3, 1),
+(5, 'João Mathias', '11111111111', '11111111', 'm', '2018-05-01', 'teste@gmail.com', 1, 3, 1),
 (16, 'Anderson Felipe da Costa', '89457937716', '69947512', 'm', '1996-05-01', 'Anderson@gmail.com', 1, 3, 1),
 (17, 'Carlos Jose de Lima', '21622143779', '38098746', 'm', '1997-02-11', 'Jose@gmail.com', 1, 3, 1),
 (18, 'Carlos Luiz da Silva', '82582266140', '43525783', 'm', '1995-08-21', 'Carlos@gmail.com', 1, 1, 1),
@@ -261,7 +269,7 @@ INSERT INTO `pessoa` (`id_pessoa`, `nome_pessoa`, `cpf_pessoa`, `rg_pessoa`, `se
 (31, 'Gabriel Junior', '79787357801', '49302154', 'm', '1999-02-01', 'Junior99@gmail.com', 4, 3, 1),
 (32, 'Enzo Henrique', '65487378106', '43232154', 'm', '1997-05-25', 'Enzo@gmail.com', 4, 1, 1),
 (33, 'Rafael Costa', '12001414612', '42612154', 'm', '1997-11-14', 'Rafael@gmail.com', 4, 3, 1),
-(34, 'João Martins', '79877678153', '47398987', 'm', '2000-12-24', 'Martins@gmail.com', 4, 1, 1),
+(34, 'Mariana Magáli', '79877678153', '47398987', 'm', '2000-12-24', 'Martins@gmail.com', 4, 1, 1),
 (35, 'Isabela Fernanda', '20788189490', '47978764', 'f', '1999-10-21', 'Isabela@gmail.com', 4, 1, 1),
 (36, 'Camila Sousa', '73179735780', '47365154', 'f', '1997-02-01', 'Sousa@gmail.com', 5, 2, 1),
 (37, 'Fabio Gomes', '34898378106', '13232154', 'm', '1997-05-25', 'Fabio97@gmail.com', 5, 2, 1),
@@ -294,7 +302,7 @@ INSERT INTO `pessoa` (`id_pessoa`, `nome_pessoa`, `cpf_pessoa`, `rg_pessoa`, `se
 (64, 'Maria Julia', '02307678153', '47403987', 'f', '1996-12-24', 'Julia95@gmail.com', 10, 2, 1),
 (65, 'Ronalda Mariana', '01688189490', '47933456', 'f', '1992-10-21', 'Ronalda@gmail.com', 10, 1, 1),
 (66, 'Monica Mattos', '11122233344', '1111111', 'f', '1991-06-05', 'teste@hotmail.com', 1, 0, 0),
-(67, 'João Muniz', '11111111111', '11111111', 'm', '1990-06-19', 'teste@hotmail.com', 2, 0, 0),
+(67, 'Kátia de João', '11111111111', '11111111', 'm', '1990-06-19', 'teste@hotmail.com', 2, 0, 0),
 (68, 'Jean da Silva', '11122233344', '1111111', 'm', '1988-06-28', 'teste@hotmail.com', 3, 0, 0),
 (69, 'Rafael Carvalho', '11111111111', '11111111', 'm', '1992-05-01', 'teste@hotmail.com', 4, 0, 0),
 (70, 'Marta Soarez', '11122233344', '1111111', 'f', '1992-05-25', 'teste@hotmail.com', 5, 0, 0),
@@ -314,7 +322,7 @@ CREATE TABLE IF NOT EXISTS `requerimento` (
   `desc_requerimento` varchar(150) NOT NULL,
   `grupo_requerimento_id` int(11) NOT NULL,
   PRIMARY KEY (`id_requerimento`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=33 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=33 ;
 
 --
 -- Extraindo dados da tabela `requerimento`
@@ -369,6 +377,25 @@ CREATE TABLE IF NOT EXISTS `semestre` (
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `status`
+--
+
+CREATE TABLE IF NOT EXISTS `status` (
+  `id_status` int(11) NOT NULL,
+  `tipo_status` varchar(30) NOT NULL,
+  PRIMARY KEY (`id_status`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `status`
+--
+
+INSERT INTO `status` (`id_status`, `tipo_status`) VALUES
+(9, 'aberto');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `telefone`
 --
 
@@ -390,14 +417,15 @@ CREATE TABLE IF NOT EXISTS `tipo_curso` (
   `id_tipo_curso` int(11) NOT NULL AUTO_INCREMENT,
   `tipo_curso` varchar(150) NOT NULL,
   PRIMARY KEY (`id_tipo_curso`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Extraindo dados da tabela `tipo_curso`
 --
 
 INSERT INTO `tipo_curso` (`id_tipo_curso`, `tipo_curso`) VALUES
-(1, 'GRADUAÇÃO PRESENCIAL');
+(1, 'GRADUAÃ‡ÃƒO PRESENCIAL'),
+(2, 'GRADUAÃ‡ÃƒO EAD');
 
 -- --------------------------------------------------------
 
@@ -409,15 +437,15 @@ CREATE TABLE IF NOT EXISTS `tipo_requerimento` (
   `id_requerimento` int(11) NOT NULL AUTO_INCREMENT,
   `opt_requerimento` varchar(150) NOT NULL,
   PRIMARY KEY (`id_requerimento`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Extraindo dados da tabela `tipo_requerimento`
 --
 
 INSERT INTO `tipo_requerimento` (`id_requerimento`, `opt_requerimento`) VALUES
-(1, 'RECLAMAÇÃO'),
-(2, 'SOLICITAÇÃO');
+(1, 'RECLAMAÃ‡ÃƒO'),
+(2, 'SOLICITAÃ‡ÃƒO');
 
 -- --------------------------------------------------------
 
@@ -492,7 +520,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `ativo_usuario` char(1) NOT NULL,
   `nivel_id` int(11) NOT NULL,
   PRIMARY KEY (`id_usuario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=75 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=76 ;
 
 --
 -- Extraindo dados da tabela `usuario`
@@ -511,7 +539,8 @@ INSERT INTO `usuario` (`id_usuario`, `matricula_usuario`, `senha_usuario`, `ativ
 (71, 11224433, '123', '1', 1),
 (72, 11110001, '123', '1', 1),
 (73, 99999999, '123', '1', 1),
-(74, 22223333, '123', '1', 1);
+(74, 22223333, '123', '1', 1),
+(75, 123, '123', '1', 4);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

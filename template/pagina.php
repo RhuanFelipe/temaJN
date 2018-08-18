@@ -19,7 +19,7 @@ else
 	else if($pagina == 'graficosRequerimento')
 		include_once "graficoTipoRequerimento.php";
 	else if($pagina == 'chamadosFinalizados')
-		include_once "chamadosFinalizados.php";
+		include_once "chamado/chamadosFinalizados.php";
 	else if($pagina == 'homeAdmin')
 		include_once "home.php";
 	else if($pagina == 'cadTipoCurso')
@@ -40,4 +40,8 @@ else
 		include_once "cadastramento/acaoTipoRequerimento.php";
 	else if($pagina == 'formTipoRequerimento')
 		include_once "cadastramento/formTipoRequerimento.php";
+	else if($pagina == 'cadGrupoRequerimento')
+		include_once "cadastramento/grupoRequerimento.php";
+	else if($pagina == 'formGrupoRequerimento')
+		include_once "cadastramento/formGrupoRequerimento.php";
 ?>
