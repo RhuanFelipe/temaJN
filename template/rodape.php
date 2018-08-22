@@ -41,19 +41,24 @@
     });
 
     $(".ver").click(function(){
-      $(".modal-desc").click(function(){
         var id_chamado = $('.chamado_click').val();
-        
+        console.log(id_chamado)
         $.ajax({
           type: "POST",
           url: "biblioteca/list/listarDadosModal.php",
           data: {id : id_chamado},
           success: function(data){
-            console.log("Data: " + data + "\nStatus: " + status)
+            $('.label-assunto').html(data.assunto_chamado);
+            $('.label-nome').html(data.nome_pessoa);
+            $('.label-tipo-requerimento').html(data.tipo_requerimento);
+            $('.label-grupo-requerimento').html(data.grupo_requerimento);
+            $('.label-requerimento').html(data.requerimento);
+            
+            //console.log("Data: " + data + "\nStatus: " + status)
           }
         });
          
-        var nome = $('.nome_pessoa_'+i).val();
+        /*var nome = $('.nome_pessoa_'+i).val();
         var tp = $('.tp_'+i).val();
         var gr = $('.gr_'+i).val();
         var req = $('.req_'+i).val();
@@ -61,11 +66,9 @@
      
         console.log("Id : "+i+", nome: "+nome+ ", tp: "+ tp + ", gr : "+gr+", req : "+req+ ", assunto: "+assunto);
         $('.label-nome').html(nome);
-        $('.label-tipo-requerimento').html(tp);
         $('.label-grupo-requerimento').html(gr);
         $('.label-requerimento').html(req);
-        $('.label-assunto').html(assunto);
-      });
+        $('.label-assunto').html(assunto);*/
     });
     $('.btn-deslogar').click(function(){
 

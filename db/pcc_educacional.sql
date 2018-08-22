@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 18-Ago-2018 às 07:51
+-- Generation Time: 22-Ago-2018 às 05:19
 -- Versão do servidor: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -85,10 +85,10 @@ INSERT INTO `chamado` (`id_chamado`, `protocolo_chamado`, `assunto_chamado`, `da
 (9, NULL, 'problemas financeiros\r\n', '2018-06-16 13:46:54', NULL, 4, 1, 3, 1, 2, 8, 29, '9', 29),
 (10, NULL, 'reclamaÃ§Ã£o referente a professor fulano', '2018-06-16 13:50:56', NULL, 4, 1, 3, 1, 1, 1, 5, '9', 30),
 (11, NULL, 'problema na inscriÃ§Ã£o do evento\r\n', '2018-06-16 13:52:23', NULL, 4, 1, 4, 1, 1, 5, 18, '9', 31),
-(12, NULL, 'problema no cartÃ£o de acesso', '2018-06-16 13:55:08', NULL, 4, 1, 4, 1, 2, 6, 23, '9', 35),
+(12, NULL, 'problema no cartÃ£o de acesso', '2018-06-16 13:55:08', NULL, 4, 1, 4, 1, 2, 6, 19, '9', 35),
 (13, NULL, 'nÃ£o estou conseguindo ver a nota complementar minha', '2018-06-16 13:59:29', NULL, 4, 1, 4, 1, 1, 1, 3, '9', 33),
 (14, NULL, 'nÃ£o tenho acesso ao portal', '2018-06-16 14:01:19', NULL, 4, 1, 5, 1, 2, 6, 19, '9', 39),
-(15, NULL, 'acesso ao livro digital com falha', '2018-06-16 14:04:10', NULL, 4, 1, 5, 2, 1, 2, 6, '9', 40),
+(15, NULL, 'acesso ao livro digital com falha', '2018-06-16 14:04:10', NULL, 4, 1, 5, 2, 1, 2, 7, '9', 40),
 (16, NULL, 'nÃ£o impressÃ£o do diploma', '2018-06-16 14:06:06', NULL, 4, 1, 5, 2, 1, 1, 2, '9', 37),
 (17, NULL, 'mudanÃ§a de turnos por questÃµes pessoais', '2018-06-16 14:08:21', NULL, 4, 1, 6, 1, 2, 7, 25, '9', 43),
 (18, NULL, 'problema na nota', '2018-06-16 14:10:14', NULL, 4, 1, 6, 1, 1, 1, 4, '9', 41),
@@ -136,7 +136,7 @@ CREATE TABLE IF NOT EXISTS `curso` (
   `nome_curso` varchar(100) NOT NULL,
   `tipo_curso_id` int(11) NOT NULL,
   PRIMARY KEY (`id_curso`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
 
 --
 -- Extraindo dados da tabela `curso`
@@ -322,7 +322,7 @@ CREATE TABLE IF NOT EXISTS `requerimento` (
   `desc_requerimento` varchar(150) NOT NULL,
   `grupo_requerimento_id` int(11) NOT NULL,
   PRIMARY KEY (`id_requerimento`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=33 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=36 ;
 
 --
 -- Extraindo dados da tabela `requerimento`
@@ -332,35 +332,35 @@ INSERT INTO `requerimento` (`id_requerimento`, `desc_requerimento`, `grupo_reque
 (1, 'COORDENADOR DO CURSO', 1),
 (2, 'DIPLOMA', 1),
 (3, 'ATIVIDADE COMPLEMENTAR ', 1),
-(4, 'LANÇAMENTO DE NOTA ', 1),
+(4, 'LANÃ‡AMENTO DE NOTA ', 1),
 (5, 'PROFESSORES', 1),
 (6, 'ACERVO', 2),
 (7, 'ACESSO A BIBLIOTECA', 2),
 (8, 'QUALIDADE NO ATENDIMENTO DA BIBLIOTECA', 2),
-(9, 'RECLAMAÇÃO SOBRE BOLETO', 3),
-(10, 'RECLAMAÇÃO SOBRE FINANCIAMENTO ', 3),
-(11, 'RECLAMÇÃO SOBRE MENSALIDADES', 3),
-(12, 'RECLAMAÇÃO SOBRE NEGOCIAÇÃO FINANCEIRA', 3),
+(9, 'RECLAMAAÃ‡ÃƒO SOBRE BOLETO', 3),
+(10, 'RECLAMAÃ‡ÃƒO SOBRE FINANCIAMENTO ', 3),
+(11, 'RECLAMÃ‡ÃƒO SOBRE MENSALIDADES', 3),
+(12, 'RECLAMAÃ‡ÃƒO SOBRE NEGOCIAÃ‡ÃƒO FINANCEIRA', 3),
 (13, 'ACESSIBILIDADE', 4),
 (14, 'ESTACIONAMENTO', 4),
 (15, 'BANHEIROS', 4),
 (16, 'LIMPEZA', 4),
 (17, 'CERTIFICADO DE CONGRESSO', 5),
-(18, 'INSCRIÇÃO EM EVENTOS E CONGRESSO', 5),
-(19, 'DECLARAÇÃO DE VÍCULO', 6),
-(20, 'DECLARAÇÃO DE QUITAÇÃO', 6),
-(21, 'DECLARAÇÃO DE FREQUÊNCIA ', 6),
-(22, 'DECLARAÇÃO DE CONCLUSÃO DO CURSO', 6),
-(23, '2ª VIA CARTÃO ACESSO', 6),
-(24, 'REVISÃO DE PROVA ', 7),
-(25, 'MUDANÇA DE CURSO', 7),
-(26, 'ANTECIPAÇÃO DE BANCA DE TCC', 7),
-(27, 'COLAÇÃO DE GRAU EM GABINETE ', 7),
+(18, 'INSCRIÃ‡ÃƒO EM EVENTOS E CONGRESSO', 5),
+(19, 'DECLARAÃ‡ÃƒO DE VINCULO', 6),
+(20, 'DECLARAÃ‡ÃƒO DE QUITAÃ‡ÃƒO', 6),
+(21, 'DECLARAÃ‡ÃƒO DE FREQUÃŠNCIA ', 6),
+(22, 'DECLARAÃ‡ÃƒO DE CONCLUSÃƒO DO CURSO', 6),
+(23, '2Âª VIA CARTÃƒO ACESSO', 6),
+(24, 'REVISÃƒO DE PROVA ', 7),
+(25, 'MUDANÃ‡A DE CURSO', 7),
+(26, 'ANTECIPAÃ‡ÃƒO DE BANCA DE TCC', 7),
+(27, 'COLAÃ‡ÃƒO DE GRAU EM GABINETE ', 7),
 (28, 'DADOS CADASTRAIS VIA PORTAL', 7),
-(29, 'NEGOCIAÇÃO FINANCEIRA (VIA TELEFONE)', 8),
-(30, 'DECLARAÇÃO DE NADA CONSTA', 8),
-(31, 'COMPENSAÇÃO DE CRÉDITO', 8),
-(32, 'ANTECIPAÇÃO DE MENSALIDADE', 8);
+(29, 'NEGOCIAÃ‡ÃƒO FINANCEIRA (VIA TELEFONE)', 8),
+(30, 'DECLARAÃ‡ÃƒO DE NADA CONSTA', 8),
+(31, 'COMPENSAÃ‡ÃƒO DE CRÃ‰DITO', 8),
+(32, 'ANTECIPAÃ‡ÃƒO DE MENSALIDADE', 8);
 
 -- --------------------------------------------------------
 

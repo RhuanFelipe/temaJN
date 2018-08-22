@@ -4,7 +4,7 @@
      var tipo_requerimento_id = $(".tipo_requerimento_id").val();
      var grupo_requerimento_id = $(".grupo_requerimento_id").val();
      var requerimento_id = $(".requerimento_id").val();
-
+     var grupoId = $('.grupoId').val();
      var valor_id = this.value;
 
       if(tipo_curso_id != null)
@@ -73,4 +73,6 @@
     $("#grupo_requerimento").change( "biblioteca/list/listarGrupoRequerimento.php?id="+this.value,function(){
      $("#requerimento").load( "biblioteca/list/listarRequerimento.php?id="+this.value);
    });
+
+    $("#grupo_requerimento_all").load( "biblioteca/list/listarGrupoRequerimentoAll.php?grupoId="+grupoId); 
  });

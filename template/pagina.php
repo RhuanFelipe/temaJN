@@ -44,4 +44,8 @@ else
 		include_once "cadastramento/grupoRequerimento.php";
 	else if($pagina == 'formGrupoRequerimento')
 		include_once "cadastramento/formGrupoRequerimento.php";
+	else if($pagina == 'cadRequerimento')
+		include_once "cadastramento/requerimento.php";
+	else if($pagina == 'formRequerimento')
+		include_once "cadastramento/formRequerimento.php";
 ?>

@@ -66,7 +66,7 @@
                                 <td class=""><?php echo utf8_encode($ps[0]->nome_pessoa); ?></td>
                                 <td><?php echo $cs[0]->nome_curso; ?></td>
                                 <td ><?php echo utf8_encode($req[0]->desc_requerimento); ?></td>
-                                <td scope="row" align="center">
+                                <td scope="row" align="center" width="15%">
 
                                   <button type="button" class="btn btn-info ver" data-toggle="modal" data-id-chamado = "<?php echo $rows->id_chamado; ?>" data-target="#exampleModalCenter" title="vizualizar chamado">
                                   		<i class="fa fa-eye"></i>
@@ -130,7 +130,7 @@
             <h5 class="modal-title" id="exampleModalLongTitle">Chamado</h5>
           </div>
             <div class="modal-body">
-              <h5 class="label-nome"></h5><br>
+              <h4 class="label-nome" align="center"></h4><br>
               <p><b>Tipo Requerimento:  </b><label class="label-tipo-requerimento"></label></p>
               <p><b>Grupo Requerimento:  </b><label class="label-grupo-requerimento"></label></p>
               <p><b>Requerimento:  </b><label class="label-requerimento"></label></p>

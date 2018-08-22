@@ -42,6 +42,7 @@
                         <li><a href="index.php?p=cadUnidade">Unidade</a></li>
                         <li><a href="index.php?p=cadTipoRequerimento">Tipo Requerimento</a></li>
                         <li><a href="index.php?p=cadGrupoRequerimento">Grupo Requerimento</a></li>
+                        <li><a href="index.php?p=cadRequerimento">Requerimento</a></li>
                     </ul>
                 </li>
             <?php } ?>
