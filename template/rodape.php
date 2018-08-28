@@ -101,7 +101,7 @@
       
     });
       
-    $('.concluir , .cancelar').mouseover(function(){
+    $('.concluir , .cancelar, .excluir').mouseover(function(){
       $("#id_chamado").val(this.id);
     });
 
@@ -135,7 +135,7 @@
    
     });
     $(document).ready(function() {
-      var tabela = $('#example').DataTable({
+      var tabela = $('#fullTable').DataTable({
         "language": {
           "lengthMenu": "Mostrar _MENU_ por página",
           "zeroRecords": "não encontrado",
@@ -148,11 +148,22 @@
         'excel', 'pdf', 'print'
         ]
       });
-    } );
+
+      var tabela_min = $('#simpleTable').DataTable({
+        "language": {
+          "lengthMenu": "Mostrar _MENU_ por página",
+          "zeroRecords": "não encontrado",
+          "infoEmpty": "Nenhum registro disponivel",
+          "infoFiltered": "(filtrando from _MAX_ total de registros)",
+
+        },"lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Tudo"]]
+      });
+      tabela_min.buttons().disable();
+    });
 
 
     $('.cancelar').click(function(){
-              var result = bootbox.confirm({
+            var result = bootbox.confirm({
             message: "Deseja Cancelar o Chamado?",
             buttons: {
                 confirm: {
@@ -178,7 +189,35 @@
             }
       });
      
-    });   
+    });  
+    $('.excluir').click(function(){
+            var result = bootbox.confirm({
+            message: "Deseja Excluir o Chamado?",
+            buttons: {
+                confirm: {
+                    label: 'Sim',
+                    className: 'btn-info'
+                },
+                cancel: {
+                    label: 'Não'
+                }
+            },
+            callback: function (result) {
+                if(result != false){
+                  var id = parseInt($("#id_chamado").val());
+                  $.ajax({            
+                    url:"chamado/acao.php",            
+                    type:"GET",                
+                    data: "p=executar&acao=excluir&id="+id,
+                    success: function (result){ 
+                      location.href = "index.php";
+                    }
+                  });
+              } 
+            }
+      });
+     
+    });  
 
  
   });
@@ -187,6 +226,7 @@
   body {
   overflow-x: hidden;
 }
+
 </style>
 </body>
 </html>

@@ -19,7 +19,7 @@
                     </header>
                     <div class="panel-body">
 
-                    <table id="example" class="table table-striped table-hover table-bordered  display" style="width:100%">
+                    <table id="simpleTable" class="table table-striped table-hover table-bordered  display" style="width:100%">
 		                <thead>
                           <tr>
                             <th scope="col">Curso</th>

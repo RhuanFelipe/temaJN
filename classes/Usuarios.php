@@ -105,4 +105,12 @@ class Usuarios extends Crud{
 
 	}
 
+	public function findUsuarioMatricula($matricula){
+		$sql  = "SELECT * FROM $this->table WHERE matricula_usuario like '%".$matricula."%'; AND ativo_usuario = 1 AND nivel_id = 3";
+		$stmt = DB::prepare($sql);
+		$stmt->execute();
+		$dados = $stmt->fetchAll();		 
+		return $dados;		
+	}
+
 }

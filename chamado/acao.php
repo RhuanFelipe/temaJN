@@ -4,11 +4,13 @@
 	}
 	$id = $_GET["id"];
 	$acao = $_GET['acao'];
-	
+
 	$chamado = new Chamado();
-	if($acao == 'concluir')
+	if($acao == 'concluir'){
 		$chamado->concluirChamado($id);
-	else
+	}else if($acao == 'cancelar'){
 		$chamado->fecharChamado($id);
-	
+	}else{
+		$chamado->delete($id);
+	}
 ?>

@@ -215,6 +215,13 @@ class Chamado extends Crud{
 		$result = $stmt->rowCount();
 		return $result;
 	}
+	public function qtdChamadosAbertos(){
+		$sql  = "SELECT * FROM $this->table where status = 9";
+		$stmt = DB::prepare($sql);
+		$stmt->execute();
+		$result = $stmt->rowCount();
+		return $result;
+	}
 	public function findAllChamados($id_curso){
 		$sql  = "SELECT * FROM $this->table where curso_id = :id_curso order By $this->orderBy $this->ordem";
 		$stmt = DB::prepare($sql);
@@ -231,10 +238,17 @@ class Chamado extends Crud{
 		$stmt->execute();
 		return $stmt->fetchAll();
 	}
-	public function findAllChamadosAbertos($id_curso){
+	public function findAllChamadosAbertosCurso($id_curso){
 		$sql  = "SELECT * FROM $this->table where curso_id = :id_curso and status = 9 order By $this->orderBy $this->ordem";
 		$stmt = DB::prepare($sql);
 		$stmt->bindParam(':id_curso', $id_curso, PDO::PARAM_INT);
+
+		$stmt->execute();
+		return $stmt->fetchAll();
+	}
+	public function findAllChamadosAbertos(){
+		$sql  = "SELECT * FROM $this->table where  status = 9 order By $this->orderBy $this->ordem";
+		$stmt = DB::prepare($sql);
 
 		$stmt->execute();
 		return $stmt->fetchAll();

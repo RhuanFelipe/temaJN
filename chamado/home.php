@@ -9,11 +9,11 @@
   
     if($_SESSION['nivel_id'] == 1){
       $dadosAcesso = $pessoa->findById($_SESSION['usuario_id']);
-      $dados = $c->findAllChamadosAbertos($dadosAcesso[0]->curso_id);
+      $dados = $c->findAllChamadosAbertosCurso($dadosAcesso[0]->curso_id);
       $qtdChamados = $c->qtdChamadosCursoAbertos($dadosAcesso[0]->curso_id);
     }else{
-      $dados = $c->findAllOrder();
-      $qtdChamados = $c->qtdChamados();
+      $dados = $c->findAllChamadosAbertos();
+      $qtdChamados = $c->qtdChamadosAbertos();
     }
   $usuario->findDados($matricula);
 ?>
@@ -37,7 +37,7 @@
                       <p style="float: right;">Qtd. Chamados : <?php echo $qtdChamados; ?></p>
                   <input class="chamado_click" type="hidden"  value="">
 
-				         <table id="example" class="table table-striped table-hover table-bordered  display" style="width:100%">
+				         <table id="fullTable" class="table table-striped table-hover table-bordered  display" style="width:100%">
 			                   <thead>
                               <tr>
                                 <th scope="col">Mat.</th>
@@ -62,10 +62,10 @@
                               <tr class="modal-desc">
                                                                 
                                 <th scope="row"><?php echo $users->matricula_usuario; ?></th>
-                                <td><?php echo date('d/m/Y - H:i', strtotime($rows->data_abertura)); ?></td>
+                                <td  width="15%"><?php echo date('d/m/Y - H:i', strtotime($rows->data_abertura)); ?></td>
                                 <td class=""><?php echo utf8_encode($ps[0]->nome_pessoa); ?></td>
                                 <td><?php echo $cs[0]->nome_curso; ?></td>
-                                <td ><?php echo utf8_encode($req[0]->desc_requerimento); ?></td>
+                                <td ><?php echo $req[0]->desc_requerimento; ?></td>
                                 <td scope="row" align="center" width="15%">
 
                                   <button type="button" class="btn btn-info ver" data-toggle="modal" data-id-chamado = "<?php echo $rows->id_chamado; ?>" data-target="#exampleModalCenter" title="vizualizar chamado">
@@ -73,18 +73,16 @@
                                   </button>
                                   <?php 
 	                                  if($_SESSION['nivel_id'] == 2){
-	                                  	if($rows->status == 0 && $rows->status != '') {
-	                                  		echo "Cancelado";
-                                      }else if($rows->status == 1){ 
-	                                  		echo "Finalizado";
-	                                  	}else{
+	                                  	
                                     ?>
                                     <a href="?p=abrirChamado&edit=1&id=<?php echo $rows->id_chamado; ?>" class="btn btn-success edit"  title="Editar Chamado">
                                       <i class="fa fa-pencil"></i>
-                                  </a>
+                                    </a>
+                                     <a href="#" class="btn btn btn-danger excluir" title="Excluir Chamado" id="<?php echo $rows->id_chamado; ?>">
+                                          <i class="fa fa-eraser"></i>
+                                      </a>
                                   <?php
-	                                  		echo "Aberto";
-                                      }
+	                                  	
 	                                  }
                                    ?>
           									<?php if($_SESSION['nivel_id'] == 1) {

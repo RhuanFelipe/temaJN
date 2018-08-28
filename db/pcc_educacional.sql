@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 22-Ago-2018 às 05:19
+-- Generation Time: 28-Ago-2018 às 04:40
 -- Versão do servidor: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `chamado` (
   `status` char(1) DEFAULT '9',
   `pessoa_id` int(11) NOT NULL,
   PRIMARY KEY (`id_chamado`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=39 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=40 ;
 
 --
 -- Extraindo dados da tabela `chamado`
@@ -95,7 +95,7 @@ INSERT INTO `chamado` (`id_chamado`, `protocolo_chamado`, `assunto_chamado`, `da
 (19, NULL, 'meus dados estÃ£o inconsistentes no portal', '2018-06-16 14:10:44', NULL, 4, 1, 6, 1, 2, 7, 28, '9', 41),
 (20, NULL, 'problema estrutural da faculdade', '2018-06-16 14:12:02', NULL, 4, 1, 7, 1, 1, 4, 13, '1', 1),
 (21, NULL, 'revisar desconto academico', '2018-06-16 14:12:44', NULL, 4, 1, 7, 1, 2, 8, 29, '0', 47),
-(22, NULL, 'assuntos pessoais', '2018-06-16 14:13:09', NULL, 4, 1, 7, 1, 1, 1, 1, '9', 2),
+(22, NULL, 'assuntos pessoais', '2018-06-16 14:13:09', NULL, 4, 1, 7, 1, 1, 1, 1, '0', 2),
 (23, NULL, 'atestado mÃ©dico', '2018-06-16 14:13:37', NULL, 4, 1, 7, 1, 1, 1, 1, '0', 1),
 (24, NULL, 'pedido de ajuste na matricula', '2018-06-16 14:14:26', NULL, 4, 1, 8, 1, 2, 8, 29, '9', 51),
 (25, NULL, 'nota nÃ£o lanÃ§ada', '2018-06-16 14:14:48', NULL, 4, 1, 8, 1, 2, 7, 24, '9', 55),
@@ -103,15 +103,14 @@ INSERT INTO `chamado` (`id_chamado`, `protocolo_chamado`, `assunto_chamado`, `da
 (27, NULL, 'problema no lanÃ§amento de nota', '2018-06-16 14:17:47', NULL, 4, 1, 9, 1, 1, 1, 4, '9', 56),
 (28, NULL, 'boleto errado', '2018-06-16 14:18:34', NULL, 4, 1, 9, 1, 1, 3, 9, '9', 58),
 (29, NULL, 'troca de curso', '2018-06-16 14:19:02', NULL, 4, 1, 9, 1, 2, 7, 25, '9', 60),
-(30, NULL, 'problema na nota', '2018-06-16 14:19:18', NULL, 4, 1, 10, 1, 1, 1, 4, '9', 61),
+(30, NULL, 'problema na nota', '2018-06-16 14:19:18', NULL, 4, 1, 10, 1, 1, 1, 4, '0', 61),
 (31, NULL, 'financiamento errado', '2018-06-16 14:19:35', NULL, 4, 1, 10, 1, 1, 3, 10, '9', 62),
 (32, NULL, 'diploma errada', '2018-06-16 14:19:49', NULL, 4, 1, 10, 1, 2, 6, 2, '9', 61),
 (33, NULL, 'erro ao lanÃ§ar a nota', '2018-06-21 19:28:58', NULL, 4, 1, 5, 1, 1, 1, 4, '1', 38),
 (34, NULL, 'Meu nome nÃ£o estÃ¡ na Chamada!', '2018-06-21 19:52:22', NULL, 4, 1, 1, 1, 1, 1, 1, '9', 66),
 (35, NULL, 'reabertura de chamado', '2018-06-21 20:00:00', NULL, 4, 1, 5, 1, 1, 1, 2, '9', 36),
 (36, NULL, 'nÃ£o foi lanÃ§ada a minha nota', '2018-06-21 20:28:54', NULL, 4, 1, 7, 1, 1, 1, 4, '1', 1),
-(37, NULL, 'teste 2', '2018-08-08 21:16:19', NULL, 4, 1, 1, 1, 1, 1, 1, '9', 5),
-(38, NULL, 'problema estrutural', '2018-08-09 00:13:39', NULL, 4, 1, 2, 1, 1, 4, 14, '9', 23);
+(39, NULL, 'teste', '2018-08-27 22:33:59', NULL, 4, 1, 7, 1, 1, 1, 2, '0', 46);
 
 -- --------------------------------------------------------
 
@@ -322,7 +321,7 @@ CREATE TABLE IF NOT EXISTS `requerimento` (
   `desc_requerimento` varchar(150) NOT NULL,
   `grupo_requerimento_id` int(11) NOT NULL,
   PRIMARY KEY (`id_requerimento`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=36 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=33 ;
 
 --
 -- Extraindo dados da tabela `requerimento`
@@ -520,7 +519,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `ativo_usuario` char(1) NOT NULL,
   `nivel_id` int(11) NOT NULL,
   PRIMARY KEY (`id_usuario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=76 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=77 ;
 
 --
 -- Extraindo dados da tabela `usuario`
@@ -531,6 +530,67 @@ INSERT INTO `usuario` (`id_usuario`, `matricula_usuario`, `senha_usuario`, `ativ
 (2, 11111111, '123', '1', 1),
 (3, 12345678, '123', '1', 3),
 (4, 87654321, '123', '1', 2),
+(5, 81625366, '123', '1', 3),
+(6, 30151367, '123', '1', 3),
+(7, 86672973, '123', '1', 3),
+(8, 70965576, '123', '1', 3),
+(9, 13546753, '123', '1', 3),
+(10, 15832520, '123', '1', 3),
+(11, 71685801, '123', '1', 3),
+(12, 61236572, '123', '1', 3),
+(13, 84335327, '123', '1', 3),
+(14, 38037109, '123', '1', 3),
+(15, 87188720, '123', '1', 3),
+(16, 86468505, '123', '1', 3),
+(17, 65866089, '123', '1', 3),
+(18, 31140137, '123', '1', 3),
+(19, 38198853, '123', '1', 3),
+(20, 56036377, '123', '1', 3),
+(21, 80014038, '123', '1', 3),
+(22, 79516601, '123', '1', 3),
+(23, 92483520, '123', '1', 3),
+(24, 29315186, '123', '1', 3),
+(25, 98654174, '123', '1', 3),
+(26, 17541504, '123', '1', 3),
+(27, 18447876, '123', '1', 3),
+(28, 15679932, '123', '1', 3),
+(29, 43661499, '123', '1', 3),
+(30, 29589844, '123', '1', 3),
+(31, 12966919, '123', '1', 3),
+(32, 74505615, '123', '1', 3),
+(33, 86911010, '123', '1', 3),
+(34, 50036621, '123', '1', 3),
+(35, 22915650, '123', '1', 3),
+(36, 15167237, '123', '1', 3),
+(37, 50277710, '123', '1', 3),
+(38, 63256836, '123', '1', 3),
+(39, 45169067, '123', '1', 3),
+(40, 97039794, '123', '1', 3),
+(41, 56365970, '123', '1', 3),
+(42, 36254891, '123', '1', 3),
+(43, 26602173, '123', '1', 3),
+(44, 29498291, '123', '1', 3),
+(45, 74862671, '123', '1', 3),
+(46, 55517578, '123', '1', 3),
+(47, 64089966, '123', '1', 3),
+(48, 71917724, '123', '1', 3),
+(49, 29830933, '123', '1', 3),
+(50, 53308105, '123', '1', 3),
+(51, 45074470, '123', '1', 3),
+(52, 33673096, '123', '1', 3),
+(53, 92416381, '123', '1', 3),
+(54, 81372070, '123', '1', 3),
+(55, 44729614, '123', '1', 3),
+(56, 74139404, '123', '1', 3),
+(57, 34494019, '123', '1', 3),
+(58, 74084472, '123', '1', 3),
+(59, 31631470, '123', '1', 3),
+(60, 26916510, '123', '1', 3),
+(61, 77938842, '123', '1', 3),
+(62, 15820313, '123', '1', 3),
+(63, 62088013, '123', '1', 3),
+(64, 78704834, '123', '1', 3),
+(65, 94625854, '123', '1', 3),
 (66, 12341234, '123', '1', 1),
 (67, 43214321, '123', '1', 1),
 (68, 11110000, '123', '1', 1),
@@ -540,7 +600,8 @@ INSERT INTO `usuario` (`id_usuario`, `matricula_usuario`, `senha_usuario`, `ativ
 (72, 11110001, '123', '1', 1),
 (73, 99999999, '123', '1', 1),
 (74, 22223333, '123', '1', 1),
-(75, 123, '123', '1', 4);
+(75, 123, '123', '1', 4),
+(76, 78063971, '123', '1', 3);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -16,7 +16,6 @@ abstract class Crud extends DB{
 		$stmt = DB::prepare($sql);
 		$stmt->bindParam(':id', $id, PDO::PARAM_INT);
 		$stmt->execute();
-
 		if($stmt->fetch()){
 			return $stmt->fetch();
 		}else{

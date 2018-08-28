@@ -35,7 +35,7 @@
                     </header>
                     <div class="panel-body">
                             <p style="float: right;">Qtd. Chamados : <?php echo $qtdChamados; ?></p>
-				<table id="example" class="table table-striped table-hover table-bordered  display" style="width:100%">
+				<table id="fullTable" class="table table-striped table-hover table-bordered  display" style="width:100%">
 			         <thead>
                               <tr>
                                 <th scope="col">Mat.</th>
@@ -58,17 +58,15 @@
                                   $gr = $grupoRequerimento->findById($rows->grupo_requerimento_id);
                                ?>
                               <tr class="modal-desc">
-                                <input class="tp_<?php echo $rows->id_chamado; ?>" type="hidden" name="" value="<?php echo utf8_encode($tr[0]->opt_requerimento); ?>">
-                                <input class="gr_<?php echo $rows->id_chamado; ?>" type="hidden" name="" value="<?php echo utf8_encode($gr[0]->desc_grupo); ?>">
-                                <input class="assunto_<?php echo $rows->id_chamado; ?>" type="hidden" name="" value="<?php echo $rows->assunto_chamado; ?>">
+                                 <input class="chamado_click" type="hidden"  value="">
                                 <th scope="row"><?php echo $users->matricula_usuario; ?></th>
                                 <td><?php echo $rows->data_abertura; ?></td>
                                 <td class="nome_pessoa_<?php echo $rows->id_chamado; ?>"><?php echo utf8_encode($ps[0]->nome_pessoa); ?></td>
-                                <td><?php echo utf8_encode($cs[0]->nome_curso); ?></td>
-                                <td class="req_<?php echo $rows->id_chamado; ?>"><?php echo utf8_encode($req[0]->desc_requerimento); ?></td>
+                                <td><?php echo $cs[0]->nome_curso; ?></td>
+                                <td class="req_<?php echo $rows->id_chamado; ?>"><?php echo $req[0]->desc_requerimento; ?></td>
                                 <td scope="row" align="center">
 
-                                  <button type="button" class="btn btn-info ver" data-toggle="modal" data-target="#exampleModalCenter" title="vizualizar chamado">
+                               <button type="button" class="btn btn-info ver" data-toggle="modal" data-id-chamado = "<?php echo $rows->id_chamado; ?>" data-target="#exampleModalCenter" title="vizualizar chamado">
                                   		<i class="fa fa-eye"></i>
                                   </button>
                                   <?php 
@@ -124,16 +122,16 @@
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLongTitle">Chamado</h5>
           </div>
-          <div class="modal-body">
-            <h5 class="label-nome"></h5><br>
-            <p><b>Tipo Requerimento:  </b><label class="label-tipo-requerimento"></label></p>
-            <p><b>Grupo Requerimento:  </b><label class="label-grupo-requerimento"></label></p>
-            <p><b>Requerimento:  </b><label class="label-requerimento"></label></p>
-            <p><b>Assunto:  </b><label class="label-assunto"></label></p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-          </div>
+            <div class="modal-body">
+              <h4 class="label-nome" align="center"></h4><br>
+              <p><b>Tipo Requerimento:  </b><label class="label-tipo-requerimento"></label></p>
+              <p><b>Grupo Requerimento:  </b><label class="label-grupo-requerimento"></label></p>
+              <p><b>Requerimento:  </b><label class="label-requerimento"></label></p>
+              <p><b>Assunto:  </b><label class="label-assunto"></label></p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            </div>
         </div>
       </div>
     </div>
