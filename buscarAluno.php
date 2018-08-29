@@ -12,13 +12,20 @@
   $pessoa = array();
   $lista = array();
   $dados = $usuario->findUsuarioMatricula($matricula);
-
-  for ($i= 0;$i < count($dados);$i++){  
+  @$id = $_REQUEST['id'];
+  
+  if(!isset($id)){
+    for ($i= 0;$i < count($dados);$i++){  
       $pessoa          = $p->findById($dados[$i]->id_usuario);
       
       for($j=0;$j < count($pessoa);$j++){
         $return[]["nome_pessoa"] = $dados[$i]->matricula_usuario ." - ". $pessoa[$j]->nome_pessoa;
+        $return[]["id_pessoa"] =  $pessoa[$j]->id_pessoa;
       }
+    }
+  }else{
+    $pessoa          = $p->findById($id);
+    $return[]["id_pessoa"] =  $pessoa[0]->id_pessoa;
 
   }
     echo json_encode($return);

@@ -4,7 +4,7 @@
 	</header>
 <body>
 <input id="matricula" minlength="8" maxlength="8" style="padding: 10px;font-size: 15px;width: 300px" />
-<input id="id_pessoa" type="hidden" />
+<input id="id_pessoa" type="text" value="<?php echo $_REQUEST['id'];?>"/>
 <a href="#" class="alterar">alterar</a>
 
 </body>
@@ -13,11 +13,25 @@
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script type="text/javascript">
 	  $(document).ready(function(){
-	  	$("#matricula").keyup(function(){
-	  		if($("#id_pessoa").val() == ""){
-	  			$("#id_pessoa").val(this.value);
-	  		}
+	  	$("#matricula").focusout(function(){
+	  		var id_pessoa = $("#id_pessoa").val(this.value);
+	  		var id_pessoa_item = $("#id_pessoa").val();
+
+	  		//var id_pessoa_tam = id_pessoa_item.length;
+	  		var id_pessoa_sub = id_pessoa_item.substr(0, 8);
+	  		$("#id_pessoa").val(id_pessoa_sub);
+	  		
+	  		
+	  		$.ajax({
+        		url: 'buscarAluno.php',
+        		dataType : 'json',
+        		data:{"matricula" : $("#id_pessoa").val()},
+        		success: function(data){
+        			$("#id_pessoa").val(data[1].id_pessoa)
+        		}
+        	});
 	  	});
+
 	  	$("#matricula").autocomplete({
 		        source: function(request,response){
 		        	$.ajax({
