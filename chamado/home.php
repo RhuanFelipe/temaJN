@@ -75,7 +75,7 @@
 	                                  if($_SESSION['nivel_id'] == 2){
 	                                  	
                                     ?>
-                                    <a href="?p=abrirChamado&edit=1&id=<?php echo $rows->id_chamado; ?>" class="btn btn-success edit"  title="Editar Chamado">
+                                    <a href="?p=abrirChamado&edit=1&id=<?php echo $rows->id_chamado; ?>&id_pessoa=<?php echo $rows->pessoa_id; ?>" class="btn btn-success edit"  title="Editar Chamado">
                                       <i class="fa fa-pencil"></i>
                                     </a>
                                      <a href="#" class="btn btn btn-danger excluir" title="Excluir Chamado" id="<?php echo $rows->id_chamado; ?>">

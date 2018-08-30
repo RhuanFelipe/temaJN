@@ -57,10 +57,15 @@
         <div class="col-md-12">
             <div class="form-group">
                 <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Aluno: </label>
-                <div class="col-lg-6">
-                    <select class="form-control m-bot15" id="aluno" name="aluno">
-                        <option selected>Informe o aluno</option>
-                    </select>
+                <div class="col-lg-5">
+                   <input id="matricula" class="form-control m-bot15" minlength="8" maxlength="8" />
+                    
+                    <input id="id_pessoa" type="hidden" value="<?php echo @$_REQUEST['id_pessoa'];?>" name="aluno"/>
+                </div>
+                <div class="col-lg-1">
+                    <a href="#" class="btn btn-success edit alterar" title="Editar Chamado">
+                      <i class="fa fa-pencil"></i>
+                    </a>
                 </div>
             </div>            
         </div>  

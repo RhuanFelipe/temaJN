@@ -2,13 +2,13 @@
   header("Content-Type: application/json; charset=utf-8"); 
 
    function __autoload($class_name){
-      require_once 'classes/' . $class_name . '.php';
+      require_once '../../classes/' . $class_name . '.php';
     }
 
   $usuario = new Usuarios();
   $p = new Pessoa();
   $return = array();
-  $matricula = $_REQUEST['matricula'];
+  @$matricula = $_REQUEST['matricula'];
   $pessoa = array();
   $lista = array();
   $dados = $usuario->findUsuarioMatricula($matricula);
@@ -25,9 +25,11 @@
     }
   }else{
     $pessoa          = $p->findById($id);
-    $return[]["id_pessoa"] =  $pessoa[0]->id_pessoa;
-
+    if(count($pessoa[0]->id_pessoa)){
+      $dados = $usuario->findById($pessoa[0]->id_pessoa);
+      $return[]["nome_pessoa"] = $dados[0]->matricula_usuario ." - ". $pessoa[0]->nome_pessoa;
+    }
   }
-    echo json_encode($return);
+  echo json_encode($return);
 
 ?>

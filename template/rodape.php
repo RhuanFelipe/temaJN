@@ -30,6 +30,9 @@
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
 <script type="text/javascript" src="js/libs/lists.js"></script>
+<script type="text/javascript" src="chamado/js/autocompleteChamado.js"></script>
+ <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <!--common script init for all pages-->
 <script src="js/scripts.js"></script>
 <script type="text/javascript">

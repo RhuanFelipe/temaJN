@@ -5,6 +5,7 @@ require_once 'Crud.php';
 class Usuarios extends Crud{
 	
 	protected $table = 'usuario';
+	protected $id_coluna = 'id_usuario';
 	private $nome;
 	private $email;
 	private $nivel;
