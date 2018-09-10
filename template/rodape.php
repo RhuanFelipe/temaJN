@@ -38,17 +38,50 @@
 <script type="text/javascript">
   $(document).ready(function(){
     var ver_click = $('.ver');
-    
+
     $(".btn-cad-aluno").click(function(){
-      $.ajax({
-          type: "POST",
-          url: "chamado/salvarAluno.php",
-          data: $("#form-cad-aluno").serialize(),
-          success: function(data){
-            console.log(data)
-          }
+      var nome = $("#nome").val();
+      var periodo = $("#periodo").val();
+      var email = $("#email").val();
+      var telefone = $("#telefone").val();
+
+      var msgError = "";
+      var error = 0;
+      if(nome == ''){
+         msgError += '* <b style="color:red">PREENCHA O CAMPO NOME</b><br><br>';
+         error++;
+      }
+      if(periodo == ''){
+         msgError += '* <b style="color:red">PREENCHA O PERIODO</b><br><br>';
+         error++;
+      }
+      if(email == ''){
+         msgError += '* <b style="color:red">PREENCHA O E-MAIL</b><br><br>';
+         error++;
+      }
+       if(telefone == ''){
+         msgError += '* <b style="color:red">PREENCHA O TELEFONE</b><br><br>';
+         error++;
+      }
+      if(error != 0){
+         bootbox.alert({
+              title: "ERROR AO CADASTRAR CHAMADO",
+              message: msgError
+              
         });
-    });  
+      }else{
+        $.ajax({
+            type: "POST",
+            url: "chamado/salvarAluno.php",
+            data: $("#form-cad-aluno").serialize(),
+            success: function(data){
+              $(".btn-fechar-cadAluno").trigger("click");
+              $("#matricula").val(data);
+            }
+          });
+      } 
+    }); 
+
     ver_click.click(function(){
       $('.chamado_click').val($(this).data('id-chamado'))
     });
@@ -70,18 +103,6 @@
             //console.log("Data: " + data + "\nStatus: " + status)
           }
         });
-        
-        /*var nome = $('.nome_pessoa_'+i).val();
-        var tp = $('.tp_'+i).val();
-        var gr = $('.gr_'+i).val();
-        var req = $('.req_'+i).val();
-        var assunto = $('.assunto_'+i).val();  
-     
-        console.log("Id : "+i+", nome: "+nome+ ", tp: "+ tp + ", gr : "+gr+", req : "+req+ ", assunto: "+assunto);
-        $('.label-nome').html(nome);
-        $('.label-grupo-requerimento').html(gr);
-        $('.label-requerimento').html(req);
-        $('.label-assunto').html(assunto);*/
     });
     $('.btn-deslogar').click(function(){
 

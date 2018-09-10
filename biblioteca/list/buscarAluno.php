@@ -24,11 +24,10 @@
       }
     }
   }else{
-    $pessoa          = $p->findById($id);
-    if(count($pessoa[0]->id_pessoa)){
+      $pessoa          = $p->findById($id);
       $dados = $usuario->findById($pessoa[0]->id_pessoa);
       $return[]["nome_pessoa"] = $dados[0]->matricula_usuario ." - ". $pessoa[0]->nome_pessoa;
-    }
+    
   }
   echo json_encode($return);
 

@@ -9,6 +9,8 @@ class Usuarios extends Crud{
 	private $nome;
 	private $email;
 	private $nivel;
+	private $matricula;
+	private $idUsuario;
 
 	public function setNome($nome){
 		$this->nome = $nome;
@@ -28,6 +30,21 @@ class Usuarios extends Crud{
 	public function setEmail($email){
 		$this->email = $email;
 	}
+	public function getMatricula(){
+		return $this->matricula;
+	}
+
+	public function setMatricula($matricula){
+		$this->matricula = $matricula;
+	}
+	public function getIdUsuario(){
+		return $this->idUsuario;
+	}
+
+	public function setIdUsuario($idUsuario){
+		$this->idUsuario = $idUsuario;
+	}
+
 	public function findDados($matricula){
 		$sql  = "SELECT * FROM $this->table WHERE matricula_usuario = :matricula";
 		$stmt = DB::prepare($sql);
@@ -83,11 +100,14 @@ class Usuarios extends Crud{
 		}
 	}
 	public function insert(){
-
-		$sql  = "INSERT INTO $this->table (nome, email) VALUES (:nome, :email)";
+		$this->setNivel(3);
+		
+		$sql  = "INSERT INTO $this->table (id_usuario,matricula_usuario,nivel_id) VALUES (:id_usuario, :matricula, :nivel_id)";
 		$stmt = DB::prepare($sql);
-		$stmt->bindParam(':nome', $this->nome);
-		$stmt->bindParam(':email', $this->email);
+		$stmt->bindParam(':id_usuario', $this->idUsuario, PDO::PARAM_INT);
+		$stmt->bindParam(':matricula', $this->matricula, PDO::PARAM_INT);
+		$stmt->bindParam(':nivel_id', $this->nivel, PDO::PARAM_INT);
+		
 		return $stmt->execute(); 
 
 	}
@@ -113,5 +133,6 @@ class Usuarios extends Crud{
 		$dados = $stmt->fetchAll();		 
 		return $dados;		
 	}
+
 
 }

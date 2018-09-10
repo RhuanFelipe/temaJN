@@ -59,13 +59,12 @@
                 <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Aluno: </label>
                 <div class="col-lg-5">
                    <input id="matricula" class="form-control m-bot15" minlength="8" maxlength="8" />
-                    
                     <input id="id_pessoa" type="hidden" value="<?php echo @$_REQUEST['id_pessoa'];?>" name="aluno"/>
                 </div>
                 <div class="col-lg-2">
-                   <!-- <a href="#" class="btn btn-info adicionar" title="Adicinar Aluno" data-target="#modalCadAluno" data-toggle="modal">
+                   <a href="#" class="btn btn-info adicionar" title="Adicinar Aluno" data-target="#modalCadAluno" data-toggle="modal">
                       <i class="fa fa-file-text-o"></i>
-                    </a> -->
+                    </a> 
                     <a href="#" class="btn btn-success edit alterar" title="Editar Aluno">
                       <i class="fa fa-pencil"></i>
                     </a>
@@ -145,18 +144,39 @@
               <h4 class="label-nome" align="center"></h4><br>
               <form id="form-cad-aluno">
               <p><b>Nome Aluno:  </b><input type="text" id="nome" name="nome" class="form-control"></p>
-              <p><b>Matricula:  </b><input type="text" id="matricula" name="matricula" class="form-control"></p>
+              <p><b>Matricula:  </b><input type="text" id="matricula_novo" name="matricula_novo" class="form-control" readonly=""></p>
+              <p><b>Turno:  </b></p>
+              <p>
+                  <label class="radio-inline"><input type="radio" name="turno"  value="1" checked>Manhã</label>
+                  <label class="radio-inline"><input type="radio" name="turno" value="2" >Tarde</label>
+                  <label class="radio-inline"><input type="radio" name="turno" value="3" >Noite</label>
+              </p>
+              <p><b>Periodo:  </b>
+                <select id="periodo" name="periodo" class="form-control">
+                    <option value=''>Informe um periodo...</option>
+                    <option value='1'>periodo 1</option>
+                    <option value='2'>periodo 2</option>
+                    <option value='3'>periodo 3</option>
+                    <option value='4'>periodo 4</option>
+                    <option value='5'>periodo 5</option>
+                    <option value='6'>periodo 6</option>
+                    <option value='7'>periodo 7</option>
+                    <option value='8'>periodo 8</option>
+                    <option value='9'>periodo 9</option>
+                    <option value='10'>periodo 10</option>
+                </select>
+              <p>
               <p><b>Curso:  </b>
                 <select id="cursoAll" name="cursoAll" class="form-control">
                     <option>...</option>
                 </select>
               <p><b>Email:  </b><input type="text" id="email" name="email" class="form-control"></p>
               <p><b>Telefone:  </b><input type="text" id="telefone" name="telefone" class="form-control"></p>
-              <p><b>Sexo:  </b><input type="radio" name="sexo" checked="checked">Masculino | <input type="radio" name="sexo">Feminino</p>
+              <p><b>Sexo:  </b><input type="radio" name="sexo" checked="checked" value="m">Masculino | <input type="radio" name="sexo" value="f">Feminino</p>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-success btn-cad-aluno"  >Cadastrar</button>
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+              <button type="button" class="btn btn-secondary btn-fechar-cadAluno" data-dismiss="modal">Fechar</button>
               </form>
             </div>
         </div>

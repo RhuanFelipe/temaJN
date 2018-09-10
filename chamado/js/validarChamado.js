@@ -1,3 +1,15 @@
+ function gerarMatricula(){
+   var matricula = Math.floor(Math.random() * (1000000, 99999999) + 1);
+   while(matricula.toString().length != 8){
+     matricula = Math.floor(Math.random() * (1000000, 99999999) + 1);
+   }
+   matricula = matricula.toString();
+   matricula = matricula.substr(0,8);
+
+   document.getElementById("matricula_novo").value = matricula;
+ }
+ gerarMatricula();
+ 
  function validarChamado(){
         var msgError = "";
         var error = 0;
