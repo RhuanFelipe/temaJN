@@ -55,10 +55,9 @@
     $("#unidade").load("biblioteca/list/listarUnidade.php?id="+unidade_id);
 
     $("#tipo_requerimento").load("biblioteca/list/listarTipoRequerimento.php?id="+tipo_requerimento_id,function(){
-
       $("#grupo_requerimento").load( "biblioteca/list/listarGrupoRequerimento.php?id="+this.value+"&idGrupo="+grupo_requerimento_id,function(){
-       $("#requerimento").load( "biblioteca/list/listarRequerimento.php?id="+this.value+"&idRequerimento="+requerimento_id);
-     });
+      $("#requerimento").load( "biblioteca/list/listarRequerimento.php?id="+this.value+"&idRequerimento="+requerimento_id);
+    });
     });
     $("#curso").change(function(){
         $("#aluno").load( "biblioteca/list/listarAluno.php?id="+this.value);
@@ -68,11 +67,15 @@
    });
 
     $("#tipo_requerimento").change(function(){
-     $("#grupo_requerimento").load( "biblioteca/list/listarGrupoRequerimento.php?id="+this.value);
+     $("#grupo_requerimento").load( "biblioteca/list/listarGrupoRequerimento.php?id="+this.value,function(){
+        $("#requerimento").load( "biblioteca/list/listarRequerimento.php?id="+this.value);
+     });
+
    });
     $("#grupo_requerimento").change( "biblioteca/list/listarGrupoRequerimento.php?id="+this.value,function(){
      $("#requerimento").load( "biblioteca/list/listarRequerimento.php?id="+this.value);
    });
 
     $("#grupo_requerimento_all").load( "biblioteca/list/listarGrupoRequerimentoAll.php?grupoId="+grupoId); 
+    $("#cursoAll").load( "biblioteca/list/listarCursoAll.php"); 
  });

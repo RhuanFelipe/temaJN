@@ -9,6 +9,7 @@
 
 	if($id != "")
 		$id = $_REQUEST['id'];
+	echo "<option value=''>Selecione um tipo requerimento...</option>";
 
 	foreach ($tp as $value) {
 		if($value->id_requerimento == $id){

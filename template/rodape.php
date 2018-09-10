@@ -39,6 +39,16 @@
   $(document).ready(function(){
     var ver_click = $('.ver');
     
+    $(".btn-cad-aluno").click(function(){
+      $.ajax({
+          type: "POST",
+          url: "chamado/salvarAluno.php",
+          data: $("#form-cad-aluno").serialize(),
+          success: function(data){
+            console.log(data)
+          }
+        });
+    });  
     ver_click.click(function(){
       $('.chamado_click').val($(this).data('id-chamado'))
     });
@@ -60,7 +70,7 @@
             //console.log("Data: " + data + "\nStatus: " + status)
           }
         });
-         
+        
         /*var nome = $('.nome_pessoa_'+i).val();
         var tp = $('.tp_'+i).val();
         var gr = $('.gr_'+i).val();

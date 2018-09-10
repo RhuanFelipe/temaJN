@@ -19,6 +19,6 @@
 		echo "<option value=".$value->id_grupo." ".$checked." >".$value->desc_grupo."</option>";
 		}
 	}else{
-		echo "<option>Informe o grupo de requerimento</option>";
+		echo "<option value=''>Informe um grupo de requerimento ...</option>";
 	}
 ?>

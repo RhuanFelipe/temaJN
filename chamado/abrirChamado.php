@@ -10,7 +10,7 @@
     }
 ?>
 <section id="main-content">
-  <form method="post" action="chamado/chamado.php">
+  <form method="post" action="chamado/chamado.php" onsubmit="return validarChamado()">
     <?php 
      if($idChamado != "" && $edit == 1){
         $c = new Chamado();
@@ -62,8 +62,11 @@
                     
                     <input id="id_pessoa" type="hidden" value="<?php echo @$_REQUEST['id_pessoa'];?>" name="aluno"/>
                 </div>
-                <div class="col-lg-1">
-                    <a href="#" class="btn btn-success edit alterar" title="Editar Chamado">
+                <div class="col-lg-2">
+                   <!-- <a href="#" class="btn btn-info adicionar" title="Adicinar Aluno" data-target="#modalCadAluno" data-toggle="modal">
+                      <i class="fa fa-file-text-o"></i>
+                    </a> -->
+                    <a href="#" class="btn btn-success edit alterar" title="Editar Aluno">
                       <i class="fa fa-pencil"></i>
                     </a>
                 </div>
@@ -130,3 +133,33 @@
 </section>
 <!--main content end-->
 
+
+ <!-- Modal -->
+    <div class="modal fade" id="modalCadAluno" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Cadastro Alunos</h5>
+          </div>
+            <div class="modal-body">
+              <h4 class="label-nome" align="center"></h4><br>
+              <form id="form-cad-aluno">
+              <p><b>Nome Aluno:  </b><input type="text" id="nome" name="nome" class="form-control"></p>
+              <p><b>Matricula:  </b><input type="text" id="matricula" name="matricula" class="form-control"></p>
+              <p><b>Curso:  </b>
+                <select id="cursoAll" name="cursoAll" class="form-control">
+                    <option>...</option>
+                </select>
+              <p><b>Email:  </b><input type="text" id="email" name="email" class="form-control"></p>
+              <p><b>Telefone:  </b><input type="text" id="telefone" name="telefone" class="form-control"></p>
+              <p><b>Sexo:  </b><input type="radio" name="sexo" checked="checked">Masculino | <input type="radio" name="sexo">Feminino</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-success btn-cad-aluno"  >Cadastrar</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+              </form>
+            </div>
+        </div>
+      </div>
+    </div>
+<script type="text/javascript" src="chamado/js/validarChamado.js"></script>

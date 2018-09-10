@@ -38,8 +38,8 @@
 				<table id="fullTable" class="table table-striped table-hover table-bordered  display" style="width:100%">
 			         <thead>
                               <tr>
-                                <th scope="col">Mat.</th>
                                 <th scope="col">Data</th>
+                                <th scope="col">Mat.</th>
                                 <th scope="col">Nome</th>
                                 <th scope="col">Curso</th>
                                 <th scope="col">Requerimento</th>
@@ -50,7 +50,7 @@
                               <?php 
                                 foreach ($dados as $rows) {
 
-                                  $users = $usuario->findDadosId($rows->usuario_id);
+                                  $users = $usuario->findDadosId($rows->pessoa_id);
                                   $ps = $pessoa->findById($rows->pessoa_id);
                                   $cs = $curso->findById($rows->curso_id);
                                   $req = $requerimento->findById($rows->requerimento_id);
@@ -58,9 +58,9 @@
                                   $gr = $grupoRequerimento->findById($rows->grupo_requerimento_id);
                                ?>
                               <tr class="modal-desc">
-                                 <input class="chamado_click" type="hidden"  value="">
+                                <td width="13%"><?php echo $rows->data_abertura; ?></td>
+                                <input class="chamado_click" type="hidden"  value="">
                                 <th scope="row"><?php echo $users->matricula_usuario; ?></th>
-                                <td><?php echo $rows->data_abertura; ?></td>
                                 <td class="nome_pessoa_<?php echo $rows->id_chamado; ?>"><?php echo utf8_encode($ps[0]->nome_pessoa); ?></td>
                                 <td><?php echo $cs[0]->nome_curso; ?></td>
                                 <td class="req_<?php echo $rows->id_chamado; ?>"><?php echo $req[0]->desc_requerimento; ?></td>

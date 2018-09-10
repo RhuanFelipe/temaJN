@@ -10,6 +10,7 @@
 	
 	$curso = new Curso();
 	$cursos = $curso->findByIdFK($id);
+   
 
 	if(count($cursos) > 0){
 		foreach ($cursos as $value) {
@@ -22,6 +23,6 @@
 			echo "<option value=".$value->id_curso."  ".$checked." >".$value->nome_curso."</option>";
 		}
 	}else{
-		echo "<option>Informe o curso</option>";
+		echo "<option value=''>Selecione um curso...</option>";
 	}
 ?>
