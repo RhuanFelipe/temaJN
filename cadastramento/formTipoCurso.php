@@ -34,8 +34,7 @@
                 <div class="col-lg-6">
                     <?php
                         $tp = new tipoCurso(); 
-                        $tipoCurso = $tp->findById($id);
-                        
+                        $tipoCurso = $tp->findById($id);    
                     ?>
                     <input type="text" name="tipoCurso" class="form-control" value="<?php echo @$tipoCurso[0]->tipo_curso;?>">
                 </div>

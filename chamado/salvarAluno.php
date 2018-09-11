@@ -15,14 +15,14 @@ $telefoneAluno = $_POST['telefone'];
 $pessoa = new Pessoa();
 $usuario = new Usuarios();
 $telefone = new Telefone();
-
+$pessoa->setTipo(3);
 $pessoa->setNome($nome);
 $pessoa->setEmail($email);
 $pessoa->setPeriodo($periodo);
 $pessoa->setSexo($sexo);
 $pessoa->setCurso($curso);
 $pessoa->setTurno($turno);
-$pessoa->cadastrarPessoa();
+$pessoa->insert();
 $idPessoa = $pessoa->getIdPessoa();
 $usuario->setIdUsuario($idPessoa);
 $usuario->setMatricula($matricula);

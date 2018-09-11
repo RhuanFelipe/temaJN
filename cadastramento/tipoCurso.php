@@ -33,9 +33,15 @@
                                   <a href="?p=formTipoCurso&edit=1&id=<?php echo $rows->id_tipo_curso; ?>" class="btn btn-success edit"  title="Editar">
                                       <i class="fa fa-pencil"></i>
                                   </a>
-                                  <a href="cadastramento/acaoTipoCurso.php?acao=delete&id=<?php echo $rows->id_tipo_curso; ?>" class="btn btn-danger edit"  title="Excluir">
+                                  <?php if($rows->ativo == 1){ ?>
+                                  <a href="cadastramento/acaoTipoCurso.php?acao=inative&id=<?php echo $rows->id_tipo_curso; ?>" class="btn btn-default edit"  title="Inativar">
                                       <i class="fa fa-times-circle-o"></i>
                                   </a>
+                                  <?php }else{ ?>
+                                    <a href="cadastramento/acaoTipoCurso.php?acao=ative&id=<?php echo $rows->id_tipo_curso; ?>" class="btn btn-info edit"  title="Ativar">
+                                        <i class="fa fa-check"></i>
+                                    </a>
+                                  <?php } ?>
                               </td>
                           </tr>
                           <?php } ?>

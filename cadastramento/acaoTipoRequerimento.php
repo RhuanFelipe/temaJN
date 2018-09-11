@@ -10,9 +10,13 @@ if($acao == 'insert'){
 	$tipoRequerimento = $_REQUEST['tipoRequerimento'];
 	$tr->setOptRequerimento($tipoRequerimento);
 	$tr->insert();
-}else if($acao == 'delete'){
+}else if($acao == 'inative'){
 	$id = $_REQUEST['id'];
-	$tr->delete($id);
+	$tr->inative($id);
+	header('Location: ../index.php?p=cadTipoRequerimento');
+}else if($acao == 'ative'){
+	$id = $_REQUEST['id'];
+	$tr->ative($id);
 	header('Location: ../index.php?p=cadTipoRequerimento');
 }else if($acao == 'update'){
 	$id = $_REQUEST['id'];

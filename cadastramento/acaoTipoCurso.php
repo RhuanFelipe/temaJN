@@ -10,9 +10,13 @@ if($acao == 'insert'){
 	$tipoCurso = $_REQUEST['tipoCurso'];
 	$tp->setTipoCurso($tipoCurso);
 	$tp->insert();
-}else if($acao == 'delete'){
+}else if($acao == 'inative'){
 	$id = $_REQUEST['id'];
-	$tp->delete($id);
+	$tp->inative($id);
+	header('Location: ../index.php?p=cadTipoCurso');
+}else if($acao == 'ative'){
+	$id = $_REQUEST['id'];
+	$tp->ative($id);
 	header('Location: ../index.php?p=cadTipoCurso');
 }else if($acao == 'update'){
 	$id = $_REQUEST['id'];

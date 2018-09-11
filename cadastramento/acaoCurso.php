@@ -13,9 +13,13 @@ if($acao == 'insert'){
 	$cs->setNomeCurso($curso);
 
 	$cs->insert();
-}else if($acao == 'delete'){
+}else if($acao == 'inative'){
 	$id = $_REQUEST['id'];
-	$cs->delete($id);
+	$cs->inative($id);
+	header('Location: ../index.php?p=cadCurso');
+}else if($acao == 'ative'){
+	$id = $_REQUEST['id'];
+	$cs->ative($id);
 	header('Location: ../index.php?p=cadCurso');
 }else if($acao == 'update'){
 	$id = $_REQUEST['id'];

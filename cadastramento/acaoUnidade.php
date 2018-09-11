@@ -11,9 +11,13 @@ if($acao == 'insert'){
 	$cs->setDescUnidade($unidade);
 
 	$cs->insert();
-}else if($acao == 'delete'){
+}else if($acao == 'inative'){
 	$id = $_REQUEST['id'];
-	$cs->delete($id);
+	$cs->inative($id);
+	header('Location: ../index.php?p=cadUnidade');
+}else if($acao == 'ative'){
+	$id = $_REQUEST['id'];
+	$cs->ative($id);
 	header('Location: ../index.php?p=cadUnidade');
 }else if($acao == 'update'){
 	$id = $_REQUEST['id'];

@@ -38,9 +38,15 @@
                                   <a href="?p=formGrupoRequerimento&edit=1&id=<?php echo $rows->id_grupo; ?>&tipoRequerimentoId=<?php echo $rows->tipo_requerimento_id; ?>" class="btn btn-success edit"  title="Editar">
                                       <i class="fa fa-pencil"></i>
                                   </a>
-                                  <a href="cadastramento/acaoGrupoRequerimento.php?acao=delete&id=<?php echo $rows->id_grupo; ?>" class="btn btn-danger edit"  title="Excluir">
-                                      <i class="fa fa-times-circle-o"></i>
-                                  </a>
+                                  <?php if($rows->ativo == 1){ ?>
+                                    <a href="cadastramento/acaoGrupoRequerimento.php?acao=inative&id=<?php echo $rows->id_grupo; ?>" class="btn btn-default edit"  title="Inativar">
+                                        <i class="fa fa-times-circle-o"></i>
+                                    </a>
+                                  <?php }else{ ?>
+                                     <a href="cadastramento/acaoGrupoRequerimento.php?acao=ative&id=<?php echo $rows->id_grupo; ?>" class="btn btn-info edit"  title="Ativar">
+                                          <i class="fa fa-check"></i>
+                                      </a>
+                                  <?php } ?>
                               </td>
                           </tr>
                           <?php } ?>

@@ -14,9 +14,13 @@ if($acao == 'insert'){
 	$req->setGrupoRequerimentoId($grupoRequerimento);
 
 	$req->insert();
-}else if($acao == 'delete'){
+}else if($acao == 'inative'){
 	$id = $_REQUEST['id'];
-	$req->delete($id);
+	$req->inative($id);
+	header('Location: ../index.php?p=cadRequerimento');
+}else if($acao == 'ative'){
+	$id = $_REQUEST['id'];
+	$req->ative($id);
 	header('Location: ../index.php?p=cadRequerimento');
 }else if($acao == 'update'){
 	$id = $_REQUEST['id'];
