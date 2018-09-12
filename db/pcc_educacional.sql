@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 11-Set-2018 às 23:06
+-- Generation Time: 12-Set-2018 às 23:11
 -- Versão do servidor: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -504,7 +504,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `id_usuario` int(11) NOT NULL AUTO_INCREMENT,
   `matricula_usuario` int(11) NOT NULL,
   `senha_usuario` varchar(200) NOT NULL,
-  `ativo_usuario` char(1) NOT NULL DEFAULT '1',
+  `ativo` char(1) NOT NULL DEFAULT '1',
   `nivel_id` int(11) NOT NULL,
   PRIMARY KEY (`id_usuario`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=76 ;
@@ -513,7 +513,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 -- Extraindo dados da tabela `usuario`
 --
 
-INSERT INTO `usuario` (`id_usuario`, `matricula_usuario`, `senha_usuario`, `ativo_usuario`, `nivel_id`) VALUES
+INSERT INTO `usuario` (`id_usuario`, `matricula_usuario`, `senha_usuario`, `ativo`, `nivel_id`) VALUES
 (1, 11032395, '123', '1', 3),
 (2, 11111111, '123', '1', 1),
 (3, 12345678, '123', '1', 3),

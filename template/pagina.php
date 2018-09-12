@@ -48,4 +48,6 @@ else
 		include_once "cadastramento/requerimento.php";
 	else if($pagina == 'formRequerimento')
 		include_once "cadastramento/formRequerimento.php";
+	else if($pagina == 'cadAtendente')
+		include_once "pessoa/atendente.php";
 ?>

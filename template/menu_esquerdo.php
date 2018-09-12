@@ -5,8 +5,8 @@
             <ul class="sidebar-menu" id="nav-accordion">
             <li>
                 <a href="index.php">
-                    <i class="fa fa-dashboard"></i>
-                    <span>Dashboard</span>
+                    <i class="fa fa-home"></i>
+                    <span>Home</span>
                 </a>
                 <?php  if($_SESSION['nivel_id'] == 1){ ?>
                  <a href="?p=chamadosFinalizados">
@@ -33,8 +33,8 @@
             
             <li class="sub-menu dcjq-parent-li">
                     <a href="javascript:;" class="dcjq-parent">
-                        <i class="fa fa-tasks"></i>
-                        <span>Cadastros Chamado</span>
+                        <i class="fa fa-paste"></i>
+                        <span>Cadastros de Chamado</span>
                     <span class="dcjq-icon"></span></a>
                     <ul class="sub" style="display: none;">
                         <li><a href="index.php?p=cadTipoCurso">Tipo Curso</a></li>
@@ -43,6 +43,16 @@
                         <li><a href="index.php?p=cadTipoRequerimento">Tipo Requerimento</a></li>
                         <li><a href="index.php?p=cadGrupoRequerimento">Grupo Requerimento</a></li>
                         <li><a href="index.php?p=cadRequerimento">Requerimento</a></li>
+                    </ul>
+                </li>
+                 <li class="sub-menu dcjq-parent-li">
+                    <a href="javascript:;" class="dcjq-parent">
+                        <i class="fa fa-group"></i>
+                        <span>Cadastros de Pessoas</span>
+                    <span class="dcjq-icon"></span></a>
+                    <ul class="sub" style="display: none;">
+                        <li><a href="index.php?p=cadAtendente">Atendente</a></li>
+                        <li><a href="index.php?p=cadCurso">Coordenador</a></li>
                     </ul>
                 </li>
             <?php } ?>

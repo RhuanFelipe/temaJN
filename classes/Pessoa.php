@@ -4,6 +4,7 @@ require_once 'Crud.php';
 
 class Pessoa extends Crud{
 	protected $table = 'pessoa';
+	protected $tableSecondJoin = 'usuario';
 	protected $id_coluna = 'id_pessoa';
 	private $idPessoa;
 	private $nome;
@@ -108,5 +109,12 @@ class Pessoa extends Crud{
 		} catch (Exception $e) {
 			print $e->getMessage();
 		}
+	}
+
+	public function findAllPessoa(){
+		$sql  = "SELECT * FROM $this->table INNER JOIN $this->$tableSecondJoin on id_usuario = id_pessoa";
+		$stmt = DB::prepare($sql);
+		$stmt->execute();
+		return $stmt->fetchAll();
 	}
 }
