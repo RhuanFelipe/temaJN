@@ -1,6 +1,6 @@
 <?php
   $p = new Pessoa();
-  $pessoa = $p->findAtendente();
+  $pessoa = $p->findCoordenador();
 ?>
  <!--main content start-->
 <section id="main-content">
@@ -9,7 +9,7 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                        Atendente
+                        Coordenador
                         <span class="tools pull-right">
                             <a href="javascript:;" class="fa fa-chevron-down"></a>
                             <a href="javascript:;" class="fa fa-cog"></a>
@@ -23,15 +23,21 @@
                           <tr>
                             <th scope="col">Matricula</th>
                             <th scope="col">Nome</th>
+                            <th scope="col">Curso</th>
                             <th scope="col">Email</th>
                             <th scope="col">#</th>
                           </tr>
                         </thead>
                         <tbody>
-                        	<?php  foreach ($pessoa as $rows) { ?>
+                        	<?php  foreach ($pessoa as $rows) { 
+                              $c = new Curso();
+                              $curso = $c->findById($rows->curso_id);
+                          ?>
+
                         	<tr>
                               <td scope="col" ><?php echo $rows->matricula_usuario; ?></td>
                               <td scope="col" ><?php echo $rows->nome_pessoa; ?></td>
+                              <td scope="col" ><?php echo $curso[0]->nome_curso; ?></td>
                               <td scope="col" ><?php echo $rows->email_pessoa; ?></td>
 	                            <td scope="col" > 
                                   <a href="#" class="btn btn-success edit"  title="Editar">
@@ -53,7 +59,7 @@
                     </table>
                 </div>
                 </section>
-                <a href="?p=formAtendente" type="button" class="btn btn-success"><i class="fa fa-folder-open-o"></i> Cadastrar Atendente </a>
+                <a href="?p=formCurso" type="button" class="btn btn-success"><i class="fa fa-folder-open-o"></i> Cadastrar Coordenador </a>
 
             </div>
         </div>

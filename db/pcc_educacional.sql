@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 12-Set-2018 às 23:11
+-- Generation Time: 20-Set-2018 às 17:24
 -- Versão do servidor: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -67,7 +67,15 @@ CREATE TABLE IF NOT EXISTS `chamado` (
   `status` char(1) DEFAULT '9',
   `pessoa_id` int(11) NOT NULL,
   PRIMARY KEY (`id_chamado`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Extraindo dados da tabela `chamado`
+--
+
+INSERT INTO `chamado` (`id_chamado`, `protocolo_chamado`, `assunto_chamado`, `data_abertura`, `categoria_id`, `usuario_id`, `tipo_curso_id`, `curso_id`, `unidade_id`, `tipo_requerimento_id`, `grupo_requerimento_id`, `requerimento_id`, `status`, `pessoa_id`) VALUES
+(1, NULL, 'teste', '2018-09-17 16:27:58', NULL, 4, 1, 1, 1, 1, 2, 6, '9', 1),
+(2, NULL, 'asdasdasd', '2018-09-19 18:20:49', NULL, 4, 1, 8, 1, 1, 1, 3, '9', 1);
 
 -- --------------------------------------------------------
 
@@ -211,6 +219,7 @@ CREATE TABLE IF NOT EXISTS `pessoa` (
   `turno_id` int(11) NOT NULL DEFAULT '0',
   `turma_id` int(11) NOT NULL DEFAULT '0',
   `periodo` char(1) NOT NULL,
+  `ativo` char(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id_pessoa`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=76 ;
 
@@ -218,71 +227,71 @@ CREATE TABLE IF NOT EXISTS `pessoa` (
 -- Extraindo dados da tabela `pessoa`
 --
 
-INSERT INTO `pessoa` (`id_pessoa`, `nome_pessoa`, `cpf_pessoa`, `rg_pessoa`, `sexo_pessoa`, `nasc_pessoa`, `email_pessoa`, `curso_id`, `turno_id`, `turma_id`, `periodo`) VALUES
-(1, 'Rhuan Felipe da Silva', '11122233344', '333444555', 'm', '1991-05-18', 'rhuanfelsilva@gmail.com', 7, 3, 1, ''),
-(2, 'Marcelo Diaz', '111111111', '1111111', 'm', '1975-04-09', 'teste@gmail.com', 7, 0, 0, ''),
-(3, 'Marina Carla', '11223344556', '12345678', 'f', '1994-04-23', 'teste@hotmail.com', 2, 2, 1, ''),
-(4, 'patricia carla', '11122233344', '1111111', 'f', '1992-05-25', 'teste@gmail.com', 0, 0, 0, ''),
-(5, 'João Mathias', '11111111111', '11111111', 'm', '2018-05-01', 'teste@gmail.com', 1, 3, 1, ''),
-(16, 'Anderson Felipe da Costa', '89457937716', '69947512', 'm', '1996-05-01', 'Anderson@gmail.com', 1, 3, 1, ''),
-(17, 'Carlos Jose de Lima', '21622143779', '38098746', 'm', '1997-02-11', 'Jose@gmail.com', 1, 3, 1, ''),
-(18, 'Carlos Luiz da Silva', '82582266140', '43525783', 'm', '1995-08-21', 'Carlos@gmail.com', 1, 1, 1, ''),
-(19, 'Vitoria Andrade Pessoa', '21431442534', '34834716', 'f', '1997-02-11', 'Vitoria@gmail.com', 1, 3, 1, ''),
-(20, 'Juliana Silva Bezerra', '47861856712', '73035406', 'f', '1998-09-23', 'Juliana@gmail.com', 1, 1, 1, ''),
-(21, 'Ricardo Junior', '73178735780', '47302154', 'm', '2000-02-01', 'Junior@gmail.com', 2, 3, 1, ''),
-(22, 'Fabio Henrique', '34887378106', '41232154', 'm', '2001-05-25', 'Fabio@gmail.com', 2, 3, 1, ''),
-(23, 'Fernanda Maria', '12561414612', '42602154', 'f', '1997-11-14', 'Fernanda@gmail.com', 2, 3, 1, ''),
-(24, 'Julia Alves', '78307678153', '47302987', 'f', '2000-12-24', 'Alves@gmail.com', 2, 3, 1, ''),
-(25, 'Ingrid Fernanda', '20688189490', '47978554', 'f', '1999-10-21', 'Ingrid@gmail.com', 2, 3, 1, ''),
-(26, 'Beatriz Silva', '73171343578', '47992154', 'f', '1990-02-11', 'Beatriz@gmail.com', 3, 3, 1, ''),
-(27, 'Laura Ferreira', '34876578106', '11232154', 'f', '1994-05-15', 'Laura@gmail.com', 3, 3, 1, ''),
-(28, 'Maria Pereira', '12561097612', '22602154', 'f', '1994-11-24', 'Pereira@gmail.com', 3, 3, 1, ''),
-(29, 'Miguel Alves', '12307678153', '33302987', 'm', '1994-12-24', 'Miguel@gmail.com', 3, 3, 1, ''),
-(30, 'Lucas Fernandes', '45688189490', '48978554', 'm', '1999-10-21', 'Fernandes@gmail.com', 3, 3, 1, ''),
-(31, 'Gabriel Junior', '79787357801', '49302154', 'm', '1999-02-01', 'Junior99@gmail.com', 4, 3, 1, ''),
-(32, 'Enzo Henrique', '65487378106', '43232154', 'm', '1997-05-25', 'Enzo@gmail.com', 4, 1, 1, ''),
-(33, 'Rafael Costa', '12001414612', '42612154', 'm', '1997-11-14', 'Rafael@gmail.com', 4, 3, 1, ''),
-(34, 'Mariana Magáli', '79877678153', '47398987', 'm', '2000-12-24', 'Martins@gmail.com', 4, 1, 1, ''),
-(35, 'Isabela Fernanda', '20788189490', '47978764', 'f', '1999-10-21', 'Isabela@gmail.com', 4, 1, 1, ''),
-(36, 'Camila Sousa', '73179735780', '47365154', 'f', '1997-02-01', 'Sousa@gmail.com', 5, 2, 1, ''),
-(37, 'Fabio Gomes', '34898378106', '13232154', 'm', '1997-05-25', 'Fabio97@gmail.com', 5, 2, 1, ''),
-(38, 'Fernanda Almeida', '12560914612', '44602154', 'f', '1997-11-14', 'Almeida@gmail.com', 5, 3, 1, ''),
-(39, 'Davi Alves', '13307678153', '67312987', 'm', '2000-12-24', 'Davi@gmail.com', 5, 3, 1, ''),
-(40, 'Ingrid Valentina', '44468818949', '47768554', 'f', '1999-10-21', 'Valentina@gmail.com', 5, 3, 1, ''),
-(41, 'Junior Ricardo', '73334873578', '47302987', 'm', '1997-02-01', 'Ricardo@gmail.com', 6, 3, 1, ''),
-(42, 'Bruno Henrique', '34887378199', '41256754', 'm', '1993-05-25', 'Bruno@gmail.com', 6, 3, 1, ''),
-(43, 'Fernanda Nunes', '12561414688', '45602154', 'f', '1993-11-14', 'Nunes@gmail.com', 6, 1, 1, ''),
-(44, 'Julia Nunes', '78307678113', '47366987', 'f', '1993-12-24', 'NunesJ@gmail.com', 6, 1, 1, ''),
-(45, 'Leticia Fernanda', '44688189490', '47977554', 'f', '1993-10-21', 'Leticia@gmail.com', 6, 1, 1, ''),
-(46, 'Luana Silva', '77178735780', '473888154', 'f', '1993-02-01', 'Luana@gmail.com', 7, 3, 1, ''),
-(47, 'Luana Gomes', '33887378106', '41299754', 'f', '1993-05-25', 'GomesL@gmail.com', 7, 3, 1, ''),
-(48, 'Fernanda Alves', '00561414612', '49852154', 'f', '1993-11-14', 'Fernanda1@gmail.com', 7, 3, 1, ''),
-(49, 'Julia Ribeiro', '00307678153', '47302987', 'f', '1993-12-24', 'Ribeiro@gmail.com', 7, 3, 1, ''),
-(50, 'Ingrid Lopes', '00688189490', '49798554', 'f', '1999-10-21', 'Lopes2@gmail.com', 7, 2, 1, ''),
-(51, 'Helena Oliveira', '09178735780', '47203154', 'f', '1993-02-01', 'Helena@gmail.com', 8, 2, 1, ''),
-(52, 'Samuel Henrique', '34886378106', '12342154', 'm', '2000-05-25', 'Samuel@gmail.com', 8, 1, 1, ''),
-(53, 'Rodrigo Costa', '04561414612', '42604567', 'm', '1997-11-14', 'Costa@gmail.com', 8, 1, 1, ''),
-(54, 'Rebeca Alves', '79907678153', '47308903', 'f', '2000-12-24', 'Rebeca@gmail.com', 8, 1, 1, ''),
-(55, 'Diego Maradona', '20098189490', '47987654', 'm', '1996-10-21', 'Diego@gmail.com', 8, 3, 1, ''),
-(56, 'John Lenon', '73170835780', '47309154', 'm', '1993-02-01', 'John93@gmail.com', 9, 3, 1, ''),
-(57, 'Daniel Jose', '34887370706', '41224154', 'm', '1993-05-25', 'Daniel@gmail.com', 9, 2, 1, ''),
-(58, 'Gabriel Jesus', '12560614612', '42888215', 'm', '1997-11-14', 'Gabriel99@gmail.com', 9, 1, 1, ''),
-(59, 'Aline Alves', '78307058153', '47002987', 'f', '1996-12-24', 'Aline93@gmail.com', 9, 1, 1, ''),
-(60, 'Lorena Fernanda', '20677189490', '47900554', 'f', '1996-10-21', 'Lorena@gmail.com', 9, 1, 1, ''),
-(61, 'Ronaldo Nazario', '73678735780', '47302054', 'm', '1990-02-01', 'Ronaldo@gmail.com', 10, 3, 1, ''),
-(62, 'Ana Maria', '34997378106', '01232154', 'f', '1964-05-25', 'Ana@gmail.com', 10, 3, 1, ''),
-(63, 'Fatima Bernardes', '12576414612', '52602164', 'f', '1985-11-14', 'Fatima@gmail.com', 10, 3, 1, ''),
-(64, 'Maria Julia', '02307678153', '47403987', 'f', '1996-12-24', 'Julia95@gmail.com', 10, 2, 1, ''),
-(65, 'Ronalda Mariana', '01688189490', '47933456', 'f', '1992-10-21', 'Ronalda@gmail.com', 10, 1, 1, ''),
-(66, 'Monica Mattos', '11122233344', '1111111', 'f', '1991-06-05', 'teste@hotmail.com', 1, 0, 0, ''),
-(67, 'Kátia de João', '11111111111', '11111111', 'm', '1990-06-19', 'teste@hotmail.com', 2, 0, 0, ''),
-(68, 'Jean da Silva', '11122233344', '1111111', 'm', '1988-06-28', 'teste@hotmail.com', 3, 0, 0, ''),
-(69, 'Rafael Carvalho', '11111111111', '11111111', 'm', '1992-05-01', 'teste@hotmail.com', 4, 0, 0, ''),
-(70, 'Marta Soarez', '11122233344', '1111111', 'f', '1992-05-25', 'teste@hotmail.com', 5, 0, 0, ''),
-(71, 'teste', '', '', 'm', '0000-00-00', 'rhuan.silva@informata.com.br', 4, 1, 0, '3'),
-(72, 'jean nascimento', '', '', 'm', '0000-00-00', 'rhuan.silva@informata.com.br', 1, 1, 0, '4'),
-(74, 'Messi da Silva', '', '', 'm', '0000-00-00', 'rhuan.silva@informata.com.br', 3, 2, 0, '5'),
-(75, 'Cristiano Ronaldo Bale', '', '', 'm', '0000-00-00', 'tiemfocoweb@gmail.com', 9, 3, 0, '5');
+INSERT INTO `pessoa` (`id_pessoa`, `nome_pessoa`, `cpf_pessoa`, `rg_pessoa`, `sexo_pessoa`, `nasc_pessoa`, `email_pessoa`, `curso_id`, `turno_id`, `turma_id`, `periodo`, `ativo`) VALUES
+(1, 'Rhuan Felipe da Silva', '11122233344', '333444555', 'm', '1991-05-18', 'rhuanfelsilva@gmail.com', 7, 3, 1, '', '1'),
+(2, 'Marcelo Diaz', '111111111', '1111111', 'm', '1975-04-09', 'teste@gmail.com', 7, 0, 0, '', '1'),
+(3, 'Marina Carla', '11223344556', '12345678', 'f', '1994-04-23', 'teste@hotmail.com', 2, 2, 1, '', '1'),
+(4, 'patricia carla', '11122233344', '1111111', 'f', '1992-05-25', 'teste@gmail.com', 0, 0, 0, '', '1'),
+(5, 'João Mathias', '11111111111', '11111111', 'm', '2018-05-01', 'teste@gmail.com', 1, 3, 1, '', '1'),
+(16, 'Anderson Felipe da Costa', '89457937716', '69947512', 'm', '1996-05-01', 'Anderson@gmail.com', 1, 3, 1, '', '1'),
+(17, 'Carlos Jose de Lima', '21622143779', '38098746', 'm', '1997-02-11', 'Jose@gmail.com', 1, 3, 1, '', '1'),
+(18, 'Carlos Luiz da Silva', '82582266140', '43525783', 'm', '1995-08-21', 'Carlos@gmail.com', 1, 1, 1, '', '1'),
+(19, 'Vitoria Andrade Pessoa', '21431442534', '34834716', 'f', '1997-02-11', 'Vitoria@gmail.com', 1, 3, 1, '', '1'),
+(20, 'Juliana Silva Bezerra', '47861856712', '73035406', 'f', '1998-09-23', 'Juliana@gmail.com', 1, 1, 1, '', '1'),
+(21, 'Ricardo Junior', '73178735780', '47302154', 'm', '2000-02-01', 'Junior@gmail.com', 2, 3, 1, '', '1'),
+(22, 'Fabio Henrique', '34887378106', '41232154', 'm', '2001-05-25', 'Fabio@gmail.com', 2, 3, 1, '', '1'),
+(23, 'Fernanda Maria', '12561414612', '42602154', 'f', '1997-11-14', 'Fernanda@gmail.com', 2, 3, 1, '', '1'),
+(24, 'Julia Alves', '78307678153', '47302987', 'f', '2000-12-24', 'Alves@gmail.com', 2, 3, 1, '', '1'),
+(25, 'Ingrid Fernanda', '20688189490', '47978554', 'f', '1999-10-21', 'Ingrid@gmail.com', 2, 3, 1, '', '1'),
+(26, 'Beatriz Silva', '73171343578', '47992154', 'f', '1990-02-11', 'Beatriz@gmail.com', 3, 3, 1, '', '1'),
+(27, 'Laura Ferreira', '34876578106', '11232154', 'f', '1994-05-15', 'Laura@gmail.com', 3, 3, 1, '', '1'),
+(28, 'Maria Pereira', '12561097612', '22602154', 'f', '1994-11-24', 'Pereira@gmail.com', 3, 3, 1, '', '1'),
+(29, 'Miguel Alves', '12307678153', '33302987', 'm', '1994-12-24', 'Miguel@gmail.com', 3, 3, 1, '', '1'),
+(30, 'Lucas Fernandes', '45688189490', '48978554', 'm', '1999-10-21', 'Fernandes@gmail.com', 3, 3, 1, '', '1'),
+(31, 'Gabriel Junior', '79787357801', '49302154', 'm', '1999-02-01', 'Junior99@gmail.com', 4, 3, 1, '', '1'),
+(32, 'Enzo Henrique', '65487378106', '43232154', 'm', '1997-05-25', 'Enzo@gmail.com', 4, 1, 1, '', '1'),
+(33, 'Rafael Costa', '12001414612', '42612154', 'm', '1997-11-14', 'Rafael@gmail.com', 4, 3, 1, '', '1'),
+(34, 'Mariana Magáli', '79877678153', '47398987', 'm', '2000-12-24', 'Martins@gmail.com', 4, 1, 1, '', '1'),
+(35, 'Isabela Fernanda', '20788189490', '47978764', 'f', '1999-10-21', 'Isabela@gmail.com', 4, 1, 1, '', '1'),
+(36, 'Camila Sousa', '73179735780', '47365154', 'f', '1997-02-01', 'Sousa@gmail.com', 5, 2, 1, '', '1'),
+(37, 'Fabio Gomes', '34898378106', '13232154', 'm', '1997-05-25', 'Fabio97@gmail.com', 5, 2, 1, '', '1'),
+(38, 'Fernanda Almeida', '12560914612', '44602154', 'f', '1997-11-14', 'Almeida@gmail.com', 5, 3, 1, '', '1'),
+(39, 'Davi Alves', '13307678153', '67312987', 'm', '2000-12-24', 'Davi@gmail.com', 5, 3, 1, '', '1'),
+(40, 'Ingrid Valentina', '44468818949', '47768554', 'f', '1999-10-21', 'Valentina@gmail.com', 5, 3, 1, '', '1'),
+(41, 'Junior Ricardo', '73334873578', '47302987', 'm', '1997-02-01', 'Ricardo@gmail.com', 6, 3, 1, '', '1'),
+(42, 'Bruno Henrique', '34887378199', '41256754', 'm', '1993-05-25', 'Bruno@gmail.com', 6, 3, 1, '', '1'),
+(43, 'Fernanda Nunes', '12561414688', '45602154', 'f', '1993-11-14', 'Nunes@gmail.com', 6, 1, 1, '', '1'),
+(44, 'Julia Nunes', '78307678113', '47366987', 'f', '1993-12-24', 'NunesJ@gmail.com', 6, 1, 1, '', '1'),
+(45, 'Leticia Fernanda', '44688189490', '47977554', 'f', '1993-10-21', 'Leticia@gmail.com', 6, 1, 1, '', '1'),
+(46, 'Luana Silva', '77178735780', '473888154', 'f', '1993-02-01', 'Luana@gmail.com', 7, 3, 1, '', '1'),
+(47, 'Luana Gomes', '33887378106', '41299754', 'f', '1993-05-25', 'GomesL@gmail.com', 7, 3, 1, '', '1'),
+(48, 'Fernanda Alves', '00561414612', '49852154', 'f', '1993-11-14', 'Fernanda1@gmail.com', 7, 3, 1, '', '1'),
+(49, 'Julia Ribeiro', '00307678153', '47302987', 'f', '1993-12-24', 'Ribeiro@gmail.com', 7, 3, 1, '', '1'),
+(50, 'Ingrid Lopes', '00688189490', '49798554', 'f', '1999-10-21', 'Lopes2@gmail.com', 7, 2, 1, '', '1'),
+(51, 'Helena Oliveira', '09178735780', '47203154', 'f', '1993-02-01', 'Helena@gmail.com', 8, 2, 1, '', '1'),
+(52, 'Samuel Henrique', '34886378106', '12342154', 'm', '2000-05-25', 'Samuel@gmail.com', 8, 1, 1, '', '1'),
+(53, 'Rodrigo Costa', '04561414612', '42604567', 'm', '1997-11-14', 'Costa@gmail.com', 8, 1, 1, '', '1'),
+(54, 'Rebeca Alves', '79907678153', '47308903', 'f', '2000-12-24', 'Rebeca@gmail.com', 8, 1, 1, '', '1'),
+(55, 'Diego Maradona', '20098189490', '47987654', 'm', '1996-10-21', 'Diego@gmail.com', 8, 3, 1, '', '1'),
+(56, 'John Lenon', '73170835780', '47309154', 'm', '1993-02-01', 'John93@gmail.com', 9, 3, 1, '', '1'),
+(57, 'Daniel Jose', '34887370706', '41224154', 'm', '1993-05-25', 'Daniel@gmail.com', 9, 2, 1, '', '1'),
+(58, 'Gabriel Jesus', '12560614612', '42888215', 'm', '1997-11-14', 'Gabriel99@gmail.com', 9, 1, 1, '', '1'),
+(59, 'Aline Alves', '78307058153', '47002987', 'f', '1996-12-24', 'Aline93@gmail.com', 9, 1, 1, '', '1'),
+(60, 'Lorena Fernanda', '20677189490', '47900554', 'f', '1996-10-21', 'Lorena@gmail.com', 9, 1, 1, '', '1'),
+(61, 'Ronaldo Nazario', '73678735780', '47302054', 'm', '1990-02-01', 'Ronaldo@gmail.com', 10, 3, 1, '', '1'),
+(62, 'Ana Maria', '34997378106', '01232154', 'f', '1964-05-25', 'Ana@gmail.com', 10, 3, 1, '', '1'),
+(63, 'Fatima Bernardes', '12576414612', '52602164', 'f', '1985-11-14', 'Fatima@gmail.com', 10, 3, 1, '', '1'),
+(64, 'Maria Julia', '02307678153', '47403987', 'f', '1996-12-24', 'Julia95@gmail.com', 10, 2, 1, '', '1'),
+(65, 'Ronalda Mariana', '01688189490', '47933456', 'f', '1992-10-21', 'Ronalda@gmail.com', 10, 1, 1, '', '1'),
+(66, 'Monica Mattos', '11122233344', '1111111', 'f', '1991-06-05', 'teste@hotmail.com', 1, 0, 0, '', '1'),
+(67, 'Kátia de João', '11111111111', '11111111', 'm', '1990-06-19', 'teste@hotmail.com', 2, 0, 0, '', '1'),
+(68, 'Jean da Silva', '11122233344', '1111111', 'm', '1988-06-28', 'teste@hotmail.com', 3, 0, 0, '', '1'),
+(69, 'Rafael Carvalho', '11111111111', '11111111', 'm', '1992-05-01', 'teste@hotmail.com', 4, 0, 0, '', '1'),
+(70, 'Marta Soarez', '11122233344', '1111111', 'f', '1992-05-25', 'teste@hotmail.com', 5, 0, 0, '', '1'),
+(71, 'teste', '', '', 'm', '0000-00-00', 'rhuan.silva@informata.com.br', 4, 1, 0, '3', '1'),
+(72, 'jean nascimento', '', '', 'm', '0000-00-00', 'rhuan.silva@informata.com.br', 1, 1, 0, '4', '1'),
+(74, 'Messi da Silva', '', '', 'm', '0000-00-00', 'rhuan.silva@informata.com.br', 3, 2, 0, '5', '1'),
+(75, 'Cristiano Ronaldo Bale', '', '', 'm', '0000-00-00', 'tiemfocoweb@gmail.com', 9, 3, 0, '5', '1');
 
 -- --------------------------------------------------------
 

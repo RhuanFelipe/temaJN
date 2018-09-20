@@ -117,4 +117,17 @@ class Pessoa extends Crud{
 		$stmt->execute();
 		return $stmt->fetchAll();
 	}
+	public function findAtendente(){
+		$sql  = "SELECT * FROM $this->table INNER JOIN $this->tableSecondJoin on id_usuario = id_pessoa where nivel_id = 2";
+		$stmt = DB::prepare($sql);
+		$stmt->execute();
+		return $stmt->fetchAll();
+	}
+	public function findCoordenador(){
+		$sql  = "SELECT * FROM $this->table INNER JOIN $this->tableSecondJoin on id_usuario = id_pessoa where nivel_id = 1";
+		$stmt = DB::prepare($sql);
+		$stmt->execute();
+		return $stmt->fetchAll();
+	}
+	
 }

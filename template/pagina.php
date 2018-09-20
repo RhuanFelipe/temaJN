@@ -50,4 +50,8 @@ else
 		include_once "cadastramento/formRequerimento.php";
 	else if($pagina == 'cadAtendente')
 		include_once "pessoa/atendente.php";
+	else if($pagina == 'cadCoordenador')
+		include_once "pessoa/coordenador.php";
+	else if($pagina == 'formAtendente')
+		include_once "pessoa/formAtendente.php";
 ?>

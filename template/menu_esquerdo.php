@@ -52,7 +52,7 @@
                     <span class="dcjq-icon"></span></a>
                     <ul class="sub" style="display: none;">
                         <li><a href="index.php?p=cadAtendente">Atendente</a></li>
-                        <li><a href="index.php?p=cadCurso">Coordenador</a></li>
+                        <li><a href="index.php?p=cadCoordenador">Coordenador</a></li>
                     </ul>
                 </li>
             <?php } ?>
