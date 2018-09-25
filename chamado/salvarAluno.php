@@ -24,6 +24,7 @@ $pessoa->setCurso($curso);
 $pessoa->setTurno($turno);
 $pessoa->insert();
 $idPessoa = $pessoa->getIdPessoa();
+$usuario->setNivel(3);
 $usuario->setIdUsuario($idPessoa);
 $usuario->setMatricula($matricula);
 $usuario->insert();

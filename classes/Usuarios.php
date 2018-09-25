@@ -11,6 +11,7 @@ class Usuarios extends Crud{
 	private $nivel;
 	private $matricula;
 	private $idUsuario;
+	private $senha;
 
 	public function setNome($nome){
 		$this->nome = $nome;
@@ -44,7 +45,13 @@ class Usuarios extends Crud{
 	public function setIdUsuario($idUsuario){
 		$this->idUsuario = $idUsuario;
 	}
+	public function setSenha($senha){
+		$this->senha = $senha;
+	}
 
+	public function getSenha(){
+		return $this->senha;
+	}
 	public function findDados($matricula){
 		$sql  = "SELECT * FROM $this->table WHERE matricula_usuario = :matricula";
 		$stmt = DB::prepare($sql);
@@ -100,15 +107,25 @@ class Usuarios extends Crud{
 		}
 	}
 	public function insert(){
-		$this->setNivel(3);
+		if ($this->nivel == 3) {
+			$sql  = "INSERT INTO $this->table (id_usuario,matricula_usuario,nivel_id) VALUES (:id_usuario, :matricula, :nivel_id)";
+			$stmt = DB::prepare($sql);
+			$stmt->bindParam(':id_usuario', $this->idUsuario, PDO::PARAM_INT);
+			$stmt->bindParam(':matricula', $this->matricula, PDO::PARAM_INT);
+			$stmt->bindParam(':nivel_id', $this->nivel, PDO::PARAM_INT);
+			
+			return $stmt->execute(); 
+		}else{
+			$sql  = "INSERT INTO $this->table (id_usuario,matricula_usuario,nivel_id,senha_usuario) VALUES (:id_usuario, :matricula, :nivel_id,:senha)";
+			$stmt = DB::prepare($sql);
+			$stmt->bindParam(':id_usuario', $this->idUsuario, PDO::PARAM_INT);
+			$stmt->bindParam(':matricula', $this->matricula, PDO::PARAM_INT);
+			$stmt->bindParam(':nivel_id', $this->nivel, PDO::PARAM_INT);
+			$stmt->bindParam(':senha', $this->senha, PDO::PARAM_INT);
+			
+			return $stmt->execute(); 
+		}
 		
-		$sql  = "INSERT INTO $this->table (id_usuario,matricula_usuario,nivel_id) VALUES (:id_usuario, :matricula, :nivel_id)";
-		$stmt = DB::prepare($sql);
-		$stmt->bindParam(':id_usuario', $this->idUsuario, PDO::PARAM_INT);
-		$stmt->bindParam(':matricula', $this->matricula, PDO::PARAM_INT);
-		$stmt->bindParam(':nivel_id', $this->nivel, PDO::PARAM_INT);
-		
-		return $stmt->execute(); 
 
 	}
 	public function deslogar($sessao){
@@ -117,10 +134,10 @@ class Usuarios extends Crud{
 		header("Location:login.php");
 	}
 	public function update($id){
-		$sql  = "UPDATE $this->table SET nome = :nome, email = :email WHERE id = :id";
+		$sql  = "UPDATE $this->table SET matricula_usuario = :matricula, senha_usuario = :senha WHERE id_usuario = :id";
 		$stmt = DB::prepare($sql);
-		$stmt->bindParam(':nome', $this->nome);
-		$stmt->bindParam(':email', $this->email);
+		$stmt->bindParam(':matricula', $this->matricula);
+		$stmt->bindParam(':senha', $this->senha);
 		$stmt->bindParam(':id', $id);
 		return $stmt->execute();
 

@@ -16,8 +16,8 @@ class Pessoa extends Crud{
 	private $tipoPessoa;
 	/*
 		tipoPessoa = 1; coordenador
-		tipoPessoa = 2; coordenador
-		tipoPessoa = 3; atendente
+		tipoPessoa = 2; atendente
+		tipoPessoa = 3; aluno
 		tipoPessoa = 4; admin
 	*/
 
@@ -70,7 +70,6 @@ class Pessoa extends Crud{
 		return $this->tipoPessoa;
 	}
 
-
 	public function findAluno($id){
 		$sql  = "SELECT * FROM $this->table WHERE curso_id = :id";
 		echo $sql;
@@ -80,7 +79,26 @@ class Pessoa extends Crud{
 		
 		return $stmt->fetchAll();		
 	}
+	public function update($id){
+		if($this->tipoPessoa == 2){
+			$sql = "UPDATE $this->table set nome_pessoa = :nome, sexo_pessoa = :sexo, email_pessoa = :email where id_pessoa = :id";	
+			$stmt = DB::prepare($sql);
 
+			$stmt->bindParam(':nome', $this->nome, PDO::PARAM_STR);
+			$stmt->bindParam(':sexo', $this->sexo, PDO::PARAM_STR);
+			$stmt->bindParam(':email', $this->email, PDO::PARAM_STR);
+			$stmt->bindParam(':id', $id, PDO::PARAM_INT);
+			
+			if($stmt->execute()){
+				$sql = "SELECT id_pessoa FROM $this->table order by id_pessoa desc limit 1;";
+				$stmt = DB::prepare($sql);
+				$stmt->execute();
+		        $arrayPessoa = $stmt->fetch();
+				$this->setIdPessoa($arrayPessoa->id_pessoa);
+				//header('Location: ../index.php?p=abrirChamado');
+			}
+		}
+	}
 	public function insert(){
 		try {
 			if($this->tipoPessoa == 3){
@@ -101,6 +119,23 @@ class Pessoa extends Crud{
 			        $arrayPessoa = $stmt->fetch();
 					$this->setIdPessoa($arrayPessoa->id_pessoa);
 
+					//header('Location: ../index.php?p=abrirChamado');
+				}
+			}else if($this->tipoPessoa == 2){
+				$sql = "INSERT INTO $this->table (nome_pessoa,sexo_pessoa,email_pessoa) values (:nome,:sexo,:email);";	
+				$stmt = DB::prepare($sql);
+
+				$stmt->bindParam(':nome', $this->nome, PDO::PARAM_STR);
+				$stmt->bindParam(':sexo', $this->sexo, PDO::PARAM_STR);
+				$stmt->bindParam(':email', $this->email, PDO::PARAM_STR);
+				
+				
+				if($stmt->execute()){
+					$sql = "SELECT id_pessoa FROM $this->table order by id_pessoa desc limit 1;";
+					$stmt = DB::prepare($sql);
+					$stmt->execute();
+			        $arrayPessoa = $stmt->fetch();
+					$this->setIdPessoa($arrayPessoa->id_pessoa);
 					//header('Location: ../index.php?p=abrirChamado');
 				}
 			}
