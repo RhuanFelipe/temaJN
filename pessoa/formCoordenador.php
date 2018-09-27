@@ -2,7 +2,7 @@
 <?php 
     @$id = $_GET['id'];
     @$edit = $_GET['edit'];
-    @$botao = 'Cadastrar Atendente';
+    @$botao = 'Cadastrar Coordenador';
 
     if(isset($_GET['success'])){
       $style = 'display:block';
@@ -11,9 +11,9 @@
     }
 ?><section id="main-content">
 <?php if($edit == ""){ ?>
-  <form method="post" action="pessoa/acaoAtendente.php?acao=insert">
+  <form method="post" action="pessoa/acaoCoordenador.php?acao=insert">
 <?php }else{ ?>
-  <form method="post" action="pessoa/acaoAtendente.php?acao=update">
+  <form method="post" action="pessoa/acaoCoordenador.php?acao=update">
    <input type="text" name="id" class="id" value="<?php echo $id;?>">
 
 <?php } ?>
@@ -21,27 +21,50 @@
     <!-- page start-->
       <div class="col-md-12" style="margin-bottom: 20px">
             <?php if($edit == ""){ ?>
-          <h3>Cadastrar Atendente</h3> 
+          <h3>Cadastrar Coordenador</h3> 
             <?php }else{ 
-                    $botao = "Editar Atendente";
+                  $p = new Pessoa(); 
+                  $u = new Usuarios(); 
+                  $c = new Curso();
+                  $pessoa = $p->findById($id);
+                  $usuario = $u->findById($id);
+                  $curso = $c->findById($pessoa[0]->curso_id);
+                  $botao = "Editar Coordenador";
               ?>
-              <h3>Alterar Atendente</h3> 
+              <h3>Alterar Coordenador</h3> 
             <?php } ?>
             <input type="hidden" name="usuario" value="<?php echo $_SESSION['usuario_id']; ?>">
             <div class="alert alert-success" role="alert" style="<?php echo $style; ?>">EDITADO COM SUCESSO!</div>
           <div class="form-group">
-                <?php
-                    $p = new Pessoa(); 
-                    $u = new Usuarios(); 
-                    $pessoa = $p->findById($id);
-                    $usuario = $u->findById($id);
-                ?>
+               
+                <input type="hidden" name="tipo_curso_id" class="tipo_curso_id" value="<?php echo @$curso[0]->tipo_curso_id;?>">
+                <input type="hidden" name="curso_id" class="curso_id" value="<?php echo @$pessoa[0]->curso_id;?>">
                 <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Nome Pessoa: </label>
                 <div class="col-lg-6">
                     <input type="text" name="nome" class="form-control" value="<?php echo @$pessoa[0]->nome_pessoa;?>">
                 </div>
             </div>      
       </div>
+      <div class="col-md-12">
+        <div class="form-group">
+                <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Tipo Curso: </label>
+                <div class="col-lg-6">
+                    <select class="form-control m-bot15 tipoCurso" id="tipoCurso" name="tipoCurso">
+                        <option selected>Informe o tipo curso</option>
+                    </select>
+                </div>
+            </div>  
+      </div>
+      <div class="col-md-12">
+        <div class="form-group">
+                <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Curso: </label>
+                <div class="col-lg-6">
+                    <select class="form-control m-bot15 curso" id="curso" name="curso">
+                        <option selected>Informe o curso</option>
+                    </select>
+                </div>
+            </div>            
+      </div> 
       <div class="col-md-12" style="margin-bottom: 20px">
           <div class="form-group">
                 <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">E-mail: </label>
@@ -54,7 +77,7 @@
           <div class="form-group">
                 <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Matricula: </label>
                 <div class="col-lg-6">
-                    <input type="text" name="matricula" class="form-control" value="<?php echo @$usuario[0]->matricula_usuario;?>">
+                    <input type="text" name="matricula" class="form-control" value="<?php  if(@$_GET['edit'] == 1){echo @$usuario[0]->matricula_usuario;}else{echo '';}?>">
                 </div>
             </div>      
       </div> 
@@ -81,7 +104,7 @@
       <div class="form-group" >
         <div class="col-md-12" style="margin: 20px 0 0 20px">
              <button class="btn btn-primary" style="margin: 0 10px 0 200px;"><?php echo $botao;?></button>
-            <a class="btn btn-primary btn-voltar" href="index.php?p=cadAtendente">Voltar</a>
+            <a class="btn btn-primary btn-voltar" href="index.php?p=cadCoordenador">Voltar</a>
         </div>
       </div>
   <!-- page end-->

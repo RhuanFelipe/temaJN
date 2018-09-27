@@ -40,16 +40,16 @@
                               <td scope="col" ><?php echo $curso[0]->nome_curso; ?></td>
                               <td scope="col" ><?php echo $rows->email_pessoa; ?></td>
 	                            <td scope="col" > 
-                                  <a href="#" class="btn btn-success edit"  title="Editar">
+                                  <a href="?p=formCoordenador&edit=1&id=<?php echo $rows->id_pessoa; ?>" class="btn btn-success edit"  title="Editar">
                                       <i class="fa fa-pencil"></i>
                                   </a>
                                   <?php if($rows->ativo == 1){ ?>
-                                    <a href="#" class="btn btn-default edit"  title="Inativar">
-                                        <i class="fa fa-times-circle-o"></i>
-                                    </a>
+                                      <a href="pessoa/acaoCoordenador.php?acao=inative&id=<?php echo $rows->id_pessoa; ?>" class="btn btn-default edit"  title="Inativar">
+                                          <i class="fa fa-times-circle-o"></i>
+                                      </a>
                                   <?php }else{ ?>
-                                     <a href="#" class="btn btn-info edit"  title="Ativar">
-                                          <i class="fa fa-check"></i>
+                                     <a href="pessoa/acaoCoordenador.php?acao=ative&id=<?php echo $rows->id_pessoa; ?>" class="btn btn-info edit"  title="Inativar">
+                                          <i class="fa fa-times-circle-o"></i>
                                       </a>
                                   <?php } ?>
                               </td>

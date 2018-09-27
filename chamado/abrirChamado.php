@@ -48,7 +48,7 @@
     		<div class="form-group">
                 <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Curso: </label>
                 <div class="col-lg-6">
-                    <select class="form-control m-bot15" id="curso" name="curso">
+                    <select class="form-control m-bot15 curso" id="curso" name="curso">
                         <option selected>Informe o curso</option>
                     </select>
                 </div>

@@ -1,3 +1,10 @@
+<?php 
+  function __autoload($class_name){
+    require_once '../classes/' . $class_name . '.php';
+  }
+    $usuario = new Usuarios();
+    $qtdUsuarios = $usuario->findAll();
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,13 +40,32 @@
   <body class="login-body">
 
     <div class="container">
-
+    <?php 
+        if(count($qtdUsuarios) >= 1){
+     ?>
        <form class="form-signin" action="#" method="POST" id="formlogin">
         <h2 class="form-signin-heading">PCC Educacional</h2>
+        <?php if(isset($_GET['success'])){ ?>
+          <div class="login-wrap informativo" style="display:none" >
+            <h4 style="color:green;font-size: 11px;text-align: center;">Insira a matricula e senha para logar no sistema</h4>
+          </div>
+           <script src="../js/jquery.js"></script>
+           <script src="../bs3/js/bootstrap.min.js"></script>
+          <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
+          <script type="text/javascript">
+            $(function(){
+                var dialog = bootbox.dialog({
+                    message: '<p class="text-center">Faça seu primeiro acesso no sistema</p>'
+                });
+                $('.close').click(function(){
+                  $('.informativo').fadeIn('slow');
+                });
+             });
+          </script>
+        <?php } ?>
         <div class="login-wrap">
             <div class="user-login-info">
                     <div class="alert alert-danger" role="alert"></div>
-
                 <input type="text" id="matricula" name="matricula" class="form-control" placeholder="Matricula" autofocus>
                 <input type="password" id="senha" name="senha" class="form-control" placeholder="Senha">
             </div>
@@ -71,7 +97,58 @@
           <!-- modal -->
 
       </form>
+      <?php }else{ ?>
+        <form class="form-signin" action="acaoLogin.php" method="POST">
+          <h2 class="form-signin-heading">PCC Educacional</h2>
+           <div class="login-wrap informativo" style="display: none"><h4 style="color:red;font-size: 13px;font-weight: bold;text-align: center;">Insira uma senha para o usuario Admin</h4></div>
+          <div class="login-wrap">
+              <div class="user-login-info">
+                      <div class="alert alert-danger" role="alert"></div>
+                  <input type="text" id="matricula" name="matricula" class="form-control" placeholder="Matricula" value="ADMIN" readonly>
+                  <input type="password" id="senha" name="senha" class="form-control" placeholder="Senha">
+              </div>
+              <button class="btn btn-lg btn-login btn-block" type="submit">Cadastrar</button>
+          </div>
 
+            <!-- Modal -->
+            <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                            <div class="alert alert-danger" role="alert"></div>
+
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title">Forgot Password ?</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>Enter your e-mail address below to reset your password.</p>
+                            <input type="text" name="email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
+
+                        </div>
+                        <div class="modal-footer">
+                            <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
+                            <button class="btn btn-success" type="button">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- modal -->
+      </form>
+    <script src="../js/jquery.js"></script>
+    <script src="../bs3/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
+  
+      <script type="text/javascript">
+        $(function(){
+            var dialog = bootbox.dialog({
+                message: '<p class="text-center">Bem Vindo a tela de configuração do Open Educacional</p>'
+            });
+            $('.close').click(function(){
+              $('.informativo').fadeIn('slow');
+            });
+         });
+      </script>
+      <?php } ?>
     </div>
 
     <!-- Placed js at the end of the document so the pages load faster -->

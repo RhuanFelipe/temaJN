@@ -97,11 +97,47 @@ class Pessoa extends Crud{
 				$this->setIdPessoa($arrayPessoa->id_pessoa);
 				//header('Location: ../index.php?p=abrirChamado');
 			}
+		}else if($this->tipoPessoa == 1){
+			$sql = "UPDATE $this->table set nome_pessoa = :nome, sexo_pessoa = :sexo, email_pessoa = :email, curso_id = :curso_id where id_pessoa = :id";	
+			$stmt = DB::prepare($sql);
+
+			$stmt->bindParam(':nome', $this->nome, PDO::PARAM_STR);
+			$stmt->bindParam(':sexo', $this->sexo, PDO::PARAM_STR);
+			$stmt->bindParam(':email', $this->email, PDO::PARAM_STR);
+			$stmt->bindParam(':curso_id', $this->curso, PDO::PARAM_STR);
+			$stmt->bindParam(':id', $id, PDO::PARAM_INT);
+			
+			if($stmt->execute()){
+				$sql = "SELECT id_pessoa FROM $this->table order by id_pessoa desc limit 1;";
+				$stmt = DB::prepare($sql);
+				$stmt->execute();
+		        $arrayPessoa = $stmt->fetch();
+				$this->setIdPessoa($arrayPessoa->id_pessoa);
+				//header('Location: ../index.php?p=abrirChamado');
+			}
 		}
 	}
 	public function insert(){
 		try {
-			if($this->tipoPessoa == 3){
+			if($this->tipoPessoa == 1){
+				$sql = "INSERT INTO $this->table (nome_pessoa,sexo_pessoa,email_pessoa,curso_id) values (:nome,:sexo,:email,:curso);";	
+				$stmt = DB::prepare($sql);
+
+				$stmt->bindParam(':nome', $this->nome, PDO::PARAM_STR);
+				$stmt->bindParam(':sexo', $this->sexo, PDO::PARAM_STR);
+				$stmt->bindParam(':email', $this->email, PDO::PARAM_STR);
+				$stmt->bindParam(':curso', $this->curso, PDO::PARAM_STR);
+
+				if($stmt->execute()){
+					$sql = "SELECT id_pessoa FROM $this->table order by id_pessoa desc limit 1;";
+					$stmt = DB::prepare($sql);
+					$stmt->execute();
+			        $arrayPessoa = $stmt->fetch();
+					$this->setIdPessoa($arrayPessoa->id_pessoa);
+
+					//header('Location: ../index.php?p=abrirChamado');
+				}
+			}else if($this->tipoPessoa == 3){
 				$sql = "INSERT INTO $this->table (nome_pessoa,sexo_pessoa,email_pessoa,curso_id,turno_id,periodo) values (:nome,:sexo,:email,:curso,:turno,:periodo);";	
 				$stmt = DB::prepare($sql);
 

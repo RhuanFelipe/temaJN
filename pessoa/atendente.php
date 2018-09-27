@@ -34,7 +34,7 @@
                               <td scope="col" ><?php echo $rows->nome_pessoa; ?></td>
                               <td scope="col" ><?php echo $rows->email_pessoa; ?></td>
 	                            <td scope="col" > 
-                                  <a href="?p=formAtendente&edit=1&id=&id=<?php echo $rows->id_pessoa; ?>" class="btn btn-success edit"  title="Editar">
+                                  <a href="?p=formAtendente&edit=1&id=<?php echo $rows->id_pessoa; ?>" class="btn btn-success edit"  title="Editar">
                                       <i class="fa fa-pencil"></i>
                                   </a>
                                   <?php if($rows->ativo == 1){ ?>

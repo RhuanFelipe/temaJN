@@ -3,7 +3,7 @@
 		require_once '../classes/' . $class_name . '.php';
 	}
 	$matricula = $_POST["matricula"];
-	$senha = $_POST["senha"];
+	$senha = md5($_POST["senha"]);
 	$usuario = new Usuarios();
 	$usuario->logarSistema($matricula,$senha);
 

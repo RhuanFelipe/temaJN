@@ -6,7 +6,7 @@
    matricula = matricula.toString();
    matricula = matricula.substr(0,8);
 
-   document.getElementById("matricula_novo").value = matricula;
+  // document.getElementById("matricula_novo").value = matricula;
  }
  gerarMatricula();
  
