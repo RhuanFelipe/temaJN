@@ -59,7 +59,7 @@
          msgError += '* <b style="color:red">PREENCHA O E-MAIL</b><br><br>';
          error++;
       }
-       if(telefone == ''){
+      if(telefone == ''){
          msgError += '* <b style="color:red">PREENCHA O TELEFONE</b><br><br>';
          error++;
       }

@@ -38,7 +38,7 @@
     		<div class="form-group">
                 <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Tipo Curso: </label>
                 <div class="col-lg-6">
-                    <select class="form-control m-bot15" id="tipoCurso" name="tipoCurso">
+                    <select class="form-control m-bot15 tipoCurso" id="tipoCurso" name="tipoCurso">
                         <option selected>Informe o tipo curso</option>
                     </select>
                 </div>
@@ -144,7 +144,7 @@
               <h4 class="label-nome" align="center"></h4><br>
               <form id="form-cad-aluno">
               <p><b>Nome Aluno:  </b><input type="text" id="nome" name="nome" class="form-control"></p>
-              <p><b>Matricula:  </b><input type="text" id="matricula_novo" name="matricula_novo" class="form-control" readonly=""></p>
+              <p><b>Matricula:  </b><input type="text" id="matricula_novo" name="matricula_novo" class="form-control" ></p>
               <p><b>Turno:  </b></p>
               <p>
                   <label class="radio-inline"><input type="radio" name="turno"  value="1" checked>Manhã</label>
@@ -166,8 +166,14 @@
                     <option value='10'>periodo 10</option>
                 </select>
               <p>
+              <p><b>Tipo Curso:  </b>
+
+            <select class="form-control m-bot15 tipoCurso" id="tipoCursoAluno" name="tipoCursoAluno">
+                <option selected>Informe o tipo curso</option>
+            </select>
+                   
               <p><b>Curso:  </b>
-                <select id="cursoAll" name="cursoAll" class="form-control">
+                <select id="cursoAll" name="cursoAll" class="form-control curso">
                     <option>...</option>
                 </select>
               <p><b>Email:  </b><input type="text" id="email" name="email" class="form-control"></p>

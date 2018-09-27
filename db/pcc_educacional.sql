@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 20-Set-2018 às 17:24
+-- Generation Time: 27-Set-2018 às 12:25
 -- Versão do servidor: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -221,7 +221,7 @@ CREATE TABLE IF NOT EXISTS `pessoa` (
   `periodo` char(1) NOT NULL,
   `ativo` char(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id_pessoa`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=76 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=85 ;
 
 --
 -- Extraindo dados da tabela `pessoa`
@@ -291,7 +291,13 @@ INSERT INTO `pessoa` (`id_pessoa`, `nome_pessoa`, `cpf_pessoa`, `rg_pessoa`, `se
 (71, 'teste', '', '', 'm', '0000-00-00', 'rhuan.silva@informata.com.br', 4, 1, 0, '3', '1'),
 (72, 'jean nascimento', '', '', 'm', '0000-00-00', 'rhuan.silva@informata.com.br', 1, 1, 0, '4', '1'),
 (74, 'Messi da Silva', '', '', 'm', '0000-00-00', 'rhuan.silva@informata.com.br', 3, 2, 0, '5', '1'),
-(75, 'Cristiano Ronaldo Bale', '', '', 'm', '0000-00-00', 'tiemfocoweb@gmail.com', 9, 3, 0, '5', '1');
+(75, 'Cristiano Ronaldo Bale', '', '', 'm', '0000-00-00', 'tiemfocoweb@gmail.com', 9, 3, 0, '5', '1'),
+(79, 'teste', '', '', 'm', '0000-00-00', 'rhuanfelsilva@gmail.com', 0, 0, 0, '', '1'),
+(80, 'RHUAN FELIPE DA SILVA', '', '', 'm', '0000-00-00', 'rhuanfel@hotmail.com', 0, 0, 0, '', '1'),
+(81, 'RHUAN FELIPE', '', '', 'm', '0000-00-00', 'teste', 0, 0, 0, '', '1'),
+(82, 'RHUAN FELIPE', '', '', 'm', '0000-00-00', 'teste@gmail.com', 0, 0, 0, '', '1'),
+(83, 'maria maria', '', '', 'f', '0000-00-00', 'rhuanfelsilva@gmail.com', 0, 0, 0, '', '1'),
+(84, 'pessoa', '', '', 'm', '0000-00-00', 'rhuanfelsilva@gmail.com', 0, 0, 0, '', '1');
 
 -- --------------------------------------------------------
 
@@ -516,7 +522,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `ativo` char(1) NOT NULL DEFAULT '1',
   `nivel_id` int(11) NOT NULL,
   PRIMARY KEY (`id_usuario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=76 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=85 ;
 
 --
 -- Extraindo dados da tabela `usuario`
@@ -597,7 +603,13 @@ INSERT INTO `usuario` (`id_usuario`, `matricula_usuario`, `senha_usuario`, `ativ
 (72, 22496076, '', '1', 3),
 (73, 123, '123', '1', 4),
 (74, 58845295, '', '1', 3),
-(75, 73446368, '', '1', 3);
+(75, 73446368, '', '1', 3),
+(79, 11111111, '', '1', 2),
+(80, 12344445, '25d55ad283aa400af464c76d713c07ad', '1', 2),
+(81, 12344445, '202cb962ac59075b964b07152d234b70', '1', 2),
+(82, 1235678, '202cb962ac59075b964b07152d234b70', '1', 2),
+(83, 1234567, '202cb962ac59075b964b07152d234b70', '1', 2),
+(84, 1234, '202cb962ac59075b964b07152d234b70', '1', 2);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

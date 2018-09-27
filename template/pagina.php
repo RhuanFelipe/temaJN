@@ -54,4 +54,6 @@ else
 		include_once "pessoa/coordenador.php";
 	else if($pagina == 'formAtendente')
 		include_once "pessoa/formAtendente.php";
+	else if($pagina == 'formCoordenador')
+		include_once "pessoa/formCoordenador.php";
 ?>

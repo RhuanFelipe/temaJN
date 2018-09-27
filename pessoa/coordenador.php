@@ -59,7 +59,7 @@
                     </table>
                 </div>
                 </section>
-                <a href="?p=formCurso" type="button" class="btn btn-success"><i class="fa fa-folder-open-o"></i> Cadastrar Coordenador </a>
+                <a href="?p=formCoordenador" type="button" class="btn btn-success"><i class="fa fa-folder-open-o"></i> Cadastrar Coordenador </a>
 
             </div>
         </div>

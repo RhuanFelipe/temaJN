@@ -32,7 +32,7 @@
      else
       requerimento_id = "";
     
-     $("#tipoCurso").load("biblioteca/list/listarTipoCurso.php?id="+valor_id,function(){
+     $(".tipoCurso").load("biblioteca/list/listarTipoCurso.php?id="+valor_id,function(){
         var curso_id = $(".curso_id").val();
 
          if(curso_id != null)
@@ -40,7 +40,7 @@
         else
           curso_id = "";
 
-      $("#curso").load( "biblioteca/list/listarCurso.php?id="+this.value+"&idTipoCurso="+curso_id,function(){ 
+      $(".curso").load( "biblioteca/list/listarCurso.php?id="+this.value+"&idTipoCurso="+curso_id,function(){ 
          var pessoa_id = $(".pessoa_id").val();
 
          if(pessoa_id != null)
@@ -59,11 +59,11 @@
       $("#requerimento").load( "biblioteca/list/listarRequerimento.php?id="+this.value+"&idRequerimento="+requerimento_id);
     });
     });
-    $("#curso").change(function(){
+    $(".curso").change(function(){
         $("#aluno").load( "biblioteca/list/listarAluno.php?id="+this.value);
       });
-    $("#tipoCurso").change(function(){
-     $("#curso").load( "biblioteca/list/listarCurso.php?id="+this.value);
+    $(".tipoCurso").change(function(){
+     $(".curso").load( "biblioteca/list/listarCurso.php?id="+this.value);
    });
 
     $("#tipo_requerimento").change(function(){
@@ -77,5 +77,4 @@
    });
 
     $("#grupo_requerimento_all").load( "biblioteca/list/listarGrupoRequerimentoAll.php?grupoId="+grupoId); 
-    $("#cursoAll").load( "biblioteca/list/listarCursoAll.php"); 
  });
