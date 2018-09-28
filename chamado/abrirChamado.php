@@ -168,7 +168,7 @@
               <p>
               <p><b>Tipo Curso:  </b>
 
-            <select class="form-control m-bot15 tipoCurso" id="tipoCursoAluno" name="tipoCursoAluno">
+            <select class="form-control m-bot15 tipoCurso tipoCursoModal" id="tipoCursoAluno" name="tipoCursoAluno">
                 <option selected>Informe o tipo curso</option>
             </select>
                    

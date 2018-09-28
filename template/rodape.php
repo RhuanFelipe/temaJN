@@ -44,7 +44,7 @@
       var periodo = $("#periodo").val();
       var email = $("#email").val();
       var telefone = $("#telefone").val();
-      var tipoCurso = $(".tipoCurso").val();
+      var tipoCurso = $(".tipoCursoModal").val();
       var curso = $(".curso").val();
       var matricula = $("#matricula_novo").val();
 

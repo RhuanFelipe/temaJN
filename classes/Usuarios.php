@@ -108,7 +108,7 @@ class Usuarios extends Crud{
 	}
 	public function insert(){
 		if ($this->nivel == 3) {
-			$sql  = "INSERT INTO $this->table (id_usuario,matricula_usuario,nivel_id) VALUES (:id_usuario, :matricula, :nivel_id,)";
+			$sql  = "INSERT INTO $this->table (id_usuario,matricula_usuario,nivel_id) VALUES (:id_usuario, :matricula, :nivel_id)";
 			$stmt = DB::prepare($sql);
 			$stmt->bindParam(':id_usuario', $this->idUsuario, PDO::PARAM_INT);
 			$stmt->bindParam(':matricula', $this->matricula, PDO::PARAM_INT);
@@ -117,7 +117,7 @@ class Usuarios extends Crud{
 			return $stmt->execute(); 
 		}else if ($this->nivel == 4) {
 			$sql  = "INSERT INTO $this->table (id_usuario,matricula_usuario,senha_usuario,nivel_id) VALUES (:id_usuario,:matricula,:senha,:nivel_id)";
-			$sqlPessoa = "INSERT INTO pessoa (id_pessoa, nome_pessoa, cpf_pessoa, rg_pessoa, sexo_pessoa, email_pessoa, curso_id, turno_id, turma_id, periodo, ativo) VALUES (NULL, '', '', '', '', 'teste@hotmail.com', '0', '0', '0', '', '1');";
+			$sqlPessoa = "INSERT INTO pessoa (id_pessoa, nome_pessoa, cpf_pessoa, rg_pessoa, sexo_pessoa, email_pessoa, curso_id, turno_id, turma_id, periodo, ativo) VALUES (NULL, 'ADMIN', '', '', '', 'teste@hotmail.com', '0', '0', '0', '', '1');";
 
 			$stmt = DB::prepare($sql);
 			$stmtPessoa = DB::prepare($sqlPessoa);

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 27-Set-2018 às 21:05
+-- Generation Time: 28-Set-2018 às 19:04
 -- Versão do servidor: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -309,17 +309,7 @@ CREATE TABLE IF NOT EXISTS `telefone` (
   `tipo_telefone` char(1) NOT NULL,
   `pessoa_id` int(11) NOT NULL,
   PRIMARY KEY (`id_telefone`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
-
---
--- Extraindo dados da tabela `telefone`
---
-
-INSERT INTO `telefone` (`id_telefone`, `numero_telefone`, `tipo_telefone`, `pessoa_id`) VALUES
-(1, '8132022222', '1', 71),
-(2, '8132022222', '1', 72),
-(3, '8132022222', '1', 74),
-(4, '8132022222', '1', 75);
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
