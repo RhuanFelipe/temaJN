@@ -142,7 +142,7 @@
                       type:"post",                
                       data: "acao="+acao+"&matricula="+matricula,
                       success: function (result){ 
-                        location.href = "login.php";
+                        location.href = "login/login.php";
                       }
                     });
               } 

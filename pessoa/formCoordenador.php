@@ -1,3 +1,4 @@
+<script type="text/javascript" src="pessoa/js/validarCoordenador.js"></script>
 
 <?php 
     @$id = $_GET['id'];
@@ -11,7 +12,7 @@
     }
 ?><section id="main-content">
 <?php if($edit == ""){ ?>
-  <form method="post" action="pessoa/acaoCoordenador.php?acao=insert">
+  <form method="post" action="pessoa/acaoCoordenador.php?acao=insert" onsubmit="return validarCoordenador()">
 <?php }else{ ?>
   <form method="post" action="pessoa/acaoCoordenador.php?acao=update">
    <input type="text" name="id" class="id" value="<?php echo $id;?>">
@@ -41,10 +42,18 @@
                 <input type="hidden" name="curso_id" class="curso_id" value="<?php echo @$pessoa[0]->curso_id;?>">
                 <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Nome Pessoa: </label>
                 <div class="col-lg-6">
-                    <input type="text" name="nome" class="form-control" value="<?php echo @$pessoa[0]->nome_pessoa;?>">
+                    <input type="text" name="nome" id="nome" class="form-control" value="<?php echo @$pessoa[0]->nome_pessoa;?>">
                 </div>
             </div>      
       </div>
+      <div class="col-md-12" style="margin-bottom: 20px">
+          <div class="form-group">
+                <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Matricula: </label>
+                <div class="col-lg-6">
+                    <input type="text" name="matricula" id="matricula" class="form-control" value="<?php  if(@$_GET['edit'] == 1){echo @$usuario[0]->matricula_usuario;}else{echo '';}?>">
+                </div>
+            </div>      
+      </div> 
       <div class="col-md-12">
         <div class="form-group">
                 <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Tipo Curso: </label>
@@ -69,23 +78,24 @@
           <div class="form-group">
                 <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">E-mail: </label>
                 <div class="col-lg-6">
-                    <input type="text" name="email" class="form-control" value="<?php echo @$pessoa[0]->email_pessoa;?>">
+                    <input type="text" name="email" id="email" class="form-control" value="<?php echo @$pessoa[0]->email_pessoa;?>">
                 </div>
             </div>      
       </div>  
-      <div class="col-md-12" style="margin-bottom: 20px">
-          <div class="form-group">
-                <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Matricula: </label>
-                <div class="col-lg-6">
-                    <input type="text" name="matricula" class="form-control" value="<?php  if(@$_GET['edit'] == 1){echo @$usuario[0]->matricula_usuario;}else{echo '';}?>">
-                </div>
-            </div>      
-      </div> 
+      
       <div class="col-md-12" style="margin-bottom: 20px">
           <div class="form-group">
                 <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Senha: </label>
                 <div class="col-lg-6">
-                    <input type="password" name="senha" class="form-control" value="">
+                    <input type="password" name="senha" id="senha" class="form-control" value="">
+                </div>
+            </div>      
+      </div>
+      <div class="col-md-12" style="margin-bottom: 20px">
+          <div class="form-group">
+                <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Repetir-senha: </label>
+                <div class="col-lg-6">
+                    <input type="password" name="senha" id="senha_aux" class="form-control" value="">
                 </div>
             </div>      
       </div>
@@ -94,7 +104,7 @@
                 <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Sexo: </label>
                 <div class="col-lg-6">
                     <input type="radio" name="sexo"  value="m" 
-                    <?php if(@$pessoa[0]->sexo_pessoa == 'm')echo 'checked'; ?>> Masculino
+                    <?php if(@$pessoa[0]->sexo_pessoa == 'm' || @$pessoa[0]->sexo_pessoa == '')echo 'checked'; ?>> Masculino
                     <input type="radio" name="sexo"  value="f" <?php if(@$pessoa[0]->sexo_pessoa == 'f')echo 'checked'; ?>> Feminino
                 </div>
             </div>      

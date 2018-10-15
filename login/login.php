@@ -52,21 +52,12 @@
            <script src="../js/jquery.js"></script>
            <script src="../bs3/js/bootstrap.min.js"></script>
           <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
-          <script type="text/javascript">
-            $(function(){
-                var dialog = bootbox.dialog({
-                    message: '<p class="text-center">Faça seu primeiro acesso no sistema</p>'
-                });
-                $('.close').click(function(){
-                  $('.informativo').fadeIn('slow');
-                });
-             });
-          </script>
+          <script type="text/javascript" src="js/primeiroAcesso.js"></script>
         <?php } ?>
         <div class="login-wrap">
             <div class="user-login-info">
                     <div class="alert alert-danger" role="alert"></div>
-                <input type="text" id="matricula" name="matricula" class="form-control" placeholder="Matricula" autofocus>
+                <input type="text" id="matricula" name="matricula" class="form-control" placeholder="Matricula" onkeypress="isCapslock(this)" autofocus>
                 <input type="password" id="senha" name="senha" class="form-control" placeholder="Senha">
             </div>
             <button class="btn btn-lg btn-login btn-block" type="submit">Logar</button>
@@ -98,7 +89,7 @@
 
       </form>
       <?php }else{ ?>
-        <form class="form-signin" action="acaoLogin.php" method="POST">
+        <form class="form-signin" action="acaoLogin.php" method="POST" onsubmit="return validarLogin()">
           <h2 class="form-signin-heading">PCC Educacional</h2>
            <div class="login-wrap informativo" style="display: none"><h4 style="color:red;font-size: 13px;font-weight: bold;text-align: center;">Insira uma senha para o usuario Admin</h4></div>
           <div class="login-wrap">
@@ -137,17 +128,7 @@
     <script src="../js/jquery.js"></script>
     <script src="../bs3/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
-  
-      <script type="text/javascript">
-        $(function(){
-            var dialog = bootbox.dialog({
-                message: '<p class="text-center">Bem Vindo a tela de configuração do Open Educacional</p>'
-            });
-            $('.close').click(function(){
-              $('.informativo').fadeIn('slow');
-            });
-         });
-      </script>
+      <script src="js/configuracoes.js" type="text/javascript"></script>
       <?php } ?>
     </div>
 
