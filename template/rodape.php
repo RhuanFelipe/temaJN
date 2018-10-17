@@ -93,6 +93,7 @@
             success: function(data){
               $(".btn-fechar-cadAluno").trigger("click");
               $("#matricula").val(data);
+              $("#matricula").focus();
             }
           });
       } 

@@ -11,6 +11,7 @@
 ?>
 <section id="main-content">
   <form method="post" action="chamado/chamado.php" onsubmit="return validarChamado()">
+
     <?php 
      if($idChamado != "" && $edit == 1){
         $c = new Chamado();
@@ -59,7 +60,8 @@
                 <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Aluno: </label>
                 <div class="col-lg-5">
                    <input id="matricula" class="form-control m-bot15" minlength="8" maxlength="8" />
-                    <input id="id_pessoa" type="hidden" value="<?php echo @$_REQUEST['id_pessoa'];?>" name="aluno"/>
+                      <input id="id_pessoa" type="hidden" value="<?php echo @$_REQUEST['id_pessoa'];?>" name="aluno"/>
+
                 </div>
                 <div class="col-lg-2">
                    <a href="#" class="btn btn-info adicionar" title="Adicinar Aluno" data-target="#modalCadAluno" data-toggle="modal">
