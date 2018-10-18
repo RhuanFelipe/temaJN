@@ -88,13 +88,16 @@
           									<?php if($_SESSION['nivel_id'] == 1) {
           										
           										 if($rows->status == 9) {?>
-		                                  <a href="#" class="btn btn-success concluir" id="<?php echo $rows->id_chamado; ?>">
+		                                  <a href="#" class="btn btn-success" id="<?php echo $rows->id_chamado; ?>" data-toggle="modal" data-target="#modalConcluir">
 		                                  	<i class="fa fa-check" title="Finalizar Chamado"></i>
 		                                  </a>
  
-		                                  <a href="#" class="btn btn btn-danger cancelar" title="Cancelar Chamado" id="<?php echo $rows->id_chamado; ?>">
+		                                  <a href="#" class="btn btn btn-danger" title="Cancelar Chamado"  data-toggle="modal" data-target="#modalCancelar"  id="<?php echo $rows->id_chamado; ?>">
 	                                   			<i class="fa fa-ban"></i>
 		                                  </a>
+                                       <a href="#" class="btn btn btn-warning" title="Encaminhar Chamado"  data-toggle="modal" data-target="#modalEncaminhar"  id="<?php echo $rows->id_chamado; ?>">
+                                          <i class="fa fa-mail-forward"></i>
+                                      </a>
 
 		                                  <?php }else if($rows->status == 1){ 
 		                                  		echo "finalizado!";
@@ -135,6 +138,102 @@
               <p><b>Assunto:  </b><label class="label-assunto"></label></p>
             </div>
             <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+      </div>
+    </div>
+
+<!--main content end-->
+ <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Chamado</h5>
+          </div>
+            <div class="modal-body">
+              <h4 class="label-nome" align="center"></h4><br>
+              <p><b>Tipo Requerimento:  </b><label class="label-tipo-requerimento"></label></p>
+              <p><b>Grupo Requerimento:  </b><label class="label-grupo-requerimento"></label></p>
+              <p><b>Requerimento:  </b><label class="label-requerimento"></label></p>
+              <p><b>Assunto:  </b><label class="label-assunto"></label></p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+      </div>
+    </div>
+     <!-- Modal -->
+    <div class="modal fade" id="modalConcluir" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Fechar Chamado</h5>
+          </div>
+            <div class="modal-body">
+              <h4 class="label-nome" align="center"></h4><br>
+              <p><b>Conclusão Chamado:  </b></p>
+              <p>  <textarea class="form-control" rows="5" id="comment"></textarea></p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-success" >Finalizar</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+      </div>
+    </div>
+       <!-- Modal -->
+    <div class="modal fade" id="modalCancelar" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Cancelar Chamado</h5>
+          </div>
+            <div class="modal-body">
+              <h4 class="label-nome" align="center"></h4><br>
+              <p><b>Motivo:  </b>
+                <select class="form-control m-bot15">
+                  <option></option>
+                  <option>Teste</option>
+                  <option>Teste</option>
+                  <option>Teste</option>
+                </select>
+              </p>
+              <p><b>Conclusão Chamado:  </b></p>
+              <p>  <textarea class="form-control" rows="5" id="comment"></textarea></p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-success" >Finalizar</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+      </div>
+    </div>
+
+     <!-- Modal -->
+    <div class="modal fade" id="modalEncaminhar" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Cancelar Chamado</h5>
+          </div>
+            <div class="modal-body">
+              <h4 class="label-nome" align="center"></h4><br>
+              <p><b>Motivo:  </b>
+                <select class="form-control m-bot15">
+                  <option></option>
+                  <option>Teste</option>
+                  <option>Teste</option>
+                  <option>Teste</option>
+                </select>
+              </p>
+              <p><b>Conclusão Chamado:  </b></p>
+              <p>  <textarea class="form-control" rows="5" id="comment"></textarea></p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-success" >Finalizar</button>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
             </div>
         </div>

@@ -123,7 +123,7 @@ class Usuarios extends Crud{
 			$stmtPessoa = DB::prepare($sqlPessoa);
 
 			$stmt->bindParam(':id_usuario', $this->idUsuario, PDO::PARAM_INT);
-			$stmt->bindParam(':senha', $this->senha, PDO::PARAM_INT);
+			$stmt->bindParam(':senha', $this->senha);
 			$stmt->bindParam(':matricula', $this->matricula, PDO::PARAM_INT);
 			$stmt->bindParam(':nivel_id', $this->nivel, PDO::PARAM_INT);
 			$stmtPessoa->execute(); 
@@ -134,7 +134,7 @@ class Usuarios extends Crud{
 			$stmt->bindParam(':id_usuario', $this->idUsuario, PDO::PARAM_INT);
 			$stmt->bindParam(':matricula', $this->matricula, PDO::PARAM_INT);
 			$stmt->bindParam(':nivel_id', $this->nivel, PDO::PARAM_INT);
-			$stmt->bindParam(':senha', $this->senha, PDO::PARAM_INT);
+			$stmt->bindParam(':senha', $this->senha);
 			
 			return $stmt->execute(); 
 		}

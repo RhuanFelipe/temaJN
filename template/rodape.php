@@ -105,7 +105,7 @@
 
     $(".ver").click(function(){
         var id_chamado = $('.chamado_click').val();
-        console.log(id_chamado)
+
         $.ajax({
           type: "POST",
           url: "biblioteca/list/listarDadosModal.php",
@@ -168,6 +168,7 @@
                     label: 'Não'
                 }
             },
+           
             callback: function (result) {
                 if(result != false){
                   var id = parseInt($("#id_chamado").val());
