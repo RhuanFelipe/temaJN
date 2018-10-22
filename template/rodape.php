@@ -156,34 +156,19 @@
       $("#id_chamado").val(this.id);
     });
 
-    $('.concluir').click(function(){
-         var result = bootbox.confirm({
-            message: "Deseja Concluir o Chamado?",
-            buttons: {
-                confirm: {
-                    label: 'Sim',
-                    className: 'btn-info'
-                },
-                cancel: {
-                    label: 'Não'
-                }
-            },
-           
-            callback: function (result) {
-                if(result != false){
-                  var id = parseInt($("#id_chamado").val());
-                  $.ajax({            
-                    url:"chamado/acao.php",            
-                    type:"GET",                
-                    data: "p=executar&acao=concluir&id="+id,
-                    success: function (result){ 
-                      location.href = "index.php";
-                    }
-                  });
-              } 
-            }
-      });
-   
+    $('.concluir').click(function(){        
+        var id = parseInt($( ".data-id-chamado").attr("data-id-chamado"));
+        var assunto_chamado = $("#assunto_chamado").val();
+        var usuario = $("#usuario").val();
+        $.ajax({            
+          url:"chamado/acao.php",            
+          type:"GET",                
+          data: "p=executar&acao=concluir&id="+id+"&assunto_chamado="+assunto_chamado+"&usuario="+usuario,
+          success: function (result){ 
+            location.href = "index.php";
+          }
+        });
+
     });
     $(document).ready(function() {
       var tabela = $('#fullTable').DataTable({

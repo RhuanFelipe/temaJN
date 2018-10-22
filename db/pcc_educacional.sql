@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 28-Set-2018 às 19:04
+-- Generation Time: 22-Out-2018 às 22:15
 -- Versão do servidor: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -67,7 +67,15 @@ CREATE TABLE IF NOT EXISTS `chamado` (
   `status` char(1) DEFAULT '9',
   `pessoa_id` int(11) NOT NULL,
   PRIMARY KEY (`id_chamado`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Extraindo dados da tabela `chamado`
+--
+
+INSERT INTO `chamado` (`id_chamado`, `protocolo_chamado`, `assunto_chamado`, `data_abertura`, `categoria_id`, `usuario_id`, `tipo_curso_id`, `curso_id`, `unidade_id`, `tipo_requerimento_id`, `grupo_requerimento_id`, `requerimento_id`, `status`, `pessoa_id`) VALUES
+(1, NULL, 'teste', '2018-10-17 12:32:34', NULL, 2, 1, 7, 1, 1, 1, 1, '1', 4),
+(2, NULL, 'teste', '2018-10-22 17:07:53', NULL, 2, 1, 7, 1, 1, 1, 1, '9', 4);
 
 -- --------------------------------------------------------
 
@@ -77,11 +85,18 @@ CREATE TABLE IF NOT EXISTS `chamado` (
 
 CREATE TABLE IF NOT EXISTS `chamado_resposta` (
   `id_chamado` int(11) NOT NULL,
-  `data_fechamento` datetime NOT NULL,
+  `data_fechamento` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `status` int(11) NOT NULL,
   `id_usuario` int(11) NOT NULL,
   `assunto_chamado` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `chamado_resposta`
+--
+
+INSERT INTO `chamado_resposta` (`id_chamado`, `data_fechamento`, `status`, `id_usuario`, `assunto_chamado`) VALUES
+(1, '2018-10-22 17:04:41', 1, 3, 'fechar chamado');
 
 -- --------------------------------------------------------
 
@@ -174,6 +189,27 @@ INSERT INTO `grupo_requerimento` (`id_grupo`, `desc_grupo`, `tipo_requerimento_i
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `motivo`
+--
+
+CREATE TABLE IF NOT EXISTS `motivo` (
+  `id_motivo` int(11) NOT NULL AUTO_INCREMENT,
+  `nome_motivo` varchar(150) NOT NULL,
+  `ativo` int(11) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id_motivo`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Extraindo dados da tabela `motivo`
+--
+
+INSERT INTO `motivo` (`id_motivo`, `nome_motivo`, `ativo`) VALUES
+(1, 'MOTIVO 1', 1),
+(2, 'MOTIVO 2', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `nivel`
 --
 
@@ -212,7 +248,17 @@ CREATE TABLE IF NOT EXISTS `pessoa` (
   `periodo` char(1) NOT NULL,
   `ativo` char(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id_pessoa`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Extraindo dados da tabela `pessoa`
+--
+
+INSERT INTO `pessoa` (`id_pessoa`, `nome_pessoa`, `cpf_pessoa`, `rg_pessoa`, `sexo_pessoa`, `email_pessoa`, `curso_id`, `turno_id`, `turma_id`, `periodo`, `ativo`) VALUES
+(1, 'ADMIN', '', '', '', 'admin@hotmail.com', 0, 0, 0, '', '1'),
+(2, 'maria maria', '', '', 'f', 'rhuanfel@hotmail.com', 0, 0, 0, '', '1'),
+(3, 'arlindo matos', '', '', 'm', 'rhuanfel@hotmail.com', 7, 0, 0, '', '1'),
+(4, 'rhuan felipe da silva', '', '', 'm', 'rhuanfel@hotmail.com', 7, 3, 0, '8', '1');
 
 -- --------------------------------------------------------
 
@@ -309,7 +355,14 @@ CREATE TABLE IF NOT EXISTS `telefone` (
   `tipo_telefone` char(1) NOT NULL,
   `pessoa_id` int(11) NOT NULL,
   PRIMARY KEY (`id_telefone`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Extraindo dados da tabela `telefone`
+--
+
+INSERT INTO `telefone` (`id_telefone`, `numero_telefone`, `tipo_telefone`, `pessoa_id`) VALUES
+(1, '81999999', '1', 4);
 
 -- --------------------------------------------------------
 
@@ -427,7 +480,17 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `ativo` char(1) NOT NULL DEFAULT '1',
   `nivel_id` int(11) NOT NULL,
   PRIMARY KEY (`id_usuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Extraindo dados da tabela `usuario`
+--
+
+INSERT INTO `usuario` (`id_usuario`, `matricula_usuario`, `senha_usuario`, `ativo`, `nivel_id`) VALUES
+(1, 'ADMIN', '202cb962ac59075b964b07152d234b70', '1', 4),
+(2, '12345678', '202cb962ac59075b964b07152d234b70', '1', 2),
+(3, '11111111', '202cb962ac59075b964b07152d234b70', '1', 1),
+(4, '11032395', '', '1', 3);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

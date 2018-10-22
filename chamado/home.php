@@ -36,6 +36,7 @@
                     <div class="panel-body">
                       <p style="float: right;">Qtd. Chamados : <?php echo $qtdChamados; ?></p>
                   <input class="chamado_click" type="hidden"  value="">
+                  <input type="hidden" name="usuario" id="usuario" value="<?php echo $_SESSION['usuario_id']; ?>">
 
 				         <table id="fullTable" class="table table-striped table-hover table-bordered  display" style="width:100%">
 			                   <thead>
@@ -88,7 +89,7 @@
           									<?php if($_SESSION['nivel_id'] == 1) {
           										
           										 if($rows->status == 9) {?>
-		                                  <a href="#" class="btn btn-success" id="<?php echo $rows->id_chamado; ?>" data-toggle="modal" data-target="#modalConcluir">
+		                                  <a href="#" class="btn btn-success data-id-chamado" data-id-chamado = "<?php echo $rows->id_chamado; ?>" data-toggle="modal" data-target="#modalConcluir">
 		                                  	<i class="fa fa-check" title="Finalizar Chamado"></i>
 		                                  </a>
  
@@ -170,15 +171,15 @@
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Fechar Chamado</h5>
+            <h5 class="modal-title" id="exampleModalLongTitle">Concluir Chamado</h5>
           </div>
             <div class="modal-body">
               <h4 class="label-nome" align="center"></h4><br>
               <p><b>Conclusão Chamado:  </b></p>
-              <p>  <textarea class="form-control" rows="5" id="comment"></textarea></p>
+              <p>  <textarea class="form-control" rows="5" id="assunto_chamado"></textarea></p>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-success" >Finalizar</button>
+              <button type="button" class="btn btn-success concluir" >Finalizar</button>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
             </div>
         </div>
@@ -205,7 +206,7 @@
               <p>  <textarea class="form-control" rows="5" id="comment"></textarea></p>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-success" >Finalizar</button>
+              <button type="button" class="btn btn-danger" >Cancelar</button>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
             </div>
         </div>
@@ -217,11 +218,11 @@
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Cancelar Chamado</h5>
+            <h5 class="modal-title" id="exampleModalLongTitle">Encaminhar Chamado</h5>
           </div>
             <div class="modal-body">
               <h4 class="label-nome" align="center"></h4><br>
-              <p><b>Motivo:  </b>
+              <p><b>Coordenador:  </b>
                 <select class="form-control m-bot15">
                   <option></option>
                   <option>Teste</option>
@@ -229,11 +230,10 @@
                   <option>Teste</option>
                 </select>
               </p>
-              <p><b>Conclusão Chamado:  </b></p>
-              <p>  <textarea class="form-control" rows="5" id="comment"></textarea></p>
+              
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-success" >Finalizar</button>
+              <button type="button" class="btn btn-warning" >Encaminhar</button>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
             </div>
         </div>

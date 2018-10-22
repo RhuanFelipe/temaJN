@@ -169,14 +169,22 @@ class Chamado extends Crud{
 			$sql  = "UPDATE chamado
 						SET status = '1'
 					WHERE id_chamado = :id_chamado;";
-			
-			$stmt = DB::prepare($sql);
-			$stmt->bindParam(':id_chamado', $id, PDO::PARAM_INT);
-			
 
-			if($stmt->execute()){
+			$sqlConcluir = "INSERT INTO chamado_resposta (id_chamado,status,id_usuario,assunto_chamado) 
+			values (:id_chamado,'1',:id_usuario,:assunto_chamado);";	
+
+			$stmt = DB::prepare($sql);
+			$stmtConcluir = DB::prepare($sqlConcluir);
+
+			$stmt->bindParam(':id_chamado', $id, PDO::PARAM_INT);
+			$stmtConcluir->bindParam(':id_chamado', $id, PDO::PARAM_INT);
+			$stmtConcluir->bindParam(':assunto_chamado', $this->assunto, PDO::PARAM_STR);
+			$stmtConcluir->bindParam(':id_usuario', $this->usuario, PDO::PARAM_INT);			
+
+			$stmt->execute();
+			$stmtConcluir->execute();
 				//header('Location: ?p=home');
-			}
+			
 		
 		} catch (PDOException $e) {
 		    print $e->getMessage();

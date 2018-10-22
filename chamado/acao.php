@@ -4,8 +4,13 @@
 	}
 	$id = $_GET["id"];
 	$acao = $_GET['acao'];
+	@$assunto_chamado = $_GET['assunto_chamado'];
+	@$usuario = $_GET['usuario'];
 
 	$chamado = new Chamado();
+	$chamado->setAssunto($assunto_chamado);
+	$chamado->setUsuario($usuario);
+	
 	if($acao == 'concluir'){
 		$chamado->concluirChamado($id);
 	}else if($acao == 'cancelar'){
