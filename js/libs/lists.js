@@ -53,6 +53,7 @@
     });
 
     $("#unidade").load("biblioteca/list/listarUnidade.php?id="+unidade_id);
+    $("#motivo").load("biblioteca/list/listarMotivos.php");
 
     $("#tipo_requerimento").load("biblioteca/list/listarTipoRequerimento.php?id="+tipo_requerimento_id,function(){
       $("#grupo_requerimento").load( "biblioteca/list/listarGrupoRequerimento.php?id="+this.value+"&idGrupo="+grupo_requerimento_id,function(){

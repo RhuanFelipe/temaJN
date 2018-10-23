@@ -197,35 +197,23 @@
       tabela_min.buttons().disable();
     });
 
+     $('.cancelar').click(function(){        
+        var id = parseInt($( ".data-id-chamado").attr("data-id-chamado"));
+        var assunto_chamado = $("#comment").val();
+        var usuario = $("#usuario").val();
+        var motivo = $("#motivo").val();
+        $.ajax({            
+          url:"chamado/acao.php",            
+          type:"GET", 
+          data: "p=executar&acao=cancelar&id="+id+"&assunto_chamado="+assunto_chamado+"&usuario="+usuario+"&motivo="+motivo,
+          success: function (result){ 
+            location.href = "index.php";
+          }
+        });
 
-    $('.cancelar').click(function(){
-            var result = bootbox.confirm({
-            message: "Deseja Cancelar o Chamado?",
-            buttons: {
-                confirm: {
-                    label: 'Sim',
-                    className: 'btn-info'
-                },
-                cancel: {
-                    label: 'Não'
-                }
-            },
-            callback: function (result) {
-                if(result != false){
-                  var id = parseInt($("#id_chamado").val());
-                  $.ajax({            
-                    url:"chamado/acao.php",            
-                    type:"GET",                
-                    data: "p=executar&acao=cancelar&id="+id,
-                    success: function (result){ 
-                      location.href = "index.php";
-                    }
-                  });
-              } 
-            }
-      });
+    });
+
      
-    });  
     $('.excluir').click(function(){
             var result = bootbox.confirm({
             message: "Deseja Excluir o Chamado?",

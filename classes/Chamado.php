@@ -15,12 +15,19 @@ class Chamado extends Crud{
 	private $assunto;
 	private $usuario;
 	private $pessoa;
+	private $motivo;
 
 	public function setUsuario($usuario){
 		$this->usuario = $usuario;
 	}
 	public function getUsuario(){
 		return $this->usuario;
+	}
+	public function setMotivo($motivo){
+		$this->motivo = $motivo;
+	}
+	public function getMotivo(){
+		return $this->motivo;
 	}
 	public function setPessoa($pessoa){
 		$this->pessoa = $pessoa;
@@ -196,13 +203,19 @@ class Chamado extends Crud{
 						SET status = '0'
 					WHERE id_chamado = :id_chamado;";
 
+			$sqlConcluir = "INSERT INTO chamado_resposta (id_chamado,status,id_usuario,assunto_chamado,motivo_id) 
+			values (:id_chamado,'0',:id_usuario,:assunto_chamado,:motivo_id);";	
 			$stmt = DB::prepare($sql);
-			$stmt->bindParam(':id_chamado', $id, PDO::PARAM_INT);
-			
+			$stmtConcluir = DB::prepare($sqlConcluir);
 
-			if($stmt->execute()){
-				//header('Location: ?p=home');
-			}
+			$stmt->bindParam(':id_chamado', $id, PDO::PARAM_INT);
+			$stmtConcluir->bindParam(':id_chamado', $id, PDO::PARAM_INT);
+			$stmtConcluir->bindParam(':assunto_chamado', $this->assunto, PDO::PARAM_STR);
+			$stmtConcluir->bindParam(':id_usuario', $this->usuario, PDO::PARAM_INT);
+			$stmtConcluir->bindParam(':motivo_id', $this->motivo, PDO::PARAM_STR);
+			
+			$stmt->execute();
+			$stmtConcluir->execute();
 		
 		} catch (PDOException $e) {
 		    print $e->getMessage();

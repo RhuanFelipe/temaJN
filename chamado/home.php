@@ -195,18 +195,15 @@
             <div class="modal-body">
               <h4 class="label-nome" align="center"></h4><br>
               <p><b>Motivo:  </b>
-                <select class="form-control m-bot15">
-                  <option></option>
-                  <option>Teste</option>
-                  <option>Teste</option>
-                  <option>Teste</option>
+                <select class="form-control m-bot15 motivo" id="motivo">
+                 
                 </select>
               </p>
               <p><b>Conclusão Chamado:  </b></p>
               <p>  <textarea class="form-control" rows="5" id="comment"></textarea></p>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-danger" >Cancelar</button>
+              <button type="button" class="btn btn-danger cancelar" >Cancelar</button>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
             </div>
         </div>
@@ -222,15 +219,19 @@
           </div>
             <div class="modal-body">
               <h4 class="label-nome" align="center"></h4><br>
-              <p><b>Coordenador:  </b>
-                <select class="form-control m-bot15">
+              <p><b>Tipo Curso:  </b>
+                <select class="form-control m-bot15 tipoCurso" name="tipoCurso" id="tipoCurso">
                   <option></option>
-                  <option>Teste</option>
-                  <option>Teste</option>
-                  <option>Teste</option>
                 </select>
               </p>
-              
+              <p><b>Curso:  </b>
+                <select class="form-control m-bot15 curso" name="curso" id="curso">
+                  <option></option>
+                </select>
+              </p>
+               <p><b>Coordenador:  </b>
+                <input class="form-control m-bot15 ui-autocomplete-input" minlength="8" maxlength="8">
+              </p>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-warning" >Encaminhar</button>

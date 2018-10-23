@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 22-Out-2018 às 22:15
+-- Generation Time: 23-Out-2018 às 04:35
 -- Versão do servidor: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `chamado` (
   `status` char(1) DEFAULT '9',
   `pessoa_id` int(11) NOT NULL,
   PRIMARY KEY (`id_chamado`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Extraindo dados da tabela `chamado`
@@ -75,7 +75,13 @@ CREATE TABLE IF NOT EXISTS `chamado` (
 
 INSERT INTO `chamado` (`id_chamado`, `protocolo_chamado`, `assunto_chamado`, `data_abertura`, `categoria_id`, `usuario_id`, `tipo_curso_id`, `curso_id`, `unidade_id`, `tipo_requerimento_id`, `grupo_requerimento_id`, `requerimento_id`, `status`, `pessoa_id`) VALUES
 (1, NULL, 'teste', '2018-10-17 12:32:34', NULL, 2, 1, 7, 1, 1, 1, 1, '1', 4),
-(2, NULL, 'teste', '2018-10-22 17:07:53', NULL, 2, 1, 7, 1, 1, 1, 1, '9', 4);
+(2, NULL, 'teste', '2018-10-22 17:07:53', NULL, 2, 1, 7, 1, 1, 1, 1, '1', 4),
+(3, NULL, 'teste', '2018-10-22 22:09:04', NULL, 2, 1, 7, 1, 1, 1, 1, '1', 5),
+(4, NULL, 'teste', '2018-10-22 23:14:15', NULL, 2, 1, 7, 1, 1, 2, 6, '1', 4),
+(5, NULL, 'teste', '2018-10-22 23:17:05', NULL, 2, 1, 7, 1, 1, 1, 1, '1', 5),
+(6, NULL, 'teste', '2018-10-22 23:18:39', NULL, 2, 1, 7, 1, 1, 1, 1, '0', 4),
+(7, NULL, 'chamado aberto', '2018-10-22 23:27:57', NULL, 2, 1, 7, 1, 1, 1, 1, '0', 5),
+(9, NULL, 'chamado reaberto', '2018-10-22 23:30:37', NULL, 2, 1, 7, 1, 1, 1, 1, '9', 5);
 
 -- --------------------------------------------------------
 
@@ -88,15 +94,22 @@ CREATE TABLE IF NOT EXISTS `chamado_resposta` (
   `data_fechamento` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `status` int(11) NOT NULL,
   `id_usuario` int(11) NOT NULL,
-  `assunto_chamado` text NOT NULL
+  `assunto_chamado` text NOT NULL,
+  `motivo_id` char(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `chamado_resposta`
 --
 
-INSERT INTO `chamado_resposta` (`id_chamado`, `data_fechamento`, `status`, `id_usuario`, `assunto_chamado`) VALUES
-(1, '2018-10-22 17:04:41', 1, 3, 'fechar chamado');
+INSERT INTO `chamado_resposta` (`id_chamado`, `data_fechamento`, `status`, `id_usuario`, `assunto_chamado`, `motivo_id`) VALUES
+(1, '2018-10-22 17:04:41', 1, 3, 'fechar chamado', NULL),
+(2, '2018-10-22 22:17:43', 1, 3, 'fechei o chamado', NULL),
+(3, '2018-10-22 23:12:30', 1, 3, '', NULL),
+(4, '2018-10-22 23:14:38', 1, 3, '', NULL),
+(5, '2018-10-22 23:17:30', 1, 3, '', NULL),
+(6, '2018-10-22 23:26:51', 0, 3, 'cancelar chamado', '1'),
+(7, '2018-10-22 23:28:31', 0, 3, 'cancelei esse chamado', '2');
 
 -- --------------------------------------------------------
 
@@ -248,7 +261,7 @@ CREATE TABLE IF NOT EXISTS `pessoa` (
   `periodo` char(1) NOT NULL,
   `ativo` char(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id_pessoa`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Extraindo dados da tabela `pessoa`
@@ -258,7 +271,8 @@ INSERT INTO `pessoa` (`id_pessoa`, `nome_pessoa`, `cpf_pessoa`, `rg_pessoa`, `se
 (1, 'ADMIN', '', '', '', 'admin@hotmail.com', 0, 0, 0, '', '1'),
 (2, 'maria maria', '', '', 'f', 'rhuanfel@hotmail.com', 0, 0, 0, '', '1'),
 (3, 'arlindo matos', '', '', 'm', 'rhuanfel@hotmail.com', 7, 0, 0, '', '1'),
-(4, 'rhuan felipe da silva', '', '', 'm', 'rhuanfel@hotmail.com', 7, 3, 0, '8', '1');
+(4, 'rhuan felipe da silva', '', '', 'm', 'rhuanfel@hotmail.com', 7, 3, 0, '8', '1'),
+(5, 'anderson ferreira', '', '', 'm', 'rhuanfelsilva@gmail.com', 7, 3, 0, '8', '1');
 
 -- --------------------------------------------------------
 
@@ -355,14 +369,15 @@ CREATE TABLE IF NOT EXISTS `telefone` (
   `tipo_telefone` char(1) NOT NULL,
   `pessoa_id` int(11) NOT NULL,
   PRIMARY KEY (`id_telefone`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Extraindo dados da tabela `telefone`
 --
 
 INSERT INTO `telefone` (`id_telefone`, `numero_telefone`, `tipo_telefone`, `pessoa_id`) VALUES
-(1, '81999999', '1', 4);
+(1, '81999999', '1', 4),
+(2, '8199887766', '1', 5);
 
 -- --------------------------------------------------------
 
@@ -480,7 +495,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `ativo` char(1) NOT NULL DEFAULT '1',
   `nivel_id` int(11) NOT NULL,
   PRIMARY KEY (`id_usuario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Extraindo dados da tabela `usuario`
@@ -490,7 +505,8 @@ INSERT INTO `usuario` (`id_usuario`, `matricula_usuario`, `senha_usuario`, `ativ
 (1, 'ADMIN', '202cb962ac59075b964b07152d234b70', '1', 4),
 (2, '12345678', '202cb962ac59075b964b07152d234b70', '1', 2),
 (3, '11111111', '202cb962ac59075b964b07152d234b70', '1', 1),
-(4, '11032395', '', '1', 3);
+(4, '11032395', '', '1', 3),
+(5, '11002233', '', '1', 3);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

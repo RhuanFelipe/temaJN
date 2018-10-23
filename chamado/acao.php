@@ -10,10 +10,11 @@
 	$chamado = new Chamado();
 	$chamado->setAssunto($assunto_chamado);
 	$chamado->setUsuario($usuario);
-	
 	if($acao == 'concluir'){
 		$chamado->concluirChamado($id);
 	}else if($acao == 'cancelar'){
+		@$motivo = $_GET['motivo'];
+	    $chamado->setMotivo($motivo);
 		$chamado->fecharChamado($id);
 	}else{
 		$chamado->delete($id);
