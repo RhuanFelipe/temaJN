@@ -200,5 +200,14 @@ class Pessoa extends Crud{
 		$stmt->execute();
 		return $stmt->fetchAll();
 	}
+	public function findCoordenadorCurso($id){
+		$sql  = "SELECT * FROM $this->table INNER JOIN $this->tableSecondJoin on id_usuario = id_pessoa where nivel_id = 1 and curso_id = :id ";
+		$stmt = DB::prepare($sql);
+		$stmt->bindParam(':id', $id, PDO::PARAM_INT);
+
+		$stmt->execute();
+		return $stmt->fetchAll();
+	}
+
 	
 }

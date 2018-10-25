@@ -197,7 +197,28 @@ class Chamado extends Crud{
 		    print $e->getMessage();
 		}
 	}
-		public function fecharChamado($id){
+	
+	public function encaminharChamado($id){
+		try {
+			$sql  = " UPDATE chamado
+						SET tipo_curso_id = :tipoCursoId,
+						curso_id = :cursoId
+					WHERE id_chamado = :id_chamado ";
+
+			
+			$stmt = DB::prepare($sql);
+			$stmt->bindParam(':id_chamado', $id, PDO::PARAM_INT);			
+			$stmt->bindParam(':tipoCursoId', $this->tipoCurso, PDO::PARAM_INT);			
+			$stmt->bindParam(':cursoId', $this->curso, PDO::PARAM_INT);	
+			var_dump($stmt);		
+			$stmt->execute();
+		
+		} catch (PDOException $e) {
+		    print $e->getMessage();
+		}
+
+	}
+	public function fecharChamado($id){
 		try {
 			$sql  = "UPDATE chamado
 						SET status = '0'

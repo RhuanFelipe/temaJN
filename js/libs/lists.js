@@ -31,8 +31,10 @@
       requerimento_id = requerimento_id;
      else
       requerimento_id = "";
-    
-     $(".tipoCurso").load("biblioteca/list/listarTipoCurso.php?id="+valor_id,function(){
+    $(".cursoCoordenador").change(function() {
+       $(".coordenadorCurso").load("biblioteca/list/listarCoordenadorCurso.php?id="+this.value);
+    });
+    $(".tipoCurso").load("biblioteca/list/listarTipoCurso.php?id="+valor_id,function(){
         var curso_id = $(".curso_id").val();
 
          if(curso_id != null)
@@ -64,7 +66,9 @@
         $("#aluno").load( "biblioteca/list/listarAluno.php?id="+this.value);
       });
     $(".tipoCurso").change(function(){
-     $(".curso").load( "biblioteca/list/listarCurso.php?id="+this.value);
+     $(".curso").load( "biblioteca/list/listarCurso.php?id="+this.value,function(){
+        $(".coordenadorCurso").load("biblioteca/list/listarCoordenadorCurso.php?id="+this.value);
+     });
    });
 
     $("#tipo_requerimento").change(function(){

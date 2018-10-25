@@ -65,7 +65,7 @@
                                 <td  width="13%"><?php echo date('d/m/Y - H:i', strtotime($rows->data_abertura)); ?></td>
                                 <th scope="row"><?php echo $users->matricula_usuario; ?></th>
                                 <td class=""><?php echo utf8_encode($ps[0]->nome_pessoa); ?></td>
-                                <td><?php echo $cs[0]->nome_curso; ?></td>
+                                <td width="20%"><?php echo $cs[0]->nome_curso; ?></td>
                                 <td ><?php echo $req[0]->desc_requerimento; ?></td>
                                 <td scope="row" align="center" width="15%">
 
@@ -225,16 +225,18 @@
                 </select>
               </p>
               <p><b>Curso:  </b>
-                <select class="form-control m-bot15 curso" name="curso" id="curso">
+                <select class="form-control m-bot15 curso cursoCoordenador" name="curso" id="curso">
                   <option></option>
                 </select>
               </p>
                <p><b>Coordenador:  </b>
-                <input class="form-control m-bot15 ui-autocomplete-input" minlength="8" maxlength="8">
+                <select class="form-control m-bot15 coordenadorCurso" name="coordenador" id="coordenador">
+                  <option value="">selecione um coordenador...</option>
+                </select>              
               </p>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-warning" >Encaminhar</button>
+              <button type="button" class="btn btn-warning encaminhar" >Encaminhar</button>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
             </div>
         </div>

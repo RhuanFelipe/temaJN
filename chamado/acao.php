@@ -16,6 +16,14 @@
 		@$motivo = $_GET['motivo'];
 	    $chamado->setMotivo($motivo);
 		$chamado->fecharChamado($id);
+	}else if($acao == 'encaminhar'){
+		@$tipoCursoId = $_GET['tipoCurso'];
+		@$cursoId = $_GET['cursoId'];
+
+	    $chamado->setTipoCurso($tipoCursoId);
+	    $chamado->setCurso($cursoId);
+
+		$chamado->encaminharChamado($id);
 	}else{
 		$chamado->delete($id);
 	}

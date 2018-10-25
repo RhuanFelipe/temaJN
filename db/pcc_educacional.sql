@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 23-Out-2018 às 04:35
+-- Generation Time: 25-Out-2018 às 05:56
 -- Versão do servidor: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -261,7 +261,7 @@ CREATE TABLE IF NOT EXISTS `pessoa` (
   `periodo` char(1) NOT NULL,
   `ativo` char(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id_pessoa`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Extraindo dados da tabela `pessoa`
@@ -272,7 +272,8 @@ INSERT INTO `pessoa` (`id_pessoa`, `nome_pessoa`, `cpf_pessoa`, `rg_pessoa`, `se
 (2, 'maria maria', '', '', 'f', 'rhuanfel@hotmail.com', 0, 0, 0, '', '1'),
 (3, 'arlindo matos', '', '', 'm', 'rhuanfel@hotmail.com', 7, 0, 0, '', '1'),
 (4, 'rhuan felipe da silva', '', '', 'm', 'rhuanfel@hotmail.com', 7, 3, 0, '8', '1'),
-(5, 'anderson ferreira', '', '', 'm', 'rhuanfelsilva@gmail.com', 7, 3, 0, '8', '1');
+(5, 'anderson ferreira', '', '', 'm', 'rhuanfelsilva@gmail.com', 7, 3, 0, '8', '1'),
+(6, 'terry silva', '', '', 'm', 'rhuanfel@hotmail.com', 1, 0, 0, '', '1');
 
 -- --------------------------------------------------------
 
@@ -495,7 +496,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `ativo` char(1) NOT NULL DEFAULT '1',
   `nivel_id` int(11) NOT NULL,
   PRIMARY KEY (`id_usuario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Extraindo dados da tabela `usuario`
@@ -506,7 +507,8 @@ INSERT INTO `usuario` (`id_usuario`, `matricula_usuario`, `senha_usuario`, `ativ
 (2, '12345678', '202cb962ac59075b964b07152d234b70', '1', 2),
 (3, '11111111', '202cb962ac59075b964b07152d234b70', '1', 1),
 (4, '11032395', '', '1', 3),
-(5, '11002233', '', '1', 3);
+(5, '11002233', '', '1', 3),
+(6, '11334455', '202cb962ac59075b964b07152d234b70', '1', 1);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

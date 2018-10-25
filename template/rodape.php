@@ -212,6 +212,23 @@
         });
 
     });
+    $('.encaminhar').click(function(){        
+        var id = parseInt($( ".data-id-chamado").attr("data-id-chamado"));
+        var tipoCurso = $(".tipoCurso").val();
+        var cursoId = $(".cursoCoordenador").val();
+        var coordenador = $(".coordenadorCurso").val();
+        
+        $.ajax({            
+          url:"chamado/acao.php",            
+          type:"GET", 
+          data: "p=executar&acao=encaminhar&id="+id+"&tipoCurso="+tipoCurso+"&cursoId="+cursoId+"&coordenador="+coordenador,
+          success: function (result){ 
+            location.href = "index.php";
+          }
+        });
+
+    });
+
 
      
     $('.excluir').click(function(){
