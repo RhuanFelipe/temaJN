@@ -35,7 +35,7 @@ class TipoCurso extends Crud{
 			$stmt->bindParam(':id', $id, PDO::PARAM_INT);
 
 			if($stmt->execute()){
-				header('Location: ../index.php?p=formTipoCurso&edit=1&id='.$id.'&success=1');
+				header('Location: ../index.php?p=cadTipoCurso');
 			}
 		} catch (Exception $e) {
 			print $e->getMessage();

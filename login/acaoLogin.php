@@ -4,7 +4,7 @@
 	}
 
 	$senha = md5($_POST["senha"]);
-	$matricula = $_POST["matricula"];
+	$matricula = strtoupper($_POST["matricula"]);
 
 	$usuario = new Usuarios();
 	$usuario->setNivel(4);

@@ -36,7 +36,7 @@ class TipoRequerimento extends Crud{
 			$stmt->bindParam(':id', $id, PDO::PARAM_INT);
 
 			if($stmt->execute()){
-				header('Location: ../index.php?p=formTipoRequerimento&edit=1&id='.$id.'&success=1');
+				header('Location: ../index.php?p=cadTipoRequerimento');
 			}
 		} catch (Exception $e) {
 			print $e->getMessage();

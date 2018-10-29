@@ -8,11 +8,11 @@ $usuario = new Usuarios();
 $acao = $_GET['acao'];
 
 if($acao == 'insert'){
-	$nome = $_POST['nome'];
-	$email = $_POST['email'];
-	$matricula = $_POST['matricula'];
-	$sexo = $_POST['sexo'];
-	$curso = $_POST['curso'];
+	$nome = strtoupper($_POST['nome']);
+	$email = strtoupper($_POST['email']);
+	$matricula = strtoupper($_POST['matricula']);
+	$sexo = strtoupper($_POST['sexo']);
+	$curso = strtoupper($_POST['curso']);
 	$senha = md5($_POST['senha']);
 
 	$pessoa->setTipo(1);
@@ -27,13 +27,13 @@ if($acao == 'insert'){
 	$usuario->setMatricula($matricula);
 	$usuario->setSenha($senha);
 	$usuario->insert();
-	header('Location: ../index.php?p=formCoordenador&success=1');
+	header('Location: ../index.php?p=cadCoordenador');
 }else if($acao == 'update'){
-	$nome = $_POST['nome'];
-	$email = $_POST['email'];
-	$matricula = $_POST['matricula'];
-	$sexo = $_POST['sexo'];
-	$curso = $_POST['curso'];
+	$nome = strtoupper($_POST['nome']);
+	$email = strtoupper($_POST['email']);
+	$matricula = strtoupper($_POST['matricula']);
+	$sexo = strtoupper($_POST['sexo']);
+	$curso = strtoupper($_POST['curso']);
 	$id = $_REQUEST['id'];
 	$senha = md5($_POST['senha']);
 	
@@ -50,7 +50,7 @@ if($acao == 'insert'){
 	$usuario->setSenha($senha);
 	$usuario->update($id);
 
-	header('Location: ../index.php?p=formCoordenador&success=1');
+	header('Location: ../index.php?p=cadCoordenador');
 }else if($acao == 'inative'){
 	$id = $_REQUEST['id'];
 	$usuario->inative($id);

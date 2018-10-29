@@ -46,7 +46,7 @@ class Curso extends Crud{
 			$stmt->bindParam(':tipoCursoId', $this->tipoCursoId, PDO::PARAM_STR);
 			$stmt->bindParam(':id', $id, PDO::PARAM_INT);
 			if($stmt->execute()){
-				header('Location: ../index.php?p=formCurso&edit=1&id='.$id.'&success=1&tipoId='.$this->tipoCursoId);
+				header('Location: ../index.php?p=cadCurso');
 			}
 		} catch (Exception $e) {
 			print $e->getMessage();

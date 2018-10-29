@@ -3,10 +3,10 @@ function __autoload($class_name){
 	require_once '../classes/' . $class_name . '.php';
 }
 
-$nome = $_POST['nome'];
-$email = $_POST['email'];
+$nome = strtoupper($_POST['nome']);
+$email = strtoupper($_POST['email']);
 $periodo = $_POST['periodo'];
-$sexo = $_POST['sexo'];
+$sexo = strtoupper($_POST['sexo']);
 $curso = $_POST['cursoAll'];
 $turno = $_POST['turno'];
 $matricula = $_POST['matricula_novo'];

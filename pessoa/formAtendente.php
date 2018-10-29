@@ -47,7 +47,7 @@
           <div class="form-group">
                 <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Matricula: </label>
                 <div class="col-lg-6">
-                    <input type="text" id="matricula" name="matricula" class="form-control" value="<?php echo @$usuario[0]->matricula_usuario;?>">
+                    <input type="text" id="matricula_aluno" name="matricula" class="form-control" value="<?php echo @$usuario[0]->matricula_usuario;?>" maxlength="8">
                 </div>
             </div>      
       </div> 
@@ -80,9 +80,9 @@
           <div class="form-group">
                 <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Sexo: </label>
                 <div class="col-lg-6">
-                    <input type="radio" name="sexo"  value="m" 
-                    <?php if(@$pessoa[0]->sexo_pessoa == 'm' || @$pessoa[0]->sexo_pessoa == '')echo 'checked'; ?>> Masculino
-                    <input type="radio" name="sexo"  value="f" <?php if(@$pessoa[0]->sexo_pessoa == 'f')echo 'checked'; ?>> Feminino
+                    <input type="radio" name="sexo"  value="M" 
+                    <?php if(@$pessoa[0]->sexo_pessoa == 'M' || @$pessoa[0]->sexo_pessoa == '')echo 'checked'; ?>> Masculino
+                    <input type="radio" name="sexo"  value="F" <?php if(@$pessoa[0]->sexo_pessoa == 'F')echo 'checked'; ?>> Feminino
                 </div>
             </div>      
       </div> 

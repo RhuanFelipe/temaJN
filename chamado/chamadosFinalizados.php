@@ -66,7 +66,7 @@
                                 <td class="req_<?php echo $rows->id_chamado; ?>"><?php echo $req[0]->desc_requerimento; ?></td>
                                 <td scope="row" align="center">
 
-                               <button type="button" class="btn btn-info ver" data-toggle="modal" data-id-chamado = "<?php echo $rows->id_chamado; ?>" data-target="#exampleModalCenter" title="vizualizar chamado">
+                               <button type="button" class="btn btn-info verFinalizado" data-toggle="modal" data-id-chamado = "<?php echo $rows->id_chamado; ?>" data-target="#exampleModalCenter" title="vizualizar chamado">
                                   		<i class="fa fa-eye"></i>
                                   </button>
                                   <?php 

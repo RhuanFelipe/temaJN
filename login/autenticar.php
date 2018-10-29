@@ -2,7 +2,7 @@
 	function __autoload($class_name){
 		require_once '../classes/' . $class_name . '.php';
 	}
-	$matricula = $_POST["matricula"];
+	$matricula = strtoupper($_POST["matricula"]);
 	$senha = md5($_POST["senha"]);
 	$usuario = new Usuarios();
 	$usuario->logarSistema($matricula,$senha);

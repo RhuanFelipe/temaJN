@@ -35,7 +35,7 @@ class Unidade extends Crud{
 			$stmt->bindParam(':id', $id, PDO::PARAM_STR);
 			
 			if($stmt->execute()){
-				header('Location: ../index.php?p=formUnidade&edit=1&id='.$id.'&success=1');
+				header('Location: ../index.php?p=cadUnidade');
 			}
 		} catch (Exception $e) {
 			print $e->getMessage();

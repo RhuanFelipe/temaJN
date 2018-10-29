@@ -57,7 +57,7 @@
         <div class="login-wrap">
             <div class="user-login-info">
                     <div class="alert alert-danger" role="alert"></div>
-                <input type="text" id="matricula" name="matricula" class="form-control" placeholder="Matricula" onkeypress="isCapslock(this)" autofocus>
+                <input type="text" id="matricula" name="matricula" class="form-control" placeholder="Matricula" maxlength="8" autofocus>
                 <input type="password" id="senha" name="senha" class="form-control" placeholder="Senha">
             </div>
             <button class="btn btn-lg btn-login btn-block" type="submit">Logar</button>

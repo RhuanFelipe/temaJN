@@ -50,7 +50,7 @@
         else
           pessoa_id = "";
 
-        $("#aluno").load( "biblioteca/list/listarAluno.php?id="+this.value+"&pessoa_id="+pessoa_id);
+        //$("#aluno").load( "biblioteca/list/listarAluno.php?id="+this.value+"&pessoa_id="+pessoa_id);
       });
     });
 

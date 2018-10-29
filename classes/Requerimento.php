@@ -46,7 +46,7 @@ class Requerimento extends Crud{
 			$stmt->bindParam(':grupoRequerimentoId', $this->grupoRequerimentoId, PDO::PARAM_INT);
 			$stmt->bindParam(':id', $id, PDO::PARAM_INT);
 			if($stmt->execute()){
-				header('Location: ../index.php?p=formRequerimento&edit=1&id='.$id.'&success=1&grupoId='.$this->grupoRequerimentoId);
+				header('Location: ../index.php?p=cadRequerimento');
 			}
 		} catch (Exception $e) {
 			print $e->getMessage();

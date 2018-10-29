@@ -9,7 +9,7 @@
 	@$tipoRequerimento = $_POST["tipoRequerimento"];
 	@$grupoRequerimento = $_POST["grupoRequerimento"];
 	@$requerimento = $_POST["requerimento"];
-	@$assunto = $_POST["assunto"];
+	@$assunto = strtoupper($_POST["assunto"]);
 	@$usuario = $_POST["usuario"];
 	@$aluno = $_POST["aluno"];
 	@$id_chamado = $_POST["id_chamado"];

@@ -37,7 +37,7 @@
 <script src="js/scripts.js"></script>
 <script type="text/javascript">
   $(document).ready(function(){
-    var ver_click = $('.ver');
+    var ver_click = $('.ver, .verFinalizado');
 
     $(".btn-cad-aluno").click(function(){
       var nome = $("#nome").val();
@@ -103,7 +103,26 @@
       $('.chamado_click').val($(this).data('id-chamado'))
     });
 
-    $(".ver").click(function(){
+    $(".verFinalizado").click(function(){
+        var id_chamado = $('.chamado_click').val();
+
+        $.ajax({
+          type: "POST",
+          url: "biblioteca/list/listarDadosModalFinalizado.php",
+          data: {id : id_chamado},
+          success: function(data){
+            $('.label-assunto').html(data.assunto_chamado);
+            $('.label-nome').html(data.nome_pessoa);
+            $('.label-tipo-requerimento').html(data.tipo_requerimento);
+            $('.label-grupo-requerimento').html(data.grupo_requerimento);
+            $('.label-requerimento').html(data.requerimento);
+            
+            //console.log("Data: " + data + "\nStatus: " + status)
+          }
+        });
+    });
+
+     $(".ver").click(function(){
         var id_chamado = $('.chamado_click').val();
 
         $.ajax({
@@ -121,6 +140,7 @@
           }
         });
     });
+
     $('.btn-deslogar').click(function(){
 
          var result = bootbox.confirm({

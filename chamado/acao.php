@@ -4,7 +4,7 @@
 	}
 	$id = $_GET["id"];
 	$acao = $_GET['acao'];
-	@$assunto_chamado = $_GET['assunto_chamado'];
+	@$assunto_chamado = strtoupper($_GET['assunto_chamado']);
 	@$usuario = $_GET['usuario'];
 
 	$chamado = new Chamado();

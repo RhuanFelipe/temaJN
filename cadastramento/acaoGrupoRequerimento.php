@@ -7,8 +7,8 @@ $acao = $_REQUEST['acao'];
 $gr = new GrupoRequerimento();
 
 if($acao == 'insert'){
-	$tipoRequerimento = $_REQUEST['tipoRequerimento'];
-	$grupoRequerimento = $_REQUEST['grupoRequerimento'];
+	$tipoRequerimento = strtoupper($_REQUEST['tipoRequerimento']);
+	$grupoRequerimento = strtoupper($_REQUEST['grupoRequerimento']);
 
 	$gr->setDescGrupo($grupoRequerimento);
 	$gr->setTipoRequerimentoId($tipoRequerimento);
@@ -24,8 +24,8 @@ if($acao == 'insert'){
 	header('Location: ../index.php?p=cadGrupoRequerimento');
 }else if($acao == 'update'){
 	$id = $_REQUEST['id'];
-	$tipoRequerimento = $_REQUEST['tipoRequerimento'];
-	$grupoRequerimento = $_REQUEST['grupoRequerimento'];
+	$tipoRequerimento = strtoupper($_REQUEST['tipoRequerimento']);
+	$grupoRequerimento = strtoupper($_REQUEST['grupoRequerimento']);
 
 	$gr->setDescGrupo($grupoRequerimento);
 	$gr->setTipoRequerimentoId($tipoRequerimento);

@@ -38,7 +38,7 @@
                   <input class="chamado_click" type="hidden"  value="">
                   <input type="hidden" name="usuario" id="usuario" value="<?php echo $_SESSION['usuario_id']; ?>">
 
-				         <table id="fullTable" class="table table-striped table-hover table-bordered  display" style="width:100%">
+				         <table id="fullTable" class="table table-striped table-hover table-bordered  display chamadoTable" style="width:100%">
 			                   <thead>
                               <tr>
                                 <th scope="col">Data</th>
@@ -62,12 +62,12 @@
                                ?>
                               <tr class="modal-desc">
                                                                 
-                                <td  width="13%"><?php echo date('d/m/Y - H:i', strtotime($rows->data_abertura)); ?></td>
+                                <td  width="10%" title="<?php  echo date('d/m/Y - H:i', strtotime($rows->data_abertura)); ?>"><?php echo date('d/m/Y', strtotime($rows->data_abertura)); ?></td>
                                 <th scope="row"><?php echo $users->matricula_usuario; ?></th>
                                 <td class=""><?php echo utf8_encode($ps[0]->nome_pessoa); ?></td>
-                                <td width="20%"><?php echo $cs[0]->nome_curso; ?></td>
+                                <td ><?php echo $cs[0]->nome_curso; ?></td>
                                 <td ><?php echo $req[0]->desc_requerimento; ?></td>
-                                <td scope="row" align="center" width="15%">
+                                <td scope="row" align="center" width="17%">
 
                                   <button type="button" class="btn btn-info ver" data-toggle="modal" data-id-chamado = "<?php echo $rows->id_chamado; ?>" data-target="#exampleModalCenter" title="vizualizar chamado">
                                   		<i class="fa fa-eye"></i>
@@ -242,3 +242,6 @@
         </div>
       </div>
     </div>
+<style type="text/css">
+  .chamadoTable tr td,.chamadoTable tr th{font-size: 8pt}
+</style>

@@ -7,7 +7,7 @@ $acao = $_REQUEST['acao'];
 $tp = new tipoCurso();
 
 if($acao == 'insert'){
-	$tipoCurso = $_REQUEST['tipoCurso'];
+	$tipoCurso = strtoupper($_REQUEST['tipoCurso']);
 	$tp->setTipoCurso($tipoCurso);
 	$tp->insert();
 }else if($acao == 'inative'){
@@ -20,7 +20,7 @@ if($acao == 'insert'){
 	header('Location: ../index.php?p=cadTipoCurso');
 }else if($acao == 'update'){
 	$id = $_REQUEST['id'];
-	$tipoCurso = $_REQUEST['tipoCurso'];
+	$tipoCurso = strtoupper($_REQUEST['tipoCurso']);
 	$tp->setTipoCurso($tipoCurso);
 	$tp->update($id);
 }

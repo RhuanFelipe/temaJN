@@ -5,7 +5,7 @@ function validarCoordenador(){
     var senha_aux = document.getElementById('senha_aux').value;
     var nome = document.getElementById('nome').value;   
     var email = document.getElementById('email').value;   
-    var matricula = document.getElementById('matricula').value;  
+    var matricula = document.getElementById('matricula_aluno').value;  
     var tipoCurso = document.getElementById('tipoCurso').value;  
     var curso = document.getElementById('curso').value;  
    

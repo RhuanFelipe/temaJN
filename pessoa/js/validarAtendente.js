@@ -5,7 +5,7 @@ function validarAtendente(){
     var senha_aux = document.getElementById('senha_aux').value;
     var nome = document.getElementById('nome').value;   
     var email = document.getElementById('email').value;   
-    var matricula = document.getElementById('matricula').value;  
+    var matricula = document.getElementById('matricula_aluno').value;  
    
     if(nome == ''){
         msgError += '* <b style="color:red">PREENCHA O CAMPO NOME</b><br><br>';

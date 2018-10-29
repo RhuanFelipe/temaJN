@@ -7,7 +7,7 @@ $acao = $_REQUEST['acao'];
 $tr = new TipoRequerimento();
 
 if($acao == 'insert'){
-	$tipoRequerimento = $_REQUEST['tipoRequerimento'];
+	$tipoRequerimento = strtoupper($_REQUEST['tipoRequerimento']);
 	$tr->setOptRequerimento($tipoRequerimento);
 	$tr->insert();
 }else if($acao == 'inative'){
@@ -20,7 +20,7 @@ if($acao == 'insert'){
 	header('Location: ../index.php?p=cadTipoRequerimento');
 }else if($acao == 'update'){
 	$id = $_REQUEST['id'];
-	$tipoRequerimento = $_REQUEST['tipoRequerimento'];
+	$tipoRequerimento = strtoupper($_REQUEST['tipoRequerimento']);
 	$tr->setOptRequerimento($tipoRequerimento);
 	$tr->update($id);
 }

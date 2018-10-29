@@ -7,8 +7,8 @@ $acao = $_REQUEST['acao'];
 $req = new Requerimento();
 
 if($acao == 'insert'){
-	$grupoRequerimento = $_REQUEST['grupoRequerimento'];
-	$requerimento = $_REQUEST['requerimento'];
+	$grupoRequerimento = strtoupper($_REQUEST['grupoRequerimento']);
+	$requerimento = strtoupper($_REQUEST['requerimento']);
 	
 	$req->setDescRequerimento($requerimento);
 	$req->setGrupoRequerimentoId($grupoRequerimento);
@@ -24,8 +24,8 @@ if($acao == 'insert'){
 	header('Location: ../index.php?p=cadRequerimento');
 }else if($acao == 'update'){
 	$id = $_REQUEST['id'];
-	$grupoRequerimento = $_REQUEST['grupoRequerimento'];
-	$requerimento = $_REQUEST['requerimento'];
+	$grupoRequerimento = strtoupper($_REQUEST['grupoRequerimento']);
+	$requerimento = strtoupper($_REQUEST['requerimento']);
 	
 	$req->setDescRequerimento($requerimento);
 	$req->setGrupoRequerimentoId($grupoRequerimento);

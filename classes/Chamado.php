@@ -135,7 +135,7 @@ class Chamado extends Crud{
 			$stmt->bindParam(':pessoa', $this->pessoa, PDO::PARAM_INT);
 
 			if($stmt->execute()){
-				header('Location: ../index.php?p=abrirChamado&success=1&id_pessoa='.$this->pessoa);
+				header('Location: ../index.php');
 			}
 		
 		} catch (PDOException $e) {
