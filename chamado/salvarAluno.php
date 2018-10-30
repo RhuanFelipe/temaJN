@@ -11,6 +11,10 @@ $curso = $_POST['cursoAll'];
 $turno = $_POST['turno'];
 $matricula = $_POST['matricula_novo'];
 $telefoneAluno = $_POST['telefone'];
+$telefoneAluno = str_replace("(","",$telefoneAluno);
+$telefoneAluno = str_replace(")","",$telefoneAluno);
+$telefoneAluno = str_replace("-","",$telefoneAluno);
+$telefoneAluno = str_replace(" ","",$telefoneAluno);
 
 $pessoa = new Pessoa();
 $usuario = new Usuarios();

@@ -43,14 +43,21 @@
                 </div>
             </div>      
       </div>
-       <div class="col-md-12" style="margin-bottom: 20px">
+       <div class="col-md-12" >
           <div class="form-group">
                 <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Matricula: </label>
                 <div class="col-lg-6">
-                    <input type="text" id="matricula_aluno" name="matricula" class="form-control" value="<?php echo @$usuario[0]->matricula_usuario;?>" maxlength="8">
+                    <input type="text" id="matricula_aluno" name="matricula" class="form-control matricula_search" value="<?php echo @$usuario[0]->matricula_usuario;?>" maxlength="8">
                 </div>
-            </div>      
+                <div class="col-lg-4" style="margin-left: -20px;margin-top: -10px">
+                    <div class="alert alert-info msg-box" >
+                      <p class="msg-matricula">Informe uma Matrícula válida</p>
+                  </div>
+               </div>
+            </div>  
+
       </div> 
+          
       <div class="col-md-12" style="margin-bottom: 20px">
           <div class="form-group">
                 <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">E-mail: </label>

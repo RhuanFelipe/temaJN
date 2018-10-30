@@ -1,4 +1,6 @@
 <?php
+  $encoding = 'UTF-8';
+
   $unid = new Unidade();
   $unidade = $unid->findAll();
 ?>
@@ -28,7 +30,7 @@
                         <tbody>
                           <?php  foreach ($unidade as $rows) { ?>
                           <tr>
-                              <td scope="col" width="90%"><?php echo $rows->desc_unidade; ?></td>
+                              <td scope="col" width="90%"><?php echo mb_convert_case($rows->desc_unidade, MB_CASE_UPPER, $encoding); ?></td>
                               <td scope="col" > 
                                   <a href="?p=formUnidade&edit=1&id=<?php echo $rows->id_unidade; ?>" class="btn btn-success edit"  title="Editar">
                                       <i class="fa fa-pencil"></i>

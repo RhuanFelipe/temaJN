@@ -46,12 +46,17 @@
                 </div>
             </div>      
       </div>
-      <div class="col-md-12" style="margin-bottom: 20px">
+      <div class="col-md-12">
           <div class="form-group">
                 <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Matricula: </label>
                 <div class="col-lg-6">
-                    <input type="text" name="matricula" id="matricula_aluno" maxlength="8" class="form-control" value="<?php  if(@$_GET['edit'] == 1){echo @$usuario[0]->matricula_usuario;}else{echo '';}?>">
+                    <input type="text" name="matricula" id="matricula_aluno" maxlength="8" class="form-control matricula_search" value="<?php  if(@$_GET['edit'] == 1){echo @$usuario[0]->matricula_usuario;}else{echo '';}?>">
                 </div>
+                 <div class="col-lg-4" style="margin-left: -20px;margin-top: -10px">
+                    <div class="alert alert-info msg-box" >
+                      <p class="msg-matricula">Informe uma Matrícula válida</p>
+                  </div>
+               </div>
             </div>      
       </div> 
       <div class="col-md-12">

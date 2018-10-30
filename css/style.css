@@ -2273,7 +2273,7 @@ ul.inbox-pagination li {
     text-transform:uppercase;
 }
 .error-desk {
-    background:rgba(0,0,0,0.05);
+   /* background:rgba(0,0,0,0.05);*/
     margin-top:-27px;
     padding:30px 0;
 }

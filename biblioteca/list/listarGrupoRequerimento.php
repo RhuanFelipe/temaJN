@@ -1,4 +1,6 @@
 <?php
+    $encoding = 'UTF-8';
+
 	function __autoload($class_name){
 		require_once '../../classes/' . $class_name . '.php';
 	}
@@ -16,7 +18,7 @@
 			$checked = "";
 		}
 
-		echo "<option value=".$value->id_grupo." ".$checked." >".$value->desc_grupo."</option>";
+		echo "<option value=".$value->id_grupo." ".$checked." >".mb_convert_case($value->desc_grupo, MB_CASE_UPPER, $encoding)."</option>";
 		}
 	}else{
 		echo "<option value=''>Informe um grupo de requerimento ...</option>";

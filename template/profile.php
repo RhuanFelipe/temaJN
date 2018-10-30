@@ -1,3 +1,6 @@
+<?php
+  $encoding = 'UTF-8';
+?>
 <div class="top-nav clearfix">
     <!--search & user info start-->
     <ul class="nav pull-right top-menu">
@@ -9,7 +12,7 @@
             <a data-toggle="dropdown" class="dropdown-toggle icon-user" href="#">
                 <!--<img alt="" src="images/avatar1_small.jpg">-->
                 <i class="fa fa-user"></i>
-                <span class="username"><?php echo $usuario->getNome(); ?></span>
+                <span class="username"><?php echo mb_convert_case($usuario->getNome(), MB_CASE_UPPER, $encoding); ?></span>
                 <b class="caret"></b>
             </a>
             <ul class="dropdown-menu extended logout">

@@ -1,4 +1,5 @@
 <?php
+  $encoding = 'UTF-8';
   $p = new Pessoa();
   $pessoa = $p->findAtendente();
 ?>
@@ -31,8 +32,8 @@
                         	<?php  foreach ($pessoa as $rows) { ?>
                         	<tr>
                               <td scope="col" ><?php echo $rows->matricula_usuario; ?></td>
-                              <td scope="col" ><?php echo $rows->nome_pessoa; ?></td>
-                              <td scope="col" ><?php echo $rows->email_pessoa; ?></td>
+                              <td scope="col" ><?php echo mb_convert_case($rows->nome_pessoa, MB_CASE_UPPER, $encoding); ?></td>
+                              <td scope="col" ><?php echo mb_convert_case($rows->email_pessoa, MB_CASE_UPPER, $encoding); ?></td>
 	                            <td scope="col" > 
                                   <a href="?p=formAtendente&edit=1&id=<?php echo $rows->id_pessoa; ?>" class="btn btn-success edit"  title="Editar">
                                       <i class="fa fa-pencil"></i>

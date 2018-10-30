@@ -1,3 +1,4 @@
+<script type="text/javascript" src="cadastramento/js/validarRequerimento.js"></script>
 
 <?php 
     @$id = $_GET['id'];
@@ -11,9 +12,9 @@
     }
 ?><section id="main-content">
 <?php if($edit == ""){ ?>
-  <form method="post" action="cadastramento/acaoRequerimento.php?acao=insert">
+  <form method="post" action="cadastramento/acaoRequerimento.php?acao=insert" onsubmit="return validarRequerimento()">
 <?php }else{ ?>
-  <form method="post" action="cadastramento/acaoRequerimento.php?acao=update">
+  <form method="post" action="cadastramento/acaoRequerimento.php?acao=update" onsubmit="return validarRequerimento()">
    <input type="text" name="id" class="id" value="<?php echo $id;?>">
 
 <?php } ?>
@@ -49,7 +50,7 @@
                         $req = new Requerimento(); 
                         $requerimento = $req->findById($id);
                     ?>               
-                    <input type="text" name="requerimento" class="form-control" value="<?php echo @$requerimento[0]->desc_requerimento;?>">
+                    <input type="text" name="requerimento" class="form-control" id="requerimento" value="<?php echo @$requerimento[0]->desc_requerimento;?>">
                 </div>
             </div>           
     	</div>

@@ -6,6 +6,7 @@
      var requerimento_id = $(".requerimento_id").val();
      var grupoId = $('.grupoId').val();
      var valor_id = this.value;
+     $('.telefone-mask').mask('(00) 00000-0000');
 
       if(tipo_curso_id != null)
         valor_id = tipo_curso_id;

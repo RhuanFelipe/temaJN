@@ -1,4 +1,6 @@
 <?php
+  $encoding = 'UTF-8';
+
   $req = new Requerimento();
   $gr = new GrupoRequerimento();
   $requerimento = $req->findAll();
@@ -32,8 +34,8 @@
                                     $grupoRequerimento = $gr->findById($rows->grupo_requerimento_id);
                             ?>
                         	<tr>
-                              <td scope="col" ><?php echo $rows->desc_requerimento; ?></td>
-                              <td scope="col" ><?php echo $grupoRequerimento[0]->desc_grupo; ?></td>
+                              <td scope="col" ><?php echo mb_convert_case($rows->desc_requerimento, MB_CASE_UPPER, $encoding); ?></td>
+                              <td scope="col" ><?php echo mb_convert_case($grupoRequerimento[0]->desc_grupo, MB_CASE_UPPER, $encoding); ?></td>
 	                            <td scope="col" > 
                                   <a href="?p=formRequerimento&edit=1&id=<?php echo $rows->id_requerimento; ?>&grupoId=<?php echo $rows->grupo_requerimento_id; ?>" class="btn btn-success edit"  title="Editar">
                                       <i class="fa fa-pencil"></i>

@@ -1,3 +1,4 @@
+<script type="text/javascript" src="cadastramento/js/validarGrupoRequerimento.js"></script>
 
 <?php 
     @$id = $_GET['id'];
@@ -11,9 +12,9 @@
     }
 ?><section id="main-content">
 <?php if($edit == ""){ ?>
-  <form method="post" action="cadastramento/acaoGrupoRequerimento.php?acao=insert">
+  <form method="post" action="cadastramento/acaoGrupoRequerimento.php?acao=insert" onsubmit="return validarGrupoRequerimento()">
 <?php }else{ ?>
-  <form method="post" action="cadastramento/acaoGrupoRequerimento.php?acao=update">
+  <form method="post" action="cadastramento/acaoGrupoRequerimento.php?acao=update" onsubmit="return validarGrupoRequerimento()">
    <input type="hidden" name="id" class="id" value="<?php echo $id;?>">
 
 <?php } ?>
@@ -49,7 +50,7 @@
                         $gr = new GrupoRequerimento(); 
                         $grupoRequerimento = $gr->findById($id);
                     ?>               
-                    <input type="text" name="grupoRequerimento" class="form-control" value="<?php echo @$grupoRequerimento[0]->desc_grupo;?>">
+                    <input type="text" name="grupoRequerimento" id="grupoRequerimento" class="form-control" value="<?php echo @$grupoRequerimento[0]->desc_grupo;?>">
                 </div>
             </div>           
       </div>

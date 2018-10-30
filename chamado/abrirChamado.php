@@ -146,7 +146,14 @@
               <h4 class="label-nome" align="center"></h4><br>
               <form id="form-cad-aluno">
               <p><b>Nome Aluno:  </b><input type="text" id="nome" name="nome" class="form-control"></p>
-              <p><b>Matricula:  </b><input type="text" id="matricula_novo" name="matricula_novo" class="form-control" ></p>
+              <p><b>Matricula:  </b>
+                  <input type="text" id="matricula_novo" name="matricula_novo" class="form-control matricula_search" maxlength="8">
+              <div >
+                    <div class="alert alert-info msg-box" >
+                      <p class="msg-matricula">Informe uma Matrícula válida</p>
+                  </div>
+               </div>
+              </p>
               <p><b>Turno:  </b></p>
               <p>
                   <label class="radio-inline"><input type="radio" name="turno"  value="1" checked>Manhã</label>
@@ -179,7 +186,7 @@
                     <option>...</option>
                 </select>
               <p><b>Email:  </b><input type="text" id="email" name="email" class="form-control"></p>
-              <p><b>Telefone:  </b><input type="text" id="telefone" name="telefone" class="form-control"></p>
+              <p><b>Telefone:  </b><input type="text" id="telefone" name="telefone" class="form-control telefone-mask"></p>
               <p><b>Sexo:  </b><input type="radio" name="sexo" checked="checked" value="m">Masculino | <input type="radio" name="sexo" value="f">Feminino</p>
             </div>
             <div class="modal-footer">

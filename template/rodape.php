@@ -30,119 +30,20 @@
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
 <script type="text/javascript" src="js/libs/lists.js"></script>
+<script type="text/javascript" src="chamado/js/cadastrarAluno.js"></script>
+<script type="text/javascript" src="pessoa/js/buscarMatricula.js"></script>
+<script type="text/javascript" src="chamado/js/acoesChamado.js"></script>
+<script type="text/javascript" src="js/jQuery-Mask/src/jquery.mask.js"></script>
+<script type="text/javascript" src="js/libs/dataTableConfig.js"></script>
 <script type="text/javascript" src="chamado/js/autocompleteChamado.js"></script>
- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <!--common script init for all pages-->
 <script src="js/scripts.js"></script>
 <script type="text/javascript">
   $(document).ready(function(){
-    var ver_click = $('.ver, .verFinalizado');
-
-    $(".btn-cad-aluno").click(function(){
-      var nome = $("#nome").val();
-      var periodo = $("#periodo").val();
-      var email = $("#email").val();
-      var telefone = $("#telefone").val();
-      var tipoCurso = $(".tipoCursoModal").val();
-      var curso = $(".curso").val();
-      var matricula = $("#matricula_novo").val();
-
-      var msgError = "";
-      var error = 0;
-
-      if(nome == ''){
-         msgError += '* <b style="color:red">PREENCHA O CAMPO NOME</b><br><br>';
-         error++;
-      }
-      if(matricula == ''){
-         msgError += '* <b style="color:red">PREENCHA O MATRICULA</b><br><br>';
-         error++;
-      }
-      if(periodo == ''){
-         msgError += '* <b style="color:red">PREENCHA O PERIODO</b><br><br>';
-         error++;
-      }
-      if(tipoCurso == ''){
-         msgError += '* <b style="color:red">PREENCHA O TIPO CURSO</b><br><br>';
-         error++;
-      }
-       if(curso == ''){
-         msgError += '* <b style="color:red">PREENCHA O CURSO</b><br><br>';
-         error++;
-      }
-      if(email == ''){
-         msgError += '* <b style="color:red">PREENCHA O E-MAIL</b><br><br>';
-         error++;
-      }
-      if(telefone == ''){
-         msgError += '* <b style="color:red">PREENCHA O TELEFONE</b><br><br>';
-         error++;
-      }
-      if(error != 0){
-         bootbox.alert({
-              title: "ERROR AO CADASTRAR CHAMADO",
-              message: msgError
-              
-        });
-      }else{
-        $.ajax({
-            type: "POST",
-            url: "chamado/salvarAluno.php",
-            data: $("#form-cad-aluno").serialize(),
-            success: function(data){
-              $(".btn-fechar-cadAluno").trigger("click");
-              $("#matricula").val(data);
-              $("#matricula").focus();
-            }
-          });
-      } 
-    }); 
-
-    ver_click.click(function(){
-      $('.chamado_click').val($(this).data('id-chamado'))
-    });
-
-    $(".verFinalizado").click(function(){
-        var id_chamado = $('.chamado_click').val();
-
-        $.ajax({
-          type: "POST",
-          url: "biblioteca/list/listarDadosModalFinalizado.php",
-          data: {id : id_chamado},
-          success: function(data){
-            $('.label-assunto').html(data.assunto_chamado);
-            $('.label-nome').html(data.nome_pessoa);
-            $('.label-tipo-requerimento').html(data.tipo_requerimento);
-            $('.label-grupo-requerimento').html(data.grupo_requerimento);
-            $('.label-requerimento').html(data.requerimento);
-            
-            //console.log("Data: " + data + "\nStatus: " + status)
-          }
-        });
-    });
-
-     $(".ver").click(function(){
-        var id_chamado = $('.chamado_click').val();
-
-        $.ajax({
-          type: "POST",
-          url: "biblioteca/list/listarDadosModal.php",
-          data: {id : id_chamado},
-          success: function(data){
-            $('.label-assunto').html(data.assunto_chamado);
-            $('.label-nome').html(data.nome_pessoa);
-            $('.label-tipo-requerimento').html(data.tipo_requerimento);
-            $('.label-grupo-requerimento').html(data.grupo_requerimento);
-            $('.label-requerimento').html(data.requerimento);
-            
-            //console.log("Data: " + data + "\nStatus: " + status)
-          }
-        });
-    });
 
     $('.btn-deslogar').click(function(){
-
          var result = bootbox.confirm({
             message: "Deseja Sair do Sistema?",
             buttons: {
@@ -170,124 +71,10 @@
             }
         });
       
-    });
-      
-    $('.concluir , .cancelar, .excluir').mouseover(function(){
-      $("#id_chamado").val(this.id);
-    });
-
-    $('.concluir').click(function(){        
-        var id = parseInt($( ".data-id-chamado").attr("data-id-chamado"));
-        var assunto_chamado = $("#assunto_chamado").val();
-        var usuario = $("#usuario").val();
-        $.ajax({            
-          url:"chamado/acao.php",            
-          type:"GET",                
-          data: "p=executar&acao=concluir&id="+id+"&assunto_chamado="+assunto_chamado+"&usuario="+usuario,
-          success: function (result){ 
-            location.href = "index.php";
-          }
-        });
-
-    });
-    $(document).ready(function() {
-      var tabela = $('#fullTable').DataTable({
-        "language": {
-          "lengthMenu": "Mostrar _MENU_ por página",
-          "zeroRecords": "não encontrado",
-          "info": "Mostrar páginas _PAGE_ de _PAGES_",
-          "infoEmpty": "Nenhum registro disponivel",
-          "infoFiltered": "(filtrando from _MAX_ total de registros)"
-        },
-        dom: 'Bfrtip',
-        buttons: [
-        'excel', 'pdf', 'print'
-        ]
-      });
-
-      var tabela_min = $('#simpleTable').DataTable({
-        "language": {
-          "lengthMenu": "Mostrar _MENU_ por página",
-          "zeroRecords": "não encontrado",
-          "infoEmpty": "Nenhum registro disponivel",
-          "infoFiltered": "(filtrando from _MAX_ total de registros)",
-
-        },"lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Tudo"]]
-      });
-      tabela_min.buttons().disable();
-    });
-
-     $('.cancelar').click(function(){        
-        var id = parseInt($( ".data-id-chamado").attr("data-id-chamado"));
-        var assunto_chamado = $("#comment").val();
-        var usuario = $("#usuario").val();
-        var motivo = $("#motivo").val();
-        $.ajax({            
-          url:"chamado/acao.php",            
-          type:"GET", 
-          data: "p=executar&acao=cancelar&id="+id+"&assunto_chamado="+assunto_chamado+"&usuario="+usuario+"&motivo="+motivo,
-          success: function (result){ 
-            location.href = "index.php";
-          }
-        });
-
-    });
-    $('.encaminhar').click(function(){        
-        var id = parseInt($( ".data-id-chamado").attr("data-id-chamado"));
-        var tipoCurso = $(".tipoCurso").val();
-        var cursoId = $(".cursoCoordenador").val();
-        var coordenador = $(".coordenadorCurso").val();
-        
-        $.ajax({            
-          url:"chamado/acao.php",            
-          type:"GET", 
-          data: "p=executar&acao=encaminhar&id="+id+"&tipoCurso="+tipoCurso+"&cursoId="+cursoId+"&coordenador="+coordenador,
-          success: function (result){ 
-            location.href = "index.php";
-          }
-        });
-
-    });
-
-
-     
-    $('.excluir').click(function(){
-            var result = bootbox.confirm({
-            message: "Deseja Excluir o Chamado?",
-            buttons: {
-                confirm: {
-                    label: 'Sim',
-                    className: 'btn-info'
-                },
-                cancel: {
-                    label: 'Não'
-                }
-            },
-            callback: function (result) {
-                if(result != false){
-                  var id = parseInt($("#id_chamado").val());
-                  $.ajax({            
-                    url:"chamado/acao.php",            
-                    type:"GET",                
-                    data: "p=executar&acao=excluir&id="+id,
-                    success: function (result){ 
-                      location.href = "index.php";
-                    }
-                  });
-              } 
-            }
-      });
-     
-    });  
-
+    });      
  
   });
 </script>
-<style type="text/css">
-  body {
-  overflow-x: hidden;
-}
 
-</style>
 </body>
 </html>

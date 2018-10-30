@@ -1,3 +1,4 @@
+<script type="text/javascript" src="cadastramento/js/validarUnidade.js"></script>
 
 <?php 
     @$id = $_GET['id'];
@@ -11,9 +12,10 @@
     }
 ?><section id="main-content">
 <?php if($edit == ""){ ?>
-  <form method="post" action="cadastramento/acaoUnidade.php?acao=insert">
+
+  <form method="post" action="cadastramento/acaoUnidade.php?acao=insert" onsubmit="return validarUnidade()">
 <?php }else{ ?>
-  <form method="post" action="cadastramento/acaoUnidade.php?acao=update">
+  <form method="post" action="cadastramento/acaoUnidade.php?acao=update" onsubmit="return validarUnidade()">
    <input type="text" name="id" class="id" value="<?php echo $id;?>">
 
 <?php } ?>
@@ -37,7 +39,7 @@
                         $unidade = $unid->findById($id);
                     
                     ?>
-                    <input type="text" name="unidade" class="form-control" value="<?php echo @$unidade[0]->desc_unidade;?>">
+                    <input type="text" name="unidade" id="unidade" class="form-control" value="<?php echo @$unidade[0]->desc_unidade;?>">
                 </div>
             </div>           
     	</div>  

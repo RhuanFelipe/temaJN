@@ -1,4 +1,6 @@
 <?php
+    $encoding = 'UTF-8';
+
 	function __autoload($class_name){
 		require_once '../../classes/' . $class_name . '.php';
 	}
@@ -17,7 +19,7 @@
 		}else{
 			$checked = "";
 		}
-		echo "<option value=".$value->id_motivo." ".$checked." >".$value->nome_motivo."</option>";
+		echo "<option value=".$value->id_motivo." ".$checked." >".mb_convert_case($value->nome_motivo, MB_CASE_UPPER, $encoding)."</option>";
 	}
 
 ?>

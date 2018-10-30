@@ -1,3 +1,4 @@
+<script type="text/javascript" src="cadastramento/js/validarTipoRequerimento.js"></script>
 
 <?php 
     @$id = $_GET['id'];
@@ -11,9 +12,9 @@
     }
 ?><section id="main-content">
 <?php if($edit == ""){ ?>
-  <form method="post" action="cadastramento/acaoTipoRequerimento.php?acao=insert">
+  <form method="post" action="cadastramento/acaoTipoRequerimento.php?acao=insert" onsubmit="return validarTipoRequerimento()">
 <?php }else{ ?>
-  <form method="post" action="cadastramento/acaoTipoRequerimento.php?acao=update">
+  <form method="post" action="cadastramento/acaoTipoRequerimento.php?acao=update" onsubmit="return validarTipoRequerimento()">
    <input type="text" name="id" class="id" value="<?php echo $id;?>">
 
 <?php } ?>
@@ -36,7 +37,7 @@
                         $tr = new TipoRequerimento(); 
                         $tipoRequerimento = $tr->findById($id);
                     ?>
-                    <input type="text" name="tipoRequerimento" class="form-control" value="<?php echo @$tipoRequerimento[0]->opt_requerimento;?>">
+                    <input type="text" name="tipoRequerimento" class="form-control" value="<?php echo @$tipoRequerimento[0]->opt_requerimento;?>" id="tipoRequerimento">
                 </div>
             </div>           
     	</div>  

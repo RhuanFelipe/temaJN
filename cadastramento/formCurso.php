@@ -1,3 +1,4 @@
+<script type="text/javascript" src="cadastramento/js/validarCurso.js"></script>
 
 <?php 
     @$id = $_GET['id'];
@@ -11,9 +12,10 @@
     }
 ?><section id="main-content">
 <?php if($edit == ""){ ?>
-  <form method="post" action="cadastramento/acaoCurso.php?acao=insert">
+
+  <form method="post" action="cadastramento/acaoCurso.php?acao=insert" onsubmit="return validarCurso()">
 <?php }else{ ?>
-  <form method="post" action="cadastramento/acaoCurso.php?acao=update">
+  <form method="post" action="cadastramento/acaoCurso.php?acao=update" onsubmit="return validarCurso()">
    <input type="text" name="id" class="id" value="<?php echo $id;?>">
 
 <?php } ?>
@@ -49,7 +51,7 @@
                         $cs = new Curso(); 
                         $curso = $cs->findById($id);
                     ?>               
-                    <input type="text" name="curso" class="form-control" value="<?php echo @$curso[0]->nome_curso;?>">
+                    <input type="text" name="curso" class="form-control" id="curso" value="<?php echo @$curso[0]->nome_curso;?>">
                 </div>
             </div>           
     	</div>

@@ -1,4 +1,6 @@
 <?php
+    $encoding = 'UTF-8';
+
 	function __autoload($class_name){
 		require_once '../../classes/' . $class_name . '.php';
 	}
@@ -15,7 +17,7 @@
 			}else{
 				$checked = "";
 			}
-			echo "<option value=".$value->id_requerimento." ".$checked.">".$value->desc_requerimento."</option>";
+			echo "<option value=".$value->id_requerimento." ".$checked.">".mb_convert_case($value->desc_requerimento, MB_CASE_UPPER, $encoding)."</option>";
 		}
 	}else{
 		echo "<option value=''>Informe um requerimento...</option>";

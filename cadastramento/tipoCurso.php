@@ -1,4 +1,6 @@
 <?php
+  $encoding = 'UTF-8';
+
 	$tp = new TipoCurso();
 	$tipoCurso = $tp->findAll();
 ?>
@@ -28,7 +30,7 @@
                         <tbody>
                         	<?php  foreach ($tipoCurso as $rows) { ?>
                         	<tr>
-	                            <td scope="col" width="90%"><?php echo $rows->tipo_curso; ?></td>
+	                            <td scope="col" width="90%"><?php echo mb_convert_case($rows->tipo_curso, MB_CASE_UPPER, $encoding);?></td>
 	                            <td scope="col" > 
                                   <a href="?p=formTipoCurso&edit=1&id=<?php echo $rows->id_tipo_curso; ?>" class="btn btn-success edit"  title="Editar">
                                       <i class="fa fa-pencil"></i>

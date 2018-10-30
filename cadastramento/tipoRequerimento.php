@@ -1,4 +1,6 @@
 <?php
+  $encoding = 'UTF-8';
+
   $tr = new TipoRequerimento();
   $tipoRequerimento = $tr->findAll();
 ?>
@@ -28,7 +30,7 @@
                         <tbody>
                           <?php  foreach ($tipoRequerimento as $rows) { ?>
                           <tr>
-                              <td scope="col" width="90%"><?php echo $rows->opt_requerimento; ?></td>
+                              <td scope="col" width="90%"><?php echo mb_convert_case($rows->opt_requerimento, MB_CASE_UPPER, $encoding); ?></td>
                               <td scope="col" > 
                                   <a href="?p=formTipoRequerimento&edit=1&id=<?php echo $rows->id_requerimento; ?>" class="btn btn-success edit"  title="Editar">
                                       <i class="fa fa-pencil"></i>

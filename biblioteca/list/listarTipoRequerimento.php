@@ -1,7 +1,10 @@
 <?php
+    $encoding = 'UTF-8';
+
 	function __autoload($class_name){
 		require_once '../../classes/' . $class_name . '.php';
 	}
+
 	@$id = $_REQUEST['id'];
 	
 	$TipoRequerimento = new TipoRequerimento();
@@ -17,7 +20,7 @@
 		}else{
 			$checked = "";
 		}
-		echo "<option value=".$value->id_requerimento." ".$checked.">".$value->opt_requerimento."</option>";
+		echo "<option value=".$value->id_requerimento." ".$checked.">".mb_convert_case($value->opt_requerimento, MB_CASE_UPPER, $encoding)."</option>";
 	}
 
 ?>

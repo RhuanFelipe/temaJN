@@ -208,6 +208,14 @@ class Pessoa extends Crud{
 		$stmt->execute();
 		return $stmt->fetchAll();
 	}
+	public function findMatricula($matricula){
+		$sql  = "SELECT * FROM $this->table INNER JOIN $this->tableSecondJoin on id_usuario = id_pessoa where matricula_usuario = :matricula ";
+		$stmt = DB::prepare($sql);
+		$stmt->bindParam(':matricula', $matricula);
+
+		$stmt->execute();
+		return $stmt->fetchAll();
+	}
 
 	
 }

@@ -1,4 +1,6 @@
 <?php
+    $encoding = 'UTF-8';
+
 	function __autoload($class_name){
 		require_once '../../classes/' . $class_name . '.php';
 	}
@@ -16,7 +18,7 @@
 				$checked = "";
 
 			}
-			echo "<option value=".$value->id_pessoa." ".$checked." >".utf8_encode($value->nome_pessoa)."</option>";
+			echo "<option value=".$value->id_pessoa." ".$checked." >".mb_convert_case($value->nome_pessoa, MB_CASE_UPPER, $encoding)."</option>";
 		}
 	}else{
 		echo "<option>Informe o aluno</option>";
