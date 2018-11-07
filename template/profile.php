@@ -1,5 +1,14 @@
 <?php
   $encoding = 'UTF-8';
+  $nivel = $usuario->getNivel();
+  $id = $_SESSION['usuario_id'];
+  if($usuario->getNome() == null)
+    $usuario = "ADMINISTRADOR";
+  else
+    $usuario = mb_convert_case($usuario->getNome(), MB_CASE_UPPER, $encoding);
+
+ 
+
 ?>
 <div class="top-nav clearfix">
     <!--search & user info start-->
@@ -12,11 +21,11 @@
             <a data-toggle="dropdown" class="dropdown-toggle icon-user" href="#">
                 <!--<img alt="" src="images/avatar1_small.jpg">-->
                 <i class="fa fa-user"></i>
-                <span class="username"><?php echo mb_convert_case($usuario->getNome(), MB_CASE_UPPER, $encoding); ?></span>
+                <span class="username"><?php echo $usuario; ?></span>
                 <b class="caret"></b>
             </a>
             <ul class="dropdown-menu extended logout">
-                <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
+                <li><a href="?p=formProfile&nivel=<?php echo $nivel;?>&id=<?php echo $id;?>"><i class=" fa fa-suitcase"></i>Profile</a></li>
                 <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
                 <li><a href="#" class="btn-deslogar"><i class="fa fa-key"></i> Log Out</a></li>
             </ul>

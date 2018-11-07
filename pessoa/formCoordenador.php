@@ -24,13 +24,13 @@
             <?php if($edit == ""){ ?>
           <h3>Cadastrar Coordenador</h3> 
             <?php }else{ 
-                  $p = new Pessoa(); 
-                  $u = new Usuarios(); 
-                  $c = new Curso();
-                  $pessoa = $p->findById($id);
-                  $usuario = $u->findById($id);
-                  $curso = $c->findById($pessoa[0]->curso_id);
-                  $botao = "Editar Coordenador";
+                    $p = new Pessoa(); 
+                    $u = new Usuarios(); 
+                    $c = new Curso();
+                    $pessoa = $p->findById($id);
+                    $usuario = $u->findById($id);
+                    $curso = $c->findById($pessoa[0]->curso_id);
+                    $botao = "Editar Coordenador";
               ?>
               <h3>Alterar Coordenador</h3> 
             <?php } ?>
