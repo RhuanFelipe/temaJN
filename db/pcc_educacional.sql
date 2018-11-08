@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 29-Out-2018 às 11:27
+-- Generation Time: 08-Nov-2018 às 03:57
 -- Versão do servidor: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `categoria` (
 CREATE TABLE IF NOT EXISTS `chamado` (
   `id_chamado` int(11) NOT NULL AUTO_INCREMENT,
   `protocolo_chamado` int(11) DEFAULT NULL,
-  `assunto_chamado` varchar(200) NOT NULL,
+  `assunto_chamado` text NOT NULL,
   `data_abertura` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `categoria_id` int(11) DEFAULT NULL,
   `usuario_id` int(11) NOT NULL,
@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `chamado` (
   `status` char(1) DEFAULT '9',
   `pessoa_id` int(11) NOT NULL,
   PRIMARY KEY (`id_chamado`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Extraindo dados da tabela `chamado`
@@ -75,7 +75,8 @@ CREATE TABLE IF NOT EXISTS `chamado` (
 
 INSERT INTO `chamado` (`id_chamado`, `protocolo_chamado`, `assunto_chamado`, `data_abertura`, `categoria_id`, `usuario_id`, `tipo_curso_id`, `curso_id`, `unidade_id`, `tipo_requerimento_id`, `grupo_requerimento_id`, `requerimento_id`, `status`, `pessoa_id`) VALUES
 (1, NULL, 'RECLAMANDO SOBRE A DEMORA DE SAIR AS NOTAS', '2018-10-28 11:53:23', NULL, 2, 1, 7, 1, 1, 1, 1, '1', 4),
-(2, NULL, 'CHAMADO NÃ£O REALIZADO', '2018-10-28 21:17:58', NULL, 2, 1, 7, 1, 1, 1, 1, '1', 4);
+(2, NULL, 'CHAMADO NÃ£O REALIZADO', '2018-10-28 21:17:58', NULL, 2, 1, 7, 1, 1, 1, 1, '1', 4),
+(3, NULL, 'RECLAMAÃ§Ã£O 2\r\n', '2018-10-30 11:57:41', NULL, 2, 1, 7, 1, 1, 1, 1, '0', 5);
 
 -- --------------------------------------------------------
 
@@ -98,7 +99,8 @@ CREATE TABLE IF NOT EXISTS `chamado_resposta` (
 
 INSERT INTO `chamado_resposta` (`id_chamado`, `data_fechamento`, `status`, `id_usuario`, `assunto_chamado`, `motivo_id`) VALUES
 (1, '2018-10-28 20:42:18', 1, 3, 'Lorem Ipsum Ã© simplesmente uma simulaÃ§Ã£o de texto da indÃºstria tipogrÃ¡fica e de impressos, e vem sendo utilizado desde o sÃ©culo XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos. Lorem Ipsum sobreviveu nÃ£o sÃ³ a cinco sÃ©culos, como tambÃ©m ao salto para a editoraÃ§Ã£o eletrÃ´nica, permanecendo essencialmente inalterado. Se popularizou na dÃ©cada de 60, quando a Letraset lanÃ§ou decalques contendo passagens de Lorem Ipsum, e mais recentemente quando passou a ser integrado a softwares de editoraÃ§Ã£o eletrÃ´nica como Aldus PageMaker.', NULL),
-(2, '2018-10-28 21:32:41', 1, 3, 'CHAMADO FINALIZADO COM SUCESSO', NULL);
+(2, '2018-10-28 21:32:41', 1, 3, 'CHAMADO FINALIZADO COM SUCESSO', NULL),
+(3, '2018-10-30 12:08:55', 0, 3, 'O CHAMADO FOI CANCELADO ', '2');
 
 -- --------------------------------------------------------
 
@@ -124,7 +126,7 @@ CREATE TABLE IF NOT EXISTS `curso` (
   `tipo_curso_id` int(11) NOT NULL,
   `ativo` char(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id_curso`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
 --
 -- Extraindo dados da tabela `curso`
@@ -141,7 +143,8 @@ INSERT INTO `curso` (`id_curso`, `nome_curso`, `tipo_curso_id`, `ativo`) VALUES
 (8, 'TURISMO - BACHARELADO', 1, '1'),
 (9, 'JORNALISMO - BACHARELADO', 1, '1'),
 (10, 'FILOSOFIA - LICENCIATURA', 1, '1'),
-(11, 'CONSTRUÃ‡ÃƒO CIVIL', 2, '1');
+(11, 'CONSTRUÃ‡ÃƒO CIVIL', 2, '1'),
+(12, 'AVIÃƒO JIBÃ³IA', 1, '1');
 
 -- --------------------------------------------------------
 
@@ -172,7 +175,7 @@ CREATE TABLE IF NOT EXISTS `grupo_requerimento` (
   `tipo_requerimento_id` int(11) NOT NULL,
   `ativo` char(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id_grupo`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Extraindo dados da tabela `grupo_requerimento`
@@ -186,7 +189,8 @@ INSERT INTO `grupo_requerimento` (`id_grupo`, `desc_grupo`, `tipo_requerimento_i
 (5, 'EVENTOS / CONGRESSOS', 1, '1'),
 (6, 'EMISSÃƒO DE DOCUMENTOS', 2, '1'),
 (7, 'SOLICITAÃ‡ÃƒO ACADÃŠMICA', 2, '1'),
-(8, 'SOLICITAÃ‡ÃƒO FINACEIRA', 2, '1');
+(8, 'SOLICITAÃ‡ÃƒO FINACEIRA', 2, '1'),
+(9, 'ZÃ“IO DE LULÃ¡', 3, '1');
 
 -- --------------------------------------------------------
 
@@ -250,7 +254,7 @@ CREATE TABLE IF NOT EXISTS `pessoa` (
   `periodo` char(1) NOT NULL,
   `ativo` char(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id_pessoa`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Extraindo dados da tabela `pessoa`
@@ -258,9 +262,12 @@ CREATE TABLE IF NOT EXISTS `pessoa` (
 
 INSERT INTO `pessoa` (`id_pessoa`, `nome_pessoa`, `cpf_pessoa`, `rg_pessoa`, `sexo_pessoa`, `email_pessoa`, `curso_id`, `turno_id`, `turma_id`, `periodo`, `ativo`) VALUES
 (1, 'ADMIN', '', '', '', 'admin@hotmail.com', 0, 0, 0, '', '1'),
-(2, 'AMANDA MARIA', '', '', 'F', 'RHUANFEL@HOTMAIL.COM', 0, 0, 0, '', '1'),
+(2, 'AMANDA MARIÃ¡ JOÃ£O', '', '', 'F', 'RHUANFEL@HOTMAIL.COM', 0, 0, 0, '', '1'),
 (3, 'ARLINDO CRUZ', '', '', 'M', 'TESTE@GMAIL.COM', 7, 0, 0, '', '1'),
-(4, 'RHUAN FELIPE', '', '', 'M', 'RHUANFEL@HOTMAIL.COM', 7, 3, 0, '8', '1');
+(4, 'RHUAN FELIPE', '', '', 'M', 'RHUANFEL@HOTMAIL.COM', 7, 3, 0, '8', '1'),
+(5, 'FABRICIO MATIAS', '', '', 'M', 'RHUAN.SILVA@INFORMATA.COM.BR', 7, 3, 0, '8', '1'),
+(6, 'TIETA', '', '', 'F', 'TESTE@HOTMAIL.COM', 7, 3, 0, '8', '1'),
+(7, 'AUGUSTO RECIFE', '', '', 'M', 'AUGUSTO@GMAIL.COM', 7, 3, 0, '4', '1');
 
 -- --------------------------------------------------------
 
@@ -274,7 +281,7 @@ CREATE TABLE IF NOT EXISTS `requerimento` (
   `grupo_requerimento_id` int(11) NOT NULL,
   `ativo` char(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id_requerimento`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=33 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=34 ;
 
 --
 -- Extraindo dados da tabela `requerimento`
@@ -312,7 +319,8 @@ INSERT INTO `requerimento` (`id_requerimento`, `desc_requerimento`, `grupo_reque
 (29, 'NEGOCIAÃ‡ÃƒO FINANCEIRA (VIA TELEFONE)', 8, '1'),
 (30, 'DECLARAÃ‡ÃƒO DE NADA CONSTA', 8, '1'),
 (31, 'COMPENSAÃ‡ÃƒO DE CRÃ‰DITO', 8, '1'),
-(32, 'ANTECIPAÃ‡ÃƒO DE MENSALIDADE', 8, '1');
+(32, 'ANTECIPAÃ‡ÃƒO DE MENSALIDADE', 8, '1'),
+(33, 'MACARRÃ£O PAÃS', 9, '1');
 
 -- --------------------------------------------------------
 
@@ -357,14 +365,17 @@ CREATE TABLE IF NOT EXISTS `telefone` (
   `tipo_telefone` char(1) NOT NULL,
   `pessoa_id` int(11) NOT NULL,
   PRIMARY KEY (`id_telefone`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Extraindo dados da tabela `telefone`
 --
 
 INSERT INTO `telefone` (`id_telefone`, `numero_telefone`, `tipo_telefone`, `pessoa_id`) VALUES
-(1, '8134553112', '1', 4);
+(1, '8134553112', '1', 4),
+(2, '8132022222', '1', 5),
+(3, '81999999999', '1', 6),
+(4, '81888888888', '1', 7);
 
 -- --------------------------------------------------------
 
@@ -377,7 +388,7 @@ CREATE TABLE IF NOT EXISTS `tipo_curso` (
   `tipo_curso` varchar(150) NOT NULL,
   `ativo` char(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id_tipo_curso`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Extraindo dados da tabela `tipo_curso`
@@ -385,7 +396,8 @@ CREATE TABLE IF NOT EXISTS `tipo_curso` (
 
 INSERT INTO `tipo_curso` (`id_tipo_curso`, `tipo_curso`, `ativo`) VALUES
 (1, 'GRADUAÃ‡ÃƒO PRESENCIAL', '1'),
-(2, 'GRADUAÃ‡ÃƒO EAD', '1');
+(2, 'GRADUAÃ‡ÃƒO EAD', '1'),
+(3, 'AÃ§Ã£O JIBÃ³IA', '1');
 
 -- --------------------------------------------------------
 
@@ -398,7 +410,7 @@ CREATE TABLE IF NOT EXISTS `tipo_requerimento` (
   `opt_requerimento` varchar(150) NOT NULL,
   `ativo` char(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id_requerimento`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Extraindo dados da tabela `tipo_requerimento`
@@ -406,7 +418,8 @@ CREATE TABLE IF NOT EXISTS `tipo_requerimento` (
 
 INSERT INTO `tipo_requerimento` (`id_requerimento`, `opt_requerimento`, `ativo`) VALUES
 (1, 'RECLAMAÃ‡ÃƒO', '1'),
-(2, 'SOLICITAÃ‡ÃƒO', '1');
+(2, 'SOLICITAÃ‡ÃƒO', '1'),
+(3, 'CAZÃ¡ LIVRÃƒO', '1');
 
 -- --------------------------------------------------------
 
@@ -459,7 +472,7 @@ CREATE TABLE IF NOT EXISTS `unidade` (
   `desc_unidade` varchar(150) NOT NULL,
   `ativo` char(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id_unidade`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Extraindo dados da tabela `unidade`
@@ -467,7 +480,8 @@ CREATE TABLE IF NOT EXISTS `unidade` (
 
 INSERT INTO `unidade` (`id_unidade`, `desc_unidade`, `ativo`) VALUES
 (1, 'UNINABUCO - RECIFE', '1'),
-(2, 'UNINASSAU - PAULISTA', '1');
+(2, 'UNINASSAU - PAULISTA', '1'),
+(3, 'CÃ£O ÃDEIÃ', '1');
 
 -- --------------------------------------------------------
 
@@ -482,7 +496,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `ativo` char(1) NOT NULL DEFAULT '1',
   `nivel_id` int(11) NOT NULL,
   PRIMARY KEY (`id_usuario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Extraindo dados da tabela `usuario`
@@ -492,7 +506,10 @@ INSERT INTO `usuario` (`id_usuario`, `matricula_usuario`, `senha_usuario`, `ativ
 (1, 'ADMIN', '202cb962ac59075b964b07152d234b70', '1', 4),
 (2, '12345678', '202cb962ac59075b964b07152d234b70', '1', 2),
 (3, '11223344', '202cb962ac59075b964b07152d234b70', '1', 1),
-(4, '11032395', '', '1', 3);
+(4, '11032395', '', '1', 3),
+(5, '11002200', '', '1', 3),
+(6, '12365489', '', '1', 3),
+(7, '11558899', '', '1', 3);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

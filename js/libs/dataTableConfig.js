@@ -9,8 +9,11 @@ $(document).ready(function() {
         },
         dom: 'Bfrtip',
         buttons: [
-        'excel', 'pdf', 'print'
+            {extend: 'excel', text: '<i class="glyphicon glyphicon-th"></i> Excel' },{extend: 'pdf', text: '<i class="glyphicon glyphicon-file"></i> PDF' },{ extend: 'print', text: '<i class="glyphicon glyphicon-print"></i> Imprimir' }
         ]
+        /*buttons: [
+        'excel', 'pdf', 'print'
+        ]*/
       });
 
       var tabela_min = $('#simpleTable').DataTable({
