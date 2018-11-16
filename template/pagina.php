@@ -58,6 +58,8 @@ else
 		include_once "pessoa/formCoordenador.php";
 	else if($pagina == 'formProfile')
 		include_once "login/formProfile.php";
+	else if($pagina == 'chartPieAll')
+		include_once "graficos/chartPieAll.php";
 	else
 		include_once "404.php";
 ?>

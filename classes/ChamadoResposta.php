@@ -6,4 +6,18 @@ class ChamadoResposta extends Crud{
 	protected $table = 'chamado_resposta';
 	protected $id_coluna = 'id_chamado';
 	
+	public function qtdChamadosCancelados(){
+		$sql  = "SELECT * FROM $this->table where status = 0";
+		$stmt = DB::prepare($sql);
+		$stmt->execute();
+		$result = $stmt->rowCount();
+		return $result;
+	}
+	public function qtdChamadosConfirmados(){
+		$sql  = "SELECT * FROM $this->table where status = 1";
+		$stmt = DB::prepare($sql);
+		$stmt->execute();
+		$result = $stmt->rowCount();
+		return $result;
+	}
 }
