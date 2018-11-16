@@ -1,6 +1,6 @@
 <?php 
   $nivel = $_REQUEST['nivel'];
-  $id = $_REQUEST['id'];
+  $id = $_SESSION['usuario_id'];
   if($nivel == 4){
     $u = new Usuarios(); 
     $usu = $u->findById($id);
@@ -45,10 +45,11 @@
 ?><section id="main-content">
 <?php if($edit == ""){ ?>
 
-  <form method="post" action="cadastramento/acaoUnidade.php?acao=insert" onsubmit="return validarUnidade()">
+  <form method="post" action="login/acaoProfile.php?acao=insert" onsubmit="return validarUnidade()">
+  <input type="text" name="id" class="id" value="<?php echo $id;?>">
+
 <?php }else{ ?>
   <form method="post" action="cadastramento/acaoUnidade.php?acao=update" onsubmit="return validarUnidade()">
-   <input type="text" name="id" class="id" value="<?php echo $id;?>">
 
 <?php } ?>
     <section class="wrapper">
@@ -62,7 +63,7 @@
             <div class="form-group" >
                 <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Nome: </label>
                 <div class="col-lg-6">    
-                    <input type="text" name="unidade" id="unidade" class="form-control" value="<?php echo $nome_pessoa;?>">
+                    <input type="text" name="nome" id="nome" class="form-control" value="<?php echo $nome_pessoa;?>">
                 </div>
             </div>
             <?php } ?>          
@@ -72,7 +73,7 @@
          <div class="form-group" style="margin-top: 15px">
                     <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Matricula: </label>
                     <div class="col-lg-6">    
-                        <input type="text" name="unidade" id="unidade" class="form-control" value="<?php echo $matricula;?>">
+                        <input type="text" name="matricula" id="matriculaProfile" class="form-control" value="<?php echo $matricula;?>">
                     </div>
             </div> 
         </div> 
@@ -81,7 +82,7 @@
               <div class="form-group" >
                   <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">E-mail: </label>
                   <div class="col-lg-6">    
-                      <input type="text" name="unidade" id="unidade" class="form-control" value="<?php echo $email_pessoa;?>">
+                      <input type="text" name="email" id="email" class="form-control" value="<?php echo $email_pessoa;?>">
                   </div>
               </div>
             </div>
@@ -128,7 +129,7 @@
            <div class="form-group">
                 <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Senha: </label>
                 <div class="col-lg-6">    
-                    <input type="text" name="unidade" id="unidade" class="form-control" value="">
+                    <input type="password" name="senha" id="senha" class="form-control" value="">
                 </div>
             </div> 
       </div> 
@@ -136,7 +137,7 @@
            <div class="form-group">
                 <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Repita-Senha: </label>
                 <div class="col-lg-6">    
-                    <input type="text" name="unidade" id="unidade" class="form-control" value="">
+                    <input type="password" name="repetirSenha" id="repetirSenha" class="form-control" value="">
                 </div>
             </div> 
       </div> 

@@ -60,6 +60,8 @@ else
 		include_once "login/formProfile.php";
 	else if($pagina == 'chartPieAll')
 		include_once "graficos/chartPieAll.php";
+	else if($pagina == 'chartDonutAll')
+		include_once "graficos/chartDonutAll.php";
 	else
 		include_once "404.php";
 ?>

@@ -59,14 +59,14 @@ class Usuarios extends Crud{
 		$stmt->execute();
 		$dados = $stmt->fetch();		 
 
-		$id = $dados->id_usuario;
+		@$id = $dados->id_usuario;
 		$sql  = "SELECT * FROM pessoa WHERE id_pessoa = :id";
 		$query = DB::prepare($sql);
 		$query->bindParam(':id', $id, PDO::PARAM_INT);
 		$query->execute();
 		$result = $query->fetch();
 
-		$this->setNivel($dados->nivel_id);
+		@$this->setNivel($dados->nivel_id);
 		if($_SESSION['nivel_id'] != 4)
 			$this->setNome($result->nome_pessoa);
 	}
@@ -104,6 +104,19 @@ class Usuarios extends Crud{
 			//$_SESSION['matricula'] = $matricula_usuario;
 		}else{
 			echo 0;
+		}
+	}
+	public function atualizarProfile(){
+		if ($this->nivel == 4){
+			$sql  = "UPDATE $this->table SET matricula_usuario = :matricula, senha_usuario = :senha WHERE id_usuario = :id";
+			$stmt = DB::prepare($sql);
+			$stmt->bindParam(':matricula', $this->matricula);
+			$stmt->bindParam(':senha', $this->senha);
+			$stmt->bindParam(':id', $this->idUsuario);
+			return $stmt->execute();
+
+		}else{
+			echo "aqqui";
 		}
 	}
 	public function insert(){

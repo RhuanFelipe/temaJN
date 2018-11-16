@@ -11,7 +11,7 @@ html {
 body {
     overflow-x: hidden;
     color:#767676;
-    background:#f1f2f7;
+    background-image: 'images/Fundo.png'
     font-family:'Open Sans',sans-serif;
     padding:0px !important;
     margin:0px !important;
