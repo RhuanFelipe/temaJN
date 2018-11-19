@@ -1,12 +1,5 @@
 $(document).ready(function() {
-      var tabela = $('#fullTable').DataTable({
-        "language": {
-          "lengthMenu": "Mostrar _MENU_ por página",
-          "zeroRecords": "não encontrado",
-          "info": "Mostrar páginas _PAGE_ de _PAGES_",
-          "infoEmpty": "Nenhum registro disponivel",
-          "infoFiltered": "(filtrando from _MAX_ total de registros)"
-        },
+      var tabela = $('#fullTable').DataTable(
         dom: 'Bfrtip',
         buttons: [
             {extend: 'excel', text: '<i class="glyphicon glyphicon-th"></i> Excel' },{extend: 'pdf', text: '<i class="glyphicon glyphicon-file"></i> PDF' },{ extend: 'print', text: '<i class="glyphicon glyphicon-print"></i> Imprimir' }
@@ -15,15 +8,22 @@ $(document).ready(function() {
         'excel', 'pdf', 'print'
         ]*/
       });
+      var tabelaChamado = $('#fullTableChamado').DataTable(
+        dom: 'Bfrtip',
+        buttons: [
+            {extend: 'excel', text: '<i class="glyphicon glyphicon-th"></i> Excel' },{extend: 'pdf', text: '<i class="glyphicon glyphicon-file"></i> PDF' },{ extend: 'print', text: '<i class="glyphicon glyphicon-print"></i> Imprimir' }
+        ],
+         "order": [[ 3, "desc" ]]
+      });
 
-      var tabela_min = $('#simpleTable').DataTable({
-        "language": {
-          "lengthMenu": "Mostrar _MENU_ por página",
-          "zeroRecords": "não encontrado",
-          "infoEmpty": "Nenhum registro disponivel",
-          "infoFiltered": "(filtrando from _MAX_ total de registros)",
-
-        },"lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Tudo"]]
+      var tabela_min = $('#simpleTable').DataTable(
+        "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Tudo"]]
       });
       tabela_min.buttons().disable();
-    });
+
+
+       var tabela_min_chamado = $('#simpleTableChamado').DataTable("lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Tudo"]],
+        "order": [[ 3, "desc" ]]
+      });
+      tabela_min_chamado.buttons().disable();
+});

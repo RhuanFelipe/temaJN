@@ -62,6 +62,10 @@ else
 		include_once "graficos/chartPieAll.php";
 	else if($pagina == 'chartDonutAll')
 		include_once "graficos/chartDonutAll.php";
+	else if($pagina == 'chartBarAll')
+		include_once "graficos/chartBarAll.php";
+	else if($pagina == 'chartColumnAll')
+		include_once "graficos/chartColumnAll.php";
 	else
 		include_once "404.php";
 ?>

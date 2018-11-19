@@ -250,6 +250,13 @@ class Chamado extends Crud{
 		$result = $stmt->rowCount();
 		return $result;
 	}
+	public function qtdChamadosCursoFinalizados($id){
+		$sql  = "SELECT * FROM $this->table where curso_id = '".$id."'  and status IN(0,1)";
+		$stmt = DB::prepare($sql);
+		$stmt->execute();
+		$result = $stmt->rowCount();
+		return $result;
+	}
 	public function qtdChamadosCursoAbertos($id){
 		$sql  = "SELECT * FROM $this->table where curso_id = '".$id."' and status = 9";
 		$stmt = DB::prepare($sql);
@@ -280,6 +287,14 @@ class Chamado extends Crud{
 		$stmt->execute();
 		return $stmt->fetchAll();
 	}
+	public function findAllChamadosFinalizadosPeriodo($id_curso,$dataInicio,$dataFim){
+		$sql  = "SELECT * FROM $this->table where curso_id = :id_curso and status IN(0,1) AND date(data_abertura) BETWEEN  '".$dataInicio."' AND  '".$dataFim."' order By $this->orderBy $this->ordem";
+		$stmt = DB::prepare($sql);
+		$stmt->bindParam(':id_curso', $id_curso, PDO::PARAM_INT);
+
+		$stmt->execute();
+		return $stmt->fetchAll();
+	}
 	public function findAllChamadosAbertosCurso($id_curso){
 		$sql  = "SELECT * FROM $this->table where curso_id = :id_curso and status = 9 order By $this->orderBy $this->ordem";
 		$stmt = DB::prepare($sql);
@@ -288,8 +303,24 @@ class Chamado extends Crud{
 		$stmt->execute();
 		return $stmt->fetchAll();
 	}
+	public function findAllChamadosAbertosCursoPeriodo($id_curso,$dataInicio,$dataFim){
+		$sql  = "SELECT * FROM $this->table where curso_id = :id_curso and status = 9 AND date(data_abertura) BETWEEN  '".$dataInicio."' AND  '".$dataFim."' order By $this->orderBy $this->ordem";
+		$stmt = DB::prepare($sql);
+		$stmt->bindParam(':id_curso', $id_curso, PDO::PARAM_INT);
+
+		$stmt->execute();
+		return $stmt->fetchAll();
+	}
 	public function findAllChamadosAbertos(){
 		$sql  = "SELECT * FROM $this->table where  status = 9 order By $this->orderBy $this->ordem";
+		$stmt = DB::prepare($sql);
+
+		$stmt->execute();
+		return $stmt->fetchAll();
+	}
+	public function findAllChamadosAbertosPeriodo($dataInicio,$dataFim){
+
+		$sql  = "SELECT * FROM $this->table where  status = 9 AND date(data_abertura) BETWEEN  '".$dataInicio."' AND  '".$dataFim."' order By $this->orderBy $this->ordem";
 		$stmt = DB::prepare($sql);
 
 		$stmt->execute();

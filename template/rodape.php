@@ -39,6 +39,8 @@
 <script type="text/javascript" src="chamado/js/autocompleteChamado.js"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script type="text/javascript" src="js/libs/dataPicker.js"></script>
+
 <!--common script init for all pages-->
 <script src="js/scripts.js"></script>
 <script type="text/javascript">
@@ -72,8 +74,26 @@
             }
         });
       
-    });      
- 
+    });
+  
+  var dataInicio = $(".dataInicio").val();
+  var dataFim = $(".dataFim").val(); 
+
+ $(".listarChamados").load("chamado/list/chamadosList.php?dataInicio="+dataInicio+"&dataFim="+dataFim);
+ $(".listarChamadosFinalizados").load("chamado/list/chamadosFinalizadosList.php?dataInicio="+dataInicio+"&dataFim="+dataFim);
+
+  $('.consultarChamados').click(function(){
+  var dataInicio = $(".dataInicio").val();
+  var dataFim = $(".dataFim").val();
+   $(".listarChamados").load("chamado/list/chamadosList.php?dataInicio="+dataInicio+"&dataFim="+dataFim);
+  });
+  $('.consultarChamadosFinalizado').click(function(){
+      var dataInicio = $(".dataInicio").val();
+      var dataFim = $(".dataFim").val();
+    $(".listarChamadosFinalizados").load("chamado/list/chamadosFinalizadosList.php?dataInicio="+dataInicio+"&dataFim="+dataFim);
+
+    });
+
   });
 </script>
 

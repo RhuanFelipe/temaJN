@@ -1,7 +1,6 @@
 $(function(){
-  var ver_click = $('.ver, .verFinalizado');
-
-    ver_click.click(function(){
+alert('oi carai')
+    $('.ver, .verFinalizado').on('click',function(){
       $('.chamado_click').val($(this).data('id-chamado'))
     });
      $(".ver").click(function(){
