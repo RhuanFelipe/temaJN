@@ -91,14 +91,19 @@ class Usuarios extends Crud{
 
 		if ($stmt->fetchColumn() > 0) {
 			echo 1;
-			$sql  = "SELECT * FROM $this->table WHERE matricula_usuario = :matricula AND senha_usuario = :senha";
+			if($matricula_usuario == "ADMIN"){
+				$sql  = "SELECT * FROM $this->table WHERE matricula_usuario = :matricula AND senha_usuario = :senha";
+			}else{
+				$sql  = "SELECT * FROM $this->table INNER JOIN pessoa ON usuario.id_usuario = pessoa.id_pessoa WHERE matricula_usuario = :matricula AND senha_usuario = :senha";
+			}
+			
 			$stmt = DB::prepare($sql);
 			$stmt->bindParam(':matricula', $matricula_usuario, PDO::PARAM_INT);
 			$stmt->bindParam(':senha', $senha_usuario, PDO::PARAM_STR);
 			$stmt->execute();
 			$id_usuario  = $stmt->fetch();	
-
 			$_SESSION['usuario_id'] = $id_usuario->id_usuario;
+			@$_SESSION['curso_id'] = $id_usuario->curso_id;
 			$_SESSION['nivel_id'] = $id_usuario->nivel_id;
 			$_SESSION['matricula'] = $matricula_usuario;
 			//$_SESSION['matricula'] = $matricula_usuario;

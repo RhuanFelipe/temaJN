@@ -14,16 +14,34 @@
                     <span>Chamados Finalizados</span>
                 </a>
                 <?php } ?>
-                <?php  if($_SESSION['nivel_id'] == 1){ ?>
-                 <a href="index.php?p=graficosChamados">
-                    <i class="fa fa-bar-chart-o"></i>
-                    <span>Gráficos Chamados</span>
-                </a>
-                <a href="index.php?p=graficosRequerimento">
-                    <i class="fa fa-bar-chart-o"></i>
-                    <span>Gráficos Tipo Requerimento</span>
-                </a>
-                <?php } ?>
+            <?php  if($_SESSION['nivel_id'] == 1){ ?>
+            
+            <li class="sub-menu dcjq-parent-li">
+                    <a href="javascript:;" class="dcjq-parent">
+                        <i class="fa fa-paste"></i>
+                        <span>Gráficos tds os Chamados</span>
+                    <span class="dcjq-icon"></span></a>
+                    <ul class="sub" style="display: none;">
+                        <li><a href="index.php?p=chartPieAll">Pizza</a></li>
+                        <li><a href="index.php?p=chartBarAll">Bar</a></li>
+                        <li><a href="index.php?p=chartDonutAll">Donut</a></li>
+                        <li><a href="index.php?p=chartColumnAll">Coluna</a></li>
+                    </ul>
+                </li>
+            <li class="sub-menu dcjq-parent-li">
+                    <a href="javascript:;" class="dcjq-parent">
+                        <i class="fa fa-paste"></i>
+                        <span>Gráficos por Curso</span>
+                    <span class="dcjq-icon"></span></a>
+                    <ul class="sub" style="display: none;">
+                        <li><a href="index.php?p=chartPieCurso">Pizza</a></li>
+                        <li><a href="index.php?p=chartBarCurso">Bar</a></li>
+                        <li><a href="index.php?p=chartDonutCurso">Donut</a></li>
+                        <li><a href="index.php?p=chartColumnCurso">Coluna</a></li>
+                    </ul>
+                </li>
+                 
+            <?php } ?>
               <!--  <a href="index.php?p=graficosArea">
                     <i class="fa fa-bar-chart-o"></i>
                     <span>Gráficos Chamado Curso</span>

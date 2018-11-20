@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 08-Nov-2018 às 03:57
+-- Generation Time: 20-Nov-2018 às 22:20
 -- Versão do servidor: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -67,16 +67,17 @@ CREATE TABLE IF NOT EXISTS `chamado` (
   `status` char(1) DEFAULT '9',
   `pessoa_id` int(11) NOT NULL,
   PRIMARY KEY (`id_chamado`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Extraindo dados da tabela `chamado`
 --
 
 INSERT INTO `chamado` (`id_chamado`, `protocolo_chamado`, `assunto_chamado`, `data_abertura`, `categoria_id`, `usuario_id`, `tipo_curso_id`, `curso_id`, `unidade_id`, `tipo_requerimento_id`, `grupo_requerimento_id`, `requerimento_id`, `status`, `pessoa_id`) VALUES
-(1, NULL, 'RECLAMANDO SOBRE A DEMORA DE SAIR AS NOTAS', '2018-10-28 11:53:23', NULL, 2, 1, 7, 1, 1, 1, 1, '1', 4),
-(2, NULL, 'CHAMADO NÃ£O REALIZADO', '2018-10-28 21:17:58', NULL, 2, 1, 7, 1, 1, 1, 1, '1', 4),
-(3, NULL, 'RECLAMAÃ§Ã£O 2\r\n', '2018-10-30 11:57:41', NULL, 2, 1, 7, 1, 1, 1, 1, '0', 5);
+(1, NULL, 'TESTE', '2018-11-20 12:27:25', NULL, 53, 1, 7, 1, 1, 1, 1, '0', 56),
+(2, NULL, 'TESTE', '2018-11-20 12:38:08', NULL, 53, 1, 7, 1, 1, 1, 1, '1', 56),
+(3, NULL, 'TESTE', '2018-11-20 12:39:39', NULL, 53, 1, 7, 1, 1, 1, 1, '0', 55),
+(4, NULL, 'TESTE', '2018-11-20 18:19:32', NULL, 53, 1, 1, 1, 1, 1, 1, '1', 56);
 
 -- --------------------------------------------------------
 
@@ -90,7 +91,8 @@ CREATE TABLE IF NOT EXISTS `chamado_resposta` (
   `status` int(11) NOT NULL,
   `id_usuario` int(11) NOT NULL,
   `assunto_chamado` text NOT NULL,
-  `motivo_id` char(1) DEFAULT NULL
+  `motivo_id` char(1) DEFAULT NULL,
+  PRIMARY KEY (`id_chamado`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -98,9 +100,10 @@ CREATE TABLE IF NOT EXISTS `chamado_resposta` (
 --
 
 INSERT INTO `chamado_resposta` (`id_chamado`, `data_fechamento`, `status`, `id_usuario`, `assunto_chamado`, `motivo_id`) VALUES
-(1, '2018-10-28 20:42:18', 1, 3, 'Lorem Ipsum Ã© simplesmente uma simulaÃ§Ã£o de texto da indÃºstria tipogrÃ¡fica e de impressos, e vem sendo utilizado desde o sÃ©culo XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos. Lorem Ipsum sobreviveu nÃ£o sÃ³ a cinco sÃ©culos, como tambÃ©m ao salto para a editoraÃ§Ã£o eletrÃ´nica, permanecendo essencialmente inalterado. Se popularizou na dÃ©cada de 60, quando a Letraset lanÃ§ou decalques contendo passagens de Lorem Ipsum, e mais recentemente quando passou a ser integrado a softwares de editoraÃ§Ã£o eletrÃ´nica como Aldus PageMaker.', NULL),
-(2, '2018-10-28 21:32:41', 1, 3, 'CHAMADO FINALIZADO COM SUCESSO', NULL),
-(3, '2018-10-30 12:08:55', 0, 3, 'O CHAMADO FOI CANCELADO ', '2');
+(1, '2018-11-20 12:37:14', 0, 54, 'TESTE', '1'),
+(2, '2018-11-20 12:38:23', 1, 54, 'TESTE', NULL),
+(3, '2018-11-20 12:39:54', 0, 54, 'TESTE', '2'),
+(4, '2018-11-20 18:19:47', 1, 57, 'TESTE', NULL);
 
 -- --------------------------------------------------------
 
@@ -126,7 +129,7 @@ CREATE TABLE IF NOT EXISTS `curso` (
   `tipo_curso_id` int(11) NOT NULL,
   `ativo` char(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id_curso`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
 
 --
 -- Extraindo dados da tabela `curso`
@@ -143,8 +146,7 @@ INSERT INTO `curso` (`id_curso`, `nome_curso`, `tipo_curso_id`, `ativo`) VALUES
 (8, 'TURISMO - BACHARELADO', 1, '1'),
 (9, 'JORNALISMO - BACHARELADO', 1, '1'),
 (10, 'FILOSOFIA - LICENCIATURA', 1, '1'),
-(11, 'CONSTRUÃ‡ÃƒO CIVIL', 2, '1'),
-(12, 'AVIÃƒO JIBÃ³IA', 1, '1');
+(11, 'CONSTRUÃ‡ÃƒO CIVIL', 2, '1');
 
 -- --------------------------------------------------------
 
@@ -210,8 +212,8 @@ CREATE TABLE IF NOT EXISTS `motivo` (
 --
 
 INSERT INTO `motivo` (`id_motivo`, `nome_motivo`, `ativo`) VALUES
-(1, 'MOTIVO 1', 1),
-(2, 'MOTIVO 2', 1);
+(1, 'DESISTIU', 1),
+(2, 'NÃO INFORMADO', 1);
 
 -- --------------------------------------------------------
 
@@ -254,20 +256,63 @@ CREATE TABLE IF NOT EXISTS `pessoa` (
   `periodo` char(1) NOT NULL,
   `ativo` char(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id_pessoa`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=58 ;
 
 --
 -- Extraindo dados da tabela `pessoa`
 --
 
 INSERT INTO `pessoa` (`id_pessoa`, `nome_pessoa`, `cpf_pessoa`, `rg_pessoa`, `sexo_pessoa`, `email_pessoa`, `curso_id`, `turno_id`, `turma_id`, `periodo`, `ativo`) VALUES
-(1, 'ADMIN', '', '', '', 'admin@hotmail.com', 0, 0, 0, '', '1'),
-(2, 'AMANDA MARIÃ¡ JOÃ£O', '', '', 'F', 'RHUANFEL@HOTMAIL.COM', 0, 0, 0, '', '1'),
-(3, 'ARLINDO CRUZ', '', '', 'M', 'TESTE@GMAIL.COM', 7, 0, 0, '', '1'),
-(4, 'RHUAN FELIPE', '', '', 'M', 'RHUANFEL@HOTMAIL.COM', 7, 3, 0, '8', '1'),
-(5, 'FABRICIO MATIAS', '', '', 'M', 'RHUAN.SILVA@INFORMATA.COM.BR', 7, 3, 0, '8', '1'),
-(6, 'TIETA', '', '', 'F', 'TESTE@HOTMAIL.COM', 7, 3, 0, '8', '1'),
-(7, 'AUGUSTO RECIFE', '', '', 'M', 'AUGUSTO@GMAIL.COM', 7, 3, 0, '4', '1');
+(8, 'ADMIN', '', '', '', 'admin@hotmail.com', 0, 0, 0, '', '1'),
+(9, 'MARIA ALICE', '', '', 'F', 'MARIA@GMAIL.COM', 0, 0, 0, '', '1'),
+(10, 'CIBELE SILVA', '', '', 'F', 'CIB@GMAIL.COM', 0, 0, 0, '', '1'),
+(11, 'CARMEN SILVA', '', '', 'F', 'CARMEN@GMAIL.COM', 0, 0, 0, '', '1'),
+(12, 'ANDREZA OLIVEIRA', '', '', 'F', 'ANDR2@GMAIL.COM', 0, 0, 0, '', '1'),
+(13, 'MATEUS SILVA', '', '', 'M', 'MA@GMAIL.COM', 0, 0, 0, '', '1'),
+(14, 'CARLOS ANTONIO', '', '', 'M', 'CARLOS@HOTMAIL.COM', 0, 0, 0, '', '1'),
+(15, 'MANUELA MARTINS', '', '', 'M', 'MANU@GMAIL.COM', 0, 0, 0, '', '1'),
+(16, 'CINTIA SILVA', '', '', 'F', 'CIN@GMAIL.COM', 0, 0, 0, '', '1'),
+(17, 'ANDERSON ANTONIO', '', '', 'M', 'AND@GMAIL.COM', 0, 0, 0, '', '1'),
+(18, 'JOSE CARLOS', '', '', 'M', 'JOSE@HOTMAIL.COM', 0, 0, 0, '', '1'),
+(19, 'JOSE MARIO', '', '', 'M', 'ZE@GMAIL.COM,', 1, 0, 0, '', '1'),
+(20, 'ARLINDO CORREIA', '', '', 'M', 'ARLIN@GMAIL.COM', 7, 0, 0, '', '1'),
+(21, 'SOLANO ALVES', '', '', 'M', 'SOL@GMAIL.COM', 2, 0, 0, '', '1'),
+(22, 'ANDRE SILVA', '', '', 'M', 'ANDRE@GMAIL.COM', 4, 0, 0, '', '1'),
+(23, 'ANDREA ANDRADE', '', '', 'F', 'ANDRADE@GMAIL.COM', 5, 0, 0, '', '1'),
+(24, 'VITOR GABRIEL', '', '', 'M', 'VIC@GMAIL.COM', 6, 0, 0, '', '1'),
+(25, 'TALES GAEL', '', '', 'M', 'TALES@GMAIL.COM', 8, 0, 0, '', '1'),
+(26, 'TALES GABRIEL', '', '', 'M', 'GABRI@GMAIL.COM', 9, 0, 0, '', '1'),
+(27, 'TALES DOMINIC', '', '', 'M', 'FILOSOFIA@GMAIL.COM', 10, 0, 0, '', '1'),
+(28, 'TÃ©O HENRIQUE', '', '', 'M', 'TEO@GMAIL.COM', 11, 0, 0, '', '1'),
+(29, 'ANA CLARA', '', '', 'F', 'ANA@GMAIL.COM', 1, 1, 0, '1', '1'),
+(30, 'ANA CLARA', '', '', 'F', 'ANA@GMAIL.COM', 1, 1, 0, '1', '1'),
+(31, 'ANA LUIZA', '', '', 'F', 'ANALUIZA@GMAIL.COM', 1, 2, 0, '1', '1'),
+(32, 'ANA PAULA', '', '', 'F', 'PAULA@GMAIL.COM', 1, 1, 0, '3', '1'),
+(33, 'ANA CAROLINA', '', '', 'F', 'CAROL@GMAIL.COM', 1, 1, 0, '5', '1'),
+(34, 'MARIA HELENA', '', '', 'F', 'HELENA@GMAIL.COM', 1, 3, 0, '6', '1'),
+(35, 'ANA MARIA', '', '', 'F', 'ANABIO@GMAIL.COM', 2, 2, 0, '4', '1'),
+(36, 'ANA ROSA', '', '', 'M', 'ROSA@GMAIL.COM', 2, 1, 0, '5', '1'),
+(37, 'MARIA LUÃ­SA', '', '', 'F', 'LU@GMAIL.COM', 2, 1, 0, '5', '1'),
+(38, 'MARIA EMÃ­LIA', '', '', 'F', 'EMI@GMAIL.COM', 2, 2, 0, '6', '1'),
+(39, 'MARIA LÃºCIA', '', '', 'F', 'LULU@GMAIL.COM', 2, 3, 0, '6', '1'),
+(40, 'MARIA EDUARDA', '', '', 'F', 'DU@GMAIL.COM', 3, 2, 0, '3', '1'),
+(41, 'MARIA HELENA', '', '', 'F', 'HEL2GMAIL.COM', 3, 2, 0, '3', '1'),
+(42, 'MARIA PAULA', '', '', 'F', 'OAUKA@GMAIL.COM', 3, 1, 0, '7', '1'),
+(43, 'MARIA APARECIDA', '', '', 'F', 'APARECIDA@GMAIL.COM', 3, 2, 0, '1', '1'),
+(44, 'MARIA AUGUSTA', '', '', 'F', 'AU@GMAIL.COM', 3, 1, 0, '5', '1'),
+(45, 'CARLA CRISTINA', '', '', 'F', 'CARLA@GMAIL.COM', 11, 1, 0, '5', '1'),
+(46, 'ELIS REGINA', '', '', 'F', 'ELIS@GMAIL.COM', 11, 2, 0, '3', '1'),
+(47, 'GLÃ³RIA CRISTINA', '', '', 'F', 'GLO@GMAIL.COM', 1, 1, 0, '3', '1'),
+(48, 'EDUARDO LIMA', '', '', 'M', 'EDUARDO@HOTMAIL.COM', 1, 2, 0, '8', '1'),
+(49, 'ISABEL REGINA', '', '', 'F', 'ISA@GMAIL.COM', 1, 2, 0, '4', '1'),
+(50, 'ANNA MARIA', '', '', 'M', 'ANNA@GMAIL.COM', 2, 1, 0, '1', '1'),
+(51, 'ALICE MARIA', '', '', 'F', 'ALICE@GMAAIL.COM', 2, 3, 0, '8', '1'),
+(52, 'ADMIN', '', '', '', 'admin@hotmail.com', 0, 0, 0, '', '1'),
+(53, 'MARIA MARIA', '', '', 'F', 'MARIA@HOTMAIL.COM', 0, 0, 0, '', '1'),
+(54, 'ARLINDO CRUZ', '', '', 'M', 'ARLINDO@GMAIL.COM', 7, 0, 0, '', '1'),
+(55, 'RHUAN FELIPE DA SILVA', '', '', 'M', 'RHUANFEL@HOTMAIL.COM', 7, 1, 0, '8', '1'),
+(56, 'CARLOS MATHIAS', '', '', 'M', 'RHUANFEL@HOTMAIL.COM', 7, 1, 0, '5', '1'),
+(57, 'JOSÃ© HENRIQUE', '', '', 'M', 'TESTE@HOTMAIL.COM', 1, 0, 0, '', '1');
 
 -- --------------------------------------------------------
 
@@ -365,17 +410,15 @@ CREATE TABLE IF NOT EXISTS `telefone` (
   `tipo_telefone` char(1) NOT NULL,
   `pessoa_id` int(11) NOT NULL,
   PRIMARY KEY (`id_telefone`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Extraindo dados da tabela `telefone`
 --
 
 INSERT INTO `telefone` (`id_telefone`, `numero_telefone`, `tipo_telefone`, `pessoa_id`) VALUES
-(1, '8134553112', '1', 4),
-(2, '8132022222', '1', 5),
-(3, '81999999999', '1', 6),
-(4, '81888888888', '1', 7);
+(1, '8134553112', '1', 55),
+(2, '81666666666', '1', 56);
 
 -- --------------------------------------------------------
 
@@ -396,8 +439,7 @@ CREATE TABLE IF NOT EXISTS `tipo_curso` (
 
 INSERT INTO `tipo_curso` (`id_tipo_curso`, `tipo_curso`, `ativo`) VALUES
 (1, 'GRADUAÃ‡ÃƒO PRESENCIAL', '1'),
-(2, 'GRADUAÃ‡ÃƒO EAD', '1'),
-(3, 'AÃ§Ã£O JIBÃ³IA', '1');
+(2, 'GRADUAÃ‡ÃƒO EAD', '1');
 
 -- --------------------------------------------------------
 
@@ -418,8 +460,7 @@ CREATE TABLE IF NOT EXISTS `tipo_requerimento` (
 
 INSERT INTO `tipo_requerimento` (`id_requerimento`, `opt_requerimento`, `ativo`) VALUES
 (1, 'RECLAMAÃ‡ÃƒO', '1'),
-(2, 'SOLICITAÃ‡ÃƒO', '1'),
-(3, 'CAZÃ¡ LIVRÃƒO', '1');
+(2, 'SOLICITAÃ‡ÃƒO', '1');
 
 -- --------------------------------------------------------
 
@@ -496,7 +537,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `ativo` char(1) NOT NULL DEFAULT '1',
   `nivel_id` int(11) NOT NULL,
   PRIMARY KEY (`id_usuario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=58 ;
 
 --
 -- Extraindo dados da tabela `usuario`
@@ -504,12 +545,11 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 
 INSERT INTO `usuario` (`id_usuario`, `matricula_usuario`, `senha_usuario`, `ativo`, `nivel_id`) VALUES
 (1, 'ADMIN', '202cb962ac59075b964b07152d234b70', '1', 4),
-(2, '12345678', '202cb962ac59075b964b07152d234b70', '1', 2),
-(3, '11223344', '202cb962ac59075b964b07152d234b70', '1', 1),
-(4, '11032395', '', '1', 3),
-(5, '11002200', '', '1', 3),
-(6, '12365489', '', '1', 3),
-(7, '11558899', '', '1', 3);
+(53, '12345678', '202cb962ac59075b964b07152d234b70', '1', 2),
+(54, '87654321', '202cb962ac59075b964b07152d234b70', '1', 1),
+(55, '11032395', '', '1', 3),
+(56, '11002255', '', '1', 3),
+(57, '11223344', '202cb962ac59075b964b07152d234b70', '1', 1);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

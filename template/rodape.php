@@ -1,7 +1,6 @@
 </section>
 
 <!-- Placed js at the end of the document so the pages load faster -->
-
 <!--Core js-->
 <script src="js/jquery.js"></script>
 <script src="bs3/js/bootstrap.min.js"></script>
@@ -31,6 +30,7 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
 <script type="text/javascript" src="js/libs/lists.js"></script>
 <script type="text/javascript" src="js/libs/chartAll.js"></script>
+<script type="text/javascript" src="js/libs/chartCurso.js"></script>
 <script type="text/javascript" src="chamado/js/cadastrarAluno.js"></script>
 <script type="text/javascript" src="pessoa/js/buscarMatricula.js"></script>
 <script type="text/javascript" src="chamado/js/acoesChamado.js"></script>
@@ -45,6 +45,7 @@
 <script src="js/scripts.js"></script>
 <script type="text/javascript">
   $(document).ready(function(){
+
 
     $('.btn-deslogar').click(function(){
          var result = bootbox.confirm({
@@ -75,41 +76,41 @@
         });
       
     });
-  
   var dataInicio = $(".dataInicio").val();
-  var dataFim = $(".dataFim").val(); 
-  
-<?php if($_REQUEST['p'] == "chartPieAll") {?>
-  chartPieAll(dataInicio, dataFim);
-<?php }?>
-<?php if($_REQUEST['p'] == "chartDonutAll") {?>
-  chartDonutAll(dataInicio, dataFim);
-<?php }?>
-<?php if($_REQUEST['p'] == "chartBarAll") {?>
-  chartBarAll(dataInicio, dataFim);
-<?php }?>
-<?php if($_REQUEST['p'] == "chartColumnAll") {?>
-  chartColumnAll(dataInicio, dataFim);
-<?php } ?>
-
+ var dataFim = $(".dataFim").val(); 
 
  $(".listarChamados").load("chamado/list/chamadosList.php?dataInicio="+dataInicio+"&dataFim="+dataFim);
  $(".listarChamadosFinalizados").load("chamado/list/chamadosFinalizadosList.php?dataInicio="+dataInicio+"&dataFim="+dataFim);
 
   $('.consultarChamados').click(function(){
-  var dataInicio = $(".dataInicio").val();
-  var dataFim = $(".dataFim").val();
-   $(".listarChamados").load("chamado/list/chamadosList.php?dataInicio="+dataInicio+"&dataFim="+dataFim);
+    var dataInicio = $(".dataInicio").val();
+    var dataFim = $(".dataFim").val();
+    $(".listarChamados").load("chamado/list/chamadosList.php?dataInicio="+dataInicio+"&dataFim="+dataFim);
   });
   $('.consultarChamadosFinalizado').click(function(){
-      var dataInicio = $(".dataInicio").val();
-      var dataFim = $(".dataFim").val();
-    $(".listarChamadosFinalizados").load("chamado/list/chamadosFinalizadosList.php?dataInicio="+dataInicio+"&dataFim="+dataFim);
-
-    });
+    var dataInicio = $(".dataInicio").val();
+    var dataFim = $(".dataFim").val();
+  $(".listarChamadosFinalizados").load("chamado/list/chamadosFinalizadosList.php?dataInicio="+dataInicio+"&dataFim="+dataFim);
 
   });
-</script>
+ 
+  <?php if(@$_REQUEST['p'] == "chartPieAll") {?>
+    chartPieAll(dataInicio, dataFim);
+  <?php }?>
+  <?php if(@$_REQUEST['p'] == "chartDonutAll") {?>
+    chartDonutAll(dataInicio, dataFim);
+  <?php }?>
+  <?php if(@$_REQUEST['p'] == "chartBarAll") {?>
+    chartBarAll(dataInicio, dataFim);
+  <?php }?>
+  <?php if(@$_REQUEST['p'] == "chartColumnAll") {?>
+    chartColumnAll(dataInicio, dataFim);
+  <?php } ?>
+   <?php if(@$_REQUEST['p'] == "chartPieCurso") {?>
+    chartPieCurso(dataInicio, dataFim);
+  <?php } ?>
 
+});
+</script>
 </body>
 </html>
