@@ -52,7 +52,6 @@ else
                     </form>          
                   <div class="panel-body">
                       <p style="float: right;">Qtd. Chamados : <?php echo @$qtdChamados; ?></p>
-                  <input class="chamado_click" type="hidden"  value="">
                   <input type="hidden" name="usuario" id="usuario" value="<?php echo $_SESSION['usuario_id']; ?>">
 
 				         <table id="<?php echo $table;?>" class="table table-striped table-hover table-bordered  display chamadoTable" style="width:100%">

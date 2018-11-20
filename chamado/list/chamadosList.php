@@ -33,9 +33,12 @@
     $tr = $tipoRequerimento->findById($rows->tipo_requerimento_id);
     $gr = $grupoRequerimento->findById($rows->grupo_requerimento_id);
  ?>
+
 <tr class="modal-desc">                             
   <td  width="10%" title="<?php  echo date('d/m/Y - H:i', strtotime($rows->data_abertura)); ?>"><?php echo date('d/m/Y', strtotime($rows->data_abertura)); ?></td>
-  <th scope="row"><?php echo $users->matricula_usuario; ?></th>
+  <th scope="row"><?php echo $users->matricula_usuario; ?>
+     <input type="hidden"  class="chamado_click" name="">
+  </th>
   <td class=""><?php echo utf8_encode($ps[0]->nome_pessoa); ?></td>
   <td ><?php echo $cs[0]->nome_curso; ?></td>
   <td ><?php echo $req[0]->desc_requerimento; ?></td>
@@ -81,3 +84,6 @@
      </td>
 </tr>
 <?php }  ?>
+
+  <script type="text/javascript" src="chamado/js/acoesChamado.js"></script>
+

@@ -20,4 +20,18 @@ class ChamadoResposta extends Crud{
 		$result = $stmt->rowCount();
 		return $result;
 	}
+	public function qtdChamadosCanceladosPeriodo($dataInicio, $dataFim){
+		$sql  = "SELECT * FROM $this->table where status = 0 AND date(data_fechamento) BETWEEN  '".$dataInicio."' AND  '".$dataFim."'";
+		$stmt = DB::prepare($sql);
+		$stmt->execute();
+		$result = $stmt->rowCount();
+		return $result;
+	}
+	public function qtdChamadosConfirmadosPeriodo($dataInicio, $dataFim){
+		$sql  = "SELECT * FROM $this->table where status = 1 AND date(data_fechamento) BETWEEN  '".$dataInicio."' AND  '".$dataFim."'";
+		$stmt = DB::prepare($sql);
+		$stmt->execute();
+		$result = $stmt->rowCount();
+		return $result;
+	}
 }

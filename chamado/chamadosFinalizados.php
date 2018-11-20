@@ -37,8 +37,6 @@
                          </span>
                     </header>
                      <form class="form-inline" >
-                          <input class="chamado_click" type="text"  value="">
-
                       <div class="form-group">
                         <label for="email">Data:</label>
                         <input type="text" class="form-control dataInicio" id="dataInicio" >
@@ -99,3 +97,4 @@
         </div>
       </div>
     </div>
+<script type="text/javascript" src="chamado/js/acoesChamado.js"></script>

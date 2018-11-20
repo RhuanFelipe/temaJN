@@ -1,5 +1,4 @@
 $(function(){
-alert('oi carai')
     $('.ver, .verFinalizado').on('click',function(){
       $('.chamado_click').val($(this).data('id-chamado'))
     });

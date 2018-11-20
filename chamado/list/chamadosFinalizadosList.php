@@ -34,7 +34,9 @@
       $gr = $grupoRequerimento->findById($rows->grupo_requerimento_id);
    ?>
   <tr class="modal-desc">
-    <td width="13%"><?php echo $rows->data_abertura; ?></td>
+    <td width="13%"><?php echo $rows->data_abertura; ?>
+      <input type="hidden"  class="chamado_click" name="">
+    </td>
     <th scope="row"><?php echo $users->matricula_usuario; ?></th>
     <td class="nome_pessoa_<?php echo $rows->id_chamado; ?>"><?php echo utf8_encode($ps[0]->nome_pessoa); ?></td>
     <td><?php echo $cs[0]->nome_curso; ?></td>
@@ -75,3 +77,5 @@
        </td>
   </tr>
   <?php } ?>
+  <script type="text/javascript" src="chamado/js/acoesChamado.js"></script>
+
