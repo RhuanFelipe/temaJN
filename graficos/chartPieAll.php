@@ -12,7 +12,7 @@
 						<label for="pwd">até:</label>
 						<input type="text" class="form-control dataFim" id="dataFim">
 					</div>
-					<button type="button" class="btn btn-info btnGrafico">Consultar</button>
+					<button type="button" class="btn btn-info btnGraficoAll">Consultar</button>
 				</form>
 			</div>
 		</div>

@@ -30,7 +30,7 @@
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
 <script type="text/javascript" src="js/libs/lists.js"></script>
-<script type="text/javascript" src="js/libs/chart.js"></script>
+<script type="text/javascript" src="js/libs/chartAll.js"></script>
 <script type="text/javascript" src="chamado/js/cadastrarAluno.js"></script>
 <script type="text/javascript" src="pessoa/js/buscarMatricula.js"></script>
 <script type="text/javascript" src="chamado/js/acoesChamado.js"></script>
@@ -78,6 +78,20 @@
   
   var dataInicio = $(".dataInicio").val();
   var dataFim = $(".dataFim").val(); 
+  
+<?php if($_REQUEST['p'] == "chartPieAll") {?>
+  chartPieAll(dataInicio, dataFim);
+<?php }?>
+<?php if($_REQUEST['p'] == "chartDonutAll") {?>
+  chartDonutAll(dataInicio, dataFim);
+<?php }?>
+<?php if($_REQUEST['p'] == "chartBarAll") {?>
+  chartBarAll(dataInicio, dataFim);
+<?php }?>
+<?php if($_REQUEST['p'] == "chartColumnAll") {?>
+  chartColumnAll(dataInicio, dataFim);
+<?php } ?>
+
 
  $(".listarChamados").load("chamado/list/chamadosList.php?dataInicio="+dataInicio+"&dataFim="+dataFim);
  $(".listarChamadosFinalizados").load("chamado/list/chamadosFinalizadosList.php?dataInicio="+dataInicio+"&dataFim="+dataFim);

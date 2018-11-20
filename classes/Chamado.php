@@ -226,6 +226,7 @@ class Chamado extends Crud{
 
 			$sqlConcluir = "INSERT INTO chamado_resposta (id_chamado,status,id_usuario,assunto_chamado,motivo_id) 
 			values (:id_chamado,'0',:id_usuario,:assunto_chamado,:motivo_id);";	
+			
 			$stmt = DB::prepare($sql);
 			$stmtConcluir = DB::prepare($sqlConcluir);
 
