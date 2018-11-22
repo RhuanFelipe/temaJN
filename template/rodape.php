@@ -31,6 +31,7 @@
 <script type="text/javascript" src="js/libs/lists.js"></script>
 <script type="text/javascript" src="js/libs/chartAll.js"></script>
 <script type="text/javascript" src="js/libs/chartCurso.js"></script>
+<script type="text/javascript" src="js/libs/chartTipoCursoAll.js"></script>
 <script type="text/javascript" src="chamado/js/cadastrarAluno.js"></script>
 <script type="text/javascript" src="pessoa/js/buscarMatricula.js"></script>
 <script type="text/javascript" src="chamado/js/acoesChamado.js"></script>
@@ -109,7 +110,18 @@
    <?php if(@$_REQUEST['p'] == "chartPieCurso") {?>
     chartPieCurso(dataInicio, dataFim);
   <?php } ?>
-
+  <?php if(@$_REQUEST['p'] == "chartBarCurso") {?>
+    chartBarCurso(dataInicio, dataFim);
+  <?php } ?>
+  <?php if(@$_REQUEST['p'] == "chartDonutCurso") {?>
+    chartDonutCurso(dataInicio, dataFim);
+  <?php } ?>
+  <?php if(@$_REQUEST['p'] == "chartColumnCurso") {?>
+    chartColumnCurso(dataInicio, dataFim);
+  <?php } ?>
+  <?php if(@$_REQUEST['p'] == "chartPieTipoCursoAll") {?>
+    chartPieTipoCursoAll(dataInicio, dataFim);
+  <?php } ?>
 });
 </script>
 </body>

@@ -26,6 +26,14 @@ abstract class Crud extends DB{
 		$stmt->execute();
 		return $stmt->fetchAll();
 	}
+	public function countAll(){
+		$sql  = "SELECT * FROM $this->table";
+		$stmt = DB::prepare($sql);
+		$stmt->execute();
+		$result = $stmt->rowCount();
+		return $result;
+	}
+
 	public function findAllOrder(){
 		$sql  = "SELECT * FROM $this->table order By $this->orderBy $this->ordem";
 		$stmt = DB::prepare($sql);

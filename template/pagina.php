@@ -68,6 +68,14 @@ else
 		include_once "graficos/chartColumnAll.php";
 	else if($pagina == 'chartPieCurso')
 		include_once "graficos/chartPieCurso.php";
+	else if($pagina == 'chartBarCurso')
+		include_once "graficos/chartBarCurso.php";
+	else if($pagina == 'chartDonutCurso')
+		include_once "graficos/chartDonutCurso.php";
+	else if($pagina == 'chartColumnCurso')
+		include_once "graficos/chartColumnCurso.php";
+	else if($pagina == 'chartPieTipoCursoAll')
+		include_once "graficos/chartPieTipoCursoAll.php";
 	else
 		include_once "404.php";
 ?>
