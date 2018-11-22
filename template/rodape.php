@@ -31,7 +31,10 @@
 <script type="text/javascript" src="js/libs/lists.js"></script>
 <script type="text/javascript" src="js/libs/chartAll.js"></script>
 <script type="text/javascript" src="js/libs/chartCurso.js"></script>
+<?php if(@$_REQUEST['p'] == "chartPieTipoCursoAll") {?>
+
 <script type="text/javascript" src="js/libs/chartTipoCursoAll.js"></script>
+<?php } ?>
 <script type="text/javascript" src="chamado/js/cadastrarAluno.js"></script>
 <script type="text/javascript" src="pessoa/js/buscarMatricula.js"></script>
 <script type="text/javascript" src="chamado/js/acoesChamado.js"></script>

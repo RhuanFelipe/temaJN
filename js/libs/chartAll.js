@@ -1,5 +1,6 @@
 var dataInicio = $(".dataInicio").val();
 var dataFim = $(".dataFim").val(); 
+
 $('.btnGraficoAll').click(function(){
   var dataInicio = $(".dataInicio").val();
   var dataFim = $(".dataFim").val(); 
@@ -30,13 +31,12 @@ var dataFim = $(".dataFim").val();
               ['Confirmados',     jsondata.qtdChamadosConfirmados],
               ['Cancelados',  jsondata.qtdChamadosCancelados]]);
             if(jsondata.qtdChamadosConfirmados > 0 || jsondata.qtdChamadosCancelados > 0 ){
-
-            var options = {title: 'Chamados Geral',
-            width: 1150,
-            height: 650};
-          }else{
-             var options = "";
-          }
+              var options = {title: 'Chamados Geral',
+              width: 1150,
+              height: 650};
+            }else{
+               var options = "";
+            }
             var chart = new google.visualization.PieChart(document.getElementById('chartPieAll'));
             chart.draw(data, options);
           }
@@ -67,18 +67,22 @@ function chartDonutAll(dataInicio, dataFim){
             ['Confirmados',     jsondata.qtdChamadosConfirmados],
             ['Cancelados',  jsondata.qtdChamadosCancelados]]);
 
-          var options = {title: 'Chamados Geral',
-          width: 1150,
-          height: 650,
-          pieHole: 0.5,
-          pieSliceTextStyle: {
-            color: 'black',
-          },
-          legend: 'none'};
-
-
-          var chart = new google.visualization.PieChart(document.getElementById('chartDonutAll'));
-          chart.draw(data, options);
+          
+            if(jsondata.qtdChamadosConfirmados > 0 || jsondata.qtdChamadosCancelados > 0 ){
+              var options = {title: 'Chamados Geral',
+              width: 1150,
+              height: 650,
+              pieHole: 0.5,
+              pieSliceTextStyle: {
+                color: 'black',
+              },
+              legend: 'none'};
+               var chart = new google.visualization.PieChart(document.getElementById('chartDonutAll'));
+              chart.draw(data, options);
+            }else{
+               var options = "";
+            }
+         
         }
       });    
 
@@ -102,24 +106,29 @@ function chartBarAll(dataInicio, dataFim){
          dataType: "json",
           url:"graficos/lib/todosChamados.php?dataInicio="+dataInicio+"&dataFim="+dataFim,            
          success: function(jsondata) {
-          console.log(jsondata)
-          var data = google.visualization.arrayToDataTable([
-            ['chamados', 'Todos os Chamados'],
-            ['Confirmados',     jsondata.qtdChamadosConfirmados],
-            ['Cancelados',  jsondata.qtdChamadosCancelados]]);
+        var data = google.visualization.arrayToDataTable([
+            ['chamados', 'Todos os Chamados', { role: 'style' }],
+            ['Confirmados',     jsondata.qtdChamadosConfirmados,'#30ff6a'],
+            ['Cancelados',  jsondata.qtdChamadosCancelados,'#ff450a']]);
 
-          var options = {title: 'Chamados Geral',
-          width: 1150,
-          height: 650,
-          pieHole: 0.5,
-          pieSliceTextStyle: {
-            color: 'black',
-          },
-          legend: 'none'};
+         
+           if(jsondata.qtdChamadosConfirmados > 0 || jsondata.qtdChamadosCancelados > 0 ){
+             var options = {title: 'Chamados Geral',
+              width: 1150,
+              height: 650,
+              pieHole: 0.5,
+              pieSliceTextStyle: {
+                color: 'black',
+              },
+              legend: 'none'};
 
 
-          var chart = new google.visualization.BarChart(document.getElementById('chartBarAll'));
-          chart.draw(data, options);
+              var chart = new google.visualization.BarChart(document.getElementById('chartBarAll'));
+              chart.draw(data, options);
+            }else{
+               var options = "";
+            }
+
         }
       });    
 
@@ -130,6 +139,7 @@ function chartBarAll(dataInicio, dataFim){
   });
 }
 function chartColumnAll(dataInicio, dataFim){
+
   $.ajax({
     url: 'https://www.google.com/jsapi?callback',
     cache: true,
@@ -142,24 +152,28 @@ function chartColumnAll(dataInicio, dataFim){
          dataType: "json",
          url:"graficos/lib/todosChamados.php?dataInicio="+dataInicio+"&dataFim="+dataFim,            
          success: function(jsondata) {
-          console.log(jsondata)
           var data = google.visualization.arrayToDataTable([
-            ['chamados', 'Todos os Chamados'],
-            ['Confirmados',     jsondata.qtdChamadosConfirmados],
-            ['Cancelados',  jsondata.qtdChamadosCancelados]]);
+            ['chamados', 'Todos os Chamados', { role: 'style' }],
+            ['Confirmados',     jsondata.qtdChamadosConfirmados,'#30ff6a'],
+            ['Cancelados',  jsondata.qtdChamadosCancelados,'#ff450a']]);
 
-          var options = {title: 'Chamados Geral',
-          width: 1150,
-          height: 650,
-          pieHole: 0.5,
-          pieSliceTextStyle: {
-            color: 'black',
-          },
-          legend: 'none'};
+          
+           if(jsondata.qtdChamadosConfirmados > 0 || jsondata.qtdChamadosCancelados > 0 ){
+              var options = {title: 'Chamados Geral',
+              width: 1150,
+              height: 650,
+              pieHole: 0.5,
+              pieSliceTextStyle: {
+                color: 'black',
+              },
+              legend: 'none'};
 
+              var chart = new google.visualization.ColumnChart(document.getElementById('chartColumnAll'));
+              chart.draw(data, options);
+            }else{
+               var options = "";
+            }
 
-          var chart = new google.visualization.ColumnChart(document.getElementById('chartColumnAll'));
-          chart.draw(data, options);
         }
       });    
 
