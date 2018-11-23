@@ -24,7 +24,7 @@ while($i <= $tipoCursoCount){
 	$idTipoCurso = $tipoCurso[0]->id_tipo_curso;
 	$tipoCursoNome = $tipoCurso[0]->tipo_curso;
 
-	$tipoCursoArray[$i-1]["ID"] = $idTipoCurso;
+	//$tipoCursoArray[$i-1]["ID"] = $idTipoCurso;
 	$tipoCursoArray[$i-1]["TIPOCURSO"] = $tipoCursoNome;
 	$qtdTipoCursoArray[$i-1]["QTDCHAMADO"] = $chamado->qtdChamadosTipoCursoAll($dataInicio,$dataFim,$i);
 	$tipoCursoArray[$i-1]["QTDTOTALCHAMADOS"] = $qtdTipoCursoArray[$i-1]["QTDCHAMADO"];
