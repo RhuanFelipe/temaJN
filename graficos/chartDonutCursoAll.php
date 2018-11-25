@@ -1,7 +1,7 @@
 <!--main content start-->
 <section id="main-content">
-   <section class="wrapper">
-   	<div class="row">
+	<section class="wrapper">
+		<div class="row">
 			<div class="col-sm-12">
 				<form class="form-inline" >
 					<div class="form-group">
@@ -12,16 +12,16 @@
 						<label for="pwd">até:</label>
 						<input type="text" class="form-control dataFim" id="dataFim">
 					</div>
-					<button type="button" class="btn btn-info btnGraficoCurso">Consultar</button>
+					<button type="button" class="btn btn-info btnGraficoCursoAll">Consultar</button>
 				</form>
 			</div>
 		</div>
-     <div class="row">
-      <div class="col-sm-12">
-        <div id="chartColumnCurso" ></div>
-      </div>
-     </div>
-  </section>
+		<div class="row">
+			<div class="col-sm-12">
+				<div id="chartDonutCursoAll" ></div>
+			</div>
+		</div>
+	</section>
 </section>
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>

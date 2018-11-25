@@ -7,8 +7,6 @@
   else
     $usuario = mb_convert_case($usuario->getNome(), MB_CASE_UPPER, $encoding);
 
- 
-
 ?>
 <div class="top-nav clearfix">
     <!--search & user info start-->

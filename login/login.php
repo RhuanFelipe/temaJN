@@ -44,7 +44,7 @@
         if(count($qtdUsuarios) >= 1){
      ?>
        <form class="form-signin" action="#" method="POST" id="formlogin">
-        <h2 class="form-signin-heading">PCC Educacional</h2>
+        <h2 class="form-signin-heading">Open Educacional</h2>
         <?php if(isset($_GET['success'])){ ?>
           <div class="login-wrap informativo" style="display:none" >
             <h4 style="color:green;font-size: 11px;text-align: center;">Insira a matricula e senha para logar no sistema</h4>

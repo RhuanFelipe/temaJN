@@ -36,7 +36,13 @@ class ChamadoResposta extends Crud{
 	}
 	public function qtdChamadosTipoCursoAll($dataInicio, $dataFim,$cursoId){
 		$sql  = "SELECT * FROM $this->table INNER JOIN chamado on chamado.id_chamado = chamado_resposta.id_chamado where tipo_curso_id = '".$cursoId."' AND date(data_fechamento) BETWEEN  '".$dataInicio."' AND  '".$dataFim."'";
-		//echo $sql."\n";
+		$stmt = DB::prepare($sql);
+		$stmt->execute();
+		$result = $stmt->rowCount();
+		return $result;
+	}
+	public function qtdChamadosCursoAll($dataInicio, $dataFim,$cursoId){
+		$sql  = "SELECT * FROM $this->table INNER JOIN chamado on chamado.id_chamado = chamado_resposta.id_chamado where curso_id = '".$cursoId."' AND date(data_fechamento) BETWEEN  '".$dataInicio."' AND  '".$dataFim."'";
 		$stmt = DB::prepare($sql);
 		$stmt->execute();
 		$result = $stmt->rowCount();

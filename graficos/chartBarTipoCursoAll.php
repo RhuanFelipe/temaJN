@@ -12,13 +12,13 @@
 						<label for="pwd">até:</label>
 						<input type="text" class="form-control dataFim" id="dataFim">
 					</div>
-					<button type="button" class="btn btn-info btnGraficoCurso">Consultar</button>
+					<button type="button" class="btn btn-info btnGraficoTipoCursoAll">Consultar</button>
 				</form>
 			</div>
 		</div>
      <div class="row">
       <div class="col-sm-12">
-        <div id="chartColumnCurso" ></div>
+        <div id="chartBarTipoCursoAll" ></div>
       </div>
      </div>
   </section>

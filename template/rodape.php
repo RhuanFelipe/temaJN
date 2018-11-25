@@ -31,9 +31,11 @@
 <script type="text/javascript" src="js/libs/lists.js"></script>
 <script type="text/javascript" src="js/libs/chartAll.js"></script>
 <script type="text/javascript" src="js/libs/chartCurso.js"></script>
-<?php if(@$_REQUEST['p'] == "chartPieTipoCursoAll") {?>
-
+<?php if(@$_REQUEST['p'] == "chartPieTipoCursoAll" || @$_REQUEST['p'] == "chartDonutTipoCursoAll" || @$_REQUEST['p'] == "chartBarTipoCursoAll" || @$_REQUEST['p'] == "chartColumnTipoCursoAll" ) {?>
 <script type="text/javascript" src="js/libs/chartTipoCursoAll.js"></script>
+<?php } ?>
+<?php if(@$_REQUEST['p'] == "chartPieCursoAll" || @$_REQUEST['p'] == "chartDonutCursoAll" || @$_REQUEST['p'] == "chartBarCursoAll" || @$_REQUEST['p'] == "chartColumnCursoAll" ) {?>
+<script type="text/javascript" src="js/libs/chartCursoAll.js"></script>
 <?php } ?>
 <script type="text/javascript" src="chamado/js/cadastrarAluno.js"></script>
 <script type="text/javascript" src="pessoa/js/buscarMatricula.js"></script>
@@ -80,7 +82,7 @@
         });
       
     });
-  var dataInicio = $(".dataInicio").val();
+ var dataInicio = $(".dataInicio").val();
  var dataFim = $(".dataFim").val(); 
 
  $(".listarChamados").load("chamado/list/chamadosList.php?dataInicio="+dataInicio+"&dataFim="+dataFim);
@@ -125,6 +127,28 @@
   <?php if(@$_REQUEST['p'] == "chartPieTipoCursoAll") {?>
     chartPieTipoCursoAll(dataInicio, dataFim);
   <?php } ?>
+  <?php if(@$_REQUEST['p'] == "chartDonutTipoCursoAll") {?>
+    chartDonutTipoCursoAll(dataInicio, dataFim);
+  <?php } ?>
+  <?php if(@$_REQUEST['p'] == "chartBarTipoCursoAll") {?>
+    chartBarTipoCursoAll(dataInicio, dataFim);
+  <?php } ?>
+  <?php if(@$_REQUEST['p'] == "chartColumnTipoCursoAll") {?>
+    chartColumnTipoCursoAll(dataInicio, dataFim);
+  <?php } ?>
+  <?php if(@$_REQUEST['p'] == "chartPieCursoAll") {?>
+    chartPieCursoAll(dataInicio, dataFim);
+  <?php } ?>
+  <?php if(@$_REQUEST['p'] == "chartDonutCursoAll") {?>
+    chartDonutCursoAll(dataInicio, dataFim);
+  <?php } ?>
+  <?php if(@$_REQUEST['p'] == "chartBarCursoAll") {?>
+    chartBarCursoAll(dataInicio, dataFim);
+  <?php } ?>
+    <?php if(@$_REQUEST['p'] == "chartColumnCursoAll") {?>
+    chartColumnCursoAll(dataInicio, dataFim);
+  <?php } ?>
+
 });
 </script>
 </body>

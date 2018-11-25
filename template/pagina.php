@@ -76,6 +76,20 @@ else
 		include_once "graficos/chartColumnCurso.php";
 	else if($pagina == 'chartPieTipoCursoAll')
 		include_once "graficos/chartPieTipoCursoAll.php";
+	else if($pagina == 'chartBarTipoCursoAll')
+		include_once "graficos/chartBarTipoCursoAll.php";
+	else if($pagina == 'chartDonutTipoCursoAll')
+		include_once "graficos/chartDonutTipoCursoAll.php";
+	else if($pagina == 'chartColumnTipoCursoAll')
+		include_once "graficos/chartColumnTipoCursoAll.php";
+	else if($pagina == 'chartPieCursoAll')
+		include_once "graficos/chartPieCursoAll.php";
+	else if($pagina == 'chartDonutCursoAll')
+		include_once "graficos/chartDonutCursoAll.php";
+	else if($pagina == 'chartBarCursoAll')
+		include_once "graficos/chartBarCursoAll.php";
+	else if($pagina == 'chartColumnCursoAll')
+		include_once "graficos/chartColumnCursoAll.php";
 	else
 		include_once "404.php";
 ?>

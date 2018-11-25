@@ -31,7 +31,7 @@
             <li class="sub-menu dcjq-parent-li">
                     <a href="javascript:;" class="dcjq-parent">
                         <i class="fa fa-paste"></i>
-                        <span>Gráficos por Curso</span>
+                        <span>Gráficos do Curso</span>
                     <span class="dcjq-icon"></span></a>
                     <ul class="sub" style="display: none;">
                         <li><a href="index.php?p=chartPieCurso">Pizza</a></li>
@@ -40,16 +40,28 @@
                         <li><a href="index.php?p=chartColumnCurso">Coluna</a></li>
                     </ul>
                 </li>
-              <li class="sub-menu dcjq-parent-li">
+                <li class="sub-menu dcjq-parent-li">
+                    <a href="javascript:;" class="dcjq-parent">
+                        <i class="fa fa-paste"></i>
+                        <span>Gráficos tds os Curso</span>
+                    <span class="dcjq-icon"></span></a>
+                    <ul class="sub" style="display: none;">
+                        <li><a href="index.php?p=chartPieCursoAll">Pizza</a></li>
+                        <li><a href="index.php?p=chartBarCursoAll">Bar</a></li>
+                        <li><a href="index.php?p=chartDonutCursoAll">Donut</a></li>
+                        <li><a href="index.php?p=chartColumnCursoAll">Coluna</a></li>
+                    </ul>
+                </li>
+                <li class="sub-menu dcjq-parent-li">
                     <a href="javascript:;" class="dcjq-parent">
                         <i class="fa fa-paste"></i>
                         <span>Gráficos Tipo Curso</span>
                     <span class="dcjq-icon"></span></a>
                     <ul class="sub" style="display: none;">
                         <li><a href="index.php?p=chartPieTipoCursoAll">Pizza</a></li>
-                        <li><a href="index.php?p=chartBarCurso">Bar</a></li>
-                        <li><a href="index.php?p=chartDonutCurso">Donut</a></li>
-                        <li><a href="index.php?p=chartColumnCurso">Coluna</a></li>
+                        <li><a href="index.php?p=chartBarTipoCursoAll">Bar</a></li>
+                        <li><a href="index.php?p=chartDonutTipoCursoAll">Donut</a></li>
+                        <li><a href="index.php?p=chartColumnTipoCursoAll">Coluna</a></li>
                     </ul>
                 </li>
                  
@@ -61,7 +73,7 @@
             </li>
             <?php  if($_SESSION['nivel_id'] == 4){ ?>
             
-            <li class="sub-menu dcjq-parent-li">
+               <li class="sub-menu dcjq-parent-li">
                     <a href="javascript:;" class="dcjq-parent">
                         <i class="fa fa-paste"></i>
                         <span>Cadastros de Chamado</span>

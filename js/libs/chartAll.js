@@ -1,5 +1,7 @@
 var dataInicio = $(".dataInicio").val();
 var dataFim = $(".dataFim").val(); 
+var cores = ["#7B68EE","#FF4500","#006400","#800000","#708090","#C71585","#000080","#B0C4DE","#696969","#4682B4",
+"#DC143C", "#E0FFFF","#D8BFD8","#FFE4B5","#F0E68C","#FF8C00","#800080","#DEB887","#BC8F8F","#9ACD32"];
 
 $('.btnGraficoAll').click(function(){
   var dataInicio = $(".dataInicio").val();
@@ -75,8 +77,7 @@ function chartDonutAll(dataInicio, dataFim){
               pieHole: 0.5,
               pieSliceTextStyle: {
                 color: 'black',
-              },
-              legend: 'none'};
+              }};
                var chart = new google.visualization.PieChart(document.getElementById('chartDonutAll'));
               chart.draw(data, options);
             }else{
@@ -108,8 +109,8 @@ function chartBarAll(dataInicio, dataFim){
          success: function(jsondata) {
         var data = google.visualization.arrayToDataTable([
             ['chamados', 'Todos os Chamados', { role: 'style' }],
-            ['Confirmados',     jsondata.qtdChamadosConfirmados,'#30ff6a'],
-            ['Cancelados',  jsondata.qtdChamadosCancelados,'#ff450a']]);
+            ['Confirmados',     jsondata.qtdChamadosConfirmados,"#7B68EE"],
+            ['Cancelados',  jsondata.qtdChamadosCancelados,"#DC143C"]]);
 
          
            if(jsondata.qtdChamadosConfirmados > 0 || jsondata.qtdChamadosCancelados > 0 ){
@@ -154,8 +155,8 @@ function chartColumnAll(dataInicio, dataFim){
          success: function(jsondata) {
           var data = google.visualization.arrayToDataTable([
             ['chamados', 'Todos os Chamados', { role: 'style' }],
-            ['Confirmados',     jsondata.qtdChamadosConfirmados,'#30ff6a'],
-            ['Cancelados',  jsondata.qtdChamadosCancelados,'#ff450a']]);
+            ['Confirmados',     jsondata.qtdChamadosConfirmados,"#7B68EE"],
+            ['Cancelados',  jsondata.qtdChamadosCancelados,"#DC143C"]]);
 
           
            if(jsondata.qtdChamadosConfirmados > 0 || jsondata.qtdChamadosCancelados > 0 ){
