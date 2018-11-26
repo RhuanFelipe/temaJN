@@ -37,6 +37,12 @@
 <?php if(@$_REQUEST['p'] == "chartPieCursoAll" || @$_REQUEST['p'] == "chartDonutCursoAll" || @$_REQUEST['p'] == "chartBarCursoAll" || @$_REQUEST['p'] == "chartColumnCursoAll" ) {?>
 <script type="text/javascript" src="js/libs/chartCursoAll.js"></script>
 <?php } ?>
+<?php if(@$_REQUEST['p'] == "chartPieTipoRequerimentoAll" || @$_REQUEST['p'] == "chartBarTipoRequerimentoAll" || @$_REQUEST['p'] == "chartDonutTipoRequerimentoAll" || @$_REQUEST['p'] == "chartColumnTipoRequerimentoAll" ) {?>
+<script type="text/javascript" src="js/libs/chartTipoRequerimentoAll.js"></script>
+<?php } ?>
+<?php if(@$_REQUEST['p'] == "chartPieGrupoRequerimentoAll" || @$_REQUEST['p'] == "chartBarGrupoRequerimentoAll" || @$_REQUEST['p'] == "chartDonutGrupoRequerimentoAll" || @$_REQUEST['p'] == "chartColumnGrupoRequerimentoAll" ) {?>
+<script type="text/javascript" src="js/libs/chartGrupoRequerimentoAll.js"></script>
+<?php } ?>
 <script type="text/javascript" src="chamado/js/cadastrarAluno.js"></script>
 <script type="text/javascript" src="pessoa/js/buscarMatricula.js"></script>
 <script type="text/javascript" src="chamado/js/acoesChamado.js"></script>
@@ -145,10 +151,34 @@
   <?php if(@$_REQUEST['p'] == "chartBarCursoAll") {?>
     chartBarCursoAll(dataInicio, dataFim);
   <?php } ?>
-    <?php if(@$_REQUEST['p'] == "chartColumnCursoAll") {?>
+  <?php if(@$_REQUEST['p'] == "chartColumnCursoAll") {?>
     chartColumnCursoAll(dataInicio, dataFim);
   <?php } ?>
+  <?php if(@$_REQUEST['p'] == "chartPieTipoRequerimentoAll") {?>
+    chartPieTipoRequerimentoAll(dataInicio, dataFim);
+  <?php } ?>
+  <?php if(@$_REQUEST['p'] == "chartBarTipoRequerimentoAll") {?>
+    chartBarTipoRequerimentoAll(dataInicio, dataFim);
+  <?php } ?>
+  <?php if(@$_REQUEST['p'] == "chartDonutTipoRequerimentoAll") {?>
+    chartDonutTipoRequerimentoAll(dataInicio, dataFim);
+  <?php } ?>
+   <?php if(@$_REQUEST['p'] == "chartColumnTipoRequerimentoAll") {?>
+    chartColumnTipoRequerimentoAll(dataInicio, dataFim);
+  <?php } ?>
 
+  <?php if(@$_REQUEST['p'] == "chartPieGrupoRequerimentoAll") {?>
+    chartPieGrupoRequerimentoAll(dataInicio, dataFim);
+  <?php } ?>
+  <?php if(@$_REQUEST['p'] == "chartBarGrupoRequerimentoAll") {?>
+    chartBarGrupoRequerimentoAll(dataInicio, dataFim);
+  <?php } ?>
+  <?php if(@$_REQUEST['p'] == "chartDonutGrupoRequerimentoAll") {?>
+    chartDonutGrupoRequerimentoAll(dataInicio, dataFim);
+  <?php } ?>
+   <?php if(@$_REQUEST['p'] == "chartColumnGrupoRequerimentoAll") {?>
+    chartColumnGrupoRequerimentoAll(dataInicio, dataFim);
+  <?php } ?>
 });
 </script>
 </body>

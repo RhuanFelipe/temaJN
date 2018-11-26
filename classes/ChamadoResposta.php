@@ -48,6 +48,27 @@ class ChamadoResposta extends Crud{
 		$result = $stmt->rowCount();
 		return $result;
 	}
+	public function qtdChamadosTipoAll($dataInicio, $dataFim,$tipoId){
+		$sql  = "SELECT * FROM $this->table INNER JOIN chamado on chamado.id_chamado = chamado_resposta.id_chamado where tipo_requerimento_id = '".$tipoId."' AND date(data_fechamento) BETWEEN  '".$dataInicio."' AND  '".$dataFim."'";
+		$stmt = DB::prepare($sql);
+		$stmt->execute();
+		$result = $stmt->rowCount();
+		return $result;
+	}
+	public function qtdChamadosGrupoAll($dataInicio, $dataFim,$grupoId){
+		$sql  = "SELECT * FROM $this->table INNER JOIN chamado on chamado.id_chamado = chamado_resposta.id_chamado where grupo_requerimento_id = '".$grupoId."' AND date(data_fechamento) BETWEEN  '".$dataInicio."' AND  '".$dataFim."'";
+		$stmt = DB::prepare($sql);
+		$stmt->execute();
+		$result = $stmt->rowCount();
+		return $result;
+	}
+	public function qtdChamadosRequerimentoAll($dataInicio, $dataFim,$requerimentoId){
+		$sql  = "SELECT * FROM $this->table INNER JOIN chamado on chamado.id_chamado = chamado_resposta.id_chamado where requerimento_id = '".$requerimentoId."' AND date(data_fechamento) BETWEEN  '".$dataInicio."' AND  '".$dataFim."'";
+		$stmt = DB::prepare($sql);
+		$stmt->execute();
+		$result = $stmt->rowCount();
+		return $result;
+	}
 
 	public function qtdChamadosConfPeriodoCurso($dataInicio, $dataFim,$cursoId){
 		$sql  = "SELECT * FROM $this->table INNER JOIN chamado on chamado.id_chamado = chamado_resposta.id_chamado where chamado.status = 1 AND chamado.curso_id = '".$cursoId."' AND date(data_fechamento) BETWEEN  '".$dataInicio."' AND  '".$dataFim."'";
