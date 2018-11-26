@@ -16,9 +16,9 @@ $requerimento = new Requerimento();
 $requerimentoCount = $requerimento->countAll();
 
 while($i <= $requerimentoCount){
-	$requerimento = $requerimento->findById($i);
-	$idRequerimento = $requerimento[0]->id_requerimento;
-	$nomeRequerimento = $requerimento[0]->desc_requerimento;
+	$requerimentos = $requerimento->findById($i);
+	$idRequerimento = $requerimentos[0]->id_requerimento;
+	$nomeRequerimento = $requerimentos[0]->desc_requerimento;
 
 	$requerimentoArray[$i-1]["REQUERIMENTO"] = $nomeRequerimento;
 	$qtRequerimentoArray[$i-1]["QTDCHAMADO"] = $chamado->qtdChamadosRequerimentoAll($dataInicio,$dataFim,$i);

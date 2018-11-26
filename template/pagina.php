@@ -106,6 +106,14 @@ else
 		include_once "graficos/chartDonutGrupoRequerimentoAll.php";
 	else if($pagina == 'chartColumnGrupoRequerimentoAll')
 		include_once "graficos/chartColumnGrupoRequerimentoAll.php";
+	else if($pagina == 'chartPieRequerimentoAll')
+		include_once "graficos/chartPieRequerimentoAll.php";
+	else if($pagina == 'chartBarRequerimentoAll')
+		include_once "graficos/chartBarRequerimentoAll.php";
+	else if($pagina == 'chartDonutRequerimentoAll')
+		include_once "graficos/chartDonutRequerimentoAll.php";
+	else if($pagina == 'chartColumnRequerimentoAll')
+		include_once "graficos/chartColumnRequerimentoAll.php";
 	else
 		include_once "404.php";
 ?>

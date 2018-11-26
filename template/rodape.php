@@ -43,6 +43,9 @@
 <?php if(@$_REQUEST['p'] == "chartPieGrupoRequerimentoAll" || @$_REQUEST['p'] == "chartBarGrupoRequerimentoAll" || @$_REQUEST['p'] == "chartDonutGrupoRequerimentoAll" || @$_REQUEST['p'] == "chartColumnGrupoRequerimentoAll" ) {?>
 <script type="text/javascript" src="js/libs/chartGrupoRequerimentoAll.js"></script>
 <?php } ?>
+<?php if(@$_REQUEST['p'] == "chartPieRequerimentoAll" || @$_REQUEST['p'] == "chartBarRequerimentoAll" || @$_REQUEST['p'] == "chartDonutRequerimentoAll" || @$_REQUEST['p'] == "chartColumnRequerimentoAll" ) {?>
+<script type="text/javascript" src="js/libs/chartRequerimentoAll.js"></script>
+<?php } ?>
 <script type="text/javascript" src="chamado/js/cadastrarAluno.js"></script>
 <script type="text/javascript" src="pessoa/js/buscarMatricula.js"></script>
 <script type="text/javascript" src="chamado/js/acoesChamado.js"></script>
@@ -166,7 +169,6 @@
    <?php if(@$_REQUEST['p'] == "chartColumnTipoRequerimentoAll") {?>
     chartColumnTipoRequerimentoAll(dataInicio, dataFim);
   <?php } ?>
-
   <?php if(@$_REQUEST['p'] == "chartPieGrupoRequerimentoAll") {?>
     chartPieGrupoRequerimentoAll(dataInicio, dataFim);
   <?php } ?>
@@ -179,6 +181,19 @@
    <?php if(@$_REQUEST['p'] == "chartColumnGrupoRequerimentoAll") {?>
     chartColumnGrupoRequerimentoAll(dataInicio, dataFim);
   <?php } ?>
+  <?php if(@$_REQUEST['p'] == "chartPieRequerimentoAll") {?>
+    chartPieRequerimentoAll(dataInicio, dataFim);
+  <?php } ?>
+  <?php if(@$_REQUEST['p'] == "chartBarRequerimentoAll") {?>
+    chartBarRequerimentoAll(dataInicio, dataFim);
+  <?php } ?>
+  <?php if(@$_REQUEST['p'] == "chartDonutRequerimentoAll") {?>
+    chartDonutRequerimentoAll(dataInicio, dataFim);
+  <?php } ?>
+   <?php if(@$_REQUEST['p'] == "chartColumnRequerimentoAll") {?>
+    chartColumnRequerimentoAll(dataInicio, dataFim);
+  <?php } ?>
+
 });
 </script>
 </body>
