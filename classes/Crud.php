@@ -33,6 +33,14 @@ abstract class Crud extends DB{
 		$result = $stmt->rowCount();
 		return $result;
 	}
+	public function countAllId($id){
+		$sql  = "SELECT * FROM $this->table WHERE $this->id_coluna = :id";
+		$stmt = DB::prepare($sql);
+		$stmt->bindParam(':id', $id, PDO::PARAM_INT);
+		$stmt->execute();
+		$result = $stmt->rowCount();
+		return $result;
+	}
 
 	public function findAllOrder(){
 		$sql  = "SELECT * FROM $this->table order By $this->orderBy $this->ordem";

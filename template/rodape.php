@@ -146,13 +146,13 @@
     chartColumnTipoCursoAll(dataInicio, dataFim);
   <?php } ?>
   <?php if(@$_REQUEST['p'] == "chartPieCursoAll") {?>
-    chartPieCursoAll(dataInicio, dataFim);
+    chartPieCursoAll(dataInicio, dataFim,'');
   <?php } ?>
   <?php if(@$_REQUEST['p'] == "chartDonutCursoAll") {?>
     chartDonutCursoAll(dataInicio, dataFim);
   <?php } ?>
   <?php if(@$_REQUEST['p'] == "chartBarCursoAll") {?>
-    chartBarCursoAll(dataInicio, dataFim);
+    chartBarCursoAll(dataInicio, dataFim,'');
   <?php } ?>
   <?php if(@$_REQUEST['p'] == "chartColumnCursoAll") {?>
     chartColumnCursoAll(dataInicio, dataFim);

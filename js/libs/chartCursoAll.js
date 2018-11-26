@@ -1,5 +1,6 @@
 var dataInicio = $(".dataInicio").val();
 var dataFim = $(".dataFim").val(); 
+var tipoCurso = $(".tipoCurso").val();
 
 var cores = ["#7B68EE","#FF4500","#006400","#800000","#708090","#C71585","#000080","#B0C4DE","#696969","#4682B4",
 "#DC143C", "#E0FFFF","#D8BFD8","#FFE4B5","#F0E68C","#FF8C00","#800080","#DEB887","#BC8F8F","#9ACD32"];
@@ -7,10 +8,12 @@ var cores = ["#7B68EE","#FF4500","#006400","#800000","#708090","#C71585","#00008
 $('.btnGraficoCursoAll').click(function(){
   var dataInicio = $(".dataInicio").val();
   var dataFim = $(".dataFim").val(); 
-  chartPieCursoAll(dataInicio, dataFim);
-  chartBarCursoAll(dataInicio, dataFim);
-  chartDonutCursoAll(dataInicio, dataFim);
-  chartColumnCursoAll(dataInicio, dataFim);
+  var tipoCurso = $(".tipoCurso").val();
+
+  chartPieCursoAll(dataInicio, dataFim,tipoCurso);
+  chartBarCursoAll(dataInicio, dataFim,tipoCurso);
+  //chartDonutCursoAll(dataInicio, dataFim);
+  //chartColumnCursoAll(dataInicio, dataFim);
 });
 function chartDonutCursoAll(dataInicio, dataFim){
 var dataInicio = $(".dataInicio").val();
@@ -63,9 +66,11 @@ var dataFim = $(".dataFim").val();
   });
 }
 
-function chartPieCursoAll(dataInicio, dataFim){
+function chartPieCursoAll(dataInicio, dataFim,tipoCurso){
 var dataInicio = $(".dataInicio").val();
 var dataFim = $(".dataFim").val(); 
+var tipoCurso = $(".tipoCurso").val();
+  
   $.ajax({
     url: 'https://www.google.com/jsapi?callback',
     cache: true,
@@ -77,7 +82,7 @@ var dataFim = $(".dataFim").val();
         $.ajax({
           type: "GET",
           dataType: "JSON",
-          url:"graficos/lib/cursoTodosChamados.php?dataInicio="+dataInicio+"&dataFim="+dataFim,            
+          url:"graficos/lib/cursoTodosChamados.php?dataInicio="+dataInicio+"&dataFim="+dataFim+"&tipoCurso="+tipoCurso,            
           success: function(jsondata) {
             var i = 1;
             var curso = new Array();
@@ -113,7 +118,7 @@ var dataFim = $(".dataFim").val();
   });
 }
 
-function chartBarCursoAll(dataInicio, dataFim){
+function chartBarCursoAll(dataInicio, dataFim,tipoCurso){
 var dataInicio = $(".dataInicio").val();
 var dataFim = $(".dataFim").val(); 
   $.ajax({
@@ -127,7 +132,7 @@ var dataFim = $(".dataFim").val();
         $.ajax({
           type: "GET",
           dataType: "JSON",
-          url:"graficos/lib/cursoTodosChamados.php?dataInicio="+dataInicio+"&dataFim="+dataFim,             
+          url:"graficos/lib/cursoTodosChamados.php?dataInicio="+dataInicio+"&dataFim="+dataFim+"&tipoCurso="+tipoCurso,             
           success: function(jsondata) {
             var j = 0;
             var curso = new Array();
