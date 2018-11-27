@@ -170,16 +170,16 @@
     chartColumnTipoRequerimentoAll(dataInicio, dataFim);
   <?php } ?>
   <?php if(@$_REQUEST['p'] == "chartPieGrupoRequerimentoAll") {?>
-    chartPieGrupoRequerimentoAll(dataInicio, dataFim);
+    chartPieGrupoRequerimentoAll(dataInicio, dataFim,'');
   <?php } ?>
   <?php if(@$_REQUEST['p'] == "chartBarGrupoRequerimentoAll") {?>
-    chartBarGrupoRequerimentoAll(dataInicio, dataFim);
+    chartBarGrupoRequerimentoAll(dataInicio, dataFim,'');
   <?php } ?>
   <?php if(@$_REQUEST['p'] == "chartDonutGrupoRequerimentoAll") {?>
-    chartDonutGrupoRequerimentoAll(dataInicio, dataFim);
+    chartDonutGrupoRequerimentoAll(dataInicio, dataFim,'');
   <?php } ?>
    <?php if(@$_REQUEST['p'] == "chartColumnGrupoRequerimentoAll") {?>
-    chartColumnGrupoRequerimentoAll(dataInicio, dataFim);
+    chartColumnGrupoRequerimentoAll(dataInicio, dataFim,'');
   <?php } ?>
   <?php if(@$_REQUEST['p'] == "chartPieRequerimentoAll") {?>
     chartPieRequerimentoAll(dataInicio, dataFim);

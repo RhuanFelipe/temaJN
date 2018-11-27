@@ -1,18 +1,16 @@
-var dataInicio = $(".dataInicio").val();
-var dataFim = $(".dataFim").val(); 
-
 var cores = ["#7B68EE","#FF4500","#006400","#800000","#708090","#C71585","#000080","#B0C4DE","#696969","#4682B4",
 "#DC143C", "#E0FFFF","#D8BFD8","#FFE4B5","#F0E68C","#FF8C00","#800080","#DEB887","#BC8F8F","#9ACD32"];
 
 $('.btnGraficoGrupoRequerimentoAll').click(function(){
   var dataInicio = $(".dataInicio").val();
   var dataFim = $(".dataFim").val(); 
-  chartPieGrupoRequerimentoAll(dataInicio, dataFim);
-  chartBarGrupoRequerimentoAll(dataInicio, dataFim);
-  chartDonutGrupoRequerimentoAll(dataInicio, dataFim);
-  chartColumnGrupoRequerimentoAll(dataInicio, dataFim);
+  var tipoRequerimento = $(".tipo_requerimento").val(); 
+  chartPieGrupoRequerimentoAll(dataInicio, dataFim,tipoRequerimento);
+  chartBarGrupoRequerimentoAll(dataInicio, dataFim,tipoRequerimento);
+  chartDonutGrupoRequerimentoAll(dataInicio, dataFim,tipoRequerimento);
+  chartColumnGrupoRequerimentoAll(dataInicio, dataFim,tipoRequerimento);
 });
-function chartDonutGrupoRequerimentoAll(dataInicio, dataFim){
+function chartDonutGrupoRequerimentoAll(dataInicio, dataFim,tipoRequerimento){
 var dataInicio = $(".dataInicio").val();
 var dataFim = $(".dataFim").val(); 
   $.ajax({
@@ -26,7 +24,7 @@ var dataFim = $(".dataFim").val();
         $.ajax({
           type: "GET",
           dataType: "JSON",
-          url:"graficos/lib/grupoRequerimentoTodosChamados.php?dataInicio="+dataInicio+"&dataFim="+dataFim,            
+          url:"graficos/lib/grupoRequerimentoTodosChamados.php?dataInicio="+dataInicio+"&dataFim="+dataFim+"&tipoRequerimento="+tipoRequerimento,            
           success: function(jsondata) {
             var i = 1;
             var curso = new Array();
@@ -63,7 +61,7 @@ var dataFim = $(".dataFim").val();
   });
 }
 
-function chartPieGrupoRequerimentoAll(dataInicio, dataFim){
+function chartPieGrupoRequerimentoAll(dataInicio, dataFim,tipoRequerimento){
 var dataInicio = $(".dataInicio").val();
 var dataFim = $(".dataFim").val(); 
   $.ajax({
@@ -77,7 +75,7 @@ var dataFim = $(".dataFim").val();
         $.ajax({
           type: "GET",
           dataType: "JSON",
-          url:"graficos/lib/grupoRequerimentoTodosChamados.php?dataInicio="+dataInicio+"&dataFim="+dataFim,            
+          url:"graficos/lib/grupoRequerimentoTodosChamados.php?dataInicio="+dataInicio+"&dataFim="+dataFim+"&tipoRequerimento="+tipoRequerimento,            
           success: function(jsondata) {
             var i = 1;
             var curso = new Array();
@@ -113,7 +111,7 @@ var dataFim = $(".dataFim").val();
   });
 }
 
-function chartBarGrupoRequerimentoAll(dataInicio, dataFim){
+function chartBarGrupoRequerimentoAll(dataInicio, dataFim, tipoRequerimento){
 var dataInicio = $(".dataInicio").val();
 var dataFim = $(".dataFim").val(); 
   $.ajax({
@@ -127,7 +125,7 @@ var dataFim = $(".dataFim").val();
         $.ajax({
           type: "GET",
           dataType: "JSON",
-          url:"graficos/lib/grupoRequerimentoTodosChamados.php?dataInicio="+dataInicio+"&dataFim="+dataFim,            
+          url:"graficos/lib/grupoRequerimentoTodosChamados.php?dataInicio="+dataInicio+"&dataFim="+dataFim+"&tipoRequerimento="+tipoRequerimento,            
           success: function(jsondata) {
             var j = 0;
             var curso = new Array();
@@ -138,7 +136,9 @@ var dataFim = $(".dataFim").val();
             data.addColumn({type: 'string', role: 'style'});
            
              $.each(jsondata,function(i) {
-              data.addRows([[ jsondata[i].GRUPO,jsondata[i].QTDTOTALCHAMADOS, cores[i-1] ]]);
+                if(jsondata[i].QTDTOTALCHAMADOS > 0){
+                  data.addRows([[ jsondata[i].GRUPO,jsondata[i].QTDTOTALCHAMADOS, cores[i-1] ]]);
+                }
             });
 
             var options = {title: 'Chamado de grupo requerimento',
@@ -166,7 +166,7 @@ var dataFim = $(".dataFim").val();
   });
 }
 
-function chartColumnGrupoRequerimentoAll(dataInicio, dataFim){
+function chartColumnGrupoRequerimentoAll(dataInicio, dataFim,tipoRequerimento){
 var dataInicio = $(".dataInicio").val();
 var dataFim = $(".dataFim").val(); 
   $.ajax({
@@ -180,31 +180,40 @@ var dataFim = $(".dataFim").val();
         $.ajax({
           type: "GET",
           dataType: "JSON",
-          url:"graficos/lib/grupoRequerimentoTodosChamados.php?dataInicio="+dataInicio+"&dataFim="+dataFim,            
+          url:"graficos/lib/grupoRequerimentoTodosChamados.php?dataInicio="+dataInicio+"&dataFim="+dataFim+"&tipoRequerimento="+tipoRequerimento,            
           success: function(jsondata) {
             var j = 0;
             var curso = new Array();
- 
             var data = new google.visualization.DataTable();
             data.addColumn('string', 'Tipo Curso');
             data.addColumn('number', 'Qtds');
             data.addColumn({type: 'string', role: 'style'});
-           
+            var qtsDados = 0;
              $.each(jsondata,function(i) {
-              data.addRows([[ jsondata[i].GRUPO,jsondata[i].QTDTOTALCHAMADOS, cores[i-1] ]]);
+                if(jsondata[i].QTDTOTALCHAMADOS > 0){
+                  data.addRows([[jsondata[i].GRUPO,jsondata[i].QTDTOTALCHAMADOS, cores[i-1] ]]);
+                  qtsDados++;
+                }
             });
 
-            var options = {title: 'Chamado de grupo requerimento',
-              width: 1150,
-              height: 650,
-              pieHole: 0.5,
-              pieSliceTextStyle: {
-                color: 'black',
-              },
-              legend: 'none'};
+              if(qtsDados > 0){
+                $("#chartColumnGrupoRequerimentoAll").fadeIn("slow");
+
+                var options = {title: 'Chamado de grupo requerimento',
+                width: 1150,
+                height: 650,
+                pieHole: 0.5,
+                pieSliceTextStyle: {
+                  color: 'black',
+                },
+                legend: 'none'};
+
 
             var chart = new google.visualization.ColumnChart(document.getElementById('chartColumnGrupoRequerimentoAll'));
             chart.draw(data,options);
+            }else{
+              $("#chartColumnGrupoRequerimentoAll").fadeOut("slow");
+            }
           },  
           error: function (xhr, ajaxOptions, thrownError) {
             alert(xhr.status);

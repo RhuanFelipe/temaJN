@@ -14,6 +14,7 @@ $i = 1;
 $chamado = new ChamadoResposta();
 $grupo = new GrupoRequerimento();
 $grupoCount = $grupo->countAll();
+$tipoRequerimento = $_REQUEST['tipoRequerimento'];
 
 while($i <= $grupoCount){
 	$grupoRequerimento = $grupo->findById($i);
@@ -21,7 +22,7 @@ while($i <= $grupoCount){
 	$nomeRequerimento = $grupoRequerimento[0]->desc_grupo;
 
 	$grupoArray[$i-1]["GRUPO"] = $nomeRequerimento;
-	$qtgrupoArray[$i-1]["QTDCHAMADO"] = $chamado->qtdChamadosgrupoAll($dataInicio,$dataFim,$i);
+	$qtgrupoArray[$i-1]["QTDCHAMADO"] = $chamado->qtdChamadosgrupoAll($dataInicio,$dataFim,$i,$tipoRequerimento);
 	$grupoArray[$i-1]["QTDTOTALCHAMADOS"] = $qtgrupoArray[$i-1]["QTDCHAMADO"];
 
 	$i++;

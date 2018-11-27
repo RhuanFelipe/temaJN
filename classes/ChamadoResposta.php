@@ -62,8 +62,15 @@ class ChamadoResposta extends Crud{
 		$result = $stmt->rowCount();
 		return $result;
 	}
-	public function qtdChamadosGrupoAll($dataInicio, $dataFim,$grupoId){
-		$sql  = "SELECT * FROM $this->table INNER JOIN chamado on chamado.id_chamado = chamado_resposta.id_chamado where grupo_requerimento_id = '".$grupoId."' AND date(data_fechamento) BETWEEN  '".$dataInicio."' AND  '".$dataFim."'";
+	public function qtdChamadosGrupoAll($dataInicio, $dataFim,$grupoId,$tipoRequerimento){
+		if($tipoRequerimento >= 1){
+			$sqlTipoRequerimento = " AND tipo_requerimento_id = ".$tipoRequerimento." AND grupo_requerimento_id = ".$grupoId;
+			
+		}else{
+			$sqlTipoRequerimento = " AND grupo_requerimento_id = ".$grupoId;
+		}
+
+		$sql  = "SELECT * FROM $this->table INNER JOIN chamado on chamado.id_chamado = chamado_resposta.id_chamado where date(data_fechamento) BETWEEN  '".$dataInicio."' AND  '".$dataFim."'".$sqlTipoRequerimento;
 		$stmt = DB::prepare($sql);
 		$stmt->execute();
 		$result = $stmt->rowCount();
