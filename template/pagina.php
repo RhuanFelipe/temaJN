@@ -90,6 +90,30 @@ else
 		include_once "graficos/chartBarCursoAll.php";
 	else if($pagina == 'chartColumnCursoAll')
 		include_once "graficos/chartColumnCursoAll.php";
+	else if($pagina == 'chartPieTipoRequerimentoAll')
+		include_once "graficos/chartPieTipoRequerimentoAll.php";
+	else if($pagina == 'chartBarTipoRequerimentoAll')
+		include_once "graficos/chartBarTipoRequerimentoAll.php";
+	else if($pagina == 'chartDonutTipoRequerimentoAll')
+		include_once "graficos/chartDonutTipoRequerimentoAll.php";
+	else if($pagina == 'chartColumnTipoRequerimentoAll')
+		include_once "graficos/chartColumnTipoRequerimentoAll.php";
+	else if($pagina == 'chartPieGrupoRequerimentoAll')
+		include_once "graficos/chartPieGrupoRequerimentoAll.php";
+	else if($pagina == 'chartBarGrupoRequerimentoAll')
+		include_once "graficos/chartBarGrupoRequerimentoAll.php";
+	else if($pagina == 'chartDonutGrupoRequerimentoAll')
+		include_once "graficos/chartDonutGrupoRequerimentoAll.php";
+	else if($pagina == 'chartColumnGrupoRequerimentoAll')
+		include_once "graficos/chartColumnGrupoRequerimentoAll.php";
+	else if($pagina == 'chartPieRequerimentoAll')
+		include_once "graficos/chartPieRequerimentoAll.php";
+	else if($pagina == 'chartBarRequerimentoAll')
+		include_once "graficos/chartBarRequerimentoAll.php";
+	else if($pagina == 'chartDonutRequerimentoAll')
+		include_once "graficos/chartDonutRequerimentoAll.php";
+	else if($pagina == 'chartColumnRequerimentoAll')
+		include_once "graficos/chartColumnRequerimentoAll.php";
 	else
 		include_once "404.php";
 ?>

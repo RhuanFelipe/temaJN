@@ -4,6 +4,7 @@
    	<div class="row">
 			<div class="col-sm-12">
 				<form class="form-inline" >
+					
 					<div class="form-group">
 						<label for="email">Data:</label>
 						<input type="text" class="form-control dataInicio" id="dataInicio" >

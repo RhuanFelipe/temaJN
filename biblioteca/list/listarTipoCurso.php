@@ -10,7 +10,7 @@
 
 	$tipoCurso = new TipoCurso();
 	$tipo = $tipoCurso->findAll();
-   echo "<option value=''>Selecione um tipo de curso...</option>";
+   echo "<option value='' >Selecione um tipo de curso...</option>";
 	foreach ($tipo as $value) {
 		if($value->id_tipo_curso == $id){
 			$checked = "selected='selected'";

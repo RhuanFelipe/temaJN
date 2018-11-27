@@ -1,21 +1,18 @@
 var dataInicio = $(".dataInicio").val();
 var dataFim = $(".dataFim").val(); 
-var tipoCurso = $(".tipoCurso").val();
 
 var cores = ["#7B68EE","#FF4500","#006400","#800000","#708090","#C71585","#000080","#B0C4DE","#696969","#4682B4",
 "#DC143C", "#E0FFFF","#D8BFD8","#FFE4B5","#F0E68C","#FF8C00","#800080","#DEB887","#BC8F8F","#9ACD32"];
 
-$('.btnGraficoCursoAll').click(function(){
+$('.btnGraficoGrupoRequerimentoAll').click(function(){
   var dataInicio = $(".dataInicio").val();
   var dataFim = $(".dataFim").val(); 
-  var tipoCurso = $(".tipoCurso").val();
-
-  chartPieCursoAll(dataInicio, dataFim,tipoCurso);
-  chartBarCursoAll(dataInicio, dataFim,tipoCurso);
-  chartDonutCursoAll(dataInicio, dataFim,tipoCurso);
-  chartColumnCursoAll(dataInicio, dataFim,tipoCurso);
+  chartPieGrupoRequerimentoAll(dataInicio, dataFim);
+  chartBarGrupoRequerimentoAll(dataInicio, dataFim);
+  chartDonutGrupoRequerimentoAll(dataInicio, dataFim);
+  chartColumnGrupoRequerimentoAll(dataInicio, dataFim);
 });
-function chartDonutCursoAll(dataInicio, dataFim,tipoCurso){
+function chartDonutGrupoRequerimentoAll(dataInicio, dataFim){
 var dataInicio = $(".dataInicio").val();
 var dataFim = $(".dataFim").val(); 
   $.ajax({
@@ -29,7 +26,7 @@ var dataFim = $(".dataFim").val();
         $.ajax({
           type: "GET",
           dataType: "JSON",
-          url:"graficos/lib/cursoTodosChamados.php?dataInicio="+dataInicio+"&dataFim="+dataFim+"&tipoCurso="+tipoCurso,            
+          url:"graficos/lib/grupoRequerimentoTodosChamados.php?dataInicio="+dataInicio+"&dataFim="+dataFim,            
           success: function(jsondata) {
             var i = 1;
             var curso = new Array();
@@ -39,10 +36,10 @@ var dataFim = $(".dataFim").val();
             data.addColumn('number', 'Qtds');
 
            $.each(jsondata,function(i) {
-              data.addRows([[jsondata[i].CURSO,jsondata[i].QTDTOTALCHAMADOS]]);
+              data.addRows([[jsondata[i].GRUPO,jsondata[i].QTDTOTALCHAMADOS]]);
             });
 
-           var options = {title: 'Chamado de tds os cursos',
+           var options = {title: 'Chamado de grupo requerimento',
               width: 1150,
               height: 650,
               pieHole: 0.5,
@@ -50,7 +47,7 @@ var dataFim = $(".dataFim").val();
                 color: 'black',
               }};
 
-            var chart = new google.visualization.PieChart(document.getElementById('chartDonutCursoAll'));
+            var chart = new google.visualization.PieChart(document.getElementById('chartDonutGrupoRequerimentoAll'));
             chart.draw(data,options);
           },  
           error: function (xhr, ajaxOptions, thrownError) {
@@ -66,11 +63,9 @@ var dataFim = $(".dataFim").val();
   });
 }
 
-function chartPieCursoAll(dataInicio, dataFim,tipoCurso){
+function chartPieGrupoRequerimentoAll(dataInicio, dataFim){
 var dataInicio = $(".dataInicio").val();
 var dataFim = $(".dataFim").val(); 
-var tipoCurso = $(".tipoCurso").val();
-  
   $.ajax({
     url: 'https://www.google.com/jsapi?callback',
     cache: true,
@@ -82,7 +77,7 @@ var tipoCurso = $(".tipoCurso").val();
         $.ajax({
           type: "GET",
           dataType: "JSON",
-          url:"graficos/lib/cursoTodosChamados.php?dataInicio="+dataInicio+"&dataFim="+dataFim+"&tipoCurso="+tipoCurso,            
+          url:"graficos/lib/grupoRequerimentoTodosChamados.php?dataInicio="+dataInicio+"&dataFim="+dataFim,            
           success: function(jsondata) {
             var i = 1;
             var curso = new Array();
@@ -92,16 +87,14 @@ var tipoCurso = $(".tipoCurso").val();
             data.addColumn('number', 'Qtds');
             
             $.each(jsondata,function(i) {
-              
-                data.addRows([[jsondata[i].CURSO,jsondata[i].QTDTOTALCHAMADOS]]);
-              
+              data.addRows([[jsondata[i].GRUPO,jsondata[i].QTDTOTALCHAMADOS]]);
             });
 
-             var options = {title: 'Chamado de tds os cursos',
+             var options = {title: 'Chamado de grupo requerimento',
               width: 1150,
               height: 650};
 
-            var chart = new google.visualization.PieChart(document.getElementById('chartPieCursoAll'));
+            var chart = new google.visualization.PieChart(document.getElementById('chartPieGrupoRequerimentoAll'));
             chart.draw(data,options);
           },  
             error: function (xhr, ajaxOptions, thrownError) {
@@ -120,7 +113,7 @@ var tipoCurso = $(".tipoCurso").val();
   });
 }
 
-function chartBarCursoAll(dataInicio, dataFim,tipoCurso){
+function chartBarGrupoRequerimentoAll(dataInicio, dataFim){
 var dataInicio = $(".dataInicio").val();
 var dataFim = $(".dataFim").val(); 
   $.ajax({
@@ -134,7 +127,7 @@ var dataFim = $(".dataFim").val();
         $.ajax({
           type: "GET",
           dataType: "JSON",
-          url:"graficos/lib/cursoTodosChamados.php?dataInicio="+dataInicio+"&dataFim="+dataFim+"&tipoCurso="+tipoCurso,             
+          url:"graficos/lib/grupoRequerimentoTodosChamados.php?dataInicio="+dataInicio+"&dataFim="+dataFim,            
           success: function(jsondata) {
             var j = 0;
             var curso = new Array();
@@ -145,12 +138,10 @@ var dataFim = $(".dataFim").val();
             data.addColumn({type: 'string', role: 'style'});
            
              $.each(jsondata,function(i) {
-              if(jsondata[i].QTDTOTALCHAMADOS > 0){
-                data.addRows([[ jsondata[i].CURSO,jsondata[i].QTDTOTALCHAMADOS, cores[i-1] ]]);
-              }
+              data.addRows([[ jsondata[i].GRUPO,jsondata[i].QTDTOTALCHAMADOS, cores[i-1] ]]);
             });
 
-            var options = {title: 'Chamado de tds os cursos',
+            var options = {title: 'Chamado de grupo requerimento',
               width: 1150,
               height: 650,
               pieHole: 0.5,
@@ -159,7 +150,7 @@ var dataFim = $(".dataFim").val();
               },
               legend: 'none'};
 
-            var chart = new google.visualization.BarChart(document.getElementById('chartBarCursoAll'));
+            var chart = new google.visualization.BarChart(document.getElementById('chartBarGrupoRequerimentoAll'));
             chart.draw(data,options);
           },  
           error: function (xhr, ajaxOptions, thrownError) {
@@ -175,7 +166,7 @@ var dataFim = $(".dataFim").val();
   });
 }
 
-function chartColumnCursoAll(dataInicio, dataFim,tipoCurso){
+function chartColumnGrupoRequerimentoAll(dataInicio, dataFim){
 var dataInicio = $(".dataInicio").val();
 var dataFim = $(".dataFim").val(); 
   $.ajax({
@@ -189,7 +180,7 @@ var dataFim = $(".dataFim").val();
         $.ajax({
           type: "GET",
           dataType: "JSON",
-          url:"graficos/lib/cursoTodosChamados.php?dataInicio="+dataInicio+"&dataFim="+dataFim+"&tipoCurso="+tipoCurso,             
+          url:"graficos/lib/grupoRequerimentoTodosChamados.php?dataInicio="+dataInicio+"&dataFim="+dataFim,            
           success: function(jsondata) {
             var j = 0;
             var curso = new Array();
@@ -200,12 +191,10 @@ var dataFim = $(".dataFim").val();
             data.addColumn({type: 'string', role: 'style'});
            
              $.each(jsondata,function(i) {
-              if(jsondata[i].QTDTOTALCHAMADOS > 0){
-                data.addRows([[ jsondata[i].CURSO,jsondata[i].QTDTOTALCHAMADOS, cores[i-1] ]]);
-              }
+              data.addRows([[ jsondata[i].GRUPO,jsondata[i].QTDTOTALCHAMADOS, cores[i-1] ]]);
             });
 
-            var options = {title: 'Chamado de tds os cursos',
+            var options = {title: 'Chamado de grupo requerimento',
               width: 1150,
               height: 650,
               pieHole: 0.5,
@@ -214,7 +203,7 @@ var dataFim = $(".dataFim").val();
               },
               legend: 'none'};
 
-            var chart = new google.visualization.ColumnChart(document.getElementById('chartColumnCursoAll'));
+            var chart = new google.visualization.ColumnChart(document.getElementById('chartColumnGrupoRequerimentoAll'));
             chart.draw(data,options);
           },  
           error: function (xhr, ajaxOptions, thrownError) {

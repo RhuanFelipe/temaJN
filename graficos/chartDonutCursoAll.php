@@ -4,6 +4,12 @@
 		<div class="row">
 			<div class="col-sm-12">
 				<form class="form-inline" >
+					<div class="form-group" style="margin-top: 15px">
+						<label for="email">Tipo Curso:</label>
+						<select class="form-control m-bot15 tipoCurso" id="tipoCurso" name="tipoCurso">
+	                 		<option selected>Informe o tipo curso</option>
+	           		 	</select>
+	           		</div>
 					<div class="form-group">
 						<label for="email">Data:</label>
 						<input type="text" class="form-control dataInicio" id="dataInicio" >
