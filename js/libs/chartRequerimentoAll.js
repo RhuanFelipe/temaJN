@@ -12,6 +12,7 @@ $('.btnGraficoRequerimentoAll').click(function(){
   chartDonutRequerimentoAll(dataInicio, dataFim);
   chartColumnRequerimentoAll(dataInicio, dataFim);
 });
+
 function chartDonutRequerimentoAll(dataInicio, dataFim){
 var dataInicio = $(".dataInicio").val();
 var dataFim = $(".dataFim").val(); 
@@ -30,16 +31,20 @@ var dataFim = $(".dataFim").val();
           success: function(jsondata) {
             var i = 1;
             var curso = new Array();
-            console.log(jsondata)
             var data = new google.visualization.DataTable();
             data.addColumn('string', 'Curso');
             data.addColumn('number', 'Qtds');
+            var qtsDados = 0;
 
-           $.each(jsondata,function(i) {
+            $.each(jsondata,function(i, jsonData) {
+              if(jsondata[i].QTDTOTALCHAMADOS > 0){
               data.addRows([[jsondata[i].REQUERIMENTO,jsondata[i].QTDTOTALCHAMADOS]]);
+                qtsDados++;
+              }
             });
-
-           var options = {title: 'Chamado de requerimento',
+            if(qtsDados > 0){
+              $("#chartDonutRequerimentoAll").fadeIn();    
+              var options = {title: 'Chamado de requerimento',
               width: 1150,
               height: 650,
               pieHole: 0.5,
@@ -47,8 +52,11 @@ var dataFim = $(".dataFim").val();
                 color: 'black',
               }};
 
-            var chart = new google.visualization.PieChart(document.getElementById('chartDonutRequerimentoAll'));
-            chart.draw(data,options);
+              var chart = new google.visualization.PieChart(document.getElementById('chartDonutRequerimentoAll'));
+              chart.draw(data,options);
+            }else{
+              $("#chartDonutRequerimentoAll").fadeOut();    
+            }
           },  
           error: function (xhr, ajaxOptions, thrownError) {
             alert(xhr.status);
@@ -85,17 +93,25 @@ var dataFim = $(".dataFim").val();
             var data = new google.visualization.DataTable();
             data.addColumn('string', 'Tipo Curso');
             data.addColumn('number', 'Qtds');
-            
-            $.each(jsondata,function(i) {
-              data.addRows([[jsondata[i].REQUERIMENTO,jsondata[i].QTDTOTALCHAMADOS]]);
+            var qtsDados = 0;
+            $.each(jsondata,function(i, jsonData) {
+              if(jsondata[i].QTDTOTALCHAMADOS > 0){
+                data.addRows([[jsondata[i].REQUERIMENTO,jsondata[i].QTDTOTALCHAMADOS]]);
+                qtsDados++;
+              }
             });
-
-             var options = {title: 'Chamado de requerimento',
+            if(qtsDados > 0){
+              $("#chartPieRequerimentoAll").fadeIn();          
+              var options = {title: 'Chamado de requerimento',
               width: 1150,
               height: 650};
 
-            var chart = new google.visualization.PieChart(document.getElementById('chartPieRequerimentoAll'));
-            chart.draw(data,options);
+              var chart = new google.visualization.PieChart(document.getElementById('chartPieRequerimentoAll'));
+              chart.draw(data,options);
+            }else{
+              $("#chartPieRequerimentoAll").fadeOut();          
+            }
+             
           },  
             error: function (xhr, ajaxOptions, thrownError) {
               console.log(xhr.status);
@@ -136,22 +152,33 @@ var dataFim = $(".dataFim").val();
             data.addColumn('string', 'Tipo Curso');
             data.addColumn('number', 'Qtds');
             data.addColumn({type: 'string', role: 'style'});
-           
-             $.each(jsondata,function(i) {
-              data.addRows([[ jsondata[i].REQUERIMENTO,jsondata[i].QTDTOTALCHAMADOS, cores[i-1] ]]);
+            var qtsDados = 0;
+
+            $.each(jsondata,function(i, jsonData) {
+              if(jsondata[i].QTDTOTALCHAMADOS > 0){
+                console.log(cores[i] )
+                data.addRows([[ jsondata[i].REQUERIMENTO,jsondata[i].QTDTOTALCHAMADOS, cores[j] ]]);
+                qtsDados++;
+                j++;
+              }
             });
+            
+            if(qtsDados > 0){
+              $("#chartBarRequerimentoAll").fadeIn();          
+              var options = {title: 'Chamado de requerimento',
+                width: 1150,
+                height: 650,
+                pieHole: 0.5,
+                pieSliceTextStyle: {
+                  color: 'black',
+                },
+                legend: 'none'};
 
-            var options = {title: 'Chamado de requerimento',
-              width: 1150,
-              height: 650,
-              pieHole: 0.5,
-              pieSliceTextStyle: {
-                color: 'black',
-              },
-              legend: 'none'};
-
-            var chart = new google.visualization.BarChart(document.getElementById('chartBarRequerimentoAll'));
-            chart.draw(data,options);
+              var chart = new google.visualization.BarChart(document.getElementById('chartBarRequerimentoAll'));
+             chart.draw(data,options);
+            }else{
+              $("#chartBarRequerimentoAll").fadeOut();          
+            }
           },  
           error: function (xhr, ajaxOptions, thrownError) {
             alert(xhr.status);
@@ -189,22 +216,34 @@ var dataFim = $(".dataFim").val();
             data.addColumn('string', 'Tipo Curso');
             data.addColumn('number', 'Qtds');
             data.addColumn({type: 'string', role: 'style'});
-           
-             $.each(jsondata,function(i) {
-              data.addRows([[ jsondata[i].REQUERIMENTO,jsondata[i].QTDTOTALCHAMADOS, cores[i-1] ]]);
+            var qtsDados = 0;
+            var j = 0;
+
+            $.each(jsondata,function(i, jsonData) {
+              if(jsondata[i].QTDTOTALCHAMADOS > 0){
+                data.addRows([[ jsondata[i].REQUERIMENTO,jsondata[i].QTDTOTALCHAMADOS, cores[j] ]]);
+                qtsDados++;
+                j++;
+              }
             });
+            
+            if(qtsDados > 0){
+              $("#chartColumnRequerimentoAll").fadeIn();  
 
-            var options = {title: 'Chamado de requerimento',
-              width: 1150,
-              height: 650,
-              pieHole: 0.5,
-              pieSliceTextStyle: {
-                color: 'black',
-              },
-              legend: 'none'};
+              var options = {title: 'Chamado de requerimento',
+                width: 1150,
+                height: 650,
+                pieHole: 0.5,
+                pieSliceTextStyle: {
+                  color: 'black',
+                },
+                legend: 'none'};
 
-            var chart = new google.visualization.ColumnChart(document.getElementById('chartColumnRequerimentoAll'));
-            chart.draw(data,options);
+              var chart = new google.visualization.ColumnChart(document.getElementById('chartColumnRequerimentoAll'));
+              chart.draw(data,options);
+            }else{
+              $("#chartColumnRequerimentoAll").fadeOut();  
+            }
           },  
           error: function (xhr, ajaxOptions, thrownError) {
             alert(xhr.status);

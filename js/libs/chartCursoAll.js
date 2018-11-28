@@ -33,21 +33,29 @@ var dataFim = $(".dataFim").val();
             var data = new google.visualization.DataTable();
             data.addColumn('string', 'Curso');
             data.addColumn('number', 'Qtds');
-
-           $.each(jsondata,function(i) {
-              data.addRows([[jsondata[i].CURSO,jsondata[i].QTDTOTALCHAMADOS]]);
+            var qtsDados = 0;
+            $.each(jsondata,function(i) {
+              if(jsondata[i].QTDTOTALCHAMADOS > 0){
+                data.addRows([[jsondata[i].CURSO,jsondata[i].QTDTOTALCHAMADOS]]);
+                qtsDados++;
+              }
             });
+            if(qtsDados > 0){
+              $("#chartDonutCursoAll").fadeIn("slow");
 
-           var options = {title: 'Chamado de tds os cursos',
-              width: 1150,
-              height: 650,
-              pieHole: 0.5,
-              pieSliceTextStyle: {
-                color: 'black',
-              }};
+             var options = {title: 'Chamado de tds os cursos',
+                width: 1150,
+                height: 650,
+                pieHole: 0.5,
+                pieSliceTextStyle: {
+                  color: 'black',
+                }};
 
-            var chart = new google.visualization.PieChart(document.getElementById('chartDonutCursoAll'));
-            chart.draw(data,options);
+              var chart = new google.visualization.PieChart(document.getElementById('chartDonutCursoAll'));
+              chart.draw(data,options);
+            }else{
+              $("#chartDonutCursoAll").fadeOut("slow");
+            }
           },  
           error: function (xhr, ajaxOptions, thrownError) {
             alert(xhr.status);
@@ -87,18 +95,25 @@ var tipoCurso = $(".tipoCurso").val();
             data.addColumn('string', 'Tipo Curso');
             data.addColumn('number', 'Qtds');
             
+            var qtsDados = 0;
             $.each(jsondata,function(i) {
-              
+              if(jsondata[i].QTDTOTALCHAMADOS > 0){
                 data.addRows([[jsondata[i].CURSO,jsondata[i].QTDTOTALCHAMADOS]]);
-              
+                qtsDados++;
+              }
             });
 
-             var options = {title: 'Chamado de tds os cursos',
-              width: 1150,
-              height: 650};
+            if(qtsDados > 0){
+              $("#chartPieCursoAll").fadeIn("Slow");
+              var options = {title: 'Chamado de tds os cursos',
+                width: 1150,
+                height: 650};
 
-            var chart = new google.visualization.PieChart(document.getElementById('chartPieCursoAll'));
-            chart.draw(data,options);
+              var chart = new google.visualization.PieChart(document.getElementById('chartPieCursoAll'));
+              chart.draw(data,options);
+            }else{
+              $("#chartPieCursoAll").fadeOut("Slow");
+            }
           },  
             error: function (xhr, ajaxOptions, thrownError) {
               console.log(xhr.status);
@@ -139,14 +154,17 @@ var dataFim = $(".dataFim").val();
             data.addColumn('string', 'Tipo Curso');
             data.addColumn('number', 'Qtds');
             data.addColumn({type: 'string', role: 'style'});
-           
+            var qtsDados = 0;
              $.each(jsondata,function(i) {
-              if(jsondata[i].QTDTOTALCHAMADOS > 0){
-                data.addRows([[ jsondata[i].CURSO,jsondata[i].QTDTOTALCHAMADOS, cores[i-1] ]]);
-              }
+                if(jsondata[i].QTDTOTALCHAMADOS > 0){
+                  data.addRows([[ jsondata[i].CURSO,jsondata[i].QTDTOTALCHAMADOS, cores[j] ]]);
+                  qtsDados++;
+                  j++;
+                }
             });
-
-            var options = {title: 'Chamado de tds os cursos',
+            if(qtsDados > 0){
+              $('#chartBarCursoAll').fadeIn("Slow");
+              var options = {title: 'Chamado de tds os cursos',
               width: 1150,
               height: 650,
               pieHole: 0.5,
@@ -155,8 +173,12 @@ var dataFim = $(".dataFim").val();
               },
               legend: 'none'};
 
-            var chart = new google.visualization.BarChart(document.getElementById('chartBarCursoAll'));
-            chart.draw(data,options);
+              var chart = new google.visualization.BarChart(document.getElementById('chartBarCursoAll'));
+              chart.draw(data,options);
+            }else{
+              $('#chartBarCursoAll').fadeOut("Slow");
+            }
+            
           },  
           error: function (xhr, ajaxOptions, thrownError) {
             alert(xhr.status);
@@ -194,24 +216,32 @@ var dataFim = $(".dataFim").val();
             data.addColumn('string', 'Tipo Curso');
             data.addColumn('number', 'Qtds');
             data.addColumn({type: 'string', role: 'style'});
-           
+            var qtsDados = 0;
+             
              $.each(jsondata,function(i) {
-              if(jsondata[i].QTDTOTALCHAMADOS > 0){
-                data.addRows([[ jsondata[i].CURSO,jsondata[i].QTDTOTALCHAMADOS, cores[i-1] ]]);
-              }
+                if(jsondata[i].QTDTOTALCHAMADOS > 0){
+                  data.addRows([[ jsondata[i].CURSO,jsondata[i].QTDTOTALCHAMADOS, cores[j] ]]);
+                  qtsDados++;
+                  j++;
+                }
             });
+            if(qtsDados > 0){
+              $('#chartColumnCursoAll').fadeIn("Slow");
 
-            var options = {title: 'Chamado de tds os cursos',
-              width: 1150,
-              height: 650,
-              pieHole: 0.5,
-              pieSliceTextStyle: {
-                color: 'black',
-              },
-              legend: 'none'};
+              var options = {title: 'Chamado de tds os cursos',
+                width: 1150,
+                height: 650,
+                pieHole: 0.5,
+                pieSliceTextStyle: {
+                  color: 'black',
+                },
+                legend: 'none'};
 
-            var chart = new google.visualization.ColumnChart(document.getElementById('chartColumnCursoAll'));
-            chart.draw(data,options);
+              var chart = new google.visualization.ColumnChart(document.getElementById('chartColumnCursoAll'));
+              chart.draw(data,options);
+            }else{
+              $('#chartColumnCursoAll').fadeOut("Slow");              
+            }
           },  
           error: function (xhr, ajaxOptions, thrownError) {
             alert(xhr.status);

@@ -28,25 +28,33 @@ var dataFim = $(".dataFim").val();
           success: function(jsondata) {
             var i = 1;
             var curso = new Array();
-            console.log(jsondata)
             var data = new google.visualization.DataTable();
             data.addColumn('string', 'Curso');
             data.addColumn('number', 'Qtds');
+            var qtsDados = 0;
 
-           $.each(jsondata,function(i) {
-              data.addRows([[jsondata[i].GRUPO,jsondata[i].QTDTOTALCHAMADOS]]);
+            $.each(jsondata,function(i, jsonData) {
+              if(jsondata[i].QTDTOTALCHAMADOS > 0){
+                data.addRows([[jsondata[i].GRUPO,jsondata[i].QTDTOTALCHAMADOS]]);
+                qtsDados++;
+              }
             });
 
-           var options = {title: 'Chamado de grupo requerimento',
-              width: 1150,
-              height: 650,
-              pieHole: 0.5,
-              pieSliceTextStyle: {
-                color: 'black',
-              }};
+            if(qtsDados > 0){
+                $("#chartDonutGrupoRequerimentoAll").fadeIn();             
+                var options = {title: 'Chamado de grupo requerimento',
+                width: 1150,
+                height: 650,
+                pieHole: 0.5,
+                pieSliceTextStyle: {
+                  color: 'black',
+                }};
 
-            var chart = new google.visualization.PieChart(document.getElementById('chartDonutGrupoRequerimentoAll'));
-            chart.draw(data,options);
+              var chart = new google.visualization.PieChart(document.getElementById('chartDonutGrupoRequerimentoAll'));
+              chart.draw(data,options);
+            }else{
+                $("#chartDonutGrupoRequerimentoAll").fadeOut();             
+            }
           },  
           error: function (xhr, ajaxOptions, thrownError) {
             alert(xhr.status);
@@ -84,16 +92,26 @@ var dataFim = $(".dataFim").val();
             data.addColumn('string', 'Tipo Curso');
             data.addColumn('number', 'Qtds');
             
-            $.each(jsondata,function(i) {
-              data.addRows([[jsondata[i].GRUPO,jsondata[i].QTDTOTALCHAMADOS]]);
+            var qtsDados = 0;
+            $.each(jsondata,function(i, jsonData) {
+              if(jsondata[i].QTDTOTALCHAMADOS > 0){
+                data.addRows([[jsondata[i].GRUPO,jsondata[i].QTDTOTALCHAMADOS]]);
+                qtsDados++;
+              }
             });
 
-             var options = {title: 'Chamado de grupo requerimento',
-              width: 1150,
-              height: 650};
+            if(qtsDados > 0){
+                $("#chartPieGrupoRequerimentoAll").fadeIn();          
 
-            var chart = new google.visualization.PieChart(document.getElementById('chartPieGrupoRequerimentoAll'));
-            chart.draw(data,options);
+                 var options = {title: 'Chamado de grupo requerimento',
+                  width: 1150,
+                  height: 650};
+
+                var chart = new google.visualization.PieChart(document.getElementById('chartPieGrupoRequerimentoAll'));
+                chart.draw(data,options);
+            }else{
+                $("#chartPieGrupoRequerimentoAll").fadeOut();                        
+            }
           },  
             error: function (xhr, ajaxOptions, thrownError) {
               console.log(xhr.status);
@@ -134,24 +152,32 @@ var dataFim = $(".dataFim").val();
             data.addColumn('string', 'Tipo Curso');
             data.addColumn('number', 'Qtds');
             data.addColumn({type: 'string', role: 'style'});
-           
-             $.each(jsondata,function(i) {
-                if(jsondata[i].QTDTOTALCHAMADOS > 0){
-                  data.addRows([[ jsondata[i].GRUPO,jsondata[i].QTDTOTALCHAMADOS, cores[i-1] ]]);
-                }
+            var qtsDados = 0;
+
+            $.each(jsondata,function(i, jsonData) {
+              if(jsondata[i].QTDTOTALCHAMADOS > 0){
+                data.addRows([[ jsondata[i].GRUPO,jsondata[i].QTDTOTALCHAMADOS, cores[j] ]]);
+                qtsDados++;
+                j++;
+              }
             });
+            
+            if(qtsDados > 0){
+              $("#chartBarGrupoRequerimentoAll").fadeIn();    
+              var options = {title: 'Chamado de grupo requerimento',
+                width: 1150,
+                height: 650,
+                pieHole: 0.5,
+                pieSliceTextStyle: {
+                  color: 'black',
+                },
+                legend: 'none'};
 
-            var options = {title: 'Chamado de grupo requerimento',
-              width: 1150,
-              height: 650,
-              pieHole: 0.5,
-              pieSliceTextStyle: {
-                color: 'black',
-              },
-              legend: 'none'};
-
-            var chart = new google.visualization.BarChart(document.getElementById('chartBarGrupoRequerimentoAll'));
-            chart.draw(data,options);
+              var chart = new google.visualization.BarChart(document.getElementById('chartBarGrupoRequerimentoAll'));
+              chart.draw(data,options);
+            }else{
+              $("#chartBarGrupoRequerimentoAll").fadeOut();                  
+            }
           },  
           error: function (xhr, ajaxOptions, thrownError) {
             alert(xhr.status);
@@ -191,8 +217,9 @@ var dataFim = $(".dataFim").val();
             var qtsDados = 0;
              $.each(jsondata,function(i) {
                 if(jsondata[i].QTDTOTALCHAMADOS > 0){
-                  data.addRows([[jsondata[i].GRUPO,jsondata[i].QTDTOTALCHAMADOS, cores[i-1] ]]);
+                  data.addRows([[jsondata[i].GRUPO,jsondata[i].QTDTOTALCHAMADOS, cores[j] ]]);
                   qtsDados++;
+                  j++;
                 }
             });
 
