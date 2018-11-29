@@ -114,6 +114,15 @@ else
 		include_once "graficos/chartDonutRequerimentoAll.php";
 	else if($pagina == 'chartColumnRequerimentoAll')
 		include_once "graficos/chartColumnRequerimentoAll.php";
+	else if($pagina == 'chartPieTipoRequerimentoCurso')
+		include_once "graficos/chartPieTipoRequerimentoCurso.php";
+	else if($pagina == 'chartDonutTipoRequerimentoCurso')
+		include_once "graficos/chartDonutTipoRequerimentoCurso.php";
+	else if($pagina == 'chartBarTipoRequerimentoCurso')
+		include_once "graficos/chartBarTipoRequerimentoCurso.php";
+	else if($pagina == 'chartColumnTipoRequerimentoCurso')
+		include_once "graficos/chartColumnTipoRequerimentoCurso.php";
+	
 	else
 		include_once "404.php";
 ?>

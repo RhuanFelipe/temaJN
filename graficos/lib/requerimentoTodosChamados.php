@@ -9,6 +9,8 @@ $encoding = 'UTF-8';
 
 $dataInicio = datasql($_REQUEST['dataInicio']);
 $dataFim = datasql($_REQUEST['dataFim']);
+$tipoRequerimento = $_REQUEST['tipoRequerimento'];
+$grupoRequerimento = $_REQUEST['grupoRequerimento'];
 
 $i = 1;
 $chamado = new ChamadoResposta();
@@ -21,7 +23,7 @@ while($i <= $requerimentoCount){
 	$nomeRequerimento = $requerimentos[0]->desc_requerimento;
 
 	$requerimentoArray[$i-1]["REQUERIMENTO"] = $nomeRequerimento;
-	$qtRequerimentoArray[$i-1]["QTDCHAMADO"] = $chamado->qtdChamadosRequerimentoAll($dataInicio,$dataFim,$i);
+	$qtRequerimentoArray[$i-1]["QTDCHAMADO"] = $chamado->qtdChamadosRequerimentoAll($dataInicio,$dataFim,$i,$tipoRequerimento,$grupoRequerimento);
 	$requerimentoArray[$i-1]["QTDTOTALCHAMADOS"] = $qtRequerimentoArray[$i-1]["QTDCHAMADO"];
 
 	$i++;

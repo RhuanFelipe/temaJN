@@ -24,7 +24,7 @@
                             <li class="sub-menu dcjq-parent-li">
                                 <a href="javascript:;" class="dcjq-parent">
                                     <i class="fas fa-chart-pie"></i>
-                                    <span>Gráficos do Curso</span>
+                                    <span>Todos os Chamados</span>
                                 <span class="dcjq-icon"></span></a>
                                 <ul class="sub" style="display: none;">
                                     <li><a href="index.php?p=chartPieCurso">Pizza</a></li>
@@ -33,6 +33,19 @@
                                     <li><a href="index.php?p=chartColumnCurso">Coluna</a></li>
                                 </ul>
                             </li>
+                             <li class="sub-menu dcjq-parent-li">
+                                <a href="javascript:;" class="dcjq-parent">
+                                    <i class="fas fa-chart-pie"></i>
+                                    <span>Tipo Requerimento</span>
+                                <span class="dcjq-icon"></span></a>
+                                <ul class="sub" style="display: none;">
+                                    <li><a href="index.php?p=chartPieTipoRequerimentoCurso">Pizza</a></li>
+                                    <li><a href="index.php?p=chartBarTipoRequerimentoCurso">Bar</a></li>
+                                    <li><a href="index.php?p=chartDonutTipoRequerimentoCurso">Donut</a></li>
+                                    <li><a href="index.php?p=chartColumnTipoRequerimentoCurso">Coluna</a></li>
+                                </ul>
+                            </li>
+                            
                        </ul>
                 </li>
                 <li class="sub-menu dcjq-parent-li">
