@@ -71,7 +71,7 @@
         <input type="hidden" name="id_chamado" id="id_chamado" value="0">
 
     <?php if($_SESSION['nivel_id'] == 2){ ?>
-    <a href="?p=abrirChamado" type="button" class="btn btn-success"><i class="fa fa-folder-open-o"></i> Abrir Chamado </a>
+    <a href="?p=abrirChamado" type="button" class="btn btn-success"><i class="far fa-folder-open"></i> Abrir Chamado </a>
     <?php } ?>
     <!-- page end-->
     </section>

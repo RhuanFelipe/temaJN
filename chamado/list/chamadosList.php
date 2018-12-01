@@ -1,5 +1,7 @@
  <?php 
  session_start();
+$encoding = 'UTF-8';
+
  include "../../biblioteca/util.php";
  function __autoload($class_name){
    require_once '../../classes/' . $class_name . '.php';
@@ -39,9 +41,9 @@
   <th scope="row"><?php echo $users->matricula_usuario; ?>
      <input type="hidden"  class="chamado_click" name="">
   </th>
-  <td class=""><?php echo utf8_encode($ps[0]->nome_pessoa); ?></td>
-  <td ><?php echo $cs[0]->nome_curso; ?></td>
-  <td ><?php echo $req[0]->desc_requerimento; ?></td>
+  <td class=""><?php echo mb_convert_case($ps[0]->nome_pessoa, MB_CASE_UPPER, $encoding); ?></td>
+  <td ><?php echo mb_convert_case($cs[0]->nome_curso, MB_CASE_UPPER, $encoding);  ?></td>
+  <td ><?php echo  mb_convert_case($req[0]->desc_requerimento, MB_CASE_UPPER, $encoding); ?></td>
   <td scope="row" align="center" width="17%">
 
     <button type="button" class="btn btn-info ver" data-toggle="modal" data-id-chamado = "<?php echo $rows->id_chamado; ?>" data-target="#exampleModalCenter" title="vizualizar chamado">
@@ -52,7 +54,7 @@
       	
       ?>
       <a href="?p=abrirChamado&edit=1&id=<?php echo $rows->id_chamado; ?>&id_pessoa=<?php echo $rows->pessoa_id; ?>" class="btn btn-success edit"  title="Editar Chamado">
-        <i class="fa fa-pencil"></i>
+        <i class="fas fa-edit"></i>
       </a>
        <a href="#" class="btn btn btn-danger excluir" title="Excluir Chamado" id="<?php echo $rows->id_chamado; ?>">
             <i class="fa fa-eraser"></i>

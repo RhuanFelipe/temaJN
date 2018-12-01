@@ -1,18 +1,16 @@
 var cores = ["#7B68EE","#FF4500","#006400","#800000","#708090","#C71585","#000080","#B0C4DE","#696969","#4682B4",
 "#DC143C", "#E0FFFF","#D8BFD8","#FFE4B5","#F0E68C","#FF8C00","#800080","#DEB887","#BC8F8F","#9ACD32"];
 
-$('.btnGraficoRequerimentoAll').click(function(){
+$('.btnGraficoGrupoRequerimentoCurso').click(function(){
   var dataInicio = $(".dataInicio").val();
   var dataFim = $(".dataFim").val(); 
-  var tipoRequerimento = $(".tipoRequerimento").val(); 
-  var grupoRequerimento = $(".grupoRequerimento").val(); 
-  chartPieRequerimentoAll(dataInicio, dataFim, tipoRequerimento, grupoRequerimento);
-  chartBarRequerimentoAll(dataInicio, dataFim, tipoRequerimento, grupoRequerimento);
-  chartDonutRequerimentoAll(dataInicio, dataFim, tipoRequerimento, grupoRequerimento);
-  chartColumnRequerimentoAll(dataInicio, dataFim, tipoRequerimento, grupoRequerimento);
+  var tipoRequerimento = $(".tipo_requerimento").val(); 
+  chartPieGrupoRequerimentoCurso(dataInicio, dataFim,tipoRequerimento);
+  chartBarGrupoRequerimentoCurso(dataInicio, dataFim,tipoRequerimento);
+  chartDonutGrupoRequerimentoCurso(dataInicio, dataFim,tipoRequerimento);
+  chartColumnGrupoRequerimentoCurso(dataInicio, dataFim,tipoRequerimento);
 });
-
-function chartDonutRequerimentoAll(dataInicio, dataFim, tipoRequerimento, grupoRequerimento){
+function chartDonutGrupoRequerimentoCurso(dataInicio, dataFim,tipoRequerimento){
 var dataInicio = $(".dataInicio").val();
 var dataFim = $(".dataFim").val(); 
   $.ajax({
@@ -26,7 +24,7 @@ var dataFim = $(".dataFim").val();
         $.ajax({
           type: "GET",
           dataType: "JSON",
-          url:"graficos/lib/requerimentoTodosChamados.php?dataInicio="+dataInicio+"&dataFim="+dataFim+"&tipoRequerimento="+tipoRequerimento+"&grupoRequerimento="+grupoRequerimento,            
+          url:"graficos/lib/grupoRequerimentoCursoChamados.php?dataInicio="+dataInicio+"&dataFim="+dataFim+"&tipoRequerimento="+tipoRequerimento,            
           success: function(jsondata) {
             var i = 1;
             var curso = new Array();
@@ -37,24 +35,25 @@ var dataFim = $(".dataFim").val();
 
             $.each(jsondata,function(i, jsonData) {
               if(jsondata[i].QTDTOTALCHAMADOS > 0){
-              data.addRows([[jsondata[i].REQUERIMENTO,jsondata[i].QTDTOTALCHAMADOS]]);
+                data.addRows([[jsondata[i].GRUPO,jsondata[i].QTDTOTALCHAMADOS]]);
                 qtsDados++;
               }
             });
-            if(qtsDados > 0){
-              $("#chartDonutRequerimentoAll").fadeIn();    
-              var options = {title: 'Chamado de requerimento',
-              width: 1150,
-              height: 650,
-              pieHole: 0.5,
-              pieSliceTextStyle: {
-                color: 'black',
-              }};
 
-              var chart = new google.visualization.PieChart(document.getElementById('chartDonutRequerimentoAll'));
+            if(qtsDados > 0){
+                $("#chartDonutGrupoRequerimentoCurso").fadeIn();             
+                var options = {title: 'Chamado de grupo requerimento',
+                width: 1150,
+                height: 650,
+                pieHole: 0.5,
+                pieSliceTextStyle: {
+                  color: 'black',
+                }};
+
+              var chart = new google.visualization.PieChart(document.getElementById('chartDonutGrupoRequerimentoCurso'));
               chart.draw(data,options);
             }else{
-              $("#chartDonutRequerimentoAll").fadeOut();    
+                $("#chartDonutGrupoRequerimentoCurso").fadeOut();             
             }
           },  
           error: function (xhr, ajaxOptions, thrownError) {
@@ -70,7 +69,7 @@ var dataFim = $(".dataFim").val();
   });
 }
 
-function chartPieRequerimentoAll(dataInicio, dataFim, tipoRequerimento, grupoRequerimento){
+function chartPieGrupoRequerimentoCurso(dataInicio, dataFim,tipoRequerimento){
 var dataInicio = $(".dataInicio").val();
 var dataFim = $(".dataFim").val(); 
   $.ajax({
@@ -84,7 +83,7 @@ var dataFim = $(".dataFim").val();
         $.ajax({
           type: "GET",
           dataType: "JSON",
-          url:"graficos/lib/requerimentoTodosChamados.php?dataInicio="+dataInicio+"&dataFim="+dataFim+"&tipoRequerimento="+tipoRequerimento+"&grupoRequerimento="+grupoRequerimento,            
+          url:"graficos/lib/grupoRequerimentoCursoChamados.php?dataInicio="+dataInicio+"&dataFim="+dataFim+"&tipoRequerimento="+tipoRequerimento,            
           success: function(jsondata) {
             var i = 1;
             var curso = new Array();
@@ -92,25 +91,27 @@ var dataFim = $(".dataFim").val();
             var data = new google.visualization.DataTable();
             data.addColumn('string', 'Tipo Curso');
             data.addColumn('number', 'Qtds');
+            
             var qtsDados = 0;
             $.each(jsondata,function(i, jsonData) {
               if(jsondata[i].QTDTOTALCHAMADOS > 0){
-                data.addRows([[jsondata[i].REQUERIMENTO,jsondata[i].QTDTOTALCHAMADOS]]);
+                data.addRows([[jsondata[i].GRUPO,jsondata[i].QTDTOTALCHAMADOS]]);
                 qtsDados++;
               }
             });
-            if(qtsDados > 0){
-              $("#chartPieRequerimentoAll").fadeIn();          
-              var options = {title: 'Chamado de requerimento',
-              width: 1150,
-              height: 650};
 
-              var chart = new google.visualization.PieChart(document.getElementById('chartPieRequerimentoAll'));
-              chart.draw(data,options);
+            if(qtsDados > 0){
+                $("#chartPieGrupoRequerimentoCurso").fadeIn();          
+
+                 var options = {title: 'Chamado de grupo requerimento',
+                  width: 1150,
+                  height: 650};
+
+                var chart = new google.visualization.PieChart(document.getElementById('chartPieGrupoRequerimentoCurso'));
+                chart.draw(data,options);
             }else{
-              $("#chartPieRequerimentoAll").fadeOut();          
+                $("#chartPieGrupoRequerimentoCurso").fadeOut();                        
             }
-             
           },  
             error: function (xhr, ajaxOptions, thrownError) {
               console.log(xhr.status);
@@ -128,7 +129,7 @@ var dataFim = $(".dataFim").val();
   });
 }
 
-function chartBarRequerimentoAll(dataInicio, dataFim, tipoRequerimento, grupoRequerimento){
+function chartBarGrupoRequerimentoCurso(dataInicio, dataFim, tipoRequerimento){
 var dataInicio = $(".dataInicio").val();
 var dataFim = $(".dataFim").val(); 
   $.ajax({
@@ -142,7 +143,7 @@ var dataFim = $(".dataFim").val();
         $.ajax({
           type: "GET",
           dataType: "JSON",
-          url:"graficos/lib/requerimentoTodosChamados.php?dataInicio="+dataInicio+"&dataFim="+dataFim+"&tipoRequerimento="+tipoRequerimento+"&grupoRequerimento="+grupoRequerimento,            
+          url:"graficos/lib/grupoRequerimentoCursoChamados.php?dataInicio="+dataInicio+"&dataFim="+dataFim+"&tipoRequerimento="+tipoRequerimento,            
           success: function(jsondata) {
             var j = 0;
             var curso = new Array();
@@ -155,16 +156,15 @@ var dataFim = $(".dataFim").val();
 
             $.each(jsondata,function(i, jsonData) {
               if(jsondata[i].QTDTOTALCHAMADOS > 0){
-                console.log(cores[i] )
-                data.addRows([[ jsondata[i].REQUERIMENTO,jsondata[i].QTDTOTALCHAMADOS, cores[j] ]]);
+                data.addRows([[ jsondata[i].GRUPO,jsondata[i].QTDTOTALCHAMADOS, cores[j] ]]);
                 qtsDados++;
                 j++;
               }
             });
             
             if(qtsDados > 0){
-              $("#chartBarRequerimentoAll").fadeIn();          
-              var options = {title: 'Chamado de requerimento',
+              $("#chartBarGrupoRequerimentoCurso").fadeIn();    
+              var options = {title: 'Chamado de grupo requerimento',
                 width: 1150,
                 height: 650,
                 pieHole: 0.5,
@@ -173,10 +173,10 @@ var dataFim = $(".dataFim").val();
                 },
                 legend: 'none'};
 
-              var chart = new google.visualization.BarChart(document.getElementById('chartBarRequerimentoAll'));
-             chart.draw(data,options);
+              var chart = new google.visualization.BarChart(document.getElementById('chartBarGrupoRequerimentoCurso'));
+              chart.draw(data,options);
             }else{
-              $("#chartBarRequerimentoAll").fadeOut();          
+              $("#chartBarGrupoRequerimentoCurso").fadeOut();                  
             }
           },  
           error: function (xhr, ajaxOptions, thrownError) {
@@ -192,7 +192,7 @@ var dataFim = $(".dataFim").val();
   });
 }
 
-function chartColumnRequerimentoAll(dataInicio, dataFim, tipoRequerimento, grupoRequerimento){
+function chartColumnGrupoRequerimentoCurso(dataInicio, dataFim,tipoRequerimento){
 var dataInicio = $(".dataInicio").val();
 var dataFim = $(".dataFim").val(); 
   $.ajax({
@@ -206,30 +206,27 @@ var dataFim = $(".dataFim").val();
         $.ajax({
           type: "GET",
           dataType: "JSON",
-          url:"graficos/lib/requerimentoTodosChamados.php?dataInicio="+dataInicio+"&dataFim="+dataFim+"&tipoRequerimento="+tipoRequerimento+"&grupoRequerimento="+grupoRequerimento,            
+          url:"graficos/lib/grupoRequerimentoCursoChamados.php?dataInicio="+dataInicio+"&dataFim="+dataFim+"&tipoRequerimento="+tipoRequerimento,            
           success: function(jsondata) {
             var j = 0;
             var curso = new Array();
- 
             var data = new google.visualization.DataTable();
             data.addColumn('string', 'Tipo Curso');
             data.addColumn('number', 'Qtds');
             data.addColumn({type: 'string', role: 'style'});
             var qtsDados = 0;
-            var j = 0;
-
-            $.each(jsondata,function(i, jsonData) {
-              if(jsondata[i].QTDTOTALCHAMADOS > 0){
-                data.addRows([[ jsondata[i].REQUERIMENTO,jsondata[i].QTDTOTALCHAMADOS, cores[j] ]]);
-                qtsDados++;
-                j++;
-              }
+             $.each(jsondata,function(i) {
+                if(jsondata[i].QTDTOTALCHAMADOS > 0){
+                  data.addRows([[jsondata[i].GRUPO,jsondata[i].QTDTOTALCHAMADOS, cores[j] ]]);
+                  qtsDados++;
+                  j++;
+                }
             });
-            
-            if(qtsDados > 0){
-              $("#chartColumnRequerimentoAll").fadeIn();  
 
-              var options = {title: 'Chamado de requerimento',
+              if(qtsDados > 0){
+                $("#chartColumnGrupoRequerimentoCurso").fadeIn("slow");
+
+                var options = {title: 'Chamado de grupo requerimento',
                 width: 1150,
                 height: 650,
                 pieHole: 0.5,
@@ -238,10 +235,11 @@ var dataFim = $(".dataFim").val();
                 },
                 legend: 'none'};
 
-              var chart = new google.visualization.ColumnChart(document.getElementById('chartColumnRequerimentoAll'));
-              chart.draw(data,options);
+
+            var chart = new google.visualization.ColumnChart(document.getElementById('chartColumnGrupoRequerimentoCurso'));
+            chart.draw(data,options);
             }else{
-              $("#chartColumnRequerimentoAll").fadeOut();  
+              $("#chartColumnGrupoRequerimentoCurso").fadeOut("slow");
             }
           },  
           error: function (xhr, ajaxOptions, thrownError) {

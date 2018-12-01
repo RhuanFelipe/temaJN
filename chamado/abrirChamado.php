@@ -65,10 +65,10 @@
                 </div>
                 <div class="col-lg-2">
                    <a href="#" class="btn btn-info adicionar" title="Adicinar Aluno" data-target="#modalCadAluno" data-toggle="modal">
-                      <i class="fa fa-file-text-o"></i>
+                      <i class="fas fa-file-alt"></i>
                     </a> 
-                    <a href="#" class="btn btn-success edit alterar" title="Editar Aluno">
-                      <i class="fa fa-pencil"></i>
+                    <a href="#" class="btn btn-danger edit alterar" title="Editar Aluno">
+                      <i class="fas fa-eraser"></i>
                     </a>
                 </div>
             </div>            

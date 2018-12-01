@@ -75,7 +75,7 @@
                 </section>
             </div>
         </div>
-        <a href="?p=abrirChamado" type="button" class="btn btn-success"><i class="fa fa-folder-open-o"></i> Abrir Chamado </a>
+        <a href="?p=abrirChamado" type="button" class="btn btn-success"><i class="far fa-folder-open"></i> Abrir Chamado </a>
         <input type="hidden" name="id_chamado" id="id_chamado" value="0">
         <!-- page end-->
         </section>

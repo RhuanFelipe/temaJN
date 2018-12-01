@@ -18,8 +18,7 @@ $tipoCount = $tipo->countAll();
 while($i <= $tipoCount){
 	$tipoRequerimento = $tipo->findById($i);
 	$idTipo = $tipoRequerimento[0]->id_requerimento;
-	$nomeRequerimento = $tipoRequerimento[0]->opt_requerimento;
-
+	$nomeRequerimento = mb_convert_case($tipoRequerimento[0]->opt_requerimento, MB_CASE_UPPER, $encoding);
 	$tipoArray[$i-1]["TIPO"] = $nomeRequerimento;
 	$qtTipoArray[$i-1]["QTDCHAMADO"] = $chamado->qtdChamadosTipoAll($dataInicio,$dataFim,$i);
 	$tipoArray[$i-1]["QTDTOTALCHAMADOS"] = $qtTipoArray[$i-1]["QTDCHAMADO"];

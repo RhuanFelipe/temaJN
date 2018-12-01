@@ -45,7 +45,30 @@
                                     <li><a href="index.php?p=chartColumnTipoRequerimentoCurso">Coluna</a></li>
                                 </ul>
                             </li>
-                            
+                            <li>
+                                <a href="javascript:;" class="dcjq-parent">
+                                    <i class="fas fa-chart-pie"></i>
+                                    <span>Grupo Requerimentos Curso</span>
+                                <span class="dcjq-icon"></span></a>
+                                <ul class="sub" style="display: none;">
+                                    <li><a href="index.php?p=chartPieGrupoRequerimentoCurso">Pizza</a></li>
+                                    <li><a href="index.php?p=chartBarGrupoRequerimentoCurso">Bar</a></li>
+                                    <li><a href="index.php?p=chartDonutGrupoRequerimentoCurso">Donut</a></li>
+                                    <li><a href="index.php?p=chartColumnGrupoRequerimentoCurso">Coluna</a></li>
+                                </ul>
+                            </li>
+                             <li class="sub-menu dcjq-parent-li">
+                                <a href="javascript:;" class="dcjq-parent">
+                                    <i class="fas fa-chart-pie"></i>
+                                    <span>Requerimento Curso</span>
+                                <span class="dcjq-icon"></span></a>
+                                <ul class="sub" style="display: none;">
+                                    <li><a href="index.php?p=chartPieRequerimentoCurso">Pizza</a></li>
+                                    <li><a href="index.php?p=chartBarRequerimentoCurso">Bar</a></li>
+                                    <li><a href="index.php?p=chartDonutRequerimentoCurso">Donut</a></li>
+                                    <li><a href="index.php?p=chartColumnRequerimentoCurso">Coluna</a></li>
+                                </ul>
+                            </li>
                        </ul>
                 </li>
                 <li class="sub-menu dcjq-parent-li">
@@ -159,7 +182,7 @@
             
                <li class="sub-menu dcjq-parent-li">
                     <a href="javascript:;" class="dcjq-parent">
-                        <i class="fas fa-chart-pie"></i>
+                        <i class="fas fa-paste"></i>
                         <span>Cadastros de Chamado</span>
                     <span class="dcjq-icon"></span></a>
                     <ul class="sub" style="display: none;">

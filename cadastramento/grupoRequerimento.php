@@ -38,11 +38,11 @@
                               <td scope="col" ><?php echo mb_convert_case($tipoRequerimento[0]->opt_requerimento, MB_CASE_UPPER, $encoding); ?></td>
                                 <td scope="col" > 
                                   <a href="?p=formGrupoRequerimento&edit=1&id=<?php echo $rows->id_grupo; ?>&tipoRequerimentoId=<?php echo $rows->tipo_requerimento_id; ?>" class="btn btn-success edit"  title="Editar">
-                                      <i class="fa fa-pencil"></i>
+                                      <i class="fas fa-edit"></i>
                                   </a>
                                   <?php if($rows->ativo == 1){ ?>
                                     <a href="cadastramento/acaoGrupoRequerimento.php?acao=inative&id=<?php echo $rows->id_grupo; ?>" class="btn btn-default edit"  title="Inativar">
-                                        <i class="fa fa-times-circle-o"></i>
+                                        <i class="fas fa-times-circle"></i>
                                     </a>
                                   <?php }else{ ?>
                                      <a href="cadastramento/acaoGrupoRequerimento.php?acao=ative&id=<?php echo $rows->id_grupo; ?>" class="btn btn-info edit"  title="Ativar">
@@ -56,7 +56,7 @@
                     </table>
                 </div>
                 </section>
-                <a href="?p=formGrupoRequerimento" type="button" class="btn btn-success"><i class="fa fa-folder-open-o"></i> Cadastrar Grupo Requerimento </a>
+                <a href="?p=formGrupoRequerimento" type="button" class="btn btn-success"><i class="far fa-folder-open"></i> Cadastrar Grupo Requerimento </a>
 
             </div>
         </div>

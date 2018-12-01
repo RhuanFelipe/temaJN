@@ -83,6 +83,20 @@ class ChamadoResposta extends Crud{
 		$result = $stmt->rowCount();
 		return $result;
 	}
+	public function qtdChamadosGrupoCurso($dataInicio, $dataFim,$grupoId,$tipoRequerimento,$cursoId){
+		if($tipoRequerimento >= 1){
+			$sqlTipoRequerimento = " AND tipo_requerimento_id = ".$tipoRequerimento." AND grupo_requerimento_id = ".$grupoId;
+			
+		}else{
+			$sqlTipoRequerimento = " AND grupo_requerimento_id = ".$grupoId;
+		}
+
+		$sql  = "SELECT * FROM $this->table INNER JOIN chamado on chamado.id_chamado = chamado_resposta.id_chamado where date(data_fechamento) BETWEEN  '".$dataInicio."' AND  '".$dataFim."' AND curso_id = '".$cursoId."'".$sqlTipoRequerimento;
+		$stmt = DB::prepare($sql);
+		$stmt->execute();
+		$result = $stmt->rowCount();
+		return $result;
+	}
 	public function qtdChamadosRequerimentoAll($dataInicio, $dataFim,$requerimentoId,$tipoRequerimento,$grupoRequerimento){
 
 		if($tipoRequerimento >= 1 || $grupoRequerimento >= 1){
@@ -97,7 +111,20 @@ class ChamadoResposta extends Crud{
 		$result = $stmt->rowCount();
 		return $result;
 	}
+	public function qtdChamadosRequerimentoCurso($dataInicio, $dataFim,$requerimentoId,$tipoRequerimento,$grupoRequerimento,$cursoId){
 
+		if($tipoRequerimento >= 1 || $grupoRequerimento >= 1){
+			$sqlRequerimento = " AND requerimento_id = ".$requerimentoId." AND tipo_requerimento_id = ".$tipoRequerimento. " AND grupo_requerimento_id = ". $grupoRequerimento;
+			
+		}else{
+			$sqlRequerimento = " AND requerimento_id = ".$requerimentoId;
+		}
+		$sql  = "SELECT * FROM $this->table INNER JOIN chamado on chamado.id_chamado = chamado_resposta.id_chamado where  date(data_fechamento) BETWEEN  '".$dataInicio."' AND  '".$dataFim."' AND curso_id = '".$cursoId."'". $sqlRequerimento;
+		$stmt = DB::prepare($sql);
+		$stmt->execute();
+		$result = $stmt->rowCount();
+		return $result;
+	}
 	public function qtdChamadosConfPeriodoCurso($dataInicio, $dataFim,$cursoId){
 		$sql  = "SELECT * FROM $this->table INNER JOIN chamado on chamado.id_chamado = chamado_resposta.id_chamado where chamado.status = 1 AND chamado.curso_id = '".$cursoId."' AND date(data_fechamento) BETWEEN  '".$dataInicio."' AND  '".$dataFim."'";
 		$stmt = DB::prepare($sql);

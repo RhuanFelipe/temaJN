@@ -33,11 +33,11 @@
 	                            <td scope="col" width="90%"><?php echo mb_convert_case($rows->tipo_curso, MB_CASE_UPPER, $encoding);?></td>
 	                            <td scope="col" > 
                                   <a href="?p=formTipoCurso&edit=1&id=<?php echo $rows->id_tipo_curso; ?>" class="btn btn-success edit"  title="Editar">
-                                      <i class="fa fa-pencil"></i>
+                                      <i class="fas fa-edit"></i>
                                   </a>
                                   <?php if($rows->ativo == 1){ ?>
                                   <a href="cadastramento/acaoTipoCurso.php?acao=inative&id=<?php echo $rows->id_tipo_curso; ?>" class="btn btn-default edit"  title="Inativar">
-                                      <i class="fa fa-times-circle-o"></i>
+                                      <i class="fas fa-times-circle"></i>
                                   </a>
                                   <?php }else{ ?>
                                     <a href="cadastramento/acaoTipoCurso.php?acao=ative&id=<?php echo $rows->id_tipo_curso; ?>" class="btn btn-info edit"  title="Ativar">
@@ -51,7 +51,7 @@
                     </table>
                 </div>
                 </section>
-                <a href="?p=formTipoCurso" type="button" class="btn btn-success"><i class="fa fa-folder-open-o"></i> Cadastrar Tipo Curso </a>
+                <a href="?p=formTipoCurso" type="button" class="btn btn-success"><i class="far fa-folder-open"></i> Cadastrar Tipo Curso </a>
 
             </div>
         </div>

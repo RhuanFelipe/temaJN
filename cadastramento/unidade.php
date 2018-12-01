@@ -33,11 +33,11 @@
                               <td scope="col" width="90%"><?php echo mb_convert_case($rows->desc_unidade, MB_CASE_UPPER, $encoding); ?></td>
                               <td scope="col" > 
                                   <a href="?p=formUnidade&edit=1&id=<?php echo $rows->id_unidade; ?>" class="btn btn-success edit"  title="Editar">
-                                      <i class="fa fa-pencil"></i>
+                                      <i class="fas fa-edit"></i>
                                   </a>
                                   <?php if($rows->ativo == 1){ ?>
                                     <a href="cadastramento/acaoUnidade.php?acao=inative&id=<?php echo $rows->id_unidade; ?>" class="btn btn-default edit"  title="Inativar">
-                                        <i class="fa fa-times-circle-o"></i>
+                                        <i class="fas fa-times-circle"></i>
                                     </a>
                                   <?php }else{ ?>
                                     <a href="cadastramento/acaoUnidade.php?acao=ative&id=<?php echo $rows->id_unidade; ?>" class="btn btn-info edit"  title="Ativar">
@@ -51,7 +51,7 @@
                     </table>
                 </div>
                 </section>
-                <a href="?p=formUnidade" type="button" class="btn btn-success"><i class="fa fa-folder-open-o"></i> Cadastrar Unidade </a>
+                <a href="?p=formUnidade" type="button" class="btn btn-success"><i class="far fa-folder-open"></i> Cadastrar Unidade </a>
 
             </div>
         </div>

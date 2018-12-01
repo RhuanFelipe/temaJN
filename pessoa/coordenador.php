@@ -1,6 +1,8 @@
 <?php
   $p = new Pessoa();
   $pessoa = $p->findCoordenador();
+  $encoding = 'UTF-8';
+
 ?>
  <!--main content start-->
 <section id="main-content">
@@ -36,20 +38,20 @@
 
                         	<tr>
                               <td scope="col" ><?php echo $rows->matricula_usuario; ?></td>
-                              <td scope="col" ><?php echo $rows->nome_pessoa; ?></td>
-                              <td scope="col" ><?php echo $curso[0]->nome_curso; ?></td>
+                              <td scope="col" ><?php echo mb_convert_case($rows->nome_pessoa, MB_CASE_UPPER, $encoding); ?></td>
+                              <td scope="col" ><?php echo  mb_convert_case($curso[0]->nome_curso, MB_CASE_UPPER, $encoding);  ?></td>
                               <td scope="col" ><?php echo $rows->email_pessoa; ?></td>
 	                            <td scope="col" > 
                                   <a href="?p=formCoordenador&edit=1&id=<?php echo $rows->id_pessoa; ?>" class="btn btn-success edit"  title="Editar">
-                                      <i class="fa fa-pencil"></i>
+                                      <i class="fas fa-edit"></i>
                                   </a>
                                   <?php if($rows->ativo == 1){ ?>
                                       <a href="pessoa/acaoCoordenador.php?acao=inative&id=<?php echo $rows->id_pessoa; ?>" class="btn btn-default edit"  title="Inativar">
-                                          <i class="fa fa-times-circle-o"></i>
+                                          <i class="fas fa-times-circle"></i>
                                       </a>
                                   <?php }else{ ?>
                                      <a href="pessoa/acaoCoordenador.php?acao=ative&id=<?php echo $rows->id_pessoa; ?>" class="btn btn-info edit"  title="Inativar">
-                                          <i class="fa fa-times-circle-o"></i>
+                                          <i class="fas fa-times-circle"></i>
                                       </a>
                                   <?php } ?>
                               </td>
@@ -59,7 +61,7 @@
                     </table>
                 </div>
                 </section>
-                <a href="?p=formCoordenador" type="button" class="btn btn-success"><i class="fa fa-folder-open-o"></i> Cadastrar Coordenador </a>
+                <a href="?p=formCoordenador" type="button" class="btn btn-success"><i class="far fa-folder-open"></i> Cadastrar Coordenador </a>
 
             </div>
         </div>

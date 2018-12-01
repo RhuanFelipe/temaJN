@@ -49,6 +49,12 @@
 <?php if(@$_REQUEST['p'] == "chartPieTipoRequerimentoCurso" || @$_REQUEST['p'] == "chartDonutTipoRequerimentoCurso" || @$_REQUEST['p'] == "chartBarTipoRequerimentoCurso" || @$_REQUEST['p'] == "chartColumnTipoRequerimentoCurso" ) {?>
 <script type="text/javascript" src="js/libs/chartTipoRequerimentoCurso.js"></script>
 <?php } ?>
+<?php if(@$_REQUEST['p'] == "chartPieGrupoRequerimentoCurso" || @$_REQUEST['p'] == "chartBarGrupoRequerimentoCurso" || @$_REQUEST['p'] == "chartDonutGrupoRequerimentoCurso" || @$_REQUEST['p'] == "chartColumnGrupoRequerimentoCurso" ) {?>
+<script type="text/javascript" src="js/libs/chartGrupoRequerimentoCurso.js"></script>
+<?php } ?>
+<?php if(@$_REQUEST['p'] == "chartPieRequerimentoCurso" || @$_REQUEST['p'] == "chartBarRequerimentoCurso" || @$_REQUEST['p'] == "chartDonutRequerimentoCurso" || @$_REQUEST['p'] == "chartColumnRequerimentoCurso" ) {?>
+<script type="text/javascript" src="js/libs/chartRequerimentoCurso.js"></script>
+<?php } ?>
 <script type="text/javascript" src="chamado/js/cadastrarAluno.js"></script>
 <script type="text/javascript" src="pessoa/js/buscarMatricula.js"></script>
 <script type="text/javascript" src="chamado/js/acoesChamado.js"></script>
@@ -208,7 +214,30 @@
  <?php if(@$_REQUEST['p'] == "chartColumnTipoRequerimentoCurso") {?>
     chartColumnTipoRequerimentoCurso(dataInicio, dataFim);
   <?php } ?>
-  
+  <?php if(@$_REQUEST['p'] == "chartPieGrupoRequerimentoCurso") {?>
+    chartPieGrupoRequerimentoCurso(dataInicio, dataFim,'');
+  <?php } ?>
+  <?php if(@$_REQUEST['p'] == "chartBarGrupoRequerimentoCurso") {?>
+    chartBarGrupoRequerimentoCursodataInicio, dataFim,'');
+  <?php } ?>
+  <?php if(@$_REQUEST['p'] == "chartDonutGrupoRequerimentoCurso") {?>
+    chartDonutGrupoRequerimentoCurso(dataInicio, dataFim,'');
+  <?php } ?>
+   <?php if(@$_REQUEST['p'] == "chartColumnGrupoRequerimentoCurso") {?>
+    chartColumnGrupoRequerimentoCurso(dataInicio, dataFim,'');
+  <?php } ?>
+  <?php if(@$_REQUEST['p'] == "chartPieRequerimentoCurso") {?>
+    chartPieRequerimentoCurso(dataInicio, dataFim);
+  <?php } ?>
+  <?php if(@$_REQUEST['p'] == "chartBarRequerimentoCurso") {?>
+    chartBarRequerimentoCurso(dataInicio, dataFim);
+  <?php } ?>
+  <?php if(@$_REQUEST['p'] == "chartDonutRequerimentoCurso") {?>
+    chartDonutRequerimentoCurso(dataInicio, dataFim);
+  <?php } ?>
+   <?php if(@$_REQUEST['p'] == "chartColumnRequerimentoCurso") {?>
+    chartColumnRequerimentoCurso(dataInicio, dataFim);
+  <?php } ?>
 });
 </script>
 </body>

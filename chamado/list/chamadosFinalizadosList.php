@@ -4,6 +4,8 @@
  function __autoload($class_name){
    require_once '../../classes/' . $class_name . '.php';
  }
+  $encoding = 'UTF-8';
+
   $usuario = new Usuarios();
   $pessoa = new Pessoa();
   $c = new Chamado();
@@ -38,9 +40,9 @@
       <input type="hidden"  class="chamado_click" name="">
     </td>
     <th scope="row"><?php echo $users->matricula_usuario; ?></th>
-    <td class="nome_pessoa_<?php echo $rows->id_chamado; ?>"><?php echo utf8_encode($ps[0]->nome_pessoa); ?></td>
-    <td><?php echo $cs[0]->nome_curso; ?></td>
-    <td class="req_<?php echo $rows->id_chamado; ?>"><?php echo $req[0]->desc_requerimento; ?></td>
+    <td class="nome_pessoa_<?php echo $rows->id_chamado; ?>"><?php echo mb_convert_case($ps[0]->nome_pessoa, MB_CASE_UPPER, $encoding); ?></td>
+    <td><?php echo  mb_convert_case($cs[0]->nome_curso, MB_CASE_UPPER, $encoding); ?></td>
+    <td class="req_<?php echo $rows->id_chamado; ?>"><?php echo mb_convert_case($req[0]->desc_requerimento, MB_CASE_UPPER, $encoding); ?></td>
     <td scope="row" align="center">
 
    <button type="button" class="btn btn-info verFinalizado" data-toggle="modal" data-id-chamado = "<?php echo $rows->id_chamado; ?>" data-target="#exampleModalCenter" title="vizualizar chamado">

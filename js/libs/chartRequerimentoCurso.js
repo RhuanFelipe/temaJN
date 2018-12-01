@@ -1,18 +1,18 @@
 var cores = ["#7B68EE","#FF4500","#006400","#800000","#708090","#C71585","#000080","#B0C4DE","#696969","#4682B4",
 "#DC143C", "#E0FFFF","#D8BFD8","#FFE4B5","#F0E68C","#FF8C00","#800080","#DEB887","#BC8F8F","#9ACD32"];
 
-$('.btnGraficoRequerimentoAll').click(function(){
+$('.btnGraficoRequerimentoCurso').click(function(){
   var dataInicio = $(".dataInicio").val();
   var dataFim = $(".dataFim").val(); 
   var tipoRequerimento = $(".tipoRequerimento").val(); 
   var grupoRequerimento = $(".grupoRequerimento").val(); 
-  chartPieRequerimentoAll(dataInicio, dataFim, tipoRequerimento, grupoRequerimento);
-  chartBarRequerimentoAll(dataInicio, dataFim, tipoRequerimento, grupoRequerimento);
-  chartDonutRequerimentoAll(dataInicio, dataFim, tipoRequerimento, grupoRequerimento);
-  chartColumnRequerimentoAll(dataInicio, dataFim, tipoRequerimento, grupoRequerimento);
+  chartPieRequerimentoCurso(dataInicio, dataFim, tipoRequerimento, grupoRequerimento);
+  chartBarRequerimentoCurso(dataInicio, dataFim, tipoRequerimento, grupoRequerimento);
+  chartDonutRequerimentoCurso(dataInicio, dataFim, tipoRequerimento, grupoRequerimento);
+  chartColumnRequerimentoCurso(dataInicio, dataFim, tipoRequerimento, grupoRequerimento);
 });
 
-function chartDonutRequerimentoAll(dataInicio, dataFim, tipoRequerimento, grupoRequerimento){
+function chartDonutRequerimentoCurso(dataInicio, dataFim, tipoRequerimento, grupoRequerimento){
 var dataInicio = $(".dataInicio").val();
 var dataFim = $(".dataFim").val(); 
   $.ajax({
@@ -26,7 +26,7 @@ var dataFim = $(".dataFim").val();
         $.ajax({
           type: "GET",
           dataType: "JSON",
-          url:"graficos/lib/requerimentoTodosChamados.php?dataInicio="+dataInicio+"&dataFim="+dataFim+"&tipoRequerimento="+tipoRequerimento+"&grupoRequerimento="+grupoRequerimento,            
+          url:"graficos/lib/requerimentoCursoChamados.php?dataInicio="+dataInicio+"&dataFim="+dataFim+"&tipoRequerimento="+tipoRequerimento+"&grupoRequerimento="+grupoRequerimento,            
           success: function(jsondata) {
             var i = 1;
             var curso = new Array();
@@ -42,7 +42,7 @@ var dataFim = $(".dataFim").val();
               }
             });
             if(qtsDados > 0){
-              $("#chartDonutRequerimentoAll").fadeIn();    
+              $("#chartDonutRequerimentoCurso").fadeIn();    
               var options = {title: 'Chamado de requerimento',
               width: 1150,
               height: 650,
@@ -51,10 +51,10 @@ var dataFim = $(".dataFim").val();
                 color: 'black',
               }};
 
-              var chart = new google.visualization.PieChart(document.getElementById('chartDonutRequerimentoAll'));
+              var chart = new google.visualization.PieChart(document.getElementById('chartDonutRequerimentoCurso'));
               chart.draw(data,options);
             }else{
-              $("#chartDonutRequerimentoAll").fadeOut();    
+              $("#chartDonutRequerimentoCurso").fadeOut();    
             }
           },  
           error: function (xhr, ajaxOptions, thrownError) {
@@ -70,7 +70,7 @@ var dataFim = $(".dataFim").val();
   });
 }
 
-function chartPieRequerimentoAll(dataInicio, dataFim, tipoRequerimento, grupoRequerimento){
+function chartPieRequerimentoCurso(dataInicio, dataFim, tipoRequerimento, grupoRequerimento){
 var dataInicio = $(".dataInicio").val();
 var dataFim = $(".dataFim").val(); 
   $.ajax({
@@ -84,7 +84,7 @@ var dataFim = $(".dataFim").val();
         $.ajax({
           type: "GET",
           dataType: "JSON",
-          url:"graficos/lib/requerimentoTodosChamados.php?dataInicio="+dataInicio+"&dataFim="+dataFim+"&tipoRequerimento="+tipoRequerimento+"&grupoRequerimento="+grupoRequerimento,            
+          url:"graficos/lib/requerimentoCursoChamados.php?dataInicio="+dataInicio+"&dataFim="+dataFim+"&tipoRequerimento="+tipoRequerimento+"&grupoRequerimento="+grupoRequerimento,            
           success: function(jsondata) {
             var i = 1;
             var curso = new Array();
@@ -100,15 +100,15 @@ var dataFim = $(".dataFim").val();
               }
             });
             if(qtsDados > 0){
-              $("#chartPieRequerimentoAll").fadeIn();          
+              $("#chartPieRequerimentoCurso").fadeIn();          
               var options = {title: 'Chamado de requerimento',
               width: 1150,
               height: 650};
 
-              var chart = new google.visualization.PieChart(document.getElementById('chartPieRequerimentoAll'));
+              var chart = new google.visualization.PieChart(document.getElementById('chartPieRequerimentoCurso'));
               chart.draw(data,options);
             }else{
-              $("#chartPieRequerimentoAll").fadeOut();          
+              $("#chartPieRequerimentoCurso").fadeOut();          
             }
              
           },  
@@ -128,7 +128,7 @@ var dataFim = $(".dataFim").val();
   });
 }
 
-function chartBarRequerimentoAll(dataInicio, dataFim, tipoRequerimento, grupoRequerimento){
+function chartBarRequerimentoCurso(dataInicio, dataFim, tipoRequerimento, grupoRequerimento){
 var dataInicio = $(".dataInicio").val();
 var dataFim = $(".dataFim").val(); 
   $.ajax({
@@ -142,7 +142,7 @@ var dataFim = $(".dataFim").val();
         $.ajax({
           type: "GET",
           dataType: "JSON",
-          url:"graficos/lib/requerimentoTodosChamados.php?dataInicio="+dataInicio+"&dataFim="+dataFim+"&tipoRequerimento="+tipoRequerimento+"&grupoRequerimento="+grupoRequerimento,            
+          url:"graficos/lib/requerimentoCursoChamados.php?dataInicio="+dataInicio+"&dataFim="+dataFim+"&tipoRequerimento="+tipoRequerimento+"&grupoRequerimento="+grupoRequerimento,            
           success: function(jsondata) {
             var j = 0;
             var curso = new Array();
@@ -163,7 +163,7 @@ var dataFim = $(".dataFim").val();
             });
             
             if(qtsDados > 0){
-              $("#chartBarRequerimentoAll").fadeIn();          
+              $("#chartBarRequerimentoCurso").fadeIn();          
               var options = {title: 'Chamado de requerimento',
                 width: 1150,
                 height: 650,
@@ -173,10 +173,10 @@ var dataFim = $(".dataFim").val();
                 },
                 legend: 'none'};
 
-              var chart = new google.visualization.BarChart(document.getElementById('chartBarRequerimentoAll'));
+              var chart = new google.visualization.BarChart(document.getElementById('chartBarRequerimentoCurso'));
              chart.draw(data,options);
             }else{
-              $("#chartBarRequerimentoAll").fadeOut();          
+              $("#chartBarRequerimentoCurso").fadeOut();          
             }
           },  
           error: function (xhr, ajaxOptions, thrownError) {
@@ -192,7 +192,7 @@ var dataFim = $(".dataFim").val();
   });
 }
 
-function chartColumnRequerimentoAll(dataInicio, dataFim, tipoRequerimento, grupoRequerimento){
+function chartColumnRequerimentoCurso(dataInicio, dataFim, tipoRequerimento, grupoRequerimento){
 var dataInicio = $(".dataInicio").val();
 var dataFim = $(".dataFim").val(); 
   $.ajax({
@@ -206,7 +206,7 @@ var dataFim = $(".dataFim").val();
         $.ajax({
           type: "GET",
           dataType: "JSON",
-          url:"graficos/lib/requerimentoTodosChamados.php?dataInicio="+dataInicio+"&dataFim="+dataFim+"&tipoRequerimento="+tipoRequerimento+"&grupoRequerimento="+grupoRequerimento,            
+          url:"graficos/lib/requerimentoCursoChamados.php?dataInicio="+dataInicio+"&dataFim="+dataFim+"&tipoRequerimento="+tipoRequerimento+"&grupoRequerimento="+grupoRequerimento,            
           success: function(jsondata) {
             var j = 0;
             var curso = new Array();
@@ -227,7 +227,7 @@ var dataFim = $(".dataFim").val();
             });
             
             if(qtsDados > 0){
-              $("#chartColumnRequerimentoAll").fadeIn();  
+              $("#chartColumnRequerimentoCurso").fadeIn();  
 
               var options = {title: 'Chamado de requerimento',
                 width: 1150,
@@ -238,10 +238,10 @@ var dataFim = $(".dataFim").val();
                 },
                 legend: 'none'};
 
-              var chart = new google.visualization.ColumnChart(document.getElementById('chartColumnRequerimentoAll'));
+              var chart = new google.visualization.ColumnChart(document.getElementById('chartColumnRequerimentoCurso'));
               chart.draw(data,options);
             }else{
-              $("#chartColumnRequerimentoAll").fadeOut();  
+              $("#chartColumnRequerimentoCurso").fadeOut();  
             }
           },  
           error: function (xhr, ajaxOptions, thrownError) {

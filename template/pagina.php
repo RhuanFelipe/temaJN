@@ -121,8 +121,23 @@ else
 	else if($pagina == 'chartBarTipoRequerimentoCurso')
 		include_once "graficos/chartBarTipoRequerimentoCurso.php";
 	else if($pagina == 'chartColumnTipoRequerimentoCurso')
-		include_once "graficos/chartColumnTipoRequerimentoCurso.php";
-	
+		include_once "graficos/chartColumnTipoRequerimentoCurso.php";	
+	else if($pagina == 'chartPieGrupoRequerimentoCurso')
+		include_once "graficos/chartPieGrupoRequerimentoCurso.php";
+	else if($pagina == 'chartBarGrupoRequerimentoCurso')
+		include_once "graficos/chartBarGrupoRequerimentoCurso.php";
+	else if($pagina == 'chartDonutGrupoRequerimentoCurso')
+		include_once "graficos/chartDonutGrupoRequerimentoCurso.php";
+	else if($pagina == 'chartColumnGrupoRequerimentoCurso')
+		include_once "graficos/chartColumnGrupoRequerimentoCurso.php";
+	else if($pagina == 'chartPieRequerimentoCurso')
+		include_once "graficos/chartPieRequerimentoCurso.php";
+	else if($pagina == 'chartBarRequerimentoCurso')
+		include_once "graficos/chartBarRequerimentoCurso.php";
+	else if($pagina == 'chartDonutRequerimentoCurso')
+		include_once "graficos/chartDonutRequerimentoCurso.php";
+	else if($pagina == 'chartColumnRequerimentoCurso')
+		include_once "graficos/chartColumnRequerimentoCurso.php";
 	else
 		include_once "404.php";
 ?>
