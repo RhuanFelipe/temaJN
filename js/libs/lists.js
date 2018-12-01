@@ -83,4 +83,14 @@
    });
 
     $("#grupo_requerimento_all").load( "biblioteca/list/listarGrupoRequerimentoAll.php?grupoId="+grupoId); 
+    
+    $(".tipoCursoModal").change(function(){
+      //alert($(".tipoCursoModal option:selected ").val());
+       $(".tipoCurso").load("biblioteca/list/listarTipoCurso.php?id="+$(".tipoCursoModal option:selected ").val());  
+    });
+    $(".tipoCursoModal").change(function(){
+      //alert($(".tipoCursoModal option:selected ").val());
+       $(".tipoCurso").load("biblioteca/list/listarTipoCurso.php?id="+$(".tipoCursoModal option:selected ").val());  
+    });
+   
  });
