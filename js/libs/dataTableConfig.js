@@ -1,5 +1,5 @@
 $(function() {
-      var tabela = $('#fullTable').DataTable();
+ /*    var tabela = $('#fullTable').DataTable();
       var tabelaChamado = $('#fullTableChamado').DataTable(
         dom: 'Bfrtip',
         buttons: [
@@ -17,5 +17,6 @@ $(function() {
        var tabela_min_chamado = $('#simpleTableChamado').DataTable("lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Tudo"]],
         "order": [[ 3, "desc" ]]
       });
-      tabela_min_chamado.buttons().disable();
+      tabela_min_chamado.buttons().disable(); 
+	  */
 });

@@ -89,7 +89,7 @@
               <p><b>Tipo Requerimento:  </b><label class="label-tipo-requerimento"></label></p>
               <p><b>Grupo Requerimento:  </b><label class="label-grupo-requerimento"></label></p>
               <p><b>Requerimento:  </b><label class="label-requerimento"></label></p>
-              <p><b>Assunto:  </b><label class="label-assunto"></label></p>
+              <p><b>Resposta:  </b><label class="label-assunto"></label></p>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>

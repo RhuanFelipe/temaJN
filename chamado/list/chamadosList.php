@@ -38,12 +38,12 @@ $encoding = 'UTF-8';
 
 <tr class="modal-desc">                             
   <td  width="10%" title="<?php  echo date('d/m/Y - H:i', strtotime($rows->data_abertura)); ?>"><?php echo date('d/m/Y', strtotime($rows->data_abertura)); ?></td>
-  <th scope="row"><?php echo $users->matricula_usuario; ?>
+  <th scope="row" width="10%"><?php echo $users->matricula_usuario; ?>
      <input type="hidden"  class="chamado_click" name="">
   </th>
-  <td class=""><?php echo mb_convert_case($ps[0]->nome_pessoa, MB_CASE_UPPER, $encoding); ?></td>
-  <td ><?php echo mb_convert_case($cs[0]->nome_curso, MB_CASE_UPPER, $encoding);  ?></td>
-  <td ><?php echo  mb_convert_case($req[0]->desc_requerimento, MB_CASE_UPPER, $encoding); ?></td>
+  <td class="" width="15%"><?php echo mb_convert_case($ps[0]->nome_pessoa, MB_CASE_UPPER, $encoding); ?></td>
+  <td width="15%"><?php echo mb_convert_case($cs[0]->nome_curso, MB_CASE_UPPER, $encoding);  ?></td>
+  <td scope="row" width="15%"><?php echo  mb_convert_case($req[0]->desc_requerimento, MB_CASE_UPPER, $encoding); ?></td>
   <td scope="row" align="center" width="17%">
 
     <button type="button" class="btn btn-info ver" data-toggle="modal" data-id-chamado = "<?php echo $rows->id_chamado; ?>" data-target="#exampleModalCenter" title="vizualizar chamado">
@@ -88,4 +88,18 @@ $encoding = 'UTF-8';
 <?php }  ?>
 
   <script type="text/javascript" src="chamado/js/acoesChamado.js"></script>
+<script>
+$(function(){
+ $('#simpleTableChamado').DataTable();
+	 $('#fullTableChamado').DataTable({
+         dom: 'Bfrtip',
+		 paging: false,
+    searching: false,
 
+		buttons: [
+            {extend: 'excel', text: '<i class="glyphicon glyphicon-th"></i> Excel' },{extend: 'pdf', text: '<i class="glyphicon glyphicon-file"></i> PDF' },{ extend: 'print', text: '<i class="glyphicon glyphicon-print"></i> Imprimir' }
+        ]
+      });
+	  $.fn.dataTable.ext.errMode = 'throw';
+});
+</script>

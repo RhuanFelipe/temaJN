@@ -36,7 +36,7 @@
       $gr = $grupoRequerimento->findById($rows->grupo_requerimento_id);
    ?>
   <tr class="modal-desc">
-    <td width="13%"><?php echo $rows->data_abertura; ?>
+    <td width="13%"><?php echo date('d/m/Y - H:i', strtotime($rows->data_abertura)); ?>
       <input type="hidden"  class="chamado_click" name="">
     </td>
     <th scope="row"><?php echo $users->matricula_usuario; ?></th>
@@ -80,4 +80,18 @@
   </tr>
   <?php } ?>
   <script type="text/javascript" src="chamado/js/acoesChamado.js"></script>
+<script>
+$(function(){
+ $('#simpleTableChamado').DataTable();
+	 $('#fullTableChamado').DataTable({
+         dom: 'Bfrtip',
 
+		buttons: [
+            {extend: 'excel', text: '<i class="glyphicon glyphicon-th"></i> Excel' },{extend: 'pdf', text: '<i class="glyphicon glyphicon-file"></i> PDF' },{ extend: 'print', text: '<i class="glyphicon glyphicon-print"></i> Imprimir' }
+        ]
+      });
+	 	  $.fn.dataTable.ext.errMode = 'throw';
+
+});
+</script>
+</script>

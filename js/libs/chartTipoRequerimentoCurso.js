@@ -43,7 +43,7 @@ var dataFim = $(".dataFim").val();
              $("#chartDonutTipoRequerimentoCurso").fadeIn();
              var options = {title: 'Chamado de tipo requerimento',
                 width: 1150,
-                height: 650,
+                height: 550,
                 pieHole: 0.5,
                 pieSliceTextStyle: {
                   color: 'black',
@@ -102,7 +102,7 @@ var dataFim = $(".dataFim").val();
                $("#chartPieTipoRequerimentoCurso").fadeIn();
                var options = {title: 'Chamado de tipo requerimento',
                 width: 1150,
-                height: 650};
+                height: 550};
 
               var chart = new google.visualization.PieChart(document.getElementById('chartPieTipoRequerimentoCurso'));
               chart.draw(data,options);
@@ -162,7 +162,7 @@ var dataFim = $(".dataFim").val();
                $("#chartBarTipoRequerimentoCurso").fadeIn();             
                 var options = {title: 'Chamado de tipo requerimento',
                 width: 1150,
-                height: 650,
+                height: 550,
                 pieHole: 0.5,
                 pieSliceTextStyle: {
                   color: 'black',
@@ -225,7 +225,7 @@ var dataFim = $(".dataFim").val();
               $("#chartColumnTipoRequerimentoCurso").fadeIn();   
               var options = {title: 'Chamado de tipo requerimento',
               width: 1150,
-              height: 650,
+              height: 550,
               pieHole: 0.5,
               pieSliceTextStyle: {
                 color: 'black',

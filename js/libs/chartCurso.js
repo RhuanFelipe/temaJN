@@ -31,7 +31,7 @@ function chartDonutCurso(dataInicio, dataFim){
                 $('#chartDonutCurso').fadeIn("Slow");
             var options = {title: 'Chamados do Curso',
               width: 1150,
-              height: 650,
+              height: 550,
               pieHole: 0.5,
               pieSliceTextStyle: {
                 color: 'black',
@@ -76,7 +76,7 @@ function chartBarCurso(dataInicio, dataFim){
 
               var options = {title: 'Chamados do Curso',
               width: 1150,
-              height: 650,
+              height: 550,
               pieHole: 0.5,
               pieSliceTextStyle: {
                 color: 'black',
@@ -122,7 +122,7 @@ function chartPieCurso(dataInicio, dataFim){
                   $('#chartPieCurso').fadeIn("Slow");
                   var options = {title: 'Chamados do Curso',
                   width: 1150,
-                  height: 650};
+                  height: 550};
                 }else{
                    var options = "";
                    $('#chartPieCurso').fadeOut("Slow");
@@ -161,7 +161,7 @@ function chartColumnCurso(dataInicio, dataFim){
             $('#chartColumnCurso').fadeIn("Slow");
             var options = {title: 'Chamados do Curso',
             width: 1150,
-            height: 650,
+            height: 550,
             pieHole: 0.5,
             pieSliceTextStyle: {
               color: 'black',

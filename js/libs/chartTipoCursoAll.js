@@ -44,7 +44,7 @@ var dataFim = $(".dataFim").val();
               $("#chartDonutTipoCursoAll").fadeIn();
               var options = {title: 'Chamados Tipos de curso',
               width: 1150,
-              height: 650,
+              height: 550,
               pieHole: 0.5,
               pieSliceTextStyle: {
                 color: 'black',
@@ -105,7 +105,7 @@ var dataFim = $(".dataFim").val();
                $("#chartPieTipoCursoAll").fadeIn();
                var options = {title: 'Chamados Tipos de curso',
                 width: 1150,
-                height: 650};
+                height: 550};
 
                var chart = new google.visualization.PieChart(document.getElementById('chartPieTipoCursoAll'));
                chart.draw(data,options);
@@ -164,7 +164,7 @@ var dataFim = $(".dataFim").val();
 
               var options = {title: 'Chamados Tipos de curso',
                 width: 1150,
-                height: 650,
+                height: 550,
                 pieHole: 0.5,
                 pieSliceTextStyle: {
                   color: 'black',
@@ -228,7 +228,7 @@ var dataFim = $(".dataFim").val();
               $("#chartColumnTipoCursoAll").fadeIn();
               var options = {title: 'Chamados Tipos de curso',
                 width: 1150,
-                height: 650,
+                height: 550,
                 pieHole: 0.5,
                 pieSliceTextStyle: {
                   color: 'black',

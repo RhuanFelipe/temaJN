@@ -34,7 +34,7 @@ var dataFim = $(".dataFim").val();
               $("#chartPieAll").fadeIn("slow");
               var options = {title: 'Chamados Geral',
               width: 1150,
-              height: 650};
+              height: 550};
               var chart = new google.visualization.PieChart(document.getElementById('chartPieAll'));
               chart.draw(data, options);
             }else{
@@ -74,7 +74,7 @@ function chartDonutAll(dataInicio, dataFim){
               $("#chartDonutAll").fadeIn("slow");
               var options = {title: 'Chamados Geral',
               width: 1150,
-              height: 650,
+              height: 550,
               pieHole: 0.5,
               pieSliceTextStyle: {
                 color: 'black',
@@ -119,7 +119,7 @@ function chartBarAll(dataInicio, dataFim){
 
              var options = {title: 'Chamados Geral',
               width: 1150,
-              height: 650,
+              height: 550,
               pieHole: 0.5,
               pieSliceTextStyle: {
                 color: 'black',
@@ -166,7 +166,7 @@ function chartColumnAll(dataInicio, dataFim){
 
               var options = {title: 'Chamados Geral',
               width: 1150,
-              height: 650,
+              height: 550,
               pieHole: 0.5,
               pieSliceTextStyle: {
                 color: 'black',
